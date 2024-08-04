@@ -1,0 +1,132 @@
+[
+    {
+        "id": 53001,
+        "cardName": "Platinum",
+        "bankName": "American Express",
+        "openDate": "02/15/2023",
+        "imageName": "1",
+        "annualFee": 695,
+        "dueDay": 12,
+        "creditLimit": 0,
+        "isChargeCard": true,
+        "isBusiness": false,
+        "isClosed": false,
+        "wasDowngraded": false,
+        "hasAPRPromotion": false,
+        "hasBonusPromotion": true,
+        "history": {
+            "closedDate": null,
+            "downgradeDate": null,
+            "oldCardName": null,
+            "bonusAmount": null,
+            "APREndDate": null,
+            "bonusPromotionEndDate": null,
+
+        }
+        
+    },
+    {
+        "id": 8469,
+        "cardName": "Ink Preffered",
+        "bankName": "Chase",
+        "openDate": "04/01/2021",
+        "imageName": "8",
+        "annualFee": 595,
+        "dueDay": 24,
+        "creditLimit": 12000,
+        "isChargeCard": false,
+        "isBusiness": true,
+        "isClosed": false,
+        "wasDowngraded": false,
+        "hasAPRPromotion": false,
+        "hasBonusPromotion": true,
+        "history": {
+            "closedDate": null,
+            "downgradeDate": null,
+            "oldCardName": null,
+            "bonusAmount": null,
+            "APREndDate": null,
+            "bonusPromotionEndDate": null,
+
+        }
+        
+    },
+    {
+        "id": 2793,
+        "cardName": "Freedom Unlimited",
+        "bankName": "Chase",
+        "openDate": "07/05/2020",
+        "imageName": "5",
+        "annualFee": 0,
+        "dueDay": 06,
+        "creditLimit": 6000,
+        "isChargeCard": false,
+        "isBusiness": true,
+        "isClosed": false,
+        "wasDowngraded": true,
+        "hasAPRPromotion": false,
+        "hasBonusPromotion": true,
+        "history": {
+            "closedDate": null,
+            "downgradeDate": "02/09/2023",
+            "oldCardName": "Saphire Reserve",
+            "bonusAmount": null,
+            "APREndDate": null,
+            "bonusPromotionEndDate": null,
+
+        }
+        
+    },
+    {
+        "id": 3549,
+        "cardName": "Ink Unlimited",
+        "bankName": "Chase",
+        "openDate": "11/19/2024",
+        "imageName": "7",
+        "annualFee": 0,
+        "dueDay": 29,
+        "creditLimit": 40000,
+        "isChargeCard": false,
+        "isBusiness": true,
+        "isClosed": false,
+        "wasDowngraded": false,
+        "hasAPRPromotion": true,
+        "hasBonusPromotion": true,
+        "history": {
+            "closedDate": null,
+            "downgradeDate": null,
+            "oldCardName": null,
+            "bonusAmount": 80000,
+            "APREndDate": "04/02/2025",
+            "bonusPromotionEndDate": "10/02/2025"
+
+        }
+        
+    },
+    {
+        "id": 4124,
+        "cardName": "Freedom Flex",
+        "bankName": "Chase",
+        "openDate": "01/0/2022",
+        "imageName": "7",
+        "annualFee": 0,
+        "dueDay": 29,
+        "creditLimit": 40000,
+        "isChargeCard": false,
+        "isBusiness": true,
+        "isClosed": false,
+        "wasDowngraded": false,
+        "hasAPRPromotion": true,
+        "hasBonusPromotion": true,
+        "history": {
+            "closedDate": null,
+            "downgradeDate": null,
+            "oldCardName": null,
+            "bonusAmount": 80000,
+            "APREndDate": "04/02/2025",
+            "bonusPromotionEndDate": "10/02/2025"
+
+        }
+        
+    },
+]
