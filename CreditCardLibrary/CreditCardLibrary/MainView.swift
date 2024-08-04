@@ -8,11 +8,20 @@
 import SwiftUI
 
 struct MainView: View {
+    @Environment(ModelData.self) var modelData
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationSplitView{
+            CategoriesView(categoriesList: categoriesList)
+        }content: {
+            Text("Placeholder")
+        }detail: {
+            Text("Placeholder")
+        }
     }
 }
 
 #Preview {
     MainView()
+        .environment(ModelData())
 }

@@ -11,6 +11,12 @@
 		319F558F2C5F2B1500C054D2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319F558E2C5F2B1500C054D2 /* ContentView.swift */; };
 		319F55912C5F2B1600C054D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 319F55902C5F2B1600C054D2 /* Assets.xcassets */; };
 		319F55942C5F2B1600C054D2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 319F55932C5F2B1600C054D2 /* Preview Assets.xcassets */; };
+		31AAFED62C5F325600CE1BDC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AAFED52C5F325600CE1BDC /* MainView.swift */; };
+		31AAFED82C5F333A00CE1BDC /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AAFED72C5F333A00CE1BDC /* CategoriesView.swift */; };
+		31AAFEDB2C5F3A2500CE1BDC /* CategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AAFEDA2C5F3A2500CE1BDC /* CategoryList.swift */; };
+		31AAFEDD2C5F42EF00CE1BDC /* creditcards.json in Resources */ = {isa = PBXBuildFile; fileRef = 31AAFEDC2C5F42EF00CE1BDC /* creditcards.json */; };
+		31AAFEE02C5F43ED00CE1BDC /* CreditCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AAFEDF2C5F43ED00CE1BDC /* CreditCardModel.swift */; };
+		31AAFEE22C5F440100CE1BDC /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AAFEE12C5F440100CE1BDC /* ModelData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +26,12 @@
 		319F55902C5F2B1600C054D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		319F55932C5F2B1600C054D2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		319F55952C5F2B1600C054D2 /* CreditCardLibrary.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CreditCardLibrary.entitlements; sourceTree = "<group>"; };
+		31AAFED52C5F325600CE1BDC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		31AAFED72C5F333A00CE1BDC /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
+		31AAFEDA2C5F3A2500CE1BDC /* CategoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryList.swift; sourceTree = "<group>"; };
+		31AAFEDC2C5F42EF00CE1BDC /* creditcards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = creditcards.json; sourceTree = "<group>"; };
+		31AAFEDF2C5F43ED00CE1BDC /* CreditCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardModel.swift; sourceTree = "<group>"; };
+		31AAFEE12C5F440100CE1BDC /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +66,10 @@
 			children = (
 				319F558C2C5F2B1500C054D2 /* CreditCardLibraryApp.swift */,
 				319F558E2C5F2B1500C054D2 /* ContentView.swift */,
+				31AAFED52C5F325600CE1BDC /* MainView.swift */,
+				31AAFED72C5F333A00CE1BDC /* CategoriesView.swift */,
+				31AAFED92C5F39EB00CE1BDC /* Resources */,
+				31AAFEDE2C5F436A00CE1BDC /* Model */,
 				319F55902C5F2B1600C054D2 /* Assets.xcassets */,
 				319F55952C5F2B1600C054D2 /* CreditCardLibrary.entitlements */,
 				319F55922C5F2B1600C054D2 /* Preview Content */,
@@ -67,6 +83,24 @@
 				319F55932C5F2B1600C054D2 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		31AAFED92C5F39EB00CE1BDC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				31AAFEDC2C5F42EF00CE1BDC /* creditcards.json */,
+				31AAFEDA2C5F3A2500CE1BDC /* CategoryList.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		31AAFEDE2C5F436A00CE1BDC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				31AAFEDF2C5F43ED00CE1BDC /* CreditCardModel.swift */,
+				31AAFEE12C5F440100CE1BDC /* ModelData.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +161,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31AAFEDD2C5F42EF00CE1BDC /* creditcards.json in Resources */,
 				319F55942C5F2B1600C054D2 /* Preview Assets.xcassets in Resources */,
 				319F55912C5F2B1600C054D2 /* Assets.xcassets in Resources */,
 			);
@@ -139,8 +174,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31AAFED82C5F333A00CE1BDC /* CategoriesView.swift in Sources */,
 				319F558F2C5F2B1500C054D2 /* ContentView.swift in Sources */,
+				31AAFEE02C5F43ED00CE1BDC /* CreditCardModel.swift in Sources */,
+				31AAFEDB2C5F3A2500CE1BDC /* CategoryList.swift in Sources */,
+				31AAFED62C5F325600CE1BDC /* MainView.swift in Sources */,
 				319F558D2C5F2B1500C054D2 /* CreditCardLibraryApp.swift in Sources */,
+				31AAFEE22C5F440100CE1BDC /* ModelData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

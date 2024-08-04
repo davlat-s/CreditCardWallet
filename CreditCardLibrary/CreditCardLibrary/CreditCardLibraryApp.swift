@@ -1,17 +1,17 @@
-//
-//  CreditCardLibraryApp.swift
-//  CreditCardLibrary
-//
-//  Created by Davlat Sirojitdinov on 8/3/24.
-//
-
 import SwiftUI
 
 @main
 struct CreditCardLibraryApp: App {
+    @State private var modelData = ModelData()
+    
     var body: some Scene {
-        WindowGroup {
+        WindowGroup("Main Widnow") {
             ContentView()
+                .environment(modelData)
+                .toolbarBackground(.clear)
+
         }
+        .windowStyle(.hiddenTitleBar)
+        
     }
 }

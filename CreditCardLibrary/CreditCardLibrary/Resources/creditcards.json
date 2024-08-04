@@ -58,7 +58,7 @@
         "openDate": "07/05/2020",
         "imageName": "5",
         "annualFee": 0,
-        "dueDay": 06,
+        "dueDay": 6,
         "creditLimit": 6000,
         "isChargeCard": false,
         "isBusiness": true,
@@ -128,5 +128,5 @@
 
         }
         
-    },
+    }
 ]

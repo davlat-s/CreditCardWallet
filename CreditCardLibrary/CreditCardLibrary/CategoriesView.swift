@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct CategoriesView: View {
+    let categoriesList: [String]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List(categoriesList, id: \.self){category in
+        Text(category)}
     }
 }
 
 #Preview {
-    CategoriesView()
+    CategoriesView(categoriesList: categoriesList)
+        .environment(ModelData())
 }
