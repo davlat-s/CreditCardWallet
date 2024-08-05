@@ -1,4 +1,5 @@
 import Foundation
+import Observation
 
 @Observable class ModelData {
     var creditCardList: [CreditCard] = load(filename: "creditcards.json")

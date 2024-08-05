@@ -8,16 +8,14 @@
 import SwiftUI
 
 struct MainView: View {
-    @Environment(ModelData.self) var modelData
     
     var body: some View {
         NavigationSplitView{
-            CategoriesView(categoriesList: categoriesList)
-        }content: {
-            Text("Placeholder")
+            CategoriesView()
         }detail: {
-            Text("Placeholder")
+            DashboardView()
         }
+        .navigationTitle("")
     }
 }
 

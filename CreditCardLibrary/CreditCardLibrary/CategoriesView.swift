@@ -1,22 +1,37 @@
-//
-//  CategoriesView.swift
-//  CreditCardLibrary
-//
-//  Created by Davlat Sirojitdinov on 8/3/24.
-//
-
 import SwiftUI
 
 struct CategoriesView: View {
-    let categoriesList: [String]
+    
     
     var body: some View {
-        List(categoriesList, id: \.self){category in
-        Text(category)}
+        NavigationStack {
+            List {
+                Section("Categories") {
+                    NavigationLink("All") {
+                        CategoryAllView()
+                    }
+                    NavigationLink("Business") {
+                        CategoryBusinessView()
+                    }
+                    NavigationLink("Personal") {
+                        CategoryPersonalView()
+                    }
+                    NavigationLink("Closed") {
+                        CategoryClosedView()
+                    }
+                    
+                }
+                Section("Tools") {
+                    NavigationLink("Dashboard") {
+                        DashboardView()
+                    }
+                }
+            }
+        }
     }
 }
 
 #Preview {
-    CategoriesView(categoriesList: categoriesList)
+    CategoriesView()
         .environment(ModelData())
 }

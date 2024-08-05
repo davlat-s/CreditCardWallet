@@ -11,7 +11,7 @@ struct CreditCardLibraryApp: App {
                 .toolbarBackground(.clear)
 
         }
-        .windowStyle(.hiddenTitleBar)
+//        .windowStyle(.hiddenTitleBar)
         
     }
 }
