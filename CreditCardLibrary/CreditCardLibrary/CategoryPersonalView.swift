@@ -4,13 +4,7 @@ struct CategoryPersonalView: View {
     @Environment(ModelData.self) private var modelData
     
     var body: some View {
-        if filteredCreditCards.isEmpty {
-            Text("No personal cards available")
-        } else {
-            CategoryViewHelper(filteredCreditCards: filteredCreditCards)
-            }
-        }
-    var filteredCreditCards: [CreditCard] { modelData.creditCardList.filter { card in !card.isBusiness && !card.isClosed}
+        CategoryFilterHelper(filter: {!$0.isBusiness && !$0.isClosed}, emptymessage: "No active personal cards available")
     }
 }
 

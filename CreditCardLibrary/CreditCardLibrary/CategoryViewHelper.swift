@@ -1,7 +1,9 @@
 import SwiftUI
 
 struct CategoryViewHelper: View {
+    
     @Environment(ModelData.self) private var modelData
+    
     var filteredCreditCards: [CreditCard]
     
     var body: some View {

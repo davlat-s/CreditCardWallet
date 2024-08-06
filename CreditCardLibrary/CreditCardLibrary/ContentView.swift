@@ -1,9 +1,17 @@
 import SwiftUI
 
 
-struct ContentView: View {    
+struct ContentView: View {
+    
     var body: some View {
-        MainView()
+        NavigationSplitView{
+            CategoriesView()
+        }content: {
+            Text("Select a category")
+        }detail: {
+            Text("Select a card")
+        }
+        .navigationTitle("Card Library")
     }
 }
 
