@@ -6,9 +6,10 @@ struct CardImageView: View {
     var body: some View {
         image
             .resizable()
-            .frame(width: 320, height: 200)
+            .frame(width: 250, height: 150)
             .clipShape(RoundedRectangle(cornerSize: CGSize(width: 13, height: 5)))
             .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+            .padding()
     }
 }
 

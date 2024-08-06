@@ -1,10 +1,3 @@
-//
-//  MainView.swift
-//  CreditCardLibrary
-//
-//  Created by Davlat Sirojitdinov on 8/3/24.
-//
-
 import SwiftUI
 
 struct MainView: View {
@@ -12,10 +5,12 @@ struct MainView: View {
     var body: some View {
         NavigationSplitView{
             CategoriesView()
+        }content: {
+            Text("Select a category")
         }detail: {
-            DashboardView()
+            Text("Select a card")
         }
-        .navigationTitle("")
+        .navigationTitle("Card Library")
     }
 }
 

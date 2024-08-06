@@ -1,10 +1,3 @@
-//
-//  CardRowView.swift
-//  CreditCardLibrary
-//
-//  Created by Davlat Sirojitdinov on 8/4/24.
-//
-
 import SwiftUI
 
 struct CardRowView: View {
@@ -20,11 +13,10 @@ struct CardRowView: View {
                 
             Text(creditcard.cardName)
                 .padding()
-            Spacer()
+                .fixedSize(horizontal: true, vertical: true)
             
-            Text("$\(String(creditcard.annualFee))")
-                .multilineTextAlignment(.trailing)
         }
+        .frame(width: 300, alignment: .leading)
     }
 }
 

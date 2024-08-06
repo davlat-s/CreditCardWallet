@@ -4,19 +4,17 @@ struct CategoryClosedView: View {
     @Environment(ModelData.self) private var modelData
     
     var body: some View {
-        if filteredcards.isEmpty {
+        if filteredCreditCards.isEmpty {
             Text("No closed cards available")
         } else {
-            ForEach(filteredcards) { creditcard in
-                CardRowView(creditcard: creditcard)
+            CategoryViewHelper(filteredCreditCards: filteredCreditCards)
             }
         }
-    }
-    
-    var filteredcards: [CreditCard] {
+    var filteredCreditCards: [CreditCard] {
         modelData.creditCardList.filter { $0.isClosed }
     }
-}
+    }
+    
 
 #Preview {
     CategoryClosedView()

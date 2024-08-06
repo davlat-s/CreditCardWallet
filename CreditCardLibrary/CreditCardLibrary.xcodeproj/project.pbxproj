@@ -14,6 +14,8 @@
 		310629242C60775700C99175 /* CategoryClosedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310629232C60775700C99175 /* CategoryClosedView.swift */; };
 		310629262C60974E00C99175 /* CardRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310629252C60974E00C99175 /* CardRowView.swift */; };
 		310629282C60977300C99175 /* CardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310629272C60977300C99175 /* CardImageView.swift */; };
+		3106292A2C61568800C99175 /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310629292C61568800C99175 /* CardDetailView.swift */; };
+		3106292C2C615CA900C99175 /* CategoryViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3106292B2C615CA900C99175 /* CategoryViewHelper.swift */; };
 		319F558D2C5F2B1500C054D2 /* CreditCardLibraryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319F558C2C5F2B1500C054D2 /* CreditCardLibraryApp.swift */; };
 		319F558F2C5F2B1500C054D2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319F558E2C5F2B1500C054D2 /* ContentView.swift */; };
 		319F55912C5F2B1600C054D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 319F55902C5F2B1600C054D2 /* Assets.xcassets */; };
@@ -35,6 +37,8 @@
 		310629232C60775700C99175 /* CategoryClosedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryClosedView.swift; sourceTree = "<group>"; };
 		310629252C60974E00C99175 /* CardRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRowView.swift; sourceTree = "<group>"; };
 		310629272C60977300C99175 /* CardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardImageView.swift; sourceTree = "<group>"; };
+		310629292C61568800C99175 /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
+		3106292B2C615CA900C99175 /* CategoryViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewHelper.swift; sourceTree = "<group>"; };
 		319F55892C5F2B1500C054D2 /* CreditCardLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CreditCardLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		319F558C2C5F2B1500C054D2 /* CreditCardLibraryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardLibraryApp.swift; sourceTree = "<group>"; };
 		319F558E2C5F2B1500C054D2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -87,11 +91,13 @@
 				31AAFED72C5F333A00CE1BDC /* CategoriesView.swift */,
 				310629232C60775700C99175 /* CategoryClosedView.swift */,
 				310629212C6073B500C99175 /* CategoryPersonalView.swift */,
-				310629252C60974E00C99175 /* CardRowView.swift */,
-				310629272C60977300C99175 /* CardImageView.swift */,
-				3106291F2C6070BA00C99175 /* CategoryBusinessView.swift */,
-				3106291B2C60134B00C99175 /* CreditCardsTableView.swift */,
 				31AAFEE52C5FEC6000CE1BDC /* CategoryAllView.swift */,
+				3106291F2C6070BA00C99175 /* CategoryBusinessView.swift */,
+				3106292B2C615CA900C99175 /* CategoryViewHelper.swift */,
+				310629252C60974E00C99175 /* CardRowView.swift */,
+				310629292C61568800C99175 /* CardDetailView.swift */,
+				310629272C60977300C99175 /* CardImageView.swift */,
+				3106291B2C60134B00C99175 /* CreditCardsTableView.swift */,
 				31AAFED92C5F39EB00CE1BDC /* Resources */,
 				31AAFEDE2C5F436A00CE1BDC /* Model */,
 				319F55902C5F2B1600C054D2 /* Assets.xcassets */,
@@ -205,6 +211,8 @@
 				319F558F2C5F2B1500C054D2 /* ContentView.swift in Sources */,
 				310629242C60775700C99175 /* CategoryClosedView.swift in Sources */,
 				31AAFEE62C5FEC6000CE1BDC /* CategoryAllView.swift in Sources */,
+				3106292A2C61568800C99175 /* CardDetailView.swift in Sources */,
+				3106292C2C615CA900C99175 /* CategoryViewHelper.swift in Sources */,
 				31AAFEE02C5F43ED00CE1BDC /* CreditCardModel.swift in Sources */,
 				31AAFEDB2C5F3A2500CE1BDC /* CategoryList.swift in Sources */,
 				31AAFED62C5F325600CE1BDC /* MainView.swift in Sources */,
