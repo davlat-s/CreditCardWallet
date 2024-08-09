@@ -16,6 +16,6 @@ struct CategoryViewHelper: View {
 }
 
 #Preview {
-    CategoryViewHelper(filteredCreditCards: ModelData().creditCardList)
+    CategoryViewHelper(filteredCreditCards: ModelData().creditCardListSortedNewest)
         .environment(ModelData())
 }

@@ -4,14 +4,14 @@ struct CreditCardsTableView: View {
     @Environment(ModelData.self) private var modelData
 
     var body: some View {
-        Table(modelData.creditCardList) {
+        Table(modelData.creditCardListSortedNewest) {
             TableColumn("Name") { card in Text(card.cardName)}
             TableColumn("Bank") { card in
                 Text(card.bankName)}
             TableColumn("Annual Fee") { card in
                 Text(String(card.annualFee))}
             TableColumn("Open Date") { card in
-                Text(card.formattedDate(date: card.openDate!))}
+                Text(card.formattedDate(date: card.openDate))}
             TableColumn("Has APR Promo") { card in
                 Text(String(card.hasAPRPromotion))}
         }

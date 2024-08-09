@@ -35,7 +35,7 @@ struct CardDetailView: View {
                     Text("Open Date")
                         .padding(.horizontal)
                     Spacer()
-                    Text(creditcard.formattedDate(date: creditcard.openDate!))
+                    Text(creditcard.formattedDate(date: creditcard.openDate))
                         .padding(.horizontal)
                 }
                 HStack{
@@ -51,6 +51,6 @@ struct CardDetailView: View {
 }
 
 #Preview {
-    CardDetailView(creditcard: ModelData().creditCardList[2])
+    CardDetailView(creditcard: ModelData().creditCardListSortedNewest[2])
         .environment(ModelData())
 }

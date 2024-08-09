@@ -21,6 +21,6 @@ struct CardRowView: View {
 }
 
 #Preview {
-    CardRowView(creditcard: ModelData().creditCardList[1])
+    CardRowView(creditcard: ModelData().creditCardListSortedNewest[1])
         .environment(ModelData())
 }
