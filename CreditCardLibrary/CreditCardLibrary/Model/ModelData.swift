@@ -31,6 +31,11 @@ func load<T: Decodable>(filename: String) -> T {
     }
     do {
         let decoder = JSONDecoder()
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM-dd-yyyy"
+        decoder.dateDecodingStrategy = .formatted(formatter)
+        
         return try decoder.decode(T.self, from: data)
     } catch {
         fatalError("Could not parse \(filename) as \(T.self):\n\(error)")

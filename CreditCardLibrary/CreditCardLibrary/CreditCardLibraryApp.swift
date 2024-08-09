@@ -8,10 +8,11 @@ struct CreditCardLibraryApp: App {
         WindowGroup("Main Widnow") {
             ContentView()
                 .environment(modelData)
-                .toolbarBackground(.clear)
+                .toolbarBackground(.ultraThinMaterial)
 
         }
 //        .windowStyle(.hiddenTitleBar)
+
         
     }
 }
