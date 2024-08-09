@@ -2,13 +2,12 @@ import SwiftUI
 
 struct CategoryFilterHelper: View {
     
-    var filter: (CreditCard) -> Bool
+    var filteredCards: [CreditCard]
     var emptymessage: String
     
     @Environment(ModelData.self) private var modelData
     
     var body: some View {
-        let filteredCards = modelData.creditCardList.filter(filter)
         if filteredCards.isEmpty {
             return AnyView(Text(emptymessage))
         } else {
@@ -19,6 +18,6 @@ struct CategoryFilterHelper: View {
 }
 
 #Preview {
-    CategoryFilterHelper(filter: {$0.isBusiness}, emptymessage: "test")
+    CategoryFilterHelper(filteredCards: ModelData().businessCardList,  emptymessage: "test")
         .environment(ModelData())
 }

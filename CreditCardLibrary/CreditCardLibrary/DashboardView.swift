@@ -1,11 +1,15 @@
 import SwiftUI
 
 struct DashboardView: View {
+    
+    @Environment(ModelData.self) var modelData
+    
     var body: some View {
-        Text("Dashboard")
+        Charts()
     }
 }
 
 #Preview {
     DashboardView()
+        .environment(ModelData())
 }

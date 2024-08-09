@@ -2,7 +2,18 @@ import Foundation
 import Observation
 
 @Observable class ModelData {
+    // Lists
     var creditCardList: [CreditCard] = load(filename: "creditcards.json")
+    var businessCardList: [CreditCard] {return creditCardList.filter{$0.isBusiness && !$0.isClosed}}
+    var personalCardList: [CreditCard] {return creditCardList.filter{!$0.isBusiness && !$0.isClosed}}
+    var openCardList: [CreditCard] {return creditCardList.filter{!$0.isClosed}}
+    var closedCardList: [CreditCard] {return creditCardList.filter{$0.isClosed}}
+    
+    // Counts
+    var businessCardCount: Int {businessCardList.count}
+    var personalCardCount: Int {personalCardList.count}
+    var closedCardCount: Int {closedCardList.count}
+    var openCardCound: Int {openCardList.count}
 }
 
 

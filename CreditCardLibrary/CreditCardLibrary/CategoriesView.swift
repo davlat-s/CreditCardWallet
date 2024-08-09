@@ -2,27 +2,42 @@ import SwiftUI
 
 struct CategoriesView: View {
     
+    @Environment(ModelData.self) private var modelData
     
     var body: some View {
         List {
             Section("Categories") {
-                NavigationLink("All") {
-                    CategoryAllView()
+                NavigationLink("Open") {
+                    CategoryOpenCardsView()
                 }
+                .badge(modelData.openCardCound)
+
                 NavigationLink("Business") {
-                    CategoryBusinessView()
+                    CategoryBusinessCardsView()
                 }
+                .badge(modelData.businessCardCount)
+
                 NavigationLink("Personal") {
-                    CategoryPersonalView()
+                    CategoryPersonalCardsView()
                 }
+                .badge(modelData.personalCardCount)
+
                 NavigationLink("Closed") {
-                    CategoryClosedView()
+                    CategoryClosedCardsView()
+                }
+                .badge(modelData.closedCardCount)
+                DisclosureGroup("By Bank"){
+                    Text("Amex")
+                    Text("Chase")
                 }
                 
             }
             Section("Tools") {
                 NavigationLink("Dashboard") {
                     DashboardView()
+                }
+                NavigationLink("Advanced") {
+                    CreditCardsTableView()
                 }
             }
         }
