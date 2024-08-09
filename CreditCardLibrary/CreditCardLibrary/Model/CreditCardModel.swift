@@ -5,7 +5,7 @@ struct CreditCard: Hashable, Codable, Identifiable {
     var id: Int
     var cardName: String
     var bankName: String
-    var openDate: String
+    var openDate: Date?
     var image: Image {
         Image(imageName)
     }
@@ -22,12 +22,18 @@ struct CreditCard: Hashable, Codable, Identifiable {
     
     private var imageName: String
     struct History: Hashable, Codable {
-        var closedDate: String?
-        var downgradeDate: String?
+        var closedDate: Date?
+        var downgradeDate: Date?
         var oldCardName: String?
         var bonusAmount: Int?
-        var APREndDate: String?
-        var bonusPromotionEndDate: String?
+        var APREndDate: Date?
+        var bonusPromotionEndDate: Date?
         
+    }
+    
+    func formattedDate(date: Date, format: String = "MMM d, yyyy") -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.string(from: date)
     }
 }

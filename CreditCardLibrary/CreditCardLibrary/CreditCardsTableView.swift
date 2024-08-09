@@ -11,7 +11,7 @@ struct CreditCardsTableView: View {
             TableColumn("Annual Fee") { card in
                 Text(String(card.annualFee))}
             TableColumn("Open Date") { card in
-                Text(card.openDate)}
+                Text(card.formattedDate(date: card.openDate!))}
             TableColumn("Has APR Promo") { card in
                 Text(String(card.hasAPRPromotion))}
         }

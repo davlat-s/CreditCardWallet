@@ -35,7 +35,7 @@ struct CardDetailView: View {
                     Text("Open Date")
                         .padding(.horizontal)
                     Spacer()
-                    Text(creditcard.openDate)
+                    Text(creditcard.formattedDate(date: creditcard.openDate!))
                         .padding(.horizontal)
                 }
                 HStack{
