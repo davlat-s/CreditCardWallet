@@ -16,35 +16,9 @@ struct CardDetailView: View {
         ScrollView {
             VStack(alignment: .center) {
                 CardImageView(image: creditcard.image)
-                HStack{
-                    Text("Annual Fee")
-                        .padding(.horizontal)
-                    Spacer()
-                    Text("$\(String(creditcard.annualFee))")
-                        .padding(.horizontal)
-
-                }
-                HStack{
-                    Text("Credit Limit")
-                        .padding(.horizontal)
-                    Spacer()
-                    Text("$\(String(Int(creditcard.creditLimit)))")
-                        .padding(.horizontal)
-                }
-                HStack{
-                    Text("Open Date")
-                        .padding(.horizontal)
-                    Spacer()
-                    Text(creditcard.formattedDate(date: creditcard.openDate))
-                        .padding(.horizontal)
-                }
-                HStack{
-                    Text("Bank Name")
-                        .padding(.horizontal)
-                    Spacer()
-                    Text(creditcard.bankName)
-                        .padding(.horizontal)
-                }
+                RowDetailViewHelper(rowName: "Annual Fee", rowValue: String("$\(creditcard.annualFee)"))
+                RowDetailViewHelper(rowName: "Credit Limit", rowValue: String("$\(Int(creditcard.creditLimit))"))
+                RowDetailViewHelper(rowName: "Open Date", rowValue: creditcard.formattedDate(  date: creditcard.openDate))
             }
         }
     }
