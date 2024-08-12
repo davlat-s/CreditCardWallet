@@ -1,9 +1,7 @@
 import SwiftUI
 
 struct CategoryViewHelper: View {
-    
-    @Environment(ModelData.self) private var modelData
-    
+        
     var filteredCreditCards: [CreditCard]
     
     var body: some View {
@@ -16,6 +14,5 @@ struct CategoryViewHelper: View {
 }
 
 #Preview {
-    CategoryViewHelper(filteredCreditCards: ModelData().creditCardListSortedNewest)
-        .environment(ModelData())
+    CategoryViewHelper(filteredCreditCards: [CreditCard(id: "34255", cardName: "Platinum", bankName: "Chase", openDate: Date(), annualFee: 0, dueDay: 12, creditLimit: 12000.0, isChargeCard: false, isBusiness: false, isClosed: false, wasDowngraded: false, hasAPRPromotion: false, hasBonusPromotion: false, imageName: "1")])
 }

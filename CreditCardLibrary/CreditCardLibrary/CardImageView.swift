@@ -1,8 +1,9 @@
 import SwiftUI
 
 struct CardImageView: View {
-    @Environment(ModelData.self) private var modelData
+
     var image: Image
+    
     var body: some View {
         image
             .resizable()
@@ -15,5 +16,4 @@ struct CardImageView: View {
 
 #Preview {
     CardImageView(image: Image("5"))
-        .environment(ModelData())
 }

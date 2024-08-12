@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct CardRowView: View {
-    @Environment(ModelData.self) private var modelData
     var creditcard: CreditCard
     
     var body: some View {
@@ -21,6 +20,5 @@ struct CardRowView: View {
 }
 
 #Preview {
-    CardRowView(creditcard: ModelData().creditCardListSortedNewest[1])
-        .environment(ModelData())
+    CardRowView(creditcard: CreditCard(id: "34255", cardName: "Platinum", bankName: "Chase", openDate: Date(), annualFee: 0, dueDay: 12, creditLimit: 12000.0, isChargeCard: false, isBusiness: false, isClosed: false, wasDowngraded: false, hasAPRPromotion: false, hasBonusPromotion: false, imageName: "1"))
 }

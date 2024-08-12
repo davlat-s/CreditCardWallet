@@ -1,9 +1,7 @@
 import SwiftUI
 
 struct DashboardView: View {
-    
-    @Environment(ModelData.self) var modelData
-    
+        
     var body: some View {
         Charts()
     }
@@ -11,5 +9,4 @@ struct DashboardView: View {
 
 #Preview {
     DashboardView()
-        .environment(ModelData())
 }
