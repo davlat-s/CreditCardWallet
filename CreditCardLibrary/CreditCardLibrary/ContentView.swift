@@ -1,7 +1,7 @@
 import SwiftUI
 
-
 struct ContentView: View {
+    @State private var isShowingAddCardSheet = false
     
     var body: some View {
         NavigationSplitView{
@@ -12,11 +12,13 @@ struct ContentView: View {
             Text("Select a card")
         }
         .navigationTitle("Card Library")
+        .toolbar(content: {
+            Button("Add Card", systemImage: "plus.circle") {isShowingAddCardSheet = true}
+        })
     }
 }
 
 
 #Preview {
     ContentView()
-        .environment(ModelData())
 }

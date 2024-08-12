@@ -4,7 +4,6 @@ struct RowDetailViewHelper: View {
     var rowName: String
     var rowValue: String
     
-    @Environment(ModelData.self) private var modelData
     var body: some View {
         HStack{
             Text(rowName)
@@ -17,5 +16,4 @@ struct RowDetailViewHelper: View {
 
 #Preview {
     RowDetailViewHelper(rowName: "Annual Fee", rowValue: "495")
-        .environment(ModelData())
 }

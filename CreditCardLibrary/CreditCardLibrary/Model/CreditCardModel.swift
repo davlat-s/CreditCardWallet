@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-struct CreditCard: Hashable, Codable, Identifiable {
+struct CreditCardModel: Hashable, Codable, Identifiable {
     var id: Int
     var cardName: String
     var bankName: String

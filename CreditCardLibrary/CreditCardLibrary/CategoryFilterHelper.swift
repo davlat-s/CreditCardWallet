@@ -5,11 +5,14 @@ struct CategoryFilterHelper: View {
     var filteredCards: [CreditCard]
     var emptymessage: String
     
-    @Environment(ModelData.self) private var modelData
+    @Environment(\.modelContext) var context
     
     var body: some View {
         if filteredCards.isEmpty {
-            return AnyView(Text(emptymessage))
+            return AnyView(ContentUnavailableView(label: {
+                Label("", systemImage: "creditcard")
+            }, description: {Text(emptymessage)}
+                                                 ))
         } else {
             return AnyView(CategoryViewHelper(filteredCreditCards: filteredCards))
         }
@@ -18,6 +21,5 @@ struct CategoryFilterHelper: View {
 }
 
 #Preview {
-    CategoryFilterHelper(filteredCards: ModelData().businessCardList,  emptymessage: "test")
-        .environment(ModelData())
+    CategoryFilterHelper(filteredCards:[CreditCard(id: "34255", cardName: "Platinum", bankName: "Chase", openDate: Date(), annualFee: 0, dueDay: 12, creditLimit: 12000.0, isChargeCard: false, isBusiness: false, isClosed: false, wasDowngraded: false, hasAPRPromotion: false, hasBonusPromotion: false, imageName: "1")], emptymessage: "Error")
 }

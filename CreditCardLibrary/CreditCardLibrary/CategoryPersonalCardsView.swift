@@ -1,14 +1,14 @@
 import SwiftUI
+import SwiftData
 
 struct CategoryPersonalCardsView: View {
-    @Environment(ModelData.self) private var modelData
+    @Query var creditCards: [CreditCard]
     
     var body: some View {
-        CategoryFilterHelper(filteredCards: modelData.personalCardList, emptymessage: "No active personal cards available")
+        CategoryFilterHelper(filteredCards: creditCards, emptymessage: "No active personal cards available")
     }
 }
 
 #Preview {
     CategoryPersonalCardsView()
-        .environment(ModelData())
 }

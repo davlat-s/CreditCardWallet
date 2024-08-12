@@ -1,24 +1,32 @@
 import SwiftUI
+import SwiftData
 
 struct CreditCardsTableView: View {
-    @Environment(ModelData.self) private var modelData
-
+    @Query var creditCards: [CreditCard]
+    
     var body: some View {
-        Table(modelData.creditCardListSortedNewest) {
+        Table(creditCards) {
             TableColumn("Name") { card in Text(card.cardName)}
             TableColumn("Bank") { card in
                 Text(card.bankName)}
             TableColumn("Annual Fee") { card in
                 Text(String(card.annualFee))}
-            TableColumn("Open Date") { card in
-                Text(card.formattedDate(date: card.openDate))}
             TableColumn("Has APR Promo") { card in
                 Text(String(card.hasAPRPromotion))}
+        }
+        .overlay {
+            if creditCards.isEmpty {
+                ContentUnavailableView(label: {
+                    Label("No Credit Cards", systemImage: "creditcard.and.123")
+                }, description: {
+                    Text("Start by adding a credit card to your wallet.")
+                })
+                .offset(y: -60)
+            }
         }
     }
 }
 
 #Preview {
     CreditCardsTableView()
-        .environment(ModelData())
 }
