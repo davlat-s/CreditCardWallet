@@ -17,6 +17,7 @@
 		3106292A2C61568800C99175 /* CardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310629292C61568800C99175 /* CardDetailView.swift */; };
 		3106292C2C615CA900C99175 /* CategoryViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3106292B2C615CA900C99175 /* CategoryViewHelper.swift */; };
 		310E5EE42C699A960062DDFA /* CreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310E5EE32C699A960062DDFA /* CreditCard.swift */; };
+		310E5EE72C6A68400062DDFA /* addCreditCardSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310E5EE62C6A68400062DDFA /* addCreditCardSheet.swift */; };
 		316A50FA2C66857000D23506 /* JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316A50F92C66857000D23506 /* JSONDecoder.swift */; };
 		316A50FC2C67219D00D23506 /* RowDetailViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316A50FB2C67219D00D23506 /* RowDetailViewHelper.swift */; };
 		319F558D2C5F2B1500C054D2 /* CreditCardLibraryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319F558C2C5F2B1500C054D2 /* CreditCardLibraryApp.swift */; };
@@ -43,6 +44,7 @@
 		310629292C61568800C99175 /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
 		3106292B2C615CA900C99175 /* CategoryViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewHelper.swift; sourceTree = "<group>"; };
 		310E5EE32C699A960062DDFA /* CreditCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCard.swift; sourceTree = "<group>"; };
+		310E5EE62C6A68400062DDFA /* addCreditCardSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addCreditCardSheet.swift; sourceTree = "<group>"; };
 		316A50F92C66857000D23506 /* JSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoder.swift; sourceTree = "<group>"; };
 		316A50FB2C67219D00D23506 /* RowDetailViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowDetailViewHelper.swift; sourceTree = "<group>"; };
 		319F55892C5F2B1500C054D2 /* CreditCardLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CreditCardLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +73,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		310E5EE52C6A68150062DDFA /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				310E5EE62C6A68400062DDFA /* addCreditCardSheet.swift */,
+			);
+			name = Actions;
+			sourceTree = "<group>";
+		};
 		319F55802C5F2B1500C054D2 = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +144,7 @@
 			children = (
 				31AAFED72C5F333A00CE1BDC /* CategoriesView.swift */,
 				31AB134F2C627C4000726602 /* CardListView */,
+				310E5EE52C6A68150062DDFA /* Actions */,
 				31AB13502C627CA400726602 /* CardDetailView */,
 				31AB13542C627E9900726602 /* Dashboard */,
 				31AB135A2C63BD8C00726602 /* Charts.swift */,
@@ -254,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				316A50FC2C67219D00D23506 /* RowDetailViewHelper.swift in Sources */,
+				310E5EE72C6A68400062DDFA /* addCreditCardSheet.swift in Sources */,
 				31AAFED82C5F333A00CE1BDC /* CategoriesView.swift in Sources */,
 				31AB135B2C63BD8C00726602 /* Charts.swift in Sources */,
 				310629262C60974E00C99175 /* CardRowView.swift in Sources */,

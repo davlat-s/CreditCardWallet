@@ -5,11 +5,10 @@ struct CreditCardLibraryApp: App {
     var body: some Scene {
         WindowGroup("Main Widnow") {
             ContentView()
-                .toolbarBackground(.ultraThinMaterial)
-
+                .toolbarBackground(.ultraThickMaterial)
         }
         .modelContainer(for: [CreditCard.self])
-//        .windowStyle(.hiddenTitleBar)
+        .windowStyle(.hiddenTitleBar)
         
     }
 }

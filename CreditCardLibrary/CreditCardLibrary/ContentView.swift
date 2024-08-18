@@ -11,9 +11,21 @@ struct ContentView: View {
         }detail: {
             Text("Select a card")
         }
-        .navigationTitle("Card Library")
-        .toolbar(content: {
-            Button("Add Card", systemImage: "plus.circle") {isShowingAddCardSheet = true}
+        .background(.ultraThickMaterial)
+        .toolbar {
+            ToolbarItemGroup{
+                Button{isShowingAddCardSheet = true} label: {
+                    Label("Add Card", systemImage: "plus")
+                }
+                Button{
+                    
+                } label: {
+                    Label("Edit Card", systemImage: "pencil")
+                }
+            }
+        }
+        .sheet(isPresented: $isShowingAddCardSheet, content: {
+            addCreditCardSheet()
         })
     }
 }
