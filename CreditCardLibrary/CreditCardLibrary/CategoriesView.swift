@@ -27,15 +27,6 @@ struct CategoriesView: View {
                     Text("Amex")
                     Text("Chase")
                 }
-                
-            }
-            Section("Tools") {
-                NavigationLink("Dashboard") {
-                    DashboardView()
-                }
-                NavigationLink("Advanced") {
-                    CreditCardsTableView()
-                }
             }
         }
     }
