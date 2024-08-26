@@ -3,7 +3,7 @@ import SwiftData
 
 
 @Model
-final class Bonus {
+final class Promotion {
     var name: String
     var creditCard: CreditCard?
     
@@ -12,7 +12,7 @@ final class Bonus {
     }
     
     static let sampleData = [
-        Bonus(name: "80k sign up bonus after $6,000 spend in 3 months"),
-        Bonus(name: "180k sign up bonus after $12,000 spend in 3 months"),
+        Promotion(name: "0% APR for 12 moths"),
+        Promotion(name: "0% APR for 18 moths"),
     ]
 }
