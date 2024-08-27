@@ -1,34 +1,52 @@
-//
-//  CreditCardDetail.swift
-//  CreditCardLibrary
-//
-//  Created by Davlat Sirojitdinov on 8/25/24.
-//
-
 import SwiftUI
 
 struct CreditCardDetail: View {
     
-    let card: CreditCard?
+    @Bindable var creditCard: CreditCard
+    let isNew: Bool
+    
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var modelContext
+    
+    init(creditCard: CreditCard, isNew: Bool = false) {
+        self.creditCard = creditCard
+        self.isNew = isNew
+    }
     
     var body: some View {
-        if let card = card {
-            Text(card.name)
+        Form {
+            TextField("Card name", text: $creditCard.name)
+                .autocorrectionDisabled()
             
-        } else {
-            Text("Select Card")
+        }
+        .navigationTitle(isNew ? "New Credit Card" : "Credit Card Details")
+        .toolbar {
+            if isNew {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Done") {
+                        dismiss()
+                    }
+                }
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") {
+                        modelContext.delete(creditCard)
+                        dismiss()
+                    }
+                }
+            }
+            
         }
     }
 }
 
 // MARK: Previews
 
-#Preview("card: sample") {
-    CreditCardDetail(card: SampleData.shared.creditCard)
+#Preview("Details") {
+    CreditCardDetail(creditCard: SampleData.shared.creditCard)
         .modelContainer(SampleData.shared.modelContainer)
 }
 
-#Preview("card: nil") {
-    CreditCardDetail(card: nil)
+#Preview("isNew") {
+    CreditCardDetail(creditCard: SampleData.shared.creditCard, isNew: true)
         .modelContainer(SampleData.shared.modelContainer)
 }

@@ -25,7 +25,6 @@ enum Category: Int, CaseIterable, Identifiable {
         case .closed: return "archivebox"
         }
     }
-    // TODO: define real filter logic
     var sidebarFilter: (CreditCard) -> Bool {
         switch self {
         case .open: return { $0.closed == nil}

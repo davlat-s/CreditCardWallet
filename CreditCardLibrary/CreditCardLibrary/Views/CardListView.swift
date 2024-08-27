@@ -14,9 +14,15 @@ struct CardListView: View {
     }
     
     var body: some View {
-        List(filteredCreditCards, selection: $selectedCard) { card in
-            NavigationLink(value: card) {
-                Text(card.name)
+        Group {
+            if !filteredCreditCards.isEmpty {
+                List(filteredCreditCards, selection: $selectedCard) { card in
+                    NavigationLink(value: card) {
+                        Text(card.name)
+                    }
+                }
+            } else {
+                Text("No cards available")
             }
         }
     }
@@ -43,3 +49,4 @@ struct CardListView: View {
     CardListView(selectedCategory: .constant(.closed), selectedCard: .constant(nil))
         .modelContainer(SampleData.shared.modelContainer)
 }
+

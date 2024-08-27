@@ -5,6 +5,9 @@ struct WalletContentView: View {
     @State var selectedCategory: Category
     @State private var selectedCard: CreditCard?
     @State var columnVisibility: NavigationSplitViewVisibility
+    @State private var newCard: CreditCard?
+    
+    @Environment(\.modelContext) private var modelContext
     
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
@@ -21,11 +24,32 @@ struct WalletContentView: View {
                 .navigationSplitViewColumnWidth(min: 150, ideal: 200, max: 400)
         } detail: {
             if let selectedCard = selectedCard {
-                CreditCardDetail(card: selectedCard)
+                CreditCardDetail(creditCard: selectedCard)
             } else {
                 Text("Select a card")
                     .foregroundStyle(.secondary)
             }
+        }
+        .toolbar {
+            ToolbarItem {
+                Button(action: addCard) {
+                    Label("add card", systemImage: "plus")
+                }
+            }
+        }
+        .sheet(item: $newCard) { card in
+            NavigationStack {
+                CreditCardDetail(creditCard: card, isNew: true)
+            }
+            .interactiveDismissDisabled()
+        }
+    }
+    
+    private func addCard() {
+        withAnimation {
+            let newItem = CreditCard(name: "", isBusiness: false)
+            modelContext.insert(newItem)
+            newCard = newItem
         }
     }
 }
