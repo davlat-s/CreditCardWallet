@@ -41,7 +41,7 @@ struct WalletContentView: View {
                 }
             }
             ToolbarItem(placement: .secondaryAction) {
-                if let selectedCard = selectedCard {
+                if selectedCard != nil {
                     Button(action: toggleEditing) {
                         Text(isEditing ? "Done Editing" : "Edit")
                     }
@@ -71,7 +71,6 @@ struct WalletContentView: View {
     private func addCard() {
         withAnimation {
             let newItem = CreditCard.createNewCard()
-            modelContext.insert(newItem)
             newCard = newItem
         }
     }

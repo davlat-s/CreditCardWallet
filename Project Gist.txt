@@ -1,0 +1,738 @@
+//Users/davlatsirojitdinov/CreditCardLibrary
+├── CreditCardLibrary/
+│   ├── CreditCardLibrary/
+│   │   ├── Assets.xcassets/
+│   │   │   ├── 1.imageset/
+│   │   │   ├── 10.imageset/
+│   │   │   ├── 2.imageset/
+│   │   │   ├── 3.imageset/
+│   │   │   ├── 4.imageset/
+│   │   │   ├── 5.imageset/
+│   │   │   ├── 6.imageset/
+│   │   │   ├── 7.imageset/
+│   │   │   ├── 8.imageset/
+│   │   │   ├── 9.imageset/
+│   │   │   ├── AccentColor.colorset/
+│   │   │   ├── AppIcon.appiconset/
+│   │   │   ├── C-AA-PlatSelect.imageset/
+│   │   │   ├── Citi_Strata_Premier.imageset/
+│   │   │   ├── Citi_simplicity.imageset/
+│   │   │   ├── amex.imageset/
+│   │   │   ├── blue-business-cash.imageset/
+│   │   │   ├── business-gold.imageset/
+│   │   │   ├── cc_cashrewards.imageset/
+│   │   │   ├── centurion.imageset/
+│   │   │   ├── chase.imageset/
+│   │   │   ├── default.imageset/
+│   │   │   ├── delta-skymiles-gold.imageset/
+│   │   │   ├── navy-federal-go-rewards.imageset/
+│   │   │   └── navy-federal-more-rewards.imageset/
+│   │   ├── CardDetailView.swift
+│   │   ├── CardImageView.swift
+│   │   ├── CardRowView.swift
+│   │   ├── CategoriesView.swift
+│   │   ├── CategoryBusinessCardsView.swift
+│   │   ├── CategoryClosedCardsView.swift
+│   │   ├── CategoryFilterHelper.swift
+│   │   ├── CategoryOpenCardsView.swift
+│   │   ├── CategoryPersonalCardsView.swift
+│   │   ├── CategoryViewHelper.swift
+│   │   ├── ContentView.swift
+│   │   ├── CreditCardLibraryApp.swift
+│   │   ├── Model/
+│   │   │   ├── Bank.swift
+│   │   │   ├── Bonus.swift
+│   │   │   ├── Closed.swift
+│   │   │   ├── CreditCard.swift
+│   │   │   ├── Promotion.swift
+│   │   │   └── SideBarCategories.swift
+│   │   ├── Preview Content/
+│   │   │   └── Preview Assets.xcassets/
+│   │   ├── RowDetailViewHelper.swift
+│   │   ├── SampleData.swift
+│   │   ├── Utilities/
+│   │   ├── Views/
+│   │   │   ├── AddBankView.swift
+│   │   │   ├── AddCreditCardView.swift
+│   │   │   ├── CardListView.swift
+│   │   │   ├── CreditCardDetail.swift
+│   │   │   ├── CreditCardFormView.swift
+│   │   │   ├── EditCreditCardView.swift
+│   │   │   └── WalletContentView.swift
+│   │   └── addCreditCardSheet.swift
+│   └── CreditCardLibrary.xcodeproj/
+│       ├── project.xcworkspace/
+│       │   ├── xcshareddata/
+│       │   │   └── swiftpm/
+│       │   │       └── configuration/
+│       │   └── xcuserdata/
+│       ├── xcshareddata/
+│       │   └── xcschemes/
+│       └── xcuserdata/
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/CardDetailView.swift ***************************************/
+
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/CardImageView.swift ***************************************/
+
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/CardRowView.swift ***************************************/
+
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/CategoriesView.swift ***************************************/
+
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/CategoryBusinessCardsView.swift ***************************************/
+
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/CategoryClosedCardsView.swift ***************************************/
+
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/CategoryFilterHelper.swift ***************************************/
+
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/CategoryOpenCardsView.swift ***************************************/
+
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/CategoryPersonalCardsView.swift ***************************************/
+
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/CategoryViewHelper.swift ***************************************/
+
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/ContentView.swift ***************************************/
+
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/CreditCardLibraryApp.swift ***************************************/
+import SwiftUI
+import SwiftData
+@main
+struct CreditCardLibraryApp: App {
+ var body: some Scene {
+ WindowGroup("Main Widnow") {
+ WalletContentView(selectedCategory: sidebarSelection, columnVisibility: columnVisibility)
+ .toolbarBackground(.ultraThickMaterial)
+ }
+ .modelContainer(for: [CreditCard.self, Bank.self, Closed.self, Promotion.self, Bonus.self])
+ .windowStyle(.hiddenTitleBar)
+ 
+ }
+ @State var sidebarSelection: SideBarCategories = .open
+ @State var columnVisibility: NavigationSplitViewVisibility = .doubleColumn
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Model/Bank.swift ***************************************/
+import Foundation
+import SwiftData
+@Model
+final class Bank {
+ var name: String
+ var creditCards: [CreditCard] = []
+ 
+ init(name: String) {
+ self.name = name
+ }
+ 
+ static let sampleData = [
+ Bank(name: "Chace"),
+ Bank(name: "American Express"),
+ ]
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Model/Bonus.swift ***************************************/
+import Foundation
+import SwiftData
+@Model
+final class Bonus {
+ var name: String
+ var creditCard: CreditCard?
+ 
+ init(name: String) {
+ self.name = name
+ }
+ 
+ static let sampleData = [
+ Bonus(name: "80k sign up bonus after $6,000 spend in 3 months"),
+ Bonus(name: "180k sign up bonus after $12,000 spend in 3 months"),
+ ]
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Model/Closed.swift ***************************************/
+import Foundation
+import SwiftData
+@Model
+final class Closed {
+ var isClosed: Bool
+ var reason: String
+ var creditCard: CreditCard?
+ 
+ init(reason: String, isClosed: Bool) {
+ self.reason = reason
+ self.isClosed = isClosed
+ }
+ 
+ static let sampleData = [
+ Closed(reason: "Closed due to high annual fee", isClosed: true),
+ Closed(reason: "Closed due to inactivity", isClosed: true),
+ ]
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Model/CreditCard.swift ***************************************/
+import Foundation
+import SwiftData
+@Model
+final class CreditCard {
+ var name: String
+ var isBusiness: Bool
+ 
+ var bank: Bank?
+ var promotion: Promotion?
+ var bonus: Bonus?
+ var closed: Closed?
+ 
+ init(name: String, isBusiness: Bool, bank: Bank? = nil) {
+ self.name = name
+ self.isBusiness = isBusiness
+ self.bank = bank
+ }
+ 
+ static func createNewCard() -> CreditCard {
+ return CreditCard(name: "", isBusiness: false)
+ }
+ 
+ static let sampleData = [
+ CreditCard(name: "AmEx Platinum", isBusiness: false, bank: Bank(name: "American Express")),
+ CreditCard(name: "Sapphire Reserve", isBusiness: false),
+ CreditCard(name: "Ink Preffered", isBusiness: true),
+ CreditCard(name: "AmEx Gold", isBusiness: false),
+ CreditCard(name: "Flex", isBusiness: false),
+ CreditCard(name: "BILT", isBusiness: false),
+ ]
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Model/Promotion.swift ***************************************/
+import Foundation
+import SwiftData
+@Model
+final class Promotion {
+ var name: String
+ var creditCard: CreditCard?
+ 
+ init(name: String) {
+ self.name = name
+ }
+ 
+ static let sampleData = [
+ Promotion(name: "0% APR for 12 moths"),
+ Promotion(name: "0% APR for 18 moths"),
+ ]
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Model/SideBarCategories.swift ***************************************/
+import Foundation
+enum SideBarCategories: Int, CaseIterable, Identifiable {
+ var id: Int { rawValue }
+ 
+ case open
+ case personal
+ case business
+ case closed
+ 
+ var displayName: String {
+ switch self {
+ case .open: return "Open"
+ case .personal: return "Personal"
+ case .business: return "Business"
+ case .closed: return "Closed"
+ }
+ }
+ 
+ var displayImageName: String {
+ switch self {
+ case .open: return "creditcard"
+ case .personal: return "person"
+ case .business: return "building.columns"
+ case .closed: return "archivebox"
+ }
+ }
+ var sidebarFilter: (CreditCard) -> Bool {
+ switch self {
+ case .open: return { $0.closed == nil}
+ case .personal: return { $0.isBusiness == false}
+ case .business: return { $0.isBusiness == true}
+ case .closed: return { $0.closed != nil}
+ }
+ 
+ }
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/RowDetailViewHelper.swift ***************************************/
+
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/SampleData.swift ***************************************/
+import Foundation
+import SwiftData
+@MainActor
+class SampleData {
+ 
+ static let shared = SampleData()
+ 
+ let modelContainer: ModelContainer
+ 
+ var context: ModelContext {
+ modelContainer.mainContext
+ }
+ 
+ private init() {
+ let schema = Schema([
+ CreditCard.self,
+ Bank.self,
+ Promotion.self,
+ Bonus.self,
+ Closed.self
+ ])
+ 
+ let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
+ 
+ do {
+ modelContainer = try ModelContainer(for: schema, configurations: [modelConfiguration])
+ 
+ self.insertSampleData()
+ 
+ } catch {
+ fatalError("Could not create ModelContainer for SampleData: \(error)")
+ }
+ }
+ 
+ 
+ func insertSampleData() {
+ for card in CreditCard.sampleData {
+ context.insert(card)
+ }
+ 
+ for promo in Promotion.sampleData {
+ context.insert(promo)
+ }
+ 
+ for bank in Bank.sampleData {
+ context.insert(bank)
+ }
+ 
+ for bonus in Bonus.sampleData {
+ context.insert(bonus)
+ }
+ 
+ for closed in Closed.sampleData {
+ context.insert(closed)
+ }
+ 
+ if let amexCard = CreditCard.sampleData.first,
+ let closedStatus = Closed.sampleData.first {
+ amexCard.closed = closedStatus
+ }
+ 
+ do {
+ try context.save()
+ } catch {
+ print("Sample data context failed to save")
+ }
+ }
+ 
+ 
+ var creditCard : CreditCard {
+ CreditCard.sampleData[0]
+ }
+ 
+ var bank: Bank {
+ Bank.sampleData[0]
+ }
+ 
+ var promotion: Promotion {
+ Promotion.sampleData[0]
+ }
+ 
+ var bonus: Bonus {
+ Bonus.sampleData[0]
+ }
+ 
+ var closed: Closed {
+ Closed.sampleData[0]
+ }
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/AddBankView.swift ***************************************/
+import SwiftUI
+struct AddBankView: View {
+ @Environment(\.dismiss) private var dismiss
+ @State private var bankName: String = ""
+ var onSave: (Bank) -> Void
+ 
+ var body: some View {
+ Form {
+ TextField("Bank Name", text: $bankName)
+ Button("Add Bank") {
+ let newBank = Bank(name: bankName)
+ 
+ onSave(newBank)
+ bankName = ""
+ }
+ }
+ }
+}
+#Preview {
+ AddBankView(onSave: { bank in print(bank.name)})
+ .modelContainer(SampleData.shared.modelContainer)
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/AddCreditCardView.swift ***************************************/
+import SwiftUI
+import SwiftData
+struct AddCreditCardView: View {
+ @Environment(\.dismiss) var dismiss
+ @Environment(\.modelContext) var modelContext
+ var existingBanks: [Bank]
+ 
+ @State private var creditCard = CreditCard(name: "", isBusiness: false, bank: nil)
+ @State private var cardName: String = ""
+ @State private var isBusiness: Bool = false
+ @State private var selectedBank: Bank?
+ @State private var isNewBank: Bool = false
+ var body: some View {
+ CreditCardFormView(cardName: $cardName, isBusiness: $isBusiness, selectedBank: $selectedBank, isNewBank: isNewBank, existingBanks: existingBanks, creditCard:creditCard) {
+ let newCreditCard = CreditCard(name: cardName, isBusiness: isBusiness)
+ newCreditCard.bank = selectedBank
+ modelContext.insert(newCreditCard)
+ dismiss()
+ } 
+ }
+}
+#Preview {
+ AddCreditCardView(existingBanks: Bank.sampleData)
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/CardListView.swift ***************************************/
+import SwiftUI
+import SwiftData
+struct CardListView: View {
+ @Binding var selectedCategory: SideBarCategories
+ @Binding var selectedCard: CreditCard?
+ 
+ 
+ @Query(sort: \CreditCard.name) private var allCreditCards: [CreditCard]
+ 
+ var filteredCreditCards: [CreditCard] {
+ allCreditCards.filter(selectedCategory.sidebarFilter)
+ }
+ 
+ var body: some View {
+ Group {
+ if !filteredCreditCards.isEmpty {
+ List(filteredCreditCards, selection: $selectedCard) { card in
+ NavigationLink(value: card) {
+ Text(card.name)
+ }
+ }
+ } else {
+ Text("No cards available")
+ }
+ }
+ }
+}
+#Preview("Open") {
+ CardListView(selectedCategory: .constant(.open), selectedCard: .constant(nil))
+ .modelContainer(SampleData.shared.modelContainer)
+}
+#Preview("Personal") {
+ CardListView(selectedCategory: .constant(.personal), selectedCard: .constant(nil))
+ .modelContainer(SampleData.shared.modelContainer)
+}
+#Preview("Business") {
+ CardListView(selectedCategory: .constant(.business), selectedCard: .constant(nil))
+ .modelContainer(SampleData.shared.modelContainer)
+}
+#Preview("Closed") {
+ CardListView(selectedCategory: .constant(.closed), selectedCard: .constant(nil))
+ .modelContainer(SampleData.shared.modelContainer)
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/CreditCardDetail.swift ***************************************/
+import SwiftUI
+struct CreditCardDetail: View {
+ 
+ @Bindable var creditCard: CreditCard
+ 
+ @Environment(\.dismiss) private var dismiss
+ @Environment(\.modelContext) private var modelContext
+ 
+ init(creditCard: CreditCard) {
+ self.creditCard = creditCard
+ }
+ 
+ var body: some View {
+ VStack {
+ HStack {
+ Text("CardName")
+ Spacer()
+ Text(creditCard.name)
+ }
+ HStack {
+ Text("Type")
+ Spacer()
+ Text(creditCard.isBusiness ? "Business" : "Personal")
+ }
+ HStack {
+ Text("Bank Name")
+ Spacer()
+ Text(creditCard.bank?.name ?? "No Bank")
+ }
+ }
+ .navigationTitle("Credit Card Details")
+ }
+}
+#Preview("Details") {
+ CreditCardDetail(creditCard: SampleData.shared.creditCard)
+ .modelContainer(SampleData.shared.modelContainer)
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/CreditCardFormView.swift ***************************************/
+import SwiftUI
+struct CreditCardFormView: View {
+ @Environment(\.dismiss) var dismiss
+ @Environment(\.modelContext) var modelContext
+ 
+ @Binding var cardName: String
+ @Binding var isBusiness: Bool
+ @Binding var selectedBank: Bank?
+ @State var isNewBank: Bool
+ var existingBanks: [Bank]
+ var creditCard: CreditCard
+ var onSave: () -> Void
+ 
+ var body: some View {
+ Form {
+ TextField("Card Name", text: $cardName)
+ Toggle("Business", isOn: $isBusiness)
+ if !existingBanks.isEmpty {
+ Picker("Bank", selection: $selectedBank) {
+ ForEach(existingBanks) { bank in
+ Text(bank.name).tag(Optional(bank))
+ }
+ }
+ }
+ Toggle("New Bank", isOn: $isNewBank)
+ if isNewBank {
+ AddBankView { newBank in
+ modelContext.insert(newBank)
+ selectedBank = newBank
+ creditCard.bank = newBank
+ }
+ }
+ }
+ .onAppear {
+ if existingBanks.isEmpty {
+ isNewBank = true
+ }
+ }
+ .toolbar {
+ ToolbarItem(placement: .confirmationAction) {
+ Button("Save") {
+ onSave()
+ }
+ .disabled(cardName.isEmpty || selectedBank == nil)
+ }
+ ToolbarItem(placement: .cancellationAction) {
+ Button("Cancel") {
+ dismiss()
+ }
+ }
+ }
+ }
+}
+#Preview {
+ CreditCardFormView(cardName: .constant(""), isBusiness: .constant(false), selectedBank: .constant(SampleData.shared.bank), isNewBank: false, existingBanks: Bank.sampleData, creditCard: SampleData.shared.creditCard, onSave: {print("Save button pressed")})
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/EditCreditCardView.swift ***************************************/
+import SwiftUI
+import SwiftData
+struct EditCreditCardView: View {
+ @Environment(\.dismiss) var dismiss
+ @Environment(\.modelContext) var modelContext
+ var creditCard: CreditCard
+ var existingBanks: [Bank]
+ @State private var cardName: String
+ @State private var isBusiness: Bool
+ @State private var selectedBank: Bank?
+ @State private var isNewBank: Bool = false
+ init(creditCard: CreditCard, existingBanks: [Bank]) {
+ self.creditCard = creditCard
+ self.existingBanks = existingBanks
+ _cardName = State(initialValue: creditCard.name)
+ _isBusiness = State(initialValue: creditCard.isBusiness)
+ _selectedBank = State(initialValue: creditCard.bank)
+ }
+ var body: some View {
+ CreditCardFormView(cardName: $cardName, isBusiness: $isBusiness, selectedBank: $selectedBank, isNewBank: isNewBank, existingBanks: existingBanks, creditCard: creditCard) {
+ creditCard.name = cardName
+ creditCard.isBusiness = isBusiness
+ creditCard.bank = selectedBank
+ try? modelContext.save()
+ dismiss()
+ }
+ }
+}
+#Preview {
+ EditCreditCardView(creditCard: SampleData.shared.creditCard, existingBanks: Bank.sampleData)
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/WalletContentView.swift ***************************************/
+import SwiftUI
+import SwiftData
+struct WalletContentView: View {
+ 
+ @State var selectedCategory: SideBarCategories
+ @State private var selectedCard: CreditCard?
+ @State var columnVisibility: NavigationSplitViewVisibility
+ @State private var newCard: CreditCard?
+ @State private var isEditing: Bool = false
+ @Query var existingBanks: [Bank]
+ 
+ @Environment(\.modelContext) private var modelContext
+ @Environment(\.dismiss) private var dismiss
+ 
+ var body: some View {
+ NavigationSplitView(columnVisibility: $columnVisibility) {
+ Section("Categories") {
+ List(SideBarCategories.allCases, selection: $selectedCategory) {
+ selection in NavigationLink(value: selection) {
+ Label(selection.displayName, systemImage: selection.displayImageName)
+ }
+ }
+ }
+ .navigationSplitViewColumnWidth(min: 150, ideal: 200, max: 400)
+ } content: {
+ CardListView(selectedCategory: $selectedCategory, selectedCard: $selectedCard)
+ .navigationSplitViewColumnWidth(min: 150, ideal: 200, max: 400)
+ } detail: {
+ if let selectedCard = selectedCard {
+ CreditCardDetail(creditCard: selectedCard)
+ } else {
+ Text("Select a credit card")
+ .foregroundStyle(.secondary)
+ }
+ }
+ .toolbar {
+ ToolbarItem(placement: .primaryAction) {
+ Button(action: addCard) {
+ Label("Add Card", systemImage: "plus")
+ }
+ }
+ ToolbarItem(placement: .secondaryAction) {
+ if selectedCard != nil {
+ Button(action: toggleEditing) {
+ Text(isEditing ? "Done Editing" : "Edit")
+ }
+ }
+ }
+ ToolbarItem(placement: .destructiveAction) {
+ if let selectedCard = selectedCard {
+ Button(action: {
+ deleteCard(selectedCard) 
+ }) {
+ Label("Delete", systemImage: "trash")
+ }
+ }
+ }
+ }
+ .sheet(isPresented: $isEditing) {
+ if let selectedCard = selectedCard {
+ EditCreditCardView(creditCard: selectedCard, existingBanks: existingBanks)
+ }
+ }
+ .sheet(item: $newCard) { card in
+ AddCreditCardView(existingBanks: existingBanks)
+ }
+ .interactiveDismissDisabled()
+ }
+ 
+ private func addCard() {
+ withAnimation {
+ let newItem = CreditCard.createNewCard()
+ modelContext.insert(newItem)
+ newCard = newItem
+ }
+ }
+ 
+ private func toggleEditing() {
+ isEditing.toggle()
+ }
+ 
+ private func deleteCard(_ card: CreditCard) {
+ withAnimation {
+ modelContext.delete(card)
+ selectedCard = nil
+ }
+ }
+ }
+#Preview {
+ WalletContentView(selectedCategory: .open, columnVisibility: .doubleColumn)
+ .modelContainer(SampleData.shared.modelContainer)
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/addCreditCardSheet.swift ***************************************/

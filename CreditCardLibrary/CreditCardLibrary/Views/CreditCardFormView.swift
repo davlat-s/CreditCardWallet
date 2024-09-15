@@ -9,7 +9,6 @@ struct CreditCardFormView: View {
     @Binding var selectedBank: Bank?
     @State var isNewBank: Bool
     var existingBanks: [Bank]
-    var creditCard: CreditCard
     var onSave: () -> Void
     
     var body: some View {
@@ -31,15 +30,7 @@ struct CreditCardFormView: View {
                 AddBankView { newBank in
                     modelContext.insert(newBank)
                     selectedBank = newBank
-                    creditCard.bank = newBank
                 }
-            }
-
-            HStack {
-                Button("Save") {
-                    onSave()
-                }
-                .disabled(cardName.isEmpty || selectedBank == nil)
             }
         }
         .onAppear {
@@ -47,10 +38,23 @@ struct CreditCardFormView: View {
                 isNewBank = true
             }
         }
+        .toolbar {
+            ToolbarItem(placement: .confirmationAction) {
+                Button("Save") {
+                    onSave()
+                }
+                .disabled(cardName.isEmpty || selectedBank == nil)
+            }
+            ToolbarItem(placement: .cancellationAction) {
+                Button("Cancel") {
+                    dismiss()
+                }
+            }
+        }
     }
 }
 
 
 #Preview {
-    CreditCardFormView(cardName: .constant(""), isBusiness: .constant(false), selectedBank: .constant(SampleData.shared.bank), isNewBank: false, existingBanks: Bank.sampleData, creditCard: SampleData.shared.creditCard, onSave: {print("Save button pressed")})
+    CreditCardFormView(cardName: .constant(""), isBusiness: .constant(false), selectedBank: .constant(SampleData.shared.bank), isNewBank: false, existingBanks: Bank.sampleData, onSave: {print("yay")})
 }

@@ -21,7 +21,7 @@ struct EditCreditCardView: View {
     }
 
     var body: some View {
-        CreditCardFormView(cardName: $cardName, isBusiness: $isBusiness, selectedBank: $selectedBank, isNewBank: isNewBank, existingBanks: existingBanks, creditCard: creditCard) {
+        CreditCardFormView(cardName: $cardName, isBusiness: $isBusiness, selectedBank: $selectedBank, isNewBank: isNewBank, existingBanks: existingBanks) {
             creditCard.name = cardName
             creditCard.isBusiness = isBusiness
             creditCard.bank = selectedBank
