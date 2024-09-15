@@ -1,14 +1,17 @@
 import SwiftUI
+import SwiftData
 
 @main
 struct CreditCardLibraryApp: App {
     var body: some Scene {
         WindowGroup("Main Widnow") {
-            ContentView()
+            WalletContentView(selectedCategory: sidebarSelection, columnVisibility: columnVisibility)
                 .toolbarBackground(.ultraThickMaterial)
         }
-        .modelContainer(for: [CreditCard.self])
+        .modelContainer(for: [CreditCard.self, Bank.self, Closed.self, Promotion.self, Bonus.self])
         .windowStyle(.hiddenTitleBar)
         
     }
+    @State var sidebarSelection: SideBarCategories = .open
+    @State var columnVisibility: NavigationSplitViewVisibility = .doubleColumn
 }
