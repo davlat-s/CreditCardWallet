@@ -1,6 +1,6 @@
 import Foundation
 
-enum Category: Int, CaseIterable, Identifiable {
+enum SideBarCategories: Int, CaseIterable, Identifiable {
     var id: Int { rawValue }
     
     case open

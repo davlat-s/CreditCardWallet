@@ -11,8 +11,8 @@ final class Bank {
         self.name = name
     }
     
-    static let sampleData = [
-        Bank(name: "Chace"),
-        Bank(name: "American Express"),
-    ]
+    static let sampleData = [Bank
+//        Bank(name: "Chace"),
+//        Bank(name: "American Express"),
+    ]()
 }

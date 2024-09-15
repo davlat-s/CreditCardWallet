@@ -3,7 +3,7 @@ import SwiftData
 
 struct CardListView: View {
 
-    @Binding var selectedCategory: Category
+    @Binding var selectedCategory: SideBarCategories
     @Binding var selectedCard: CreditCard?
     
     

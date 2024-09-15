@@ -3,39 +3,33 @@ import SwiftUI
 struct CreditCardDetail: View {
     
     @Bindable var creditCard: CreditCard
-    let isNew: Bool
     
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     
-    init(creditCard: CreditCard, isNew: Bool = false) {
+    init(creditCard: CreditCard) {
         self.creditCard = creditCard
-        self.isNew = isNew
     }
     
     var body: some View {
-        Form {
-            TextField("Card name", text: $creditCard.name)
-                .autocorrectionDisabled()
-            
-        }
-        .navigationTitle(isNew ? "New Credit Card" : "Credit Card Details")
-        .toolbar {
-            if isNew {
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Done") {
-                        dismiss()
-                    }
-                }
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") {
-                        modelContext.delete(creditCard)
-                        dismiss()
-                    }
-                }
+        VStack {
+            HStack {
+                Text("CardName")
+                Spacer()
+                Text(creditCard.name)
             }
-            
+            HStack {
+                Text("Type")
+                Spacer()
+                Text(creditCard.isBusiness ? "Business" : "Personal")
+            }
+            HStack {
+                Text("Bank Name")
+                Spacer()
+                Text(creditCard.bank?.name ?? "No Bank")
+            }
         }
+        .navigationTitle("Credit Card Details")
     }
 }
 
@@ -46,7 +40,3 @@ struct CreditCardDetail: View {
         .modelContainer(SampleData.shared.modelContainer)
 }
 
-#Preview("isNew") {
-    CreditCardDetail(creditCard: SampleData.shared.creditCard, isNew: true)
-        .modelContainer(SampleData.shared.modelContainer)
-}
