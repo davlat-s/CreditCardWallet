@@ -8,10 +8,11 @@ struct AddBankView: View {
     var body: some View {
         Form {
             TextField("Bank Name", text: $bankName)
-            Button("Save Bank") {
+            Button("Add Bank") {
                 let newBank = Bank(name: bankName)
-            
+                
                 onSave(newBank)
+                bankName = ""
             }
         }
     }

@@ -18,6 +18,7 @@
 		310E5EE72C6A68400062DDFA /* addCreditCardSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310E5EE62C6A68400062DDFA /* addCreditCardSheet.swift */; };
 		314BD4682C94A5C300E32E74 /* AddCreditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314BD4672C94A5C300E32E74 /* AddCreditCardView.swift */; };
 		314BD46A2C95377400E32E74 /* EditCreditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314BD4692C95377400E32E74 /* EditCreditCardView.swift */; };
+		314BD46C2C9689DB00E32E74 /* CreditCardFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314BD46B2C9689DB00E32E74 /* CreditCardFormView.swift */; };
 		316A50FC2C67219D00D23506 /* RowDetailViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316A50FB2C67219D00D23506 /* RowDetailViewHelper.swift */; };
 		3176D8EB2C74362800C57FBB /* Bank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176D8EA2C74362800C57FBB /* Bank.swift */; };
 		3176D8EF2C7437E000C57FBB /* Bonus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176D8EE2C7437DF00C57FBB /* Bonus.swift */; };
@@ -50,6 +51,7 @@
 		310E5EE62C6A68400062DDFA /* addCreditCardSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addCreditCardSheet.swift; sourceTree = "<group>"; };
 		314BD4672C94A5C300E32E74 /* AddCreditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCreditCardView.swift; sourceTree = "<group>"; };
 		314BD4692C95377400E32E74 /* EditCreditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCreditCardView.swift; sourceTree = "<group>"; };
+		314BD46B2C9689DB00E32E74 /* CreditCardFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardFormView.swift; sourceTree = "<group>"; };
 		316A50FB2C67219D00D23506 /* RowDetailViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowDetailViewHelper.swift; sourceTree = "<group>"; };
 		3176D8EA2C74362800C57FBB /* Bank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bank.swift; sourceTree = "<group>"; };
 		3176D8EE2C7437DF00C57FBB /* Bonus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bonus.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				318A66322C7BDF950039487E /* WalletContentView.swift */,
 				314BD4692C95377400E32E74 /* EditCreditCardView.swift */,
 				314BD4672C94A5C300E32E74 /* AddCreditCardView.swift */,
+				314BD46B2C9689DB00E32E74 /* CreditCardFormView.swift */,
 				318A66382C7C21020039487E /* CardListView.swift */,
 				318A663A2C7C37B10039487E /* CreditCardDetail.swift */,
 				318A663C2C7E5B0D0039487E /* AddBankView.swift */,
@@ -289,6 +292,7 @@
 				3176D8EF2C7437E000C57FBB /* Bonus.swift in Sources */,
 				319F558F2C5F2B1500C054D2 /* ContentView.swift in Sources */,
 				310629242C60775700C99175 /* CategoryClosedCardsView.swift in Sources */,
+				314BD46C2C9689DB00E32E74 /* CreditCardFormView.swift in Sources */,
 				31AAFEE62C5FEC6000CE1BDC /* CategoryOpenCardsView.swift in Sources */,
 				3106292A2C61568800C99175 /* CardDetailView.swift in Sources */,
 				3106292C2C615CA900C99175 /* CategoryViewHelper.swift in Sources */,

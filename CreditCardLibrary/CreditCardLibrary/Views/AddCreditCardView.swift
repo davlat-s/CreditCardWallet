@@ -1,84 +1,27 @@
-//
-//  AddCreditCardView.swift
-//  CreditCardLibrary
-//
-//  Created by Davlat Sirojitdinov on 9/13/24.
-//
-
 import SwiftUI
 import SwiftData
 
 struct AddCreditCardView: View {
-    
-    var creditCard: CreditCard
-    var existingBanks: [Bank]
-
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var modelContext
+    var existingBanks: [Bank]
     
-    @State var cardName: String = ""
-    @State var isBusiness: Bool = false
-    @State var isNewBank: Bool = false
-    @State var selectedBank: Bank?
-    
+    @State private var creditCard = CreditCard(name: "", isBusiness: false, bank: nil)
+    @State private var cardName: String = ""
+    @State private var isBusiness: Bool = false
+    @State private var selectedBank: Bank?
+    @State private var isNewBank: Bool = false
+
     var body: some View {
-        Form {
-            TextField("Card Name", text: $cardName)
-            Toggle(isOn: $isBusiness, label: {Text("Business")})
-            
-            if !existingBanks.isEmpty {
-                Picker("Bank", selection: $selectedBank){
-                    ForEach(existingBanks){ bank in
-                        Text(bank.name).tag(Optional(bank))
-                    }
-                }
-            }
-            
-            Toggle(isOn: $isNewBank, label: {Text("Add Bank")})
-            
-            if isNewBank {
-                AddBankView { newBank in
-                    modelContext.insert(newBank)
-                    selectedBank = newBank
-                    creditCard.bank = newBank
-                }
-            }
-        
-            HStack {
-                Button("Save") {
-                    creditCard.name = cardName
-                    creditCard.isBusiness = isBusiness
-                    creditCard.bank = selectedBank
-                    
-                    modelContext.insert(creditCard)
-                    dismiss()
-                }
-                .disabled(cardName.isEmpty || selectedBank == nil)
-                
-                
-                Button("Cancel") {
-                    dismiss()
-                }
-                
-                .onChange(of: selectedBank) { oldBank, newBank in
-                    if selectedBank == nil {
-                        isNewBank = true
-                    } else {
-                        creditCard.bank = selectedBank
-                        isNewBank = false
-                    }
-            }
-            }
-        }
-        .onAppear {
-            if existingBanks.isEmpty {
-                isNewBank = true
-            }
-        }
+        CreditCardFormView(cardName: $cardName, isBusiness: $isBusiness, selectedBank: $selectedBank, isNewBank: isNewBank, existingBanks: existingBanks, creditCard:creditCard) {
+            let newCreditCard = CreditCard(name: cardName, isBusiness: isBusiness)
+            newCreditCard.bank = selectedBank
+            modelContext.insert(newCreditCard)
+            dismiss()
+        } 
     }
 }
 
-
 #Preview {
-    AddCreditCardView(creditCard: SampleData.shared.creditCard, existingBanks: Bank.sampleData)
+    AddCreditCardView(existingBanks: Bank.sampleData)
 }

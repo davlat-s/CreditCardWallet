@@ -58,10 +58,12 @@ struct WalletContentView: View {
                 }
         }
         .sheet(isPresented: $isEditing) {
-            EditCreditCardView(creditCard: selectedCard, existingBanks: existingBanks)
+            if let selectedCard = selectedCard {
+                EditCreditCardView(creditCard: selectedCard, existingBanks: existingBanks)
+            }
         }
         .sheet(item: $newCard) { card in
-            AddCreditCardView(creditCard: card, existingBanks: existingBanks)
+            AddCreditCardView(existingBanks: existingBanks)
         }
         .interactiveDismissDisabled()
     }
