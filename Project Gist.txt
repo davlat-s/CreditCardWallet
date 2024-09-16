@@ -222,10 +222,19 @@ final class CreditCard {
  var bonus: Bonus?
  var closed: Closed?
  
- init(name: String, isBusiness: Bool, bank: Bank? = nil) {
+ init(name: String,
+ isBusiness: Bool,
+ bank: Bank? = nil,
+ promotion: Promotion? = nil,
+ bonus: Bonus? = nil,
+ closed: Closed? = nil) {
  self.name = name
  self.isBusiness = isBusiness
  self.bank = bank
+ self.bonus = bonus
+ self.closed = closed
+ self.promotion = promotion
+ 
  }
  
  static func createNewCard() -> CreditCard {
@@ -233,8 +242,8 @@ final class CreditCard {
  }
  
  static let sampleData = [
- CreditCard(name: "AmEx Platinum", isBusiness: false, bank: Bank(name: "American Express")),
- CreditCard(name: "Sapphire Reserve", isBusiness: false),
+ CreditCard(name: "AmEx Platinum", isBusiness: false, bank: Bank(name: "American Express"), promotion: Promotion(name: "Zero APR for 12 months"), bonus: Bonus(name: "100k sign up bonus"), closed: Closed(reason: "Too expensive", isClosed: true)),
+ CreditCard(name: "Saphire Reserve", isBusiness: false, bank: Bank(name: "Chase"), promotion: Promotion(name: "Zero APR for 18 months"), bonus: Bonus(name: "80k sign up bonus"), closed: Closed(reason: "", isClosed: false)),
  CreditCard(name: "Ink Preffered", isBusiness: true),
  CreditCard(name: "AmEx Gold", isBusiness: false),
  CreditCard(name: "Flex", isBusiness: false),
@@ -436,13 +445,12 @@ struct AddCreditCardView: View {
  @Environment(\.modelContext) var modelContext
  var existingBanks: [Bank]
  
- @State private var creditCard = CreditCard(name: "", isBusiness: false, bank: nil)
  @State private var cardName: String = ""
  @State private var isBusiness: Bool = false
  @State private var selectedBank: Bank?
  @State private var isNewBank: Bool = false
  var body: some View {
- CreditCardFormView(cardName: $cardName, isBusiness: $isBusiness, selectedBank: $selectedBank, isNewBank: isNewBank, existingBanks: existingBanks, creditCard:creditCard) {
+ CreditCardFormView(cardName: $cardName, isBusiness: $isBusiness, selectedBank: $selectedBank, isNewBank: isNewBank, existingBanks: existingBanks) {
  let newCreditCard = CreditCard(name: cardName, isBusiness: isBusiness)
  newCreditCard.bank = selectedBank
  modelContext.insert(newCreditCard)
@@ -555,7 +563,6 @@ struct CreditCardFormView: View {
  @Binding var selectedBank: Bank?
  @State var isNewBank: Bool
  var existingBanks: [Bank]
- var creditCard: CreditCard
  var onSave: () -> Void
  
  var body: some View {
@@ -574,7 +581,6 @@ struct CreditCardFormView: View {
  AddBankView { newBank in
  modelContext.insert(newBank)
  selectedBank = newBank
- creditCard.bank = newBank
  }
  }
  }
@@ -599,7 +605,7 @@ struct CreditCardFormView: View {
  }
 }
 #Preview {
- CreditCardFormView(cardName: .constant(""), isBusiness: .constant(false), selectedBank: .constant(SampleData.shared.bank), isNewBank: false, existingBanks: Bank.sampleData, creditCard: SampleData.shared.creditCard, onSave: {print("Save button pressed")})
+ CreditCardFormView(cardName: .constant(""), isBusiness: .constant(false), selectedBank: .constant(SampleData.shared.bank), isNewBank: false, existingBanks: Bank.sampleData, onSave: {print("yay")})
 }
 
 
@@ -624,7 +630,7 @@ struct EditCreditCardView: View {
  _selectedBank = State(initialValue: creditCard.bank)
  }
  var body: some View {
- CreditCardFormView(cardName: $cardName, isBusiness: $isBusiness, selectedBank: $selectedBank, isNewBank: isNewBank, existingBanks: existingBanks, creditCard: creditCard) {
+ CreditCardFormView(cardName: $cardName, isBusiness: $isBusiness, selectedBank: $selectedBank, isNewBank: isNewBank, existingBanks: existingBanks) {
  creditCard.name = cardName
  creditCard.isBusiness = isBusiness
  creditCard.bank = selectedBank
@@ -684,7 +690,7 @@ struct WalletContentView: View {
  ToolbarItem(placement: .secondaryAction) {
  if selectedCard != nil {
  Button(action: toggleEditing) {
- Text(isEditing ? "Done Editing" : "Edit")
+ Text(isEditing ? "Editing" : "Edit")
  }
  }
  }
@@ -712,7 +718,6 @@ struct WalletContentView: View {
  private func addCard() {
  withAnimation {
  let newItem = CreditCard.createNewCard()
- modelContext.insert(newItem)
  newCard = newItem
  }
  }

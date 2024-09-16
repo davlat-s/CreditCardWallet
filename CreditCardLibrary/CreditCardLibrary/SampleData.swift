@@ -55,9 +55,11 @@ class SampleData {
             context.insert(closed)
         }
         
-        if let amexCard = CreditCard.sampleData.first,
-           let closedStatus = Closed.sampleData.first {
-            amexCard.closed = closedStatus
+        if let sampleCreditCard = CreditCard.sampleData.first {
+            sampleCreditCard.bank = Bank.sampleData[0]
+            sampleCreditCard.closed = Closed.sampleData[0]
+            sampleCreditCard.bonus = Bonus.sampleData[0]
+            sampleCreditCard.closed = Closed.sampleData[0]
         }
         
         do {
@@ -66,6 +68,7 @@ class SampleData {
             print("Sample data context failed to save")
         }
     }
+    
     
     // returns a sample of each Model
     var creditCard : CreditCard {
@@ -87,4 +90,7 @@ class SampleData {
     var closed: Closed {
         Closed.sampleData[0]
     }
+    
+    
+    
 }

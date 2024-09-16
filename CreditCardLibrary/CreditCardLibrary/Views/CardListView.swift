@@ -18,7 +18,13 @@ struct CardListView: View {
             if !filteredCreditCards.isEmpty {
                 List(filteredCreditCards, selection: $selectedCard) { card in
                     NavigationLink(value: card) {
-                        Text(card.name)
+                        HStack {
+                            CardView()
+                                .frame(width: 48.6, height: 30.6)
+                                .scaleEffect(0.15)
+                                .padding(20)
+                            Text(card.name)
+                        }
                     }
                 }
             } else {

@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct CreditCardDetail: View {
+struct DetailView: View {
     
     @Bindable var creditCard: CreditCard
     
@@ -13,6 +13,7 @@ struct CreditCardDetail: View {
     
     var body: some View {
         VStack {
+            CardView()
             HStack {
                 Text("CardName")
                 Spacer()
@@ -28,6 +29,16 @@ struct CreditCardDetail: View {
                 Spacer()
                 Text(creditCard.bank?.name ?? "No Bank")
             }
+            HStack {
+                Text("Promotion Name")
+                Spacer()
+                Text(creditCard.promotion?.name ?? "None")
+            }
+            HStack {
+                Text("Bonus Name")
+                Spacer()
+                Text(creditCard.bonus?.name ?? "None")
+            }
         }
         .navigationTitle("Credit Card Details")
     }
@@ -36,7 +47,7 @@ struct CreditCardDetail: View {
 // MARK: Previews
 
 #Preview("Details") {
-    CreditCardDetail(creditCard: SampleData.shared.creditCard)
+    DetailView(creditCard: SampleData.shared.creditCard)
         .modelContainer(SampleData.shared.modelContainer)
 }
 

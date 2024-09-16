@@ -28,7 +28,7 @@ struct WalletContentView: View {
                 .navigationSplitViewColumnWidth(min: 150, ideal: 200, max: 400)
         } detail: {
             if let selectedCard = selectedCard {
-                CreditCardDetail(creditCard: selectedCard)
+                DetailView(creditCard: selectedCard)
             } else {
                 Text("Select a credit card")
                     .foregroundStyle(.secondary)
@@ -43,7 +43,7 @@ struct WalletContentView: View {
             ToolbarItem(placement: .secondaryAction) {
                 if selectedCard != nil {
                     Button(action: toggleEditing) {
-                        Text(isEditing ? "Done Editing" : "Edit")
+                        Text(isEditing ? "Editing" : "Edit")
                     }
                 }
             }

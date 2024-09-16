@@ -1,13 +1,17 @@
 import SwiftUI
 
-struct CreditCardFormView: View {
+struct FormView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var modelContext
     
     @Binding var cardName: String
     @Binding var isBusiness: Bool
+    @Binding var promotion: Promotion?
     @Binding var selectedBank: Bank?
+    @Binding var bonus: Bonus?
     @State var isNewBank: Bool
+    @State var isNewPromo: Bool = false
+    @State var isNewBonus: Bool = false
     var existingBanks: [Bank]
     var onSave: () -> Void
     
@@ -30,6 +34,34 @@ struct CreditCardFormView: View {
                 AddBankView { newBank in
                     modelContext.insert(newBank)
                     selectedBank = newBank
+                }
+            }
+            HStack {
+                Text("Promotion:")
+                Spacer()
+                Text(promotion?.name ?? "None")
+            }
+            Toggle("New Promo", isOn: $isNewPromo)
+            
+            if isNewPromo {
+                AddPromotionView { newPromo in
+                    modelContext.insert(newPromo)
+                    promotion = newPromo
+                }
+            }
+            
+            HStack {
+                Text("Bonus")
+                Spacer()
+                Text(bonus?.name ?? "None")
+            }
+            
+            Toggle("New Bonus", isOn: $isNewBonus)
+            
+            if isNewBonus {
+                AddBonusView { newBonus in
+                    modelContext.insert(newBonus)
+                    bonus = newBonus
                 }
             }
         }
@@ -56,5 +88,12 @@ struct CreditCardFormView: View {
 
 
 #Preview {
-    CreditCardFormView(cardName: .constant(""), isBusiness: .constant(false), selectedBank: .constant(SampleData.shared.bank), isNewBank: false, existingBanks: Bank.sampleData, onSave: {print("yay")})
+    FormView(cardName: .constant(""),
+                       isBusiness: .constant(false),
+                       promotion: .constant(SampleData.shared.promotion),
+                       selectedBank:.constant(SampleData.shared.bank),
+                       bonus: .constant(SampleData.shared.bonus), 
+                       isNewBank: false,
+                       existingBanks: Bank.sampleData,
+                       onSave: {print("yay")})
 }
