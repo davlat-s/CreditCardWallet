@@ -9,6 +9,7 @@ struct EditCreditCardView: View {
 
     @State private var cardName: String
     @State private var isBusiness: Bool
+    @State private var lastDigits: String
     @State private var selectedBank: Bank?
     @State private var isNewBank: Bool = false
     @State private var promotion: Promotion?
@@ -19,6 +20,7 @@ struct EditCreditCardView: View {
         self.existingBanks = existingBanks
         _cardName = State(initialValue: creditCard.name)
         _isBusiness = State(initialValue: creditCard.isBusiness)
+        _lastDigits = State(initialValue: creditCard.lastDigits)
         _selectedBank = State(initialValue: creditCard.bank)
         _promotion = State(initialValue: creditCard.promotion)
         _bonus = State(initialValue: creditCard.bonus)
@@ -27,6 +29,7 @@ struct EditCreditCardView: View {
     var body: some View {
         FormView(cardName: $cardName, 
                            isBusiness: $isBusiness,
+                 lastDigits: $lastDigits,
                            promotion: $promotion,
                            selectedBank: $selectedBank, 
                            bonus: $bonus,

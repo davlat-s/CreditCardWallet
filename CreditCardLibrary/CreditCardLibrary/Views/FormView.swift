@@ -6,9 +6,12 @@ struct FormView: View {
     
     @Binding var cardName: String
     @Binding var isBusiness: Bool
+    @Binding var lastDigits: String
+    
     @Binding var promotion: Promotion?
     @Binding var selectedBank: Bank?
     @Binding var bonus: Bonus?
+    
     @State var isNewBank: Bool
     @State var isNewPromo: Bool = false
     @State var isNewBonus: Bool = false
@@ -18,6 +21,8 @@ struct FormView: View {
     var body: some View {
         Form {
             TextField("Card Name", text: $cardName)
+            TextField("Last Digits", text: $lastDigits)
+            
             Toggle("Business", isOn: $isBusiness)
 
             if !existingBanks.isEmpty {
@@ -89,11 +94,12 @@ struct FormView: View {
 
 #Preview {
     FormView(cardName: .constant(""),
-                       isBusiness: .constant(false),
-                       promotion: .constant(SampleData.shared.promotion),
-                       selectedBank:.constant(SampleData.shared.bank),
-                       bonus: .constant(SampleData.shared.bonus), 
-                       isNewBank: false,
-                       existingBanks: Bank.sampleData,
-                       onSave: {print("yay")})
+             isBusiness: .constant(false),
+             lastDigits: .constant(""),
+             promotion: .constant(SampleData.shared.promotion),
+             selectedBank:.constant(SampleData.shared.bank),
+             bonus: .constant(SampleData.shared.bonus),
+             isNewBank: false,
+             existingBanks: Bank.sampleData,
+             onSave: {print("yay")})
 }

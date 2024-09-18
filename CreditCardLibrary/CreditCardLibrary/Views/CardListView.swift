@@ -19,7 +19,7 @@ struct CardListView: View {
                 List(filteredCreditCards, selection: $selectedCard) { card in
                     NavigationLink(value: card) {
                         HStack {
-                            CardView()
+                            CardView(creditCard: card)
                                 .frame(width: 48.6, height: 30.6)
                                 .scaleEffect(0.15)
                                 .padding(20)

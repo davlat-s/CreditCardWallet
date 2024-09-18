@@ -13,7 +13,7 @@ struct DetailView: View {
     
     var body: some View {
         VStack {
-            CardView()
+            CardView(creditCard: creditCard)
             HStack {
                 Text("CardName")
                 Spacer()

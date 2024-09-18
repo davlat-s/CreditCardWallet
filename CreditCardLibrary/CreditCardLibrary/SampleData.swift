@@ -56,7 +56,7 @@ class SampleData {
         }
         
         if let sampleCreditCard = CreditCard.sampleData.first {
-            sampleCreditCard.bank = Bank.sampleData[0]
+            sampleCreditCard.bank = Bank.sampleData[1]
             sampleCreditCard.closed = Closed.sampleData[0]
             sampleCreditCard.bonus = Bonus.sampleData[0]
             sampleCreditCard.closed = Closed.sampleData[0]

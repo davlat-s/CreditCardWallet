@@ -22,6 +22,7 @@
 		314BD46E2C977D1A00E32E74 /* AddPromotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314BD46D2C977D1A00E32E74 /* AddPromotionView.swift */; };
 		314BD4702C97F06200E32E74 /* AddBonusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314BD46F2C97F06200E32E74 /* AddBonusView.swift */; };
 		314BD4722C98AC6400E32E74 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314BD4712C98AC6400E32E74 /* CardView.swift */; };
+		314BD4742C992D0000E32E74 /* PaymentProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314BD4732C992D0000E32E74 /* PaymentProcessor.swift */; };
 		316A50FC2C67219D00D23506 /* RowDetailViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316A50FB2C67219D00D23506 /* RowDetailViewHelper.swift */; };
 		3176D8EB2C74362800C57FBB /* Bank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176D8EA2C74362800C57FBB /* Bank.swift */; };
 		3176D8EF2C7437E000C57FBB /* Bonus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176D8EE2C7437DF00C57FBB /* Bonus.swift */; };
@@ -58,6 +59,7 @@
 		314BD46D2C977D1A00E32E74 /* AddPromotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPromotionView.swift; sourceTree = "<group>"; };
 		314BD46F2C97F06200E32E74 /* AddBonusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBonusView.swift; sourceTree = "<group>"; };
 		314BD4712C98AC6400E32E74 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		314BD4732C992D0000E32E74 /* PaymentProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProcessor.swift; sourceTree = "<group>"; };
 		316A50FB2C67219D00D23506 /* RowDetailViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowDetailViewHelper.swift; sourceTree = "<group>"; };
 		3176D8EA2C74362800C57FBB /* Bank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bank.swift; sourceTree = "<group>"; };
 		3176D8EE2C7437DF00C57FBB /* Bonus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bonus.swift; sourceTree = "<group>"; };
@@ -112,10 +114,10 @@
 				318A66322C7BDF950039487E /* WalletContentView.swift */,
 				314BD4692C95377400E32E74 /* EditCreditCardView.swift */,
 				314BD4672C94A5C300E32E74 /* AddCreditCardView.swift */,
-				314BD46B2C9689DB00E32E74 /* FormView.swift */,
-				314BD4712C98AC6400E32E74 /* CardView.swift */,
 				318A66382C7C21020039487E /* CardListView.swift */,
 				318A663A2C7C37B10039487E /* DetailView.swift */,
+				314BD4712C98AC6400E32E74 /* CardView.swift */,
+				314BD46B2C9689DB00E32E74 /* FormView.swift */,
 				314BD46F2C97F06200E32E74 /* AddBonusView.swift */,
 				314BD46D2C977D1A00E32E74 /* AddPromotionView.swift */,
 				318A663C2C7E5B0D0039487E /* AddBankView.swift */,
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				310E5EE32C699A960062DDFA /* CreditCard.swift */,
+				314BD4732C992D0000E32E74 /* PaymentProcessor.swift */,
 				3176D8F32C75AD1600C57FBB /* Promotion.swift */,
 				3176D8EA2C74362800C57FBB /* Bank.swift */,
 				3176D8EE2C7437DF00C57FBB /* Bonus.swift */,
@@ -293,6 +296,7 @@
 				318A66392C7C21020039487E /* CardListView.swift in Sources */,
 				314BD46E2C977D1A00E32E74 /* AddPromotionView.swift in Sources */,
 				316A50FC2C67219D00D23506 /* RowDetailViewHelper.swift in Sources */,
+				314BD4742C992D0000E32E74 /* PaymentProcessor.swift in Sources */,
 				318A66302C7BD3EC0039487E /* SampleData.swift in Sources */,
 				310E5EE72C6A68400062DDFA /* addCreditCardSheet.swift in Sources */,
 				314BD46A2C95377400E32E74 /* EditCreditCardView.swift in Sources */,

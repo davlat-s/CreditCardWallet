@@ -12,16 +12,18 @@ struct AddCreditCardView: View {
     @State private var isNewBank: Bool = false
     @State private var promotion: Promotion?
     @State private var bonus: Bonus?
+    @State private var lastDigits: String = ""
 
     var body: some View {
         FormView(cardName: $cardName, 
                            isBusiness: $isBusiness,
+                 lastDigits: $lastDigits,
                            promotion: $promotion,
                            selectedBank: $selectedBank,
                            bonus: $bonus, 
                            isNewBank: isNewBank, 
                            existingBanks: existingBanks) {
-            let newCreditCard = CreditCard(name: cardName, isBusiness: isBusiness)
+            let newCreditCard = CreditCard(name: cardName, isBusiness: isBusiness, lastDigits: lastDigits)
             newCreditCard.bank = selectedBank
             newCreditCard.promotion = promotion
             newCreditCard.bonus = bonus
