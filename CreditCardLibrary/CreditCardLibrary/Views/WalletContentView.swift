@@ -43,7 +43,7 @@ struct WalletContentView: View {
             ToolbarItem(placement: .secondaryAction) {
                 if selectedCard != nil {
                     Button(action: toggleEditing) {
-                        Text(isEditing ? "Editing" : "Edit")
+                        Label("Edit", systemImage: "pencil")
                     }
                 }
             }

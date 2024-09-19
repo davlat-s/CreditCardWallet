@@ -35,12 +35,6 @@ struct FormView: View {
 
             Toggle("New Bank", isOn: $isNewBank)
 
-            if isNewBank {
-                AddBankView { newBank in
-                    modelContext.insert(newBank)
-                    selectedBank = newBank
-                }
-            }
             HStack {
                 Text("Promotion:")
                 Spacer()
@@ -86,6 +80,12 @@ struct FormView: View {
                 Button("Cancel") {
                     dismiss()
                 }
+            }
+        }
+        .sheet(isPresented: $isNewBank) {
+            AddBankView { newBank in
+                modelContext.insert(newBank)
+                selectedBank = newBank
             }
         }
     }
