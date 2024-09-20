@@ -9,6 +9,7 @@ struct WalletContentView: View {
     @State private var newCard: CreditCard?
     @State private var isEditing: Bool = false
     @Query var existingBanks: [Bank]
+    @Query var paymentProcessors: [PaymentProcessor]
     
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
@@ -59,11 +60,11 @@ struct WalletContentView: View {
         }
         .sheet(isPresented: $isEditing) {
             if let selectedCard = selectedCard {
-                EditCreditCardView(creditCard: selectedCard, existingBanks: existingBanks)
+                EditCreditCardView(creditCard: selectedCard, existingBanks: existingBanks, paymentProcessors: paymentProcessors)
             }
         }
         .sheet(item: $newCard) { card in
-            AddCreditCardView(existingBanks: existingBanks)
+            AddCreditCardView(existingBanks: existingBanks, paymentProcessors: paymentProcessors)
         }
         .interactiveDismissDisabled()
     }

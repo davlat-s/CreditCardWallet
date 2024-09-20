@@ -22,44 +22,37 @@
 │   │   │   ├── business-gold.imageset/
 │   │   │   ├── cc_cashrewards.imageset/
 │   │   │   ├── centurion.imageset/
+│   │   │   ├── centurioncard.imageset/
 │   │   │   ├── chase.imageset/
+│   │   │   ├── chip.imageset/
 │   │   │   ├── default.imageset/
 │   │   │   ├── delta-skymiles-gold.imageset/
 │   │   │   ├── navy-federal-go-rewards.imageset/
 │   │   │   └── navy-federal-more-rewards.imageset/
-│   │   ├── CardDetailView.swift
-│   │   ├── CardImageView.swift
-│   │   ├── CardRowView.swift
-│   │   ├── CategoriesView.swift
-│   │   ├── CategoryBusinessCardsView.swift
-│   │   ├── CategoryClosedCardsView.swift
-│   │   ├── CategoryFilterHelper.swift
-│   │   ├── CategoryOpenCardsView.swift
-│   │   ├── CategoryPersonalCardsView.swift
-│   │   ├── CategoryViewHelper.swift
-│   │   ├── ContentView.swift
 │   │   ├── CreditCardLibraryApp.swift
 │   │   ├── Model/
 │   │   │   ├── Bank.swift
 │   │   │   ├── Bonus.swift
 │   │   │   ├── Closed.swift
 │   │   │   ├── CreditCard.swift
+│   │   │   ├── PaymentProcessor.swift
 │   │   │   ├── Promotion.swift
 │   │   │   └── SideBarCategories.swift
 │   │   ├── Preview Content/
 │   │   │   └── Preview Assets.xcassets/
-│   │   ├── RowDetailViewHelper.swift
 │   │   ├── SampleData.swift
 │   │   ├── Utilities/
-│   │   ├── Views/
-│   │   │   ├── AddBankView.swift
-│   │   │   ├── AddCreditCardView.swift
-│   │   │   ├── CardListView.swift
-│   │   │   ├── CreditCardDetail.swift
-│   │   │   ├── CreditCardFormView.swift
-│   │   │   ├── EditCreditCardView.swift
-│   │   │   └── WalletContentView.swift
-│   │   └── addCreditCardSheet.swift
+│   │   └── Views/
+│   │       ├── AddBankView.swift
+│   │       ├── AddBonusView.swift
+│   │       ├── AddCreditCardView.swift
+│   │       ├── AddPromotionView.swift
+│   │       ├── CardListView.swift
+│   │       ├── CardView.swift
+│   │       ├── DetailView.swift
+│   │       ├── EditCreditCardView.swift
+│   │       ├── FormView.swift
+│   │       └── WalletContentView.swift
 │   └── CreditCardLibrary.xcodeproj/
 │       ├── project.xcworkspace/
 │       │   ├── xcshareddata/
@@ -69,61 +62,6 @@
 │       ├── xcshareddata/
 │       │   └── xcschemes/
 │       └── xcuserdata/
-
-
-
-/** File: /CreditCardLibrary/CreditCardLibrary/CardDetailView.swift ***************************************/
-
-
-
-
-/** File: /CreditCardLibrary/CreditCardLibrary/CardImageView.swift ***************************************/
-
-
-
-
-/** File: /CreditCardLibrary/CreditCardLibrary/CardRowView.swift ***************************************/
-
-
-
-
-/** File: /CreditCardLibrary/CreditCardLibrary/CategoriesView.swift ***************************************/
-
-
-
-
-/** File: /CreditCardLibrary/CreditCardLibrary/CategoryBusinessCardsView.swift ***************************************/
-
-
-
-
-/** File: /CreditCardLibrary/CreditCardLibrary/CategoryClosedCardsView.swift ***************************************/
-
-
-
-
-/** File: /CreditCardLibrary/CreditCardLibrary/CategoryFilterHelper.swift ***************************************/
-
-
-
-
-/** File: /CreditCardLibrary/CreditCardLibrary/CategoryOpenCardsView.swift ***************************************/
-
-
-
-
-/** File: /CreditCardLibrary/CreditCardLibrary/CategoryPersonalCardsView.swift ***************************************/
-
-
-
-
-/** File: /CreditCardLibrary/CreditCardLibrary/CategoryViewHelper.swift ***************************************/
-
-
-
-
-/** File: /CreditCardLibrary/CreditCardLibrary/ContentView.swift ***************************************/
-
 
 
 
@@ -216,14 +154,17 @@ import SwiftData
 final class CreditCard {
  var name: String
  var isBusiness: Bool
+ var lastDigits: String
  
  var bank: Bank?
  var promotion: Promotion?
  var bonus: Bonus?
  var closed: Closed?
+ var paymentProcessor: PaymentProcessor?
  
  init(name: String,
  isBusiness: Bool,
+ lastDigits: String,
  bank: Bank? = nil,
  promotion: Promotion? = nil,
  bonus: Bonus? = nil,
@@ -234,20 +175,46 @@ final class CreditCard {
  self.bonus = bonus
  self.closed = closed
  self.promotion = promotion
+ self.lastDigits = lastDigits
  
  }
  
  static func createNewCard() -> CreditCard {
- return CreditCard(name: "", isBusiness: false)
+ return CreditCard(name: "", isBusiness: false, lastDigits: "")
  }
  
  static let sampleData = [
- CreditCard(name: "AmEx Platinum", isBusiness: false, bank: Bank(name: "American Express"), promotion: Promotion(name: "Zero APR for 12 months"), bonus: Bonus(name: "100k sign up bonus"), closed: Closed(reason: "Too expensive", isClosed: true)),
- CreditCard(name: "Saphire Reserve", isBusiness: false, bank: Bank(name: "Chase"), promotion: Promotion(name: "Zero APR for 18 months"), bonus: Bonus(name: "80k sign up bonus"), closed: Closed(reason: "", isClosed: false)),
- CreditCard(name: "Ink Preffered", isBusiness: true),
- CreditCard(name: "AmEx Gold", isBusiness: false),
- CreditCard(name: "Flex", isBusiness: false),
- CreditCard(name: "BILT", isBusiness: false),
+ CreditCard(name: "Platinum", isBusiness: false, lastDigits: "62376", bank: Bank(name: "American Express"), promotion: Promotion(name: "Zero APR for 12 months"), bonus: Bonus(name: "100k sign up bonus"), closed: Closed(reason: "Too expensive", isClosed: true)),
+ CreditCard(name: "Saphire Reserve", isBusiness: false, lastDigits: "3552", bank: Bank(name: "Chase"), promotion: Promotion(name: "Zero APR for 18 months"), bonus: Bonus(name: "80k sign up bonus"), closed: Closed(reason: "", isClosed: false)),
+ CreditCard(name: "Ink Preffered", isBusiness: true, lastDigits: "7743"),
+ CreditCard(name: "AmEx Gold", isBusiness: false, lastDigits: "6343"),
+ CreditCard(name: "Flex", isBusiness: false, lastDigits: "8234"),
+ CreditCard(name: "BILT", isBusiness: false, lastDigits: "8322"),
+ ]
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Model/PaymentProcessor.swift ***************************************/
+import Foundation
+import SwiftData
+@Model
+final class PaymentProcessor {
+ var name: String
+ var logo: String
+ var creditCards: [CreditCard] = []
+ 
+ init(name: String, logo: String) {
+ self.name = name
+ self.logo = logo
+ }
+ 
+ 
+ static let sampleData: [PaymentProcessor] = [
+ PaymentProcessor(name: "Visa", logo: "visa_logo"),
+ PaymentProcessor(name: "Mastercard", logo: "mastercard_logo"),
+ PaymentProcessor(name: "American Express", logo: "amex_logo"),
+ PaymentProcessor(name: "Discover", logo: "discover_logo")
  ]
 }
 
@@ -313,11 +280,6 @@ enum SideBarCategories: Int, CaseIterable, Identifiable {
 
 
 
-/** File: /CreditCardLibrary/CreditCardLibrary/RowDetailViewHelper.swift ***************************************/
-
-
-
-
 /** File: /CreditCardLibrary/CreditCardLibrary/SampleData.swift ***************************************/
 import Foundation
 import SwiftData
@@ -375,9 +337,11 @@ class SampleData {
  context.insert(closed)
  }
  
- if let amexCard = CreditCard.sampleData.first,
- let closedStatus = Closed.sampleData.first {
- amexCard.closed = closedStatus
+ if let sampleCreditCard = CreditCard.sampleData.first {
+ sampleCreditCard.bank = Bank.sampleData[1]
+ sampleCreditCard.closed = Closed.sampleData[0]
+ sampleCreditCard.bonus = Bonus.sampleData[0]
+ sampleCreditCard.closed = Closed.sampleData[0]
  }
  
  do {
@@ -386,6 +350,7 @@ class SampleData {
  print("Sample data context failed to save")
  }
  }
+ 
  
  
  var creditCard : CreditCard {
@@ -407,6 +372,9 @@ class SampleData {
  var closed: Closed {
  Closed.sampleData[0]
  }
+ 
+ 
+ 
 }
 
 
@@ -437,6 +405,34 @@ struct AddBankView: View {
 
 
 
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/AddBonusView.swift ***************************************/
+
+import SwiftUI
+struct AddBonusView: View {
+ @Environment(\.dismiss) private var dismiss
+ @State private var bonusName: String = ""
+ 
+ var onSave: (Bonus) -> Void
+ 
+ var body: some View {
+ Form {
+ TextField("Bonus Name", text: $bonusName)
+ Button("Add Bonus") {
+ let newBonus = Bonus(name: bonusName)
+ 
+ onSave(newBonus)
+ bonusName = ""
+ }
+ }
+ }
+}
+#Preview {
+ AddBonusView(onSave: { bonus in print(bonus.name)})
+ .modelContainer(SampleData.shared.modelContainer)
+}
+
+
+
 /** File: /CreditCardLibrary/CreditCardLibrary/Views/AddCreditCardView.swift ***************************************/
 import SwiftUI
 import SwiftData
@@ -449,17 +445,56 @@ struct AddCreditCardView: View {
  @State private var isBusiness: Bool = false
  @State private var selectedBank: Bank?
  @State private var isNewBank: Bool = false
+ @State private var promotion: Promotion?
+ @State private var bonus: Bonus?
+ @State private var lastDigits: String = ""
  var body: some View {
- CreditCardFormView(cardName: $cardName, isBusiness: $isBusiness, selectedBank: $selectedBank, isNewBank: isNewBank, existingBanks: existingBanks) {
- let newCreditCard = CreditCard(name: cardName, isBusiness: isBusiness)
+ FormView(cardName: $cardName,
+ isBusiness: $isBusiness,
+ lastDigits: $lastDigits,
+ promotion: $promotion,
+ selectedBank: $selectedBank,
+ bonus: $bonus,
+ isNewBank: isNewBank,
+ existingBanks: existingBanks) {
+ let newCreditCard = CreditCard(name: cardName, isBusiness: isBusiness, lastDigits: lastDigits)
  newCreditCard.bank = selectedBank
+ newCreditCard.promotion = promotion
+ newCreditCard.bonus = bonus
  modelContext.insert(newCreditCard)
  dismiss()
- } 
+ }
  }
 }
 #Preview {
  AddCreditCardView(existingBanks: Bank.sampleData)
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/AddPromotionView.swift ***************************************/
+import SwiftUI
+struct AddPromotionView: View {
+ @Environment(\.dismiss) private var dismiss
+ @State private var promoName: String = ""
+ 
+ var onSave: (Promotion) -> Void
+ 
+ var body: some View {
+ Form {
+ TextField("Promotion Name", text: $promoName)
+ Button("Add Promotion") {
+ let newPromo = Promotion(name: promoName)
+ 
+ onSave(newPromo)
+ promoName = ""
+ }
+ }
+ }
+}
+#Preview {
+ AddPromotionView(onSave: { promo in print(promo.name)})
+ .modelContainer(SampleData.shared.modelContainer)
 }
 
 
@@ -483,7 +518,13 @@ struct CardListView: View {
  if !filteredCreditCards.isEmpty {
  List(filteredCreditCards, selection: $selectedCard) { card in
  NavigationLink(value: card) {
+ HStack {
+ CardView(creditCard: card)
+ .frame(width: 48.6, height: 30.6)
+ .scaleEffect(0.15)
+ .padding(20)
  Text(card.name)
+ }
  }
  }
  } else {
@@ -511,9 +552,70 @@ struct CardListView: View {
 
 
 
-/** File: /CreditCardLibrary/CreditCardLibrary/Views/CreditCardDetail.swift ***************************************/
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/CardView.swift ***************************************/
 import SwiftUI
-struct CreditCardDetail: View {
+struct CardView: View {
+ @Bindable var creditCard: CreditCard
+ 
+ init(creditCard: CreditCard) {
+ self.creditCard = creditCard
+ }
+ 
+ var body: some View {
+ let w: CGFloat = 486
+ let h: CGFloat = 306
+ 
+ return ZStack{
+ Color(.gray).cornerRadius(16)
+ 
+ HStack {
+ VStack(alignment:.leading) {
+ HStack {
+ Text(creditCard.bank?.name ?? "")
+ .font(.custom("Courier", size: w/15))
+ }
+ HStack {
+ Text(creditCard.name)
+ .font(.custom("Courier", size: w/20))
+ }
+ HStack {
+ Image("chip")
+ .resizable()
+ .frame(width: w/9, height: w/10)
+ Spacer()
+ 
+ }
+ Text("***** ****** 67422")
+ .font(.custom("Courier", size: w/13))
+ HStack {
+ Text(creditCard.isBusiness ? "Business" : "Personal")
+ .font(.custom("Courier", size: w/25))
+ Spacer()
+ Image("amex")
+ .resizable()
+ .frame(width: w/10, height: w/15)
+ 
+ }
+ 
+ }
+ .padding(3)
+ Spacer()
+ }
+ .padding(20)
+ }
+ .frame(width: w, height: h)
+ .padding(20)
+ }
+}
+#Preview {
+ CardView(creditCard: SampleData.shared.creditCard)
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/DetailView.swift ***************************************/
+import SwiftUI
+struct DetailView: View {
  
  @Bindable var creditCard: CreditCard
  
@@ -526,6 +628,7 @@ struct CreditCardDetail: View {
  
  var body: some View {
  VStack {
+ CardView(creditCard: creditCard)
  HStack {
  Text("CardName")
  Spacer()
@@ -541,33 +644,102 @@ struct CreditCardDetail: View {
  Spacer()
  Text(creditCard.bank?.name ?? "No Bank")
  }
+ HStack {
+ Text("Promotion Name")
+ Spacer()
+ Text(creditCard.promotion?.name ?? "None")
+ }
+ HStack {
+ Text("Bonus Name")
+ Spacer()
+ Text(creditCard.bonus?.name ?? "None")
+ }
  }
  .navigationTitle("Credit Card Details")
  }
 }
 #Preview("Details") {
- CreditCardDetail(creditCard: SampleData.shared.creditCard)
+ DetailView(creditCard: SampleData.shared.creditCard)
  .modelContainer(SampleData.shared.modelContainer)
 }
 
 
 
-/** File: /CreditCardLibrary/CreditCardLibrary/Views/CreditCardFormView.swift ***************************************/
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/EditCreditCardView.swift ***************************************/
 import SwiftUI
-struct CreditCardFormView: View {
+import SwiftData
+struct EditCreditCardView: View {
+ @Environment(\.dismiss) var dismiss
+ @Environment(\.modelContext) var modelContext
+ var creditCard: CreditCard
+ var existingBanks: [Bank]
+ @State private var cardName: String
+ @State private var isBusiness: Bool
+ @State private var lastDigits: String
+ @State private var selectedBank: Bank?
+ @State private var isNewBank: Bool = false
+ @State private var promotion: Promotion?
+ @State private var bonus: Bonus?
+ init(creditCard: CreditCard, existingBanks: [Bank]) {
+ self.creditCard = creditCard
+ self.existingBanks = existingBanks
+ _cardName = State(initialValue: creditCard.name)
+ _isBusiness = State(initialValue: creditCard.isBusiness)
+ _lastDigits = State(initialValue: creditCard.lastDigits)
+ _selectedBank = State(initialValue: creditCard.bank)
+ _promotion = State(initialValue: creditCard.promotion)
+ _bonus = State(initialValue: creditCard.bonus)
+ }
+ var body: some View {
+ FormView(cardName: $cardName, 
+ isBusiness: $isBusiness,
+ lastDigits: $lastDigits,
+ promotion: $promotion,
+ selectedBank: $selectedBank, 
+ bonus: $bonus,
+ isNewBank: isNewBank,
+ existingBanks: existingBanks) {
+ creditCard.name = cardName
+ creditCard.isBusiness = isBusiness
+ creditCard.promotion = promotion
+ creditCard.bank = selectedBank
+ creditCard.bonus = bonus
+ try? modelContext.save()
+ dismiss()
+ }
+ }
+}
+#Preview {
+ EditCreditCardView(creditCard: SampleData.shared.creditCard, existingBanks: Bank.sampleData)
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/FormView.swift ***************************************/
+import SwiftUI
+struct FormView: View {
  @Environment(\.dismiss) var dismiss
  @Environment(\.modelContext) var modelContext
  
  @Binding var cardName: String
  @Binding var isBusiness: Bool
+ @Binding var lastDigits: String
+ 
+ @Binding var promotion: Promotion?
  @Binding var selectedBank: Bank?
+ @Binding var bonus: Bonus?
+ 
  @State var isNewBank: Bool
+ @State var isNewPromo: Bool = false
+ @State var isNewBonus: Bool = false
  var existingBanks: [Bank]
  var onSave: () -> Void
  
  var body: some View {
  Form {
  TextField("Card Name", text: $cardName)
+ TextField("Last Digits", text: $lastDigits)
+ 
  Toggle("Business", isOn: $isBusiness)
  if !existingBanks.isEmpty {
  Picker("Bank", selection: $selectedBank) {
@@ -581,6 +753,34 @@ struct CreditCardFormView: View {
  AddBankView { newBank in
  modelContext.insert(newBank)
  selectedBank = newBank
+ }
+ }
+ HStack {
+ Text("Promotion:")
+ Spacer()
+ Text(promotion?.name ?? "None")
+ }
+ Toggle("New Promo", isOn: $isNewPromo)
+ 
+ if isNewPromo {
+ AddPromotionView { newPromo in
+ modelContext.insert(newPromo)
+ promotion = newPromo
+ }
+ }
+ 
+ HStack {
+ Text("Bonus")
+ Spacer()
+ Text(bonus?.name ?? "None")
+ }
+ 
+ Toggle("New Bonus", isOn: $isNewBonus)
+ 
+ if isNewBonus {
+ AddBonusView { newBonus in
+ modelContext.insert(newBonus)
+ bonus = newBonus
  }
  }
  }
@@ -605,42 +805,15 @@ struct CreditCardFormView: View {
  }
 }
 #Preview {
- CreditCardFormView(cardName: .constant(""), isBusiness: .constant(false), selectedBank: .constant(SampleData.shared.bank), isNewBank: false, existingBanks: Bank.sampleData, onSave: {print("yay")})
-}
-
-
-
-/** File: /CreditCardLibrary/CreditCardLibrary/Views/EditCreditCardView.swift ***************************************/
-import SwiftUI
-import SwiftData
-struct EditCreditCardView: View {
- @Environment(\.dismiss) var dismiss
- @Environment(\.modelContext) var modelContext
- var creditCard: CreditCard
- var existingBanks: [Bank]
- @State private var cardName: String
- @State private var isBusiness: Bool
- @State private var selectedBank: Bank?
- @State private var isNewBank: Bool = false
- init(creditCard: CreditCard, existingBanks: [Bank]) {
- self.creditCard = creditCard
- self.existingBanks = existingBanks
- _cardName = State(initialValue: creditCard.name)
- _isBusiness = State(initialValue: creditCard.isBusiness)
- _selectedBank = State(initialValue: creditCard.bank)
- }
- var body: some View {
- CreditCardFormView(cardName: $cardName, isBusiness: $isBusiness, selectedBank: $selectedBank, isNewBank: isNewBank, existingBanks: existingBanks) {
- creditCard.name = cardName
- creditCard.isBusiness = isBusiness
- creditCard.bank = selectedBank
- try? modelContext.save()
- dismiss()
- }
- }
-}
-#Preview {
- EditCreditCardView(creditCard: SampleData.shared.creditCard, existingBanks: Bank.sampleData)
+ FormView(cardName: .constant(""),
+ isBusiness: .constant(false),
+ lastDigits: .constant(""),
+ promotion: .constant(SampleData.shared.promotion),
+ selectedBank:.constant(SampleData.shared.bank),
+ bonus: .constant(SampleData.shared.bonus),
+ isNewBank: false,
+ existingBanks: Bank.sampleData,
+ onSave: {print("yay")})
 }
 
 
@@ -675,7 +848,7 @@ struct WalletContentView: View {
  .navigationSplitViewColumnWidth(min: 150, ideal: 200, max: 400)
  } detail: {
  if let selectedCard = selectedCard {
- CreditCardDetail(creditCard: selectedCard)
+ DetailView(creditCard: selectedCard)
  } else {
  Text("Select a credit card")
  .foregroundStyle(.secondary)
@@ -690,7 +863,7 @@ struct WalletContentView: View {
  ToolbarItem(placement: .secondaryAction) {
  if selectedCard != nil {
  Button(action: toggleEditing) {
- Text(isEditing ? "Editing" : "Edit")
+ Label("Edit", systemImage: "pencil")
  }
  }
  }
@@ -737,7 +910,3 @@ struct WalletContentView: View {
  WalletContentView(selectedCategory: .open, columnVisibility: .doubleColumn)
  .modelContainer(SampleData.shared.modelContainer)
 }
-
-
-
-/** File: /CreditCardLibrary/CreditCardLibrary/addCreditCardSheet.swift ***************************************/

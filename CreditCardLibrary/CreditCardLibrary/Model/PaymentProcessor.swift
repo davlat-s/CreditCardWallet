@@ -12,7 +12,6 @@ final class PaymentProcessor {
         self.logo = logo
     }
     
-    // Static dataset
     static let sampleData: [PaymentProcessor] = [
         PaymentProcessor(name: "Visa", logo: "visa_logo"),
         PaymentProcessor(name: "Mastercard", logo: "mastercard_logo"),

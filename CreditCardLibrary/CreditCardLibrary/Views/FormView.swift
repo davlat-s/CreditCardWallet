@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 struct FormView: View {
     @Environment(\.dismiss) var dismiss
@@ -11,11 +12,15 @@ struct FormView: View {
     @Binding var promotion: Promotion?
     @Binding var selectedBank: Bank?
     @Binding var bonus: Bonus?
+    @Binding var selectedPP: PaymentProcessor?
     
     @State var isNewBank: Bool
     @State var isNewPromo: Bool = false
     @State var isNewBonus: Bool = false
+    
     var existingBanks: [Bank]
+    var paymentProcessors: [PaymentProcessor]
+    
     var onSave: () -> Void
     
     var body: some View {
@@ -25,6 +30,11 @@ struct FormView: View {
             
             Toggle("Business", isOn: $isBusiness)
 
+            Picker("Payment Processor", selection: $selectedPP) {
+                ForEach(paymentProcessors) { pp in
+                    Text(pp.name).tag(Optional(pp))
+                }
+            }
             if !existingBanks.isEmpty {
                 Picker("Bank", selection: $selectedBank) {
                     ForEach(existingBanks) { bank in
@@ -32,6 +42,7 @@ struct FormView: View {
                     }
                 }
             }
+            
 
             Toggle("New Bank", isOn: $isNewBank)
 
@@ -99,7 +110,9 @@ struct FormView: View {
              promotion: .constant(SampleData.shared.promotion),
              selectedBank:.constant(SampleData.shared.bank),
              bonus: .constant(SampleData.shared.bonus),
+             selectedPP: .constant(SampleData.shared.paymentProcessor),
              isNewBank: false,
              existingBanks: Bank.sampleData,
+             paymentProcessors: PaymentProcessor.sampleData,
              onSave: {print("yay")})
 }
