@@ -55,6 +55,10 @@ class SampleData {
             context.insert(closed)
         }
         
+        for pp in PaymentProcessor.sampleData {
+            context.insert(pp)
+        }
+        
         if let sampleCreditCard = CreditCard.sampleData.first {
             sampleCreditCard.bank = Bank.sampleData[1]
             sampleCreditCard.closed = Closed.sampleData[0]
@@ -89,6 +93,10 @@ class SampleData {
     
     var closed: Closed {
         Closed.sampleData[0]
+    }
+    
+    var paymentProcessor: PaymentProcessor {
+        PaymentProcessor.sampleData[0]
     }
     
     

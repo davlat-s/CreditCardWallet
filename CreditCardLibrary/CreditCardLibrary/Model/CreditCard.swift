@@ -7,7 +7,6 @@ final class CreditCard {
     var name: String
     var isBusiness: Bool
     var lastDigits: String
-    
     var bank: Bank?
     var promotion: Promotion?
     var bonus: Bonus?
@@ -20,14 +19,16 @@ final class CreditCard {
          bank: Bank? = nil,
          promotion: Promotion? = nil,
          bonus: Bonus? = nil,
-         closed: Closed? = nil) {
+         closed: Closed? = nil,
+         paymentProcessor: PaymentProcessor? = nil) {
         self.name = name
         self.isBusiness = isBusiness
+        self.lastDigits = lastDigits
         self.bank = bank
+        self.promotion = promotion
         self.bonus = bonus
         self.closed = closed
-        self.promotion = promotion
-        self.lastDigits = lastDigits
+        self.paymentProcessor = paymentProcessor
         
     }
     
