@@ -3,6 +3,11 @@ import SwiftData
 
 @Model
 final class PaymentProcessor {
+    static let visa = PaymentProcessor(name: "Visa", logo: "visaLogo")
+    static let mastercard = PaymentProcessor(name: "MasterCard", logo: "mastercardLogo")
+    static let amex = PaymentProcessor(name: "Amex", logo: "amexLogo")
+    static let discover = PaymentProcessor(name: "Discover", logo: "discoverLogo")
+
     var name: String
     var logo: String
     var creditCards: [CreditCard] = []

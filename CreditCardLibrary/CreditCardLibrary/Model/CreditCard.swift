@@ -37,7 +37,7 @@ final class CreditCard {
     }
     
     static let sampleData = [
-        CreditCard(name: "Platinum", isBusiness: false, lastDigits: "62376", bank: Bank(name: "American Express"), promotion: Promotion(name: "Zero APR for 12 months"), bonus: Bonus(name: "100k sign up bonus"), closed: Closed(reason: "Too expensive", isClosed: true)),
+        CreditCard(name: "Platinum", isBusiness: false, lastDigits: "62376", bank: Bank(name: "American Express"), promotion: Promotion(name: "Zero APR for 12 months"), bonus: Bonus(name: "100k sign up bonus"), closed: Closed(reason: "Too expensive", isClosed: true), paymentProcessor: PaymentProcessor.amex),
         CreditCard(name: "Saphire Reserve", isBusiness: false, lastDigits: "3552", bank: Bank(name: "Chase"), promotion: Promotion(name: "Zero APR for 18 months"), bonus: Bonus(name: "80k sign up bonus"), closed: Closed(reason: "", isClosed: false)),
         CreditCard(name: "Ink Preffered", isBusiness: true, lastDigits: "7743"),
         CreditCard(name: "AmEx Gold", isBusiness: false, lastDigits: "6343"),

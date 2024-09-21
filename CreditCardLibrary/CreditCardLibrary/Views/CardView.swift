@@ -34,13 +34,13 @@ struct CardView: View {
                         Spacer()
                        
                     }
-                    Text("***** ****** 67422")
+                    Text("***** ****** \(creditCard.lastDigits)")
                         .font(.custom("Courier", size: w/13))
                     HStack {
                         Text(creditCard.isBusiness ? "Business" : "Personal")
                             .font(.custom("Courier", size: w/25))
                         Spacer()
-                        Image("amex")
+                        Image(creditCard.paymentProcessor?.logo ?? "amexLogo.png")
                             .resizable()
                             .frame(width: w/10, height: w/15)
                         

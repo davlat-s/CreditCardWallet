@@ -91,7 +91,7 @@ struct FormView: View {
                 Button("Save") {
                     onSave()
                 }
-                .disabled(cardName.isEmpty || selectedBank == nil)
+                .disabled(cardName.isEmpty || selectedBank == nil || selectedPP == nil)
             }
             ToolbarItem(placement: .cancellationAction) {
                 Button("Cancel") {

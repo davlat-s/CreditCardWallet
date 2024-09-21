@@ -8,8 +8,8 @@ struct WalletContentView: View {
     @State var columnVisibility: NavigationSplitViewVisibility
     @State private var newCard: CreditCard?
     @State private var isEditing: Bool = false
-    @Query var existingBanks: [Bank]
-    @Query var paymentProcessors: [PaymentProcessor]
+    @Query(sort:[SortDescriptor(\Bank.name, order: .forward)]) var existingBanks: [Bank]
+    @Query(sort:[SortDescriptor(\PaymentProcessor.name, order: .forward)]) var paymentProcessors: [PaymentProcessor]
     
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
@@ -44,7 +44,7 @@ struct WalletContentView: View {
             ToolbarItem(placement: .secondaryAction) {
                 if selectedCard != nil {
                     Button(action: toggleEditing) {
-                        Label("Edit", systemImage: "pencil")
+                        Label("Edit", systemImage: "square.and.pencil")
                     }
                 }
             }
