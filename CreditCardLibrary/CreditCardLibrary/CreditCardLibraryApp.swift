@@ -14,5 +14,5 @@ struct CreditCardLibraryApp: App {
         
     }
     @State var sidebarSelection: SideBarCategories = .open
-    @State var columnVisibility: NavigationSplitViewVisibility = .doubleColumn
+    @State var columnVisibility: NavigationSplitViewVisibility = .all
 }

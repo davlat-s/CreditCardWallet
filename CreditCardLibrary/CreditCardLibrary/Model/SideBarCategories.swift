@@ -10,7 +10,7 @@ enum SideBarCategories: Int, CaseIterable, Identifiable {
     
     var displayName: String {
         switch self {
-        case .open: return "Open"
+        case .open: return "All"
         case .personal: return "Personal"
         case .business: return "Business"
         case .closed: return "Closed"

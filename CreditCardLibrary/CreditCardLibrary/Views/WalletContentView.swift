@@ -16,17 +16,11 @@ struct WalletContentView: View {
     
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
-            Section("Categories") {
-                List(SideBarCategories.allCases, selection: $selectedCategory) {
-                    selection in NavigationLink(value: selection) {
-                        Label(selection.displayName, systemImage: selection.displayImageName)
-                    }
-                }
-            }
+            SideBarView(selectedCategory: $selectedCategory)
             .navigationSplitViewColumnWidth(min: 150, ideal: 200, max: 400)
         } content: {
             CardListView(selectedCategory: $selectedCategory, selectedCard: $selectedCard)
-                .navigationSplitViewColumnWidth(min: 150, ideal: 200, max: 400)
+                .navigationSplitViewColumnWidth(min: 200, ideal: 220, max: 400)
         } detail: {
             if let selectedCard = selectedCard {
                 DetailView(creditCard: selectedCard)

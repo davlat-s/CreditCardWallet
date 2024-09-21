@@ -99,6 +99,9 @@ class SampleData {
         PaymentProcessor.sampleData[0]
     }
     
-    
+    var openCategory = SideBarCategories.open
+    var businessCategory = SideBarCategories.business
+    var personalCategory = SideBarCategories.personal
+    var closedCategory = SideBarCategories.closed
     
 }
