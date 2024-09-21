@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct SideBarView: View {
+struct SidebarView: View {
     @Binding var selectedCategory: SideBarCategories
     @State private var isOpenExpanded: Bool = true
 
@@ -35,5 +35,5 @@ struct SideBarView: View {
 }
 
 #Preview {
-    SideBarView(selectedCategory: .constant(SampleData.shared.closedCategory))
+    SidebarView(selectedCategory: .constant(SampleData.shared.closedCategory))
 }

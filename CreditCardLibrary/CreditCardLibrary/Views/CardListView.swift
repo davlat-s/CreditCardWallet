@@ -27,6 +27,8 @@ struct CardListView: View {
                         }
                     }
                 }
+                .buttonStyle(.plain)
+
             } else {
                 Text("No cards available")
             }

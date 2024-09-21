@@ -16,8 +16,8 @@ struct WalletContentView: View {
     
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
-            SideBarView(selectedCategory: $selectedCategory)
-            .navigationSplitViewColumnWidth(min: 150, ideal: 200, max: 400)
+            SidebarView(selectedCategory: $selectedCategory)
+                .navigationSplitViewColumnWidth(min: 150, ideal: 200, max: 400)
         } content: {
             CardListView(selectedCategory: $selectedCategory, selectedCard: $selectedCard)
                 .navigationSplitViewColumnWidth(min: 200, ideal: 220, max: 400)
