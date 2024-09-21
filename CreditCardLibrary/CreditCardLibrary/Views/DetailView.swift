@@ -14,6 +14,9 @@ struct DetailView: View {
     var body: some View {
         VStack {
             CardView(creditCard: creditCard)
+                .frame(width: 486/2, height: 306/2)
+                .scaleEffect(0.6)
+                .padding(40)
             HStack {
                 Text("CardName")
                 Spacer()
@@ -39,6 +42,7 @@ struct DetailView: View {
                 Spacer()
                 Text(creditCard.bonus?.name ?? "None")
             }
+            Spacer()
         }
         .navigationTitle("Credit Card Details")
     }

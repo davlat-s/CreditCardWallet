@@ -40,7 +40,7 @@ struct CardView: View {
                         Text(creditCard.isBusiness ? "Business" : "Personal")
                             .font(.custom("Courier", size: w/25))
                         Spacer()
-                        Image(creditCard.paymentProcessor?.logo ?? "amexLogo.png")
+                        Image(creditCard.paymentProcessor?.logo ?? "amexLogo")
                             .resizable()
                             .frame(width: w/10, height: w/15)
                         
