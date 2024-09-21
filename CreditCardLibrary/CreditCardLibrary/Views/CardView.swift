@@ -13,8 +13,8 @@ struct CardView: View {
         let h: CGFloat = 306
         
         return ZStack{
-            Color(.gray).cornerRadius(16)
-            
+            Color(creditCard.color ?? .gray)
+                .cornerRadius(16)
             HStack {
                 VStack(alignment:.leading) {
                     HStack {

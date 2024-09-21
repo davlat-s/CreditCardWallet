@@ -1,5 +1,6 @@
 import Foundation
 import SwiftData
+import SwiftUI
 
 
 @Model
@@ -7,15 +8,26 @@ final class CreditCard {
     var name: String
     var isBusiness: Bool
     var lastDigits: String
+    var colorHex: String?
     var bank: Bank?
     var promotion: Promotion?
     var bonus: Bonus?
     var closed: Closed?
     var paymentProcessor: PaymentProcessor?
+    var color: Color? {
+            get {
+                guard let colorHex = colorHex else { return nil }
+                return Color(hex: colorHex)
+            }
+            set {
+                colorHex = newValue?.toHex()
+            }
+        }
     
     init(name: String,
          isBusiness: Bool,
          lastDigits: String,
+         colorHex: String? = nil,
          bank: Bank? = nil,
          promotion: Promotion? = nil,
          bonus: Bonus? = nil,
@@ -29,11 +41,11 @@ final class CreditCard {
         self.bonus = bonus
         self.closed = closed
         self.paymentProcessor = paymentProcessor
-        
+        self.colorHex = colorHex
     }
     
     static func createNewCard() -> CreditCard {
-            return CreditCard(name: "", isBusiness: false, lastDigits: "")
+        return CreditCard(name: "", isBusiness: false, lastDigits: "")
     }
     
     static let sampleData = [

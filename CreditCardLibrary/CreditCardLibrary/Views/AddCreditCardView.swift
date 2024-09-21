@@ -11,6 +11,7 @@ struct AddCreditCardView: View {
     @State private var isBusiness: Bool = false
     @State private var selectedBank: Bank?
     @State private var selectedPP: PaymentProcessor?
+    @State private var selectedColor: Color?
     @State private var isNewBank: Bool = false
     @State private var promotion: Promotion?
     @State private var bonus: Bonus?
@@ -24,7 +25,7 @@ struct AddCreditCardView: View {
                  selectedBank: $selectedBank,
                  bonus: $bonus,
                  selectedPP: $selectedPP,
-                 isNewBank: isNewBank,
+                 selectedColor: $selectedColor, isNewBank: isNewBank,
                  existingBanks: existingBanks,
                  paymentProcessors: paymentProcessors) {
             let newCreditCard = CreditCard(name: cardName, isBusiness: isBusiness, lastDigits: lastDigits)
@@ -32,6 +33,7 @@ struct AddCreditCardView: View {
             newCreditCard.promotion = promotion
             newCreditCard.bonus = bonus
             newCreditCard.paymentProcessor = selectedPP
+            newCreditCard.color = selectedColor
             modelContext.insert(newCreditCard)
             dismiss()
         }

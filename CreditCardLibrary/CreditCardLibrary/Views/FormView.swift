@@ -13,6 +13,7 @@ struct FormView: View {
     @Binding var selectedBank: Bank?
     @Binding var bonus: Bonus?
     @Binding var selectedPP: PaymentProcessor?
+    @Binding var selectedColor: Color?
     
     @State var isNewBank: Bool
     @State var isNewPromo: Bool = false
@@ -25,6 +26,13 @@ struct FormView: View {
     
     var body: some View {
         Form {
+            ColorPicker("Card Color", selection: Binding(
+                get: { selectedColor ?? Color.gray },
+                set: { newColor in
+                    selectedColor = newColor
+                }
+            ))
+            
             TextField("Card Name", text: $cardName)
             TextField("Last Digits", text: $lastDigits)
             
@@ -111,6 +119,7 @@ struct FormView: View {
              selectedBank:.constant(SampleData.shared.bank),
              bonus: .constant(SampleData.shared.bonus),
              selectedPP: .constant(SampleData.shared.paymentProcessor),
+             selectedColor: .constant(.gray),
              isNewBank: false,
              existingBanks: Bank.sampleData,
              paymentProcessors: PaymentProcessor.sampleData,
