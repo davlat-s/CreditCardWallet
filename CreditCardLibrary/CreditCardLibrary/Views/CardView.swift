@@ -42,7 +42,7 @@ struct CardView: View {
                         Spacer()
                         Image(creditCard.paymentProcessor?.logo ?? "amexLogo")
                             .resizable()
-                            .frame(width: w/10, height: w/15)
+                            .frame(width: w/7, height: w/8)
                         
                     }
                     

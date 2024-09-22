@@ -1,6 +1,7 @@
 //Users/davlatsirojitdinov/CreditCardLibrary
 ├── CreditCardLibrary/
 │   ├── CreditCardLibrary/
+│   │   ├── AppContainer.swift
 │   │   ├── Assets.xcassets/
 │   │   │   ├── 1.imageset/
 │   │   │   ├── 10.imageset/
@@ -17,7 +18,7 @@
 │   │   │   ├── C-AA-PlatSelect.imageset/
 │   │   │   ├── Citi_Strata_Premier.imageset/
 │   │   │   ├── Citi_simplicity.imageset/
-│   │   │   ├── amex.imageset/
+│   │   │   ├── amexLogo.imageset/
 │   │   │   ├── blue-business-cash.imageset/
 │   │   │   ├── business-gold.imageset/
 │   │   │   ├── cc_cashrewards.imageset/
@@ -27,21 +28,27 @@
 │   │   │   ├── chip.imageset/
 │   │   │   ├── default.imageset/
 │   │   │   ├── delta-skymiles-gold.imageset/
+│   │   │   ├── discoverLogo.imageset/
+│   │   │   ├── mastercardLogo.imageset/
 │   │   │   ├── navy-federal-go-rewards.imageset/
-│   │   │   └── navy-federal-more-rewards.imageset/
+│   │   │   ├── navy-federal-more-rewards.imageset/
+│   │   │   └── visaLogo.imageset/
 │   │   ├── CreditCardLibraryApp.swift
 │   │   ├── Model/
 │   │   │   ├── Bank.swift
 │   │   │   ├── Bonus.swift
 │   │   │   ├── Closed.swift
+│   │   │   ├── Color.swift
 │   │   │   ├── CreditCard.swift
 │   │   │   ├── PaymentProcessor.swift
+│   │   │   ├── PaymentProcessorInstances.swift
 │   │   │   ├── Promotion.swift
 │   │   │   └── SideBarCategories.swift
 │   │   ├── Preview Content/
 │   │   │   └── Preview Assets.xcassets/
 │   │   ├── SampleData.swift
 │   │   ├── Utilities/
+│   │   │   └── SwiftDataManager.swift
 │   │   └── Views/
 │   │       ├── AddBankView.swift
 │   │       ├── AddBonusView.swift
@@ -52,6 +59,7 @@
 │   │       ├── DetailView.swift
 │   │       ├── EditCreditCardView.swift
 │   │       ├── FormView.swift
+│   │       ├── SidebarView.swift
 │   │       └── WalletContentView.swift
 │   └── CreditCardLibrary.xcodeproj/
 │       ├── project.xcworkspace/
@@ -65,22 +73,75 @@
 
 
 
+/** File: /CreditCardLibrary/CreditCardLibrary/AppContainer.swift ***************************************/
+import Foundation
+import SwiftData
+@MainActor
+let appContainer: ModelContainer = {
+ do {
+ let container = try ModelContainer(for: CreditCard.self, Bank.self, Closed.self, Promotion.self, Bonus.self, PaymentProcessor.self)
+ 
+ 
+ var PaymentProcessorFetchDescriptor = FetchDescriptor<PaymentProcessor>()
+ PaymentProcessorFetchDescriptor.fetchLimit = 1
+ 
+ guard try container.mainContext.fetch(PaymentProcessorFetchDescriptor).count == 0 else { return container }
+ 
+ 
+ let PaymentProcessors = [
+ PaymentProcessor(name: "Visa", logo: "visaLogo"),
+ PaymentProcessor(name: "Mastercard", logo: "mastercardLogo"),
+ PaymentProcessor(name: "AmEx", logo: "amexLogo"),
+ PaymentProcessor(name: "Discover", logo: "discoverLogo")
+ ]
+ 
+ let Banks = [
+ Bank(name: "Chase"),
+ Bank(name: "American Express"),
+ Bank(name: "Bank of America"),
+ Bank(name: "Citi"),
+ Bank(name: "Wells Fargo"),
+ Bank(name: "U.S. Bank"),
+ ]
+ 
+ for pp in PaymentProcessors {
+ container.mainContext.insert(pp)
+ }
+ 
+ var BankFetchDescriptor = FetchDescriptor<Bank>()
+ BankFetchDescriptor.fetchLimit = 1
+ 
+ guard try container.mainContext.fetch(BankFetchDescriptor).count == 0 else { return container }
+ 
+ for bank in Banks {
+ container.mainContext.insert(bank)
+ }
+ 
+ return container
+ } catch {
+ fatalError("Failed to create container")
+ }
+}()
+
+
+
 /** File: /CreditCardLibrary/CreditCardLibrary/CreditCardLibraryApp.swift ***************************************/
 import SwiftUI
 import SwiftData
 @main
+@MainActor
 struct CreditCardLibraryApp: App {
  var body: some Scene {
  WindowGroup("Main Widnow") {
- WalletContentView(selectedCategory: sidebarSelection, columnVisibility: columnVisibility)
+ WalletContentView(selectedCategory: $sidebarSelection, columnVisibility: $columnVisibility)
  .toolbarBackground(.ultraThickMaterial)
  }
- .modelContainer(for: [CreditCard.self, Bank.self, Closed.self, Promotion.self, Bonus.self])
+ .modelContainer(appContainer)
  .windowStyle(.hiddenTitleBar)
  
  }
  @State var sidebarSelection: SideBarCategories = .open
- @State var columnVisibility: NavigationSplitViewVisibility = .doubleColumn
+ @State var columnVisibility: NavigationSplitViewVisibility = .all
 }
 
 
@@ -147,36 +208,78 @@ final class Closed {
 
 
 
+/** File: /CreditCardLibrary/CreditCardLibrary/Model/Color.swift ***************************************/
+import SwiftUI
+extension Color {
+ func toHex() -> String? {
+ guard let components = self.cgColor?.components, components.count >= 3 else {
+ return nil
+ }
+ let r = components[0]
+ let g = components[1]
+ let b = components[2]
+ return String(format: "#%02lX%02lX%02lX", lroundf(Float(r * 255)), lroundf(Float(g * 255)), lroundf(Float(b * 255)))
+ }
+ 
+ init?(hex: String) {
+ var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
+ hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")
+ var rgb: UInt64 = 0
+ Scanner(string: hexSanitized).scanHexInt64(&rgb)
+ 
+ let red = Double((rgb >> 16) & 0xFF) / 255.0
+ let green = Double((rgb >> 8) & 0xFF) / 255.0
+ let blue = Double(rgb & 0xFF) / 255.0
+ 
+ self.init(red: red, green: green, blue: blue)
+ }
+}
+
+
+
 /** File: /CreditCardLibrary/CreditCardLibrary/Model/CreditCard.swift ***************************************/
 import Foundation
 import SwiftData
+import SwiftUI
 @Model
 final class CreditCard {
  var name: String
  var isBusiness: Bool
  var lastDigits: String
- 
+ var colorHex: String?
  var bank: Bank?
  var promotion: Promotion?
  var bonus: Bonus?
  var closed: Closed?
  var paymentProcessor: PaymentProcessor?
+ var color: Color? {
+ get {
+ guard let colorHex = colorHex else { return nil }
+ return Color(hex: colorHex)
+ }
+ set {
+ colorHex = newValue?.toHex()
+ }
+ }
  
  init(name: String,
  isBusiness: Bool,
  lastDigits: String,
+ colorHex: String? = nil,
  bank: Bank? = nil,
  promotion: Promotion? = nil,
  bonus: Bonus? = nil,
- closed: Closed? = nil) {
+ closed: Closed? = nil,
+ paymentProcessor: PaymentProcessor? = nil) {
  self.name = name
  self.isBusiness = isBusiness
+ self.lastDigits = lastDigits
  self.bank = bank
+ self.promotion = promotion
  self.bonus = bonus
  self.closed = closed
- self.promotion = promotion
- self.lastDigits = lastDigits
- 
+ self.paymentProcessor = paymentProcessor
+ self.colorHex = colorHex
  }
  
  static func createNewCard() -> CreditCard {
@@ -184,7 +287,7 @@ final class CreditCard {
  }
  
  static let sampleData = [
- CreditCard(name: "Platinum", isBusiness: false, lastDigits: "62376", bank: Bank(name: "American Express"), promotion: Promotion(name: "Zero APR for 12 months"), bonus: Bonus(name: "100k sign up bonus"), closed: Closed(reason: "Too expensive", isClosed: true)),
+ CreditCard(name: "Platinum", isBusiness: false, lastDigits: "62376", bank: Bank(name: "American Express"), promotion: Promotion(name: "Zero APR for 12 months"), bonus: Bonus(name: "100k sign up bonus"), closed: Closed(reason: "Too expensive", isClosed: true), paymentProcessor: PaymentProcessor.amex),
  CreditCard(name: "Saphire Reserve", isBusiness: false, lastDigits: "3552", bank: Bank(name: "Chase"), promotion: Promotion(name: "Zero APR for 18 months"), bonus: Bonus(name: "80k sign up bonus"), closed: Closed(reason: "", isClosed: false)),
  CreditCard(name: "Ink Preffered", isBusiness: true, lastDigits: "7743"),
  CreditCard(name: "AmEx Gold", isBusiness: false, lastDigits: "6343"),
@@ -200,6 +303,10 @@ import Foundation
 import SwiftData
 @Model
 final class PaymentProcessor {
+ static let visa = PaymentProcessor(name: "Visa", logo: "visaLogo")
+ static let mastercard = PaymentProcessor(name: "MasterCard", logo: "mastercardLogo")
+ static let amex = PaymentProcessor(name: "Amex", logo: "amexLogo")
+ static let discover = PaymentProcessor(name: "Discover", logo: "discoverLogo")
  var name: String
  var logo: String
  var creditCards: [CreditCard] = []
@@ -209,13 +316,26 @@ final class PaymentProcessor {
  self.logo = logo
  }
  
- 
  static let sampleData: [PaymentProcessor] = [
  PaymentProcessor(name: "Visa", logo: "visa_logo"),
  PaymentProcessor(name: "Mastercard", logo: "mastercard_logo"),
  PaymentProcessor(name: "American Express", logo: "amex_logo"),
  PaymentProcessor(name: "Discover", logo: "discover_logo")
  ]
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Model/PaymentProcessorInstances.swift ***************************************/
+
+enum PaymentProcessorInstance {
+ static let visa = PaymentProcessor(name: "Visa", logo: "visaLogo.png")
+ static let mastercard = PaymentProcessor(name: "Mastercard", logo: "mastercardLogo.png")
+ static let amex = PaymentProcessor(name: "Amex", logo: "amexLogo.png")
+ static let discover = PaymentProcessor(name: "Discover", logo: "discoverLogo.png")
+ static var all: [PaymentProcessor] {
+ return [visa, mastercard, amex, discover]
+ }
 }
 
 
@@ -252,7 +372,7 @@ enum SideBarCategories: Int, CaseIterable, Identifiable {
  
  var displayName: String {
  switch self {
- case .open: return "Open"
+ case .open: return "All"
  case .personal: return "Personal"
  case .business: return "Business"
  case .closed: return "Closed"
@@ -337,6 +457,10 @@ class SampleData {
  context.insert(closed)
  }
  
+ for pp in PaymentProcessor.sampleData {
+ context.insert(pp)
+ }
+ 
  if let sampleCreditCard = CreditCard.sampleData.first {
  sampleCreditCard.bank = Bank.sampleData[1]
  sampleCreditCard.closed = Closed.sampleData[0]
@@ -373,9 +497,17 @@ class SampleData {
  Closed.sampleData[0]
  }
  
+ var paymentProcessor: PaymentProcessor {
+ PaymentProcessor.sampleData[0]
+ }
  
+ var openCategory = SideBarCategories.open
+ var businessCategory = SideBarCategories.business
+ var personalCategory = SideBarCategories.personal
+ var closedCategory = SideBarCategories.closed
  
 }
+
 
 
 
@@ -440,10 +572,13 @@ struct AddCreditCardView: View {
  @Environment(\.dismiss) var dismiss
  @Environment(\.modelContext) var modelContext
  var existingBanks: [Bank]
+ var paymentProcessors: [PaymentProcessor]
  
  @State private var cardName: String = ""
  @State private var isBusiness: Bool = false
  @State private var selectedBank: Bank?
+ @State private var selectedPP: PaymentProcessor?
+ @State private var selectedColor: Color?
  @State private var isNewBank: Bool = false
  @State private var promotion: Promotion?
  @State private var bonus: Bonus?
@@ -455,19 +590,23 @@ struct AddCreditCardView: View {
  promotion: $promotion,
  selectedBank: $selectedBank,
  bonus: $bonus,
- isNewBank: isNewBank,
- existingBanks: existingBanks) {
+ selectedPP: $selectedPP,
+ selectedColor: $selectedColor, isNewBank: isNewBank,
+ existingBanks: existingBanks,
+ paymentProcessors: paymentProcessors) {
  let newCreditCard = CreditCard(name: cardName, isBusiness: isBusiness, lastDigits: lastDigits)
  newCreditCard.bank = selectedBank
  newCreditCard.promotion = promotion
  newCreditCard.bonus = bonus
+ newCreditCard.paymentProcessor = selectedPP
+ newCreditCard.color = selectedColor
  modelContext.insert(newCreditCard)
  dismiss()
  }
  }
 }
 #Preview {
- AddCreditCardView(existingBanks: Bank.sampleData)
+ AddCreditCardView(existingBanks: Bank.sampleData, paymentProcessors: PaymentProcessor.sampleData)
 }
 
 
@@ -527,6 +666,7 @@ struct CardListView: View {
  }
  }
  }
+ .buttonStyle(.plain)
  } else {
  Text("No cards available")
  }
@@ -566,8 +706,8 @@ struct CardView: View {
  let h: CGFloat = 306
  
  return ZStack{
- Color(.gray).cornerRadius(16)
- 
+ Color(creditCard.color ?? .gray)
+ .cornerRadius(16)
  HStack {
  VStack(alignment:.leading) {
  HStack {
@@ -585,13 +725,13 @@ struct CardView: View {
  Spacer()
  
  }
- Text("***** ****** 67422")
+ Text("***** ****** \(creditCard.lastDigits)")
  .font(.custom("Courier", size: w/13))
  HStack {
  Text(creditCard.isBusiness ? "Business" : "Personal")
  .font(.custom("Courier", size: w/25))
  Spacer()
- Image("amex")
+ Image(creditCard.paymentProcessor?.logo ?? "amexLogo")
  .resizable()
  .frame(width: w/10, height: w/15)
  
@@ -629,6 +769,9 @@ struct DetailView: View {
  var body: some View {
  VStack {
  CardView(creditCard: creditCard)
+ .frame(width: 486/2, height: 306/2)
+ .scaleEffect(0.6)
+ .padding(40)
  HStack {
  Text("CardName")
  Spacer()
@@ -654,6 +797,7 @@ struct DetailView: View {
  Spacer()
  Text(creditCard.bonus?.name ?? "None")
  }
+ Spacer()
  }
  .navigationTitle("Credit Card Details")
  }
@@ -673,50 +817,61 @@ struct EditCreditCardView: View {
  @Environment(\.modelContext) var modelContext
  var creditCard: CreditCard
  var existingBanks: [Bank]
+ var paymentProcessors: [PaymentProcessor]
  @State private var cardName: String
  @State private var isBusiness: Bool
  @State private var lastDigits: String
  @State private var selectedBank: Bank?
+ @State private var selectedPP: PaymentProcessor?
+ @State private var selectedColor: Color?
  @State private var isNewBank: Bool = false
  @State private var promotion: Promotion?
  @State private var bonus: Bonus?
- init(creditCard: CreditCard, existingBanks: [Bank]) {
+ init(creditCard: CreditCard, existingBanks: [Bank], paymentProcessors: [PaymentProcessor]) {
  self.creditCard = creditCard
  self.existingBanks = existingBanks
+ self.paymentProcessors = paymentProcessors
  _cardName = State(initialValue: creditCard.name)
  _isBusiness = State(initialValue: creditCard.isBusiness)
  _lastDigits = State(initialValue: creditCard.lastDigits)
  _selectedBank = State(initialValue: creditCard.bank)
+ _selectedPP = State(initialValue: creditCard.paymentProcessor)
  _promotion = State(initialValue: creditCard.promotion)
  _bonus = State(initialValue: creditCard.bonus)
+ _selectedColor = State(initialValue: creditCard.color)
  }
  var body: some View {
- FormView(cardName: $cardName, 
+ FormView(cardName: $cardName,
  isBusiness: $isBusiness,
  lastDigits: $lastDigits,
  promotion: $promotion,
- selectedBank: $selectedBank, 
+ selectedBank: $selectedBank,
  bonus: $bonus,
- isNewBank: isNewBank,
- existingBanks: existingBanks) {
+ selectedPP: $selectedPP,
+ selectedColor: $selectedColor, isNewBank: isNewBank,
+ existingBanks: existingBanks,
+ paymentProcessors: paymentProcessors) {
  creditCard.name = cardName
  creditCard.isBusiness = isBusiness
  creditCard.promotion = promotion
  creditCard.bank = selectedBank
  creditCard.bonus = bonus
+ creditCard.paymentProcessor = selectedPP
+ creditCard.color = selectedColor
  try? modelContext.save()
  dismiss()
  }
  }
 }
 #Preview {
- EditCreditCardView(creditCard: SampleData.shared.creditCard, existingBanks: Bank.sampleData)
+ EditCreditCardView(creditCard: SampleData.shared.creditCard, existingBanks: Bank.sampleData, paymentProcessors: PaymentProcessor.sampleData)
 }
 
 
 
 /** File: /CreditCardLibrary/CreditCardLibrary/Views/FormView.swift ***************************************/
 import SwiftUI
+import SwiftData
 struct FormView: View {
  @Environment(\.dismiss) var dismiss
  @Environment(\.modelContext) var modelContext
@@ -728,19 +883,36 @@ struct FormView: View {
  @Binding var promotion: Promotion?
  @Binding var selectedBank: Bank?
  @Binding var bonus: Bonus?
+ @Binding var selectedPP: PaymentProcessor?
+ @Binding var selectedColor: Color?
  
  @State var isNewBank: Bool
  @State var isNewPromo: Bool = false
  @State var isNewBonus: Bool = false
+ 
  var existingBanks: [Bank]
+ var paymentProcessors: [PaymentProcessor]
+ 
  var onSave: () -> Void
  
  var body: some View {
  Form {
+ ColorPicker("Card Color", selection: Binding(
+ get: { selectedColor ?? Color.gray },
+ set: { newColor in
+ selectedColor = newColor
+ }
+ ))
+ 
  TextField("Card Name", text: $cardName)
  TextField("Last Digits", text: $lastDigits)
  
  Toggle("Business", isOn: $isBusiness)
+ Picker("Payment Processor", selection: $selectedPP) {
+ ForEach(paymentProcessors) { pp in
+ Text(pp.name).tag(Optional(pp))
+ }
+ }
  if !existingBanks.isEmpty {
  Picker("Bank", selection: $selectedBank) {
  ForEach(existingBanks) { bank in
@@ -748,6 +920,7 @@ struct FormView: View {
  }
  }
  }
+ 
  Toggle("New Bank", isOn: $isNewBank)
  if isNewBank {
  AddBankView { newBank in
@@ -794,7 +967,7 @@ struct FormView: View {
  Button("Save") {
  onSave()
  }
- .disabled(cardName.isEmpty || selectedBank == nil)
+ .disabled(cardName.isEmpty || selectedBank == nil || selectedPP == nil)
  }
  ToolbarItem(placement: .cancellationAction) {
  Button("Cancel") {
@@ -811,9 +984,52 @@ struct FormView: View {
  promotion: .constant(SampleData.shared.promotion),
  selectedBank:.constant(SampleData.shared.bank),
  bonus: .constant(SampleData.shared.bonus),
+ selectedPP: .constant(SampleData.shared.paymentProcessor),
+ selectedColor: .constant(.gray),
  isNewBank: false,
  existingBanks: Bank.sampleData,
+ paymentProcessors: PaymentProcessor.sampleData,
  onSave: {print("yay")})
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/SidebarView.swift ***************************************/
+import SwiftUI
+struct SidebarView: View {
+ @Binding var selectedCategory: SideBarCategories
+ @State private var isOpenExpanded: Bool = true
+ private func sortedCategories() -> [SideBarCategories] {
+ let categories: [SideBarCategories] = [
+ .business,
+ .personal,
+ .open
+ ]
+ return categories.sorted { $0.displayName < $1.displayName }
+ }
+ 
+ var body: some View {
+ List(selection: $selectedCategory) {
+ Section("Open") {
+ ForEach(sortedCategories(), id: \.self) { category in
+ NavigationLink(value: category) {
+ Label(category.displayName, systemImage: category.displayImageName)
+ }
+ }
+ }
+ 
+ Section("Other") {
+ ForEach([SideBarCategories.closed], id: \.self) { category in
+ NavigationLink(value: category) {
+ Label(category.displayName, systemImage: category.displayImageName)
+ }
+ }
+ }
+ }
+ }
+}
+#Preview {
+ SidebarView(selectedCategory: .constant(SampleData.shared.closedCategory))
 }
 
 
@@ -823,29 +1039,24 @@ import SwiftUI
 import SwiftData
 struct WalletContentView: View {
  
- @State var selectedCategory: SideBarCategories
+ @Binding var selectedCategory: SideBarCategories
+ @Binding var columnVisibility: NavigationSplitViewVisibility
  @State private var selectedCard: CreditCard?
- @State var columnVisibility: NavigationSplitViewVisibility
  @State private var newCard: CreditCard?
  @State private var isEditing: Bool = false
- @Query var existingBanks: [Bank]
+ @Query(sort:[SortDescriptor(\Bank.name, order: .forward)]) var existingBanks: [Bank]
+ @Query(sort:[SortDescriptor(\PaymentProcessor.name, order: .forward)]) var paymentProcessors: [PaymentProcessor]
  
  @Environment(\.modelContext) private var modelContext
  @Environment(\.dismiss) private var dismiss
  
  var body: some View {
  NavigationSplitView(columnVisibility: $columnVisibility) {
- Section("Categories") {
- List(SideBarCategories.allCases, selection: $selectedCategory) {
- selection in NavigationLink(value: selection) {
- Label(selection.displayName, systemImage: selection.displayImageName)
- }
- }
- }
+ SidebarView(selectedCategory: $selectedCategory)
  .navigationSplitViewColumnWidth(min: 150, ideal: 200, max: 400)
  } content: {
  CardListView(selectedCategory: $selectedCategory, selectedCard: $selectedCard)
- .navigationSplitViewColumnWidth(min: 150, ideal: 200, max: 400)
+ .navigationSplitViewColumnWidth(min: 200, ideal: 220, max: 400)
  } detail: {
  if let selectedCard = selectedCard {
  DetailView(creditCard: selectedCard)
@@ -863,7 +1074,7 @@ struct WalletContentView: View {
  ToolbarItem(placement: .secondaryAction) {
  if selectedCard != nil {
  Button(action: toggleEditing) {
- Label("Edit", systemImage: "pencil")
+ Label("Edit", systemImage: "square.and.pencil")
  }
  }
  }
@@ -879,11 +1090,11 @@ struct WalletContentView: View {
  }
  .sheet(isPresented: $isEditing) {
  if let selectedCard = selectedCard {
- EditCreditCardView(creditCard: selectedCard, existingBanks: existingBanks)
+ EditCreditCardView(creditCard: selectedCard, existingBanks: existingBanks, paymentProcessors: paymentProcessors)
  }
  }
  .sheet(item: $newCard) { card in
- AddCreditCardView(existingBanks: existingBanks)
+ AddCreditCardView(existingBanks: existingBanks, paymentProcessors: paymentProcessors)
  }
  .interactiveDismissDisabled()
  }
@@ -907,6 +1118,6 @@ struct WalletContentView: View {
  }
  }
 #Preview {
- WalletContentView(selectedCategory: .open, columnVisibility: .doubleColumn)
+ WalletContentView(selectedCategory: .constant(.open), columnVisibility: .constant(.all))
  .modelContainer(SampleData.shared.modelContainer)
 }
