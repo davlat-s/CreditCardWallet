@@ -6,7 +6,7 @@ import SwiftData
 struct CreditCardLibraryApp: App {
     var body: some Scene {
         WindowGroup("Main Widnow") {
-            WalletContentView(selectedCategory: sidebarSelection, columnVisibility: columnVisibility)
+            WalletContentView(selectedCategory: $sidebarSelection, columnVisibility: $columnVisibility)
                 .toolbarBackground(.ultraThickMaterial)
         }
         .modelContainer(appContainer)

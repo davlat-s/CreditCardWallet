@@ -3,9 +3,10 @@ import SwiftData
 
 struct WalletContentView: View {
     
-    @State var selectedCategory: SideBarCategories
+    @Binding var selectedCategory: SideBarCategories
+    @Binding var columnVisibility: NavigationSplitViewVisibility
+
     @State private var selectedCard: CreditCard?
-    @State var columnVisibility: NavigationSplitViewVisibility
     @State private var newCard: CreditCard?
     @State private var isEditing: Bool = false
     @Query(sort:[SortDescriptor(\Bank.name, order: .forward)]) var existingBanks: [Bank]
@@ -86,6 +87,6 @@ struct WalletContentView: View {
 // MARK: - Previews
 
 #Preview {
-    WalletContentView(selectedCategory: .open, columnVisibility: .doubleColumn)
+    WalletContentView(selectedCategory: .constant(.open), columnVisibility: .constant(.all))
         .modelContainer(SampleData.shared.modelContainer)
 }
