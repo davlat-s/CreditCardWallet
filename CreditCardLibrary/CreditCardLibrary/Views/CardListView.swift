@@ -6,11 +6,10 @@ struct CardListView: View {
     @Binding var selectedCategory: SideBarCategories
     @Binding var selectedCard: CreditCard?
     
-    
-    @Query(sort: \CreditCard.name) private var allCreditCards: [CreditCard]
+    @Query(sort: \CreditCard.name) private var cards: [CreditCard]
     
     var filteredCreditCards: [CreditCard] {
-        allCreditCards.filter(selectedCategory.sidebarFilter)
+        cards.filter(selectedCategory.sidebarFilter)
     }
     
     var body: some View {
@@ -28,33 +27,54 @@ struct CardListView: View {
                     }
                 }
                 .buttonStyle(.plain)
-
             } else {
                 Text("No cards available")
             }
         }
     }
+
+    init(searchString: String = "", selectedCard: Binding<CreditCard?>, selectedCategory: Binding<SideBarCategories>) {
+        _selectedCard = selectedCard
+        _selectedCategory = selectedCategory
+        _cards = Query(filter: #Predicate { card in
+            if searchString.isEmpty {
+                return true
+            } else {
+                return card.name.localizedStandardContains(searchString)
+            }
+        })
+    }
 }
 
 // MARK: Previews
-
 #Preview("Open") {
-    CardListView(selectedCategory: .constant(.open), selectedCard: .constant(nil))
-        .modelContainer(SampleData.shared.modelContainer)
+    CardListView(
+        selectedCard: .constant(nil),
+        selectedCategory: .constant(.open)
+    )
+    .modelContainer(SampleData.shared.modelContainer)
 }
 
 #Preview("Personal") {
-    CardListView(selectedCategory: .constant(.personal), selectedCard: .constant(nil))
-        .modelContainer(SampleData.shared.modelContainer)
+    CardListView(
+        selectedCard: .constant(nil),
+        selectedCategory: .constant(.personal)
+    )
+    .modelContainer(SampleData.shared.modelContainer)
 }
 
 #Preview("Business") {
-    CardListView(selectedCategory: .constant(.business), selectedCard: .constant(nil))
-        .modelContainer(SampleData.shared.modelContainer)
+    CardListView(
+        selectedCard: .constant(nil),
+        selectedCategory: .constant(.business)
+    )
+    .modelContainer(SampleData.shared.modelContainer)
 }
 
 #Preview("Closed") {
-    CardListView(selectedCategory: .constant(.closed), selectedCard: .constant(nil))
-        .modelContainer(SampleData.shared.modelContainer)
+    CardListView(
+        selectedCard: .constant(nil),
+        selectedCategory: .constant(.closed)
+    )
+    .modelContainer(SampleData.shared.modelContainer)
 }
-

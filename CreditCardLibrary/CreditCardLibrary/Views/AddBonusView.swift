@@ -16,7 +16,7 @@ struct AddBonusView: View {
     
     var body: some View {
         Form {
-            TextField("Bonus Name", text: $bonusName)
+            TextField("Bonus Name", text: $bonusName, axis: .vertical)
                 .frame(width:textFieldWidth)
             Button("Add Bonus") {
                 let newBonus = Bonus(name: bonusName)

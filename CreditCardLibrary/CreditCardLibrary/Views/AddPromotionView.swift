@@ -9,7 +9,7 @@ struct AddPromotionView: View {
     
     var body: some View {
         Form {
-            TextField("Promotion Name", text: $promoName)
+            TextField("Promotion Name", text: $promoName, axis: .vertical)
                 .frame(width:textFieldWidth)
 
             Button("Add Promotion") {

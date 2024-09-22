@@ -37,7 +37,12 @@ struct FormView: View {
                     .padding(.top, 20)
                     
                     TextField("Card Name", text: $cardName)
+                        .textContentType(.creditCardName)
+                        .textFieldStyle(.roundedBorder)
+
                     TextField("Last Digits", text: $lastDigits)
+                        .textContentType(.creditCardNumber)
+                        .textFieldStyle(.roundedBorder)
                     
                     Toggle("Business", isOn: $isBusiness)
 

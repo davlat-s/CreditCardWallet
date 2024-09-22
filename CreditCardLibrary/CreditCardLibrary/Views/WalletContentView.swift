@@ -6,6 +6,7 @@ struct WalletContentView: View {
     @Binding var selectedCategory: SideBarCategories
     @Binding var columnVisibility: NavigationSplitViewVisibility
 
+    @State private var searchText: String = ""
     @State private var selectedCard: CreditCard?
     @State private var newCard: CreditCard?
     @State private var isEditing: Bool = false
@@ -20,8 +21,9 @@ struct WalletContentView: View {
             SidebarView(selectedCategory: $selectedCategory)
                 .navigationSplitViewColumnWidth(min: 150, ideal: 200, max: 400)
         } content: {
-            CardListView(selectedCategory: $selectedCategory, selectedCard: $selectedCard)
+            CardListView(searchString: searchText, selectedCard: $selectedCard, selectedCategory: $selectedCategory)
                 .navigationSplitViewColumnWidth(min: 200, ideal: 220, max: 400)
+                .searchable(text: $searchText)
         } detail: {
             if let selectedCard = selectedCard {
                 DetailView(creditCard: selectedCard)
