@@ -58,6 +58,7 @@ struct WalletContentView: View {
                 EditCreditCardView(creditCard: selectedCard, existingBanks: existingBanks, paymentProcessors: paymentProcessors)
             }
         }
+        
         .sheet(item: $newCard) { card in
             AddCreditCardView(existingBanks: existingBanks, paymentProcessors: paymentProcessors)
         }

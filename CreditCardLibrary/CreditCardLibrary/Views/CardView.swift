@@ -34,6 +34,8 @@ struct CardView: View {
                         Spacer()
                        
                     }
+                    .padding(.top)
+                    .padding(.bottom)
                     Text("***** ****** \(creditCard.lastDigits)")
                         .font(.custom("Courier", size: w/13))
                     HStack {

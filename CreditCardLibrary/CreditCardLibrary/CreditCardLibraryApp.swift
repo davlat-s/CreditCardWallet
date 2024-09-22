@@ -9,6 +9,7 @@ struct CreditCardLibraryApp: App {
             WalletContentView(selectedCategory: $sidebarSelection, columnVisibility: $columnVisibility)
                 .toolbarBackground(.ultraThickMaterial)
         }
+        .defaultPosition(.center)
         .modelContainer(appContainer)
         .windowStyle(.hiddenTitleBar)
         

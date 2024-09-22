@@ -2,6 +2,7 @@ import SwiftUI
 
 struct AddPromotionView: View {
     @Environment(\.dismiss) private var dismiss
+    @Binding var textFieldWidth: CGFloat
     @State private var promoName: String = ""
     
     var onSave: (Promotion) -> Void
@@ -9,6 +10,8 @@ struct AddPromotionView: View {
     var body: some View {
         Form {
             TextField("Promotion Name", text: $promoName)
+                .frame(width:textFieldWidth)
+
             Button("Add Promotion") {
                 let newPromo = Promotion(name: promoName)
                 
@@ -20,6 +23,6 @@ struct AddPromotionView: View {
 }
 
 #Preview {
-    AddPromotionView(onSave: { promo in print(promo.name)})
+    AddPromotionView(textFieldWidth: .constant(236), onSave: { promo in print(promo.name)})
         .modelContainer(SampleData.shared.modelContainer)
 }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AddBonusView: View {
     @Environment(\.dismiss) private var dismiss
+    @Binding var textFieldWidth: CGFloat
     @State private var bonusName: String = ""
     
     var onSave: (Bonus) -> Void
@@ -16,6 +17,7 @@ struct AddBonusView: View {
     var body: some View {
         Form {
             TextField("Bonus Name", text: $bonusName)
+                .frame(width:textFieldWidth)
             Button("Add Bonus") {
                 let newBonus = Bonus(name: bonusName)
                 
@@ -27,6 +29,6 @@ struct AddBonusView: View {
 }
 
 #Preview {
-    AddBonusView(onSave: { bonus in print(bonus.name)})
+    AddBonusView(textFieldWidth: .constant(236), onSave: { bonus in print(bonus.name)})
         .modelContainer(SampleData.shared.modelContainer)
 }
