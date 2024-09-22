@@ -32,9 +32,12 @@ struct FormView: View {
                     selectedColor = newColor
                 }
             ))
+            .padding(.top, 20)
             
             TextField("Card Name", text: $cardName)
+                .frame(width:236)
             TextField("Last Digits", text: $lastDigits)
+                .frame(width:197)
             
             Toggle("Business", isOn: $isBusiness)
 
@@ -43,12 +46,15 @@ struct FormView: View {
                     Text(pp.name).tag(Optional(pp))
                 }
             }
+            .padding(.leading, 20)
+            .frame(width:306)
             if !existingBanks.isEmpty {
                 Picker("Bank", selection: $selectedBank) {
                     ForEach(existingBanks) { bank in
                         Text(bank.name).tag(Optional(bank))
                     }
                 }
+                .frame(width:200)
             }
             
 
@@ -62,8 +68,10 @@ struct FormView: View {
             }
             HStack {
                 Text("Promotion:")
+                    .bold()
                 Spacer()
                 Text(promotion?.name ?? "None")
+                    .padding(.trailing,20)
             }
             Toggle("New Promo", isOn: $isNewPromo)
             
@@ -75,9 +83,11 @@ struct FormView: View {
             }
             
             HStack {
-                Text("Bonus")
+                Text("Bonus:")
+                    .bold()
                 Spacer()
                 Text(bonus?.name ?? "None")
+                    .padding(.trailing,20)
             }
             
             Toggle("New Bonus", isOn: $isNewBonus)
@@ -89,6 +99,7 @@ struct FormView: View {
                 }
             }
         }
+        .padding(.bottom, 30)
         .onAppear {
             if existingBanks.isEmpty {
                 isNewBank = true
