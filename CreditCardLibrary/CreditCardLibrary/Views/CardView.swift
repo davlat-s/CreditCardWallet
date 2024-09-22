@@ -30,7 +30,7 @@ struct CardView: View {
                     HStack {
                         Image("chip")
                             .resizable()
-                            .frame(width: w/9, height: w/10)
+                            .frame(width: w/7, height: w/10)
                         Spacer()
                        
                     }
