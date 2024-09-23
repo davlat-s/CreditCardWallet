@@ -8,6 +8,7 @@ struct AddCreditCardView: View {
     var paymentProcessors: [PaymentProcessor]
     
     @State private var cardName: String = ""
+    @State private var openDate: Date = .now
     @State private var isBusiness: Bool = false
     @State private var selectedBank: Bank?
     @State private var selectedPP: PaymentProcessor?
@@ -19,6 +20,7 @@ struct AddCreditCardView: View {
 
     var body: some View {
         FormView(cardName: $cardName,
+                 openDate: $openDate,
                  isBusiness: $isBusiness,
                  lastDigits: $lastDigits,
                  promotion: $promotion,
@@ -28,7 +30,7 @@ struct AddCreditCardView: View {
                  selectedColor: $selectedColor, isNewBank: isNewBank,
                  existingBanks: existingBanks,
                  paymentProcessors: paymentProcessors) {
-            let newCreditCard = CreditCard(name: cardName, isBusiness: isBusiness, lastDigits: lastDigits)
+            let newCreditCard = CreditCard(name: cardName, openDate: openDate, isBusiness: isBusiness, lastDigits: lastDigits)
             newCreditCard.bank = selectedBank
             newCreditCard.promotion = promotion
             newCreditCard.bonus = bonus

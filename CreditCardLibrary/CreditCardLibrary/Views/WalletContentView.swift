@@ -5,7 +5,9 @@ struct WalletContentView: View {
     
     @Binding var selectedCategory: SideBarCategories
     @Binding var columnVisibility: NavigationSplitViewVisibility
-
+    
+    @State private var sortOrder = [SortDescriptor(\CreditCard.name)]
+    @State private var searchText: String = ""
     @State private var selectedCard: CreditCard?
     @State private var newCard: CreditCard?
     @State private var isEditing: Bool = false
@@ -20,8 +22,9 @@ struct WalletContentView: View {
             SidebarView(selectedCategory: $selectedCategory)
                 .navigationSplitViewColumnWidth(min: 150, ideal: 200, max: 400)
         } content: {
-            CardListView(selectedCategory: $selectedCategory, selectedCard: $selectedCard)
+            CardListView(searchString: searchText, sortOrder: sortOrder, selectedCard: $selectedCard, selectedCategory: $selectedCategory)
                 .navigationSplitViewColumnWidth(min: 200, ideal: 220, max: 400)
+                .searchable(text: $searchText)
         } detail: {
             if let selectedCard = selectedCard {
                 DetailView(creditCard: selectedCard)
@@ -31,6 +34,25 @@ struct WalletContentView: View {
             }
         }
         .toolbar {
+            ToolbarItem {
+                Menu("Sort", systemImage: "arrow.up.arrow.down") {
+                    Picker("Name", selection: $sortOrder) {
+                        Text("A-Z")
+                            .tag([SortDescriptor(\CreditCard.name)])
+
+                        Text("Z-A")
+                            .tag([SortDescriptor(\CreditCard.name, order: .reverse)])
+                    }
+                    Picker("Date", selection: $sortOrder) {
+                        Text("Newest")
+                            .tag([SortDescriptor(\CreditCard.openDate, order: .reverse)])
+                        Text("Oldest")
+                            .tag([SortDescriptor(\CreditCard.openDate)])
+
+                    }
+                }
+            }
+
             ToolbarItem(placement: .primaryAction) {
                 Button(action: addCard) {
                     Label("Add Card", systemImage: "plus")
@@ -56,13 +78,15 @@ struct WalletContentView: View {
         .sheet(isPresented: $isEditing) {
             if let selectedCard = selectedCard {
                 EditCreditCardView(creditCard: selectedCard, existingBanks: existingBanks, paymentProcessors: paymentProcessors)
+                    .frame(width: 600, height: 300, alignment: .center)
             }
         }
         
         .sheet(item: $newCard) { card in
             AddCreditCardView(existingBanks: existingBanks, paymentProcessors: paymentProcessors)
+                .frame(width: 600, height: 300, alignment: .center)
+
         }
-        .interactiveDismissDisabled()
     }
     
     private func addCard() {
@@ -89,5 +113,5 @@ struct WalletContentView: View {
 
 #Preview {
     WalletContentView(selectedCategory: .constant(.open), columnVisibility: .constant(.all))
-        .modelContainer(SampleData.shared.modelContainer)
+        .modelContainer(PreviewData.shared.modelContainer)
 }

@@ -9,7 +9,7 @@ struct AddPromotionView: View {
     
     var body: some View {
         Form {
-            TextField("Promotion Name", text: $promoName)
+            TextField("Promotion Name", text: $promoName, axis: .vertical)
                 .frame(width:textFieldWidth)
 
             Button("Add Promotion") {
@@ -24,5 +24,5 @@ struct AddPromotionView: View {
 
 #Preview {
     AddPromotionView(textFieldWidth: .constant(236), onSave: { promo in print(promo.name)})
-        .modelContainer(SampleData.shared.modelContainer)
+        .modelContainer(PreviewData.shared.modelContainer)
 }

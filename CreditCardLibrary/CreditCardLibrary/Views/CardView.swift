@@ -60,5 +60,5 @@ struct CardView: View {
 }
 
 #Preview {
-    CardView(creditCard: SampleData.shared.creditCard)
+    CardView(creditCard: PreviewData.shared.creditCard)
 }

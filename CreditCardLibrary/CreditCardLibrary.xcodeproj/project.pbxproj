@@ -24,7 +24,7 @@
 		3176D8EF2C7437E000C57FBB /* Bonus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176D8EE2C7437DF00C57FBB /* Bonus.swift */; };
 		3176D8F22C75AC2B00C57FBB /* Closed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176D8F12C75AC2B00C57FBB /* Closed.swift */; };
 		3176D8F42C75AD1600C57FBB /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176D8F32C75AD1600C57FBB /* Promotion.swift */; };
-		318A66302C7BD3EC0039487E /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318A662F2C7BD3EC0039487E /* SampleData.swift */; };
+		318A66302C7BD3EC0039487E /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318A662F2C7BD3EC0039487E /* PreviewData.swift */; };
 		318A66332C7BDF950039487E /* WalletContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318A66322C7BDF950039487E /* WalletContentView.swift */; };
 		318A66372C7C14300039487E /* SideBarCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318A66362C7C14300039487E /* SideBarCategories.swift */; };
 		318A66392C7C21020039487E /* CardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318A66382C7C21020039487E /* CardListView.swift */; };
@@ -53,7 +53,7 @@
 		3176D8EE2C7437DF00C57FBB /* Bonus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bonus.swift; sourceTree = "<group>"; };
 		3176D8F12C75AC2B00C57FBB /* Closed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Closed.swift; sourceTree = "<group>"; };
 		3176D8F32C75AD1600C57FBB /* Promotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promotion.swift; sourceTree = "<group>"; };
-		318A662F2C7BD3EC0039487E /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
+		318A662F2C7BD3EC0039487E /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
 		318A66322C7BDF950039487E /* WalletContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletContentView.swift; sourceTree = "<group>"; };
 		318A66362C7C14300039487E /* SideBarCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarCategories.swift; sourceTree = "<group>"; };
 		318A66382C7C21020039487E /* CardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListView.swift; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 				3176D8F02C743F0900C57FBB /* Utilities */,
 				318A66312C7BDD980039487E /* Views */,
 				31AAFEDE2C5F436A00CE1BDC /* Model */,
-				318A662F2C7BD3EC0039487E /* SampleData.swift */,
+				318A662F2C7BD3EC0039487E /* PreviewData.swift */,
 				319F55902C5F2B1600C054D2 /* Assets.xcassets */,
 				319F55952C5F2B1600C054D2 /* CreditCardLibrary.entitlements */,
 				319F55922C5F2B1600C054D2 /* Preview Content */,
@@ -233,7 +233,7 @@
 				314BD4802C9EB2FA00E32E74 /* SidebarView.swift in Sources */,
 				314BD46E2C977D1A00E32E74 /* AddPromotionView.swift in Sources */,
 				314BD4742C992D0000E32E74 /* PaymentProcessor.swift in Sources */,
-				318A66302C7BD3EC0039487E /* SampleData.swift in Sources */,
+				318A66302C7BD3EC0039487E /* PreviewData.swift in Sources */,
 				314BD4842C9F7C0A00E32E74 /* Color.swift in Sources */,
 				314BD46A2C95377400E32E74 /* EditCreditCardView.swift in Sources */,
 				314BD4722C98AC6400E32E74 /* CardView.swift in Sources */,

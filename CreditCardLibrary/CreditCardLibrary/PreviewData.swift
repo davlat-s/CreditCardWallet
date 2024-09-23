@@ -2,9 +2,9 @@ import Foundation
 import SwiftData
 
 @MainActor
-class SampleData {
+class PreviewData {
     
-    static let shared = SampleData()
+    static let shared = PreviewData()
     
     let modelContainer: ModelContainer
     
