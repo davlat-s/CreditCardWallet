@@ -53,7 +53,7 @@ struct FormView: View {
                     }
                     .pickerStyle(.menu)
                     .padding(.leading, 20)
-                    
+                    Divider()
                     if !existingBanks.isEmpty {
                         Picker("Bank", selection: $selectedBank) {
                             ForEach(existingBanks) { bank in
@@ -71,7 +71,7 @@ struct FormView: View {
                             selectedBank = newBank
                         }
                     }
-
+                    Divider()
                     Text(promotion?.name ?? "No Promotions")
                     
                     Toggle("New Promo", isOn: $isNewPromo)
@@ -82,7 +82,7 @@ struct FormView: View {
                             promotion = newPromo
                         }
                     }
-
+                    Divider()
                     Text(bonus?.name ?? "No Bonuses")
                     
                     Toggle("New Bonus", isOn: $isNewBonus)
@@ -106,8 +106,6 @@ struct FormView: View {
                         }
                     }
                 }
-                .frame(width: 400)
-//                .frame(minWidth: 300, idealWidth: 400, maxWidth: 400, minHeight: 300, idealHeight: 400, maxHeight: 400, alignment: .top)
             }
         .onAppear {
             if existingBanks.isEmpty {
@@ -134,10 +132,10 @@ struct FormView: View {
     FormView(cardName: .constant(""),
              isBusiness: .constant(false),
              lastDigits: .constant(""),
-             promotion: .constant(SampleData.shared.promotion),
-             selectedBank:.constant(SampleData.shared.bank),
-             bonus: .constant(SampleData.shared.bonus),
-             selectedPP: .constant(SampleData.shared.paymentProcessor),
+             promotion: .constant(PreviewData.shared.promotion),
+             selectedBank:.constant(PreviewData.shared.bank),
+             bonus: .constant(PreviewData.shared.bonus),
+             selectedPP: .constant(PreviewData.shared.paymentProcessor),
              selectedColor: .constant(.gray),
              isNewBank: false,
              existingBanks: Bank.sampleData,

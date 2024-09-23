@@ -35,5 +35,5 @@ struct SidebarView: View {
 }
 
 #Preview {
-    SidebarView(selectedCategory: .constant(SampleData.shared.closedCategory))
+    SidebarView(selectedCategory: .constant(PreviewData.shared.closedCategory))
 }

@@ -30,5 +30,5 @@ struct AddBonusView: View {
 
 #Preview {
     AddBonusView(textFieldWidth: .constant(236), onSave: { bonus in print(bonus.name)})
-        .modelContainer(SampleData.shared.modelContainer)
+        .modelContainer(PreviewData.shared.modelContainer)
 }

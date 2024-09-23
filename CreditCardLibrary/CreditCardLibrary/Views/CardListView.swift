@@ -33,7 +33,7 @@ struct CardListView: View {
         }
     }
 
-    init(searchString: String = "", selectedCard: Binding<CreditCard?>, selectedCategory: Binding<SideBarCategories>) {
+    init(searchString: String = "", sortOrder: [SortDescriptor<CreditCard>] = [], selectedCard: Binding<CreditCard?>, selectedCategory: Binding<SideBarCategories>) {
         _selectedCard = selectedCard
         _selectedCategory = selectedCategory
         _cards = Query(filter: #Predicate { card in
@@ -42,7 +42,7 @@ struct CardListView: View {
             } else {
                 return card.name.localizedStandardContains(searchString)
             }
-        })
+        }, sort: sortOrder)
     }
 }
 
@@ -52,7 +52,7 @@ struct CardListView: View {
         selectedCard: .constant(nil),
         selectedCategory: .constant(.open)
     )
-    .modelContainer(SampleData.shared.modelContainer)
+    .modelContainer(PreviewData.shared.modelContainer)
 }
 
 #Preview("Personal") {
@@ -60,7 +60,7 @@ struct CardListView: View {
         selectedCard: .constant(nil),
         selectedCategory: .constant(.personal)
     )
-    .modelContainer(SampleData.shared.modelContainer)
+    .modelContainer(PreviewData.shared.modelContainer)
 }
 
 #Preview("Business") {
@@ -68,7 +68,7 @@ struct CardListView: View {
         selectedCard: .constant(nil),
         selectedCategory: .constant(.business)
     )
-    .modelContainer(SampleData.shared.modelContainer)
+    .modelContainer(PreviewData.shared.modelContainer)
 }
 
 #Preview("Closed") {
@@ -76,5 +76,5 @@ struct CardListView: View {
         selectedCard: .constant(nil),
         selectedCategory: .constant(.closed)
     )
-    .modelContainer(SampleData.shared.modelContainer)
+    .modelContainer(PreviewData.shared.modelContainer)
 }

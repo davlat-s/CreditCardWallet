@@ -24,5 +24,5 @@ struct AddPromotionView: View {
 
 #Preview {
     AddPromotionView(textFieldWidth: .constant(236), onSave: { promo in print(promo.name)})
-        .modelContainer(SampleData.shared.modelContainer)
+        .modelContainer(PreviewData.shared.modelContainer)
 }

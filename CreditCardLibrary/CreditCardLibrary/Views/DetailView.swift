@@ -51,7 +51,7 @@ struct DetailView: View {
 // MARK: Previews
 
 #Preview("Details") {
-    DetailView(creditCard: SampleData.shared.creditCard)
-        .modelContainer(SampleData.shared.modelContainer)
+    DetailView(creditCard: PreviewData.shared.creditCard)
+        .modelContainer(PreviewData.shared.modelContainer)
 }
 

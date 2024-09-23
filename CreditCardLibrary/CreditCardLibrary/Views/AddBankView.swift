@@ -23,5 +23,5 @@ struct AddBankView: View {
 
 #Preview {
     AddBankView(textFieldWidth: .constant(236), onSave: { bank in print(bank.name)})
-        .modelContainer(SampleData.shared.modelContainer)
+        .modelContainer(PreviewData.shared.modelContainer)
 }

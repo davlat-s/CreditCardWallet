@@ -58,5 +58,5 @@ struct EditCreditCardView: View {
 }
 
 #Preview {
-    EditCreditCardView(creditCard: SampleData.shared.creditCard, existingBanks: Bank.sampleData, paymentProcessors: PaymentProcessor.sampleData)
+    EditCreditCardView(creditCard: PreviewData.shared.creditCard, existingBanks: Bank.sampleData, paymentProcessors: PaymentProcessor.sampleData)
 }
