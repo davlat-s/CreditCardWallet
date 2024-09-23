@@ -6,6 +6,7 @@ struct FormView: View {
     @Environment(\.modelContext) var modelContext
     
     @Binding var cardName: String
+    @Binding var openDate: Date
     @Binding var isBusiness: Bool
     @Binding var lastDigits: String
     
@@ -35,6 +36,9 @@ struct FormView: View {
                         }
                     ))
                     .padding(.top, 20)
+                    
+                    DatePicker("Open Date", selection: $openDate, displayedComponents: .date)
+                        .datePickerStyle(.compact)
                     
                     TextField("Card Name", text: $cardName)
                         .textContentType(.creditCardName)
@@ -130,6 +134,7 @@ struct FormView: View {
 
 #Preview {
     FormView(cardName: .constant(""),
+             openDate: .constant(.now),
              isBusiness: .constant(false),
              lastDigits: .constant(""),
              promotion: .constant(PreviewData.shared.promotion),

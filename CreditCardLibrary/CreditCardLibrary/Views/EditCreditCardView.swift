@@ -10,6 +10,7 @@ struct EditCreditCardView: View {
 
 
     @State private var cardName: String
+    @State private var openDate: Date
     @State private var isBusiness: Bool
     @State private var lastDigits: String
     @State private var selectedBank: Bank?
@@ -24,6 +25,7 @@ struct EditCreditCardView: View {
         self.existingBanks = existingBanks
         self.paymentProcessors = paymentProcessors
         _cardName = State(initialValue: creditCard.name)
+        _openDate = State(initialValue: creditCard.openDate)
         _isBusiness = State(initialValue: creditCard.isBusiness)
         _lastDigits = State(initialValue: creditCard.lastDigits)
         _selectedBank = State(initialValue: creditCard.bank)
@@ -35,6 +37,7 @@ struct EditCreditCardView: View {
 
     var body: some View {
         FormView(cardName: $cardName,
+                 openDate: $openDate,
                  isBusiness: $isBusiness,
                  lastDigits: $lastDigits,
                  promotion: $promotion,
@@ -45,12 +48,14 @@ struct EditCreditCardView: View {
                  existingBanks: existingBanks,
                  paymentProcessors: paymentProcessors) {
             creditCard.name = cardName
+            creditCard.openDate = openDate
             creditCard.isBusiness = isBusiness
             creditCard.promotion = promotion
             creditCard.bank = selectedBank
             creditCard.bonus = bonus
             creditCard.paymentProcessor = selectedPP
             creditCard.color = selectedColor
+            creditCard.lastDigits = lastDigits
             try? modelContext.save()
             dismiss()
         }

@@ -37,11 +37,18 @@ struct WalletContentView: View {
             ToolbarItem {
                 Menu("Sort", systemImage: "arrow.up.arrow.down") {
                     Picker("Name", selection: $sortOrder) {
-                        Text("Name (A-Z)")
+                        Text("A-Z")
                             .tag([SortDescriptor(\CreditCard.name)])
 
-                        Text("Name (Z-A)")
+                        Text("Z-A")
                             .tag([SortDescriptor(\CreditCard.name, order: .reverse)])
+                    }
+                    Picker("Date", selection: $sortOrder) {
+                        Text("Newest")
+                            .tag([SortDescriptor(\CreditCard.openDate, order: .reverse)])
+                        Text("Oldest")
+                            .tag([SortDescriptor(\CreditCard.openDate)])
+
                     }
                 }
             }
