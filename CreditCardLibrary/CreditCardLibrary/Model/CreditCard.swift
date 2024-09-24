@@ -6,7 +6,9 @@ import SwiftUI
 @Model
 final class CreditCard {
     var name: String
+    var creditLimit: String
     var isBusiness: Bool
+    var isChargeCard: Bool
     var openDate: Date
     var lastDigits: String
     var colorHex: String?
@@ -26,8 +28,10 @@ final class CreditCard {
         }
     
     init(name: String,
+         creditLimit: String,
          openDate: Date,
          isBusiness: Bool,
+         isChargeCard: Bool,
          lastDigits: String,
          colorHex: String? = nil,
          bank: Bank? = nil,
@@ -36,6 +40,7 @@ final class CreditCard {
          closed: Closed? = nil,
          paymentProcessor: PaymentProcessor? = nil) {
         self.name = name
+        self.creditLimit = creditLimit
         self.openDate = openDate
         self.isBusiness = isBusiness
         self.lastDigits = lastDigits
@@ -45,18 +50,19 @@ final class CreditCard {
         self.closed = closed
         self.paymentProcessor = paymentProcessor
         self.colorHex = colorHex
+        self.isChargeCard = isChargeCard
     }
     
     static func createNewCard() -> CreditCard {
-        return CreditCard(name: "", openDate: .now, isBusiness: false, lastDigits: "")
+        return CreditCard(name: "", creditLimit: "0", openDate: .now, isBusiness: false, isChargeCard: false, lastDigits: "")
     }
     
     static let sampleData = [
-        CreditCard(name: "Platinum", openDate: .now, isBusiness: false, lastDigits: "62376", bank: Bank(name: "American Express"), promotion: Promotion(name: "Zero APR for 12 months"), bonus: Bonus(name: "100k sign up bonus"), closed: Closed(reason: "Too expensive", isClosed: true), paymentProcessor: PaymentProcessor.amex),
-        CreditCard(name: "Saphire Reserve", openDate: .now, isBusiness: false, lastDigits: "3552", bank: Bank(name: "Chase"), promotion: Promotion(name: "Zero APR for 18 months"), bonus: Bonus(name: "80k sign up bonus"), closed: Closed(reason: "", isClosed: false)),
-        CreditCard(name: "Ink Preffered",openDate: .now,isBusiness: true, lastDigits: "7743"),
-        CreditCard(name: "AmEx Gold", openDate: .now, isBusiness: false, lastDigits: "6343"),
-        CreditCard(name: "Flex", openDate: .now, isBusiness: false, lastDigits: "8234"),
-        CreditCard(name: "BILT", openDate: .now, isBusiness: false, lastDigits: "8322"),
+        CreditCard(name: "Platinum", creditLimit: "110.23", openDate: .now, isBusiness: false, isChargeCard: false, lastDigits: "62376", bank: Bank(name: "American Express"), promotion: Promotion(name: "Zero APR for 12 months"), bonus: Bonus(name: "100k sign up bonus"), closed: Closed(reason: "Too expensive", isClosed: true), paymentProcessor: PaymentProcessor.amex),
+        CreditCard(name: "Saphire Reserve", creditLimit: "4520.6", openDate: .now, isBusiness: false, isChargeCard: false, lastDigits: "3552", bank: Bank(name: "Chase"), promotion: Promotion(name: "Zero APR for 18 months"), bonus: Bonus(name: "80k sign up bonus"), closed: Closed(reason: "", isClosed: false)),
+        CreditCard(name: "Ink Preffered", creditLimit: "520.3",openDate: .now,isBusiness: true, isChargeCard: false, lastDigits: "7743"),
+        CreditCard(name: "AmEx Gold", creditLimit: "630.67", openDate: .now, isBusiness: false, isChargeCard: false, lastDigits: "6343"),
+        CreditCard(name: "Flex", creditLimit: "0", openDate: .now, isBusiness: false, isChargeCard: false, lastDigits: "8234"),
+        CreditCard(name: "BILT", creditLimit: "730.3", openDate: .now, isBusiness: false, isChargeCard: false, lastDigits: "8322"),
     ]
 }

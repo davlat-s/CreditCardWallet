@@ -6,8 +6,10 @@ struct FormView: View {
     @Environment(\.modelContext) var modelContext
     
     @Binding var cardName: String
+    @Binding var creditLimit: String
     @Binding var openDate: Date
     @Binding var isBusiness: Bool
+    @Binding var isChargeCard: Bool
     @Binding var lastDigits: String
     
     @Binding var promotion: Promotion?
@@ -33,8 +35,9 @@ struct FormView: View {
                         get: { selectedColor ?? Color.gray },
                         set: { newColor in
                             selectedColor = newColor
-                        }
-                    ))
+                        }))
+                    
+                    .pickerStyle(.menu)
                     .padding(.top, 20)
                     
                     DatePicker("Open Date", selection: $openDate, displayedComponents: .date)
@@ -47,6 +50,18 @@ struct FormView: View {
                     TextField("Last Digits", text: $lastDigits)
                         .textContentType(.creditCardNumber)
                         .textFieldStyle(.roundedBorder)
+                    
+                    Toggle("Charge Card", isOn: $isChargeCard)
+                        .onChange(of: isChargeCard) {
+                            if isChargeCard {
+                                creditLimit = "0"
+                            }
+                        }
+                    
+                    // Disable credit limit field if it's a charge card
+                    TextField("Credit Limit", text: $creditLimit)
+                        .disabled(isChargeCard)
+                        .opacity(isChargeCard ? 0.5 : 1.0)
                     
                     Toggle("Business", isOn: $isBusiness)
 
@@ -97,18 +112,6 @@ struct FormView: View {
                             bonus = newBonus
                         }
                     }
-                    if isNewBonus {
-                        AddBonusView(textFieldWidth: $textFieldWidth) { newBonus in
-                            modelContext.insert(newBonus)
-                            bonus = newBonus
-                        }
-                    }
-                    if isNewBonus {
-                        AddBonusView(textFieldWidth: $textFieldWidth) { newBonus in
-                            modelContext.insert(newBonus)
-                            bonus = newBonus
-                        }
-                    }
                 }
             }
         .onAppear {
@@ -121,7 +124,7 @@ struct FormView: View {
                 Button("Save") {
                     onSave()
                 }
-                .disabled(cardName.isEmpty || selectedBank == nil || selectedPP == nil)
+                .disabled(cardName.isEmpty || selectedBank == nil || selectedPP == nil || lastDigits.isEmpty || creditLimit.isEmpty)
             }
             ToolbarItem(placement: .cancellationAction) {
                 Button("Cancel") {
@@ -134,8 +137,10 @@ struct FormView: View {
 
 #Preview {
     FormView(cardName: .constant(""),
+             creditLimit: .constant("0"),
              openDate: .constant(.now),
              isBusiness: .constant(false),
+             isChargeCard: .constant(false),
              lastDigits: .constant(""),
              promotion: .constant(PreviewData.shared.promotion),
              selectedBank:.constant(PreviewData.shared.bank),

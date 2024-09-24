@@ -34,25 +34,31 @@ struct WalletContentView: View {
             }
         }
         .toolbar {
-            ToolbarItem {
+            ToolbarItem(placement: .secondaryAction) {
                 Menu("Sort", systemImage: "arrow.up.arrow.down") {
                     Picker("Name", selection: $sortOrder) {
                         Text("A-Z")
                             .tag([SortDescriptor(\CreditCard.name)])
-
+                        
                         Text("Z-A")
                             .tag([SortDescriptor(\CreditCard.name, order: .reverse)])
                     }
-                    Picker("Date", selection: $sortOrder) {
+                    Picker("Open Date", selection: $sortOrder) {
                         Text("Newest")
                             .tag([SortDescriptor(\CreditCard.openDate, order: .reverse)])
                         Text("Oldest")
                             .tag([SortDescriptor(\CreditCard.openDate)])
-
+                        
+                    }
+                    Picker("Credit Limit", selection: $sortOrder) {
+                        Text("Highest")
+                            .tag([SortDescriptor(\CreditCard.creditLimit, order: .reverse)])
+                        Text("Lowest")
+                            .tag([SortDescriptor(\CreditCard.creditLimit)])
                     }
                 }
             }
-
+            
             ToolbarItem(placement: .primaryAction) {
                 Button(action: addCard) {
                     Label("Add Card", systemImage: "plus")
@@ -66,14 +72,14 @@ struct WalletContentView: View {
                 }
             }
             ToolbarItem(placement: .destructiveAction) {
-                    if let selectedCard = selectedCard {
-                        Button(action: {
-                            deleteCard(selectedCard) // Wrap in a closure
-                        }) {
-                            Label("Delete", systemImage: "trash")
-                        }
+                if let selectedCard = selectedCard {
+                    Button(action: {
+                        deleteCard(selectedCard) // Wrap in a closure
+                    }) {
+                        Label("Delete", systemImage: "trash")
                     }
                 }
+            }
         }
         .sheet(isPresented: $isEditing) {
             if let selectedCard = selectedCard {
@@ -85,7 +91,7 @@ struct WalletContentView: View {
         .sheet(item: $newCard) { card in
             AddCreditCardView(existingBanks: existingBanks, paymentProcessors: paymentProcessors)
                 .frame(width: 600, height: 300, alignment: .center)
-
+            
         }
     }
     
@@ -101,12 +107,12 @@ struct WalletContentView: View {
     }
     
     private func deleteCard(_ card: CreditCard) {
-            withAnimation {
-                modelContext.delete(card)
-                selectedCard = nil
-            }
+        withAnimation {
+            modelContext.delete(card)
+            selectedCard = nil
         }
     }
+}
 
 
 // MARK: - Previews
