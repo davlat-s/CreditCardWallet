@@ -6,7 +6,7 @@ struct WalletContentView: View {
     @Binding var selectedCategory: SideBarCategories
     @Binding var columnVisibility: NavigationSplitViewVisibility
     
-    @State private var sortOrder = [SortDescriptor(\CreditCard.name)]
+    @State private var sortOrder = [SortDescriptor(\CreditCard.openDate, order: .reverse)]
     @State private var searchText: String = ""
     @State private var selectedCard: CreditCard?
     @State private var newCard: CreditCard?
@@ -89,15 +89,19 @@ struct WalletContentView: View {
         }
         
         .sheet(item: $newCard) { card in
-            AddCreditCardView(existingBanks: existingBanks, paymentProcessors: paymentProcessors)
-                .frame(width: 600, height: 300, alignment: .center)
-            
+            AddCreditCardView(
+                creditCard: card,
+                existingBanks: existingBanks,
+                paymentProcessors: paymentProcessors
+            )
+            .frame(width: 600, height: 300, alignment: .center)
         }
     }
     
     private func addCard() {
         withAnimation {
             let newItem = CreditCard.createNewCard()
+            modelContext.insert(newItem)
             newCard = newItem
         }
     }
