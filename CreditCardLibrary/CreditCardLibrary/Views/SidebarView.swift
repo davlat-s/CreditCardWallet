@@ -2,7 +2,8 @@ import SwiftUI
 
 struct SidebarView: View {
     @Binding var selectedCategory: SideBarCategories
-    @State private var isOpenExpanded: Bool = true
+    @State private var isExpanded: Bool = true
+    // TODO: make isExpanded persistent across user sessions. UserDefaultsBacked
 
     private func sortedCategories() -> [SideBarCategories] {
         let categories: [SideBarCategories] = [
@@ -21,6 +22,11 @@ struct SidebarView: View {
                         Label(category.displayName, systemImage: category.displayImageName)
                     }
                 }
+                DisclosureGroup(
+                    isExpanded: $isExpanded,
+                    content: {Text("placeholder")},
+                    label: { Label(SideBarCategories.bank.displayName, systemImage: SideBarCategories.bank.displayImageName) }
+                )
             }
             
             Section("Other") {

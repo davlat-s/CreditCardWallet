@@ -36,13 +36,6 @@ struct WalletContentView: View {
         .toolbar {
             ToolbarItem(placement: .secondaryAction) {
                 Menu("Sort", systemImage: "arrow.up.arrow.down") {
-                    Picker("Name", selection: $sortOrder) {
-                        Text("A-Z")
-                            .tag([SortDescriptor(\CreditCard.name)])
-                        
-                        Text("Z-A")
-                            .tag([SortDescriptor(\CreditCard.name, order: .reverse)])
-                    }
                     Picker("Open Date", selection: $sortOrder) {
                         Text("Newest")
                             .tag([SortDescriptor(\CreditCard.openDate, order: .reverse)])
@@ -55,6 +48,13 @@ struct WalletContentView: View {
                             .tag([SortDescriptor(\CreditCard.creditLimit, order: .reverse)])
                         Text("Lowest")
                             .tag([SortDescriptor(\CreditCard.creditLimit)])
+                    }
+                    Picker("Name", selection: $sortOrder) {
+                        Text("A-Z")
+                            .tag([SortDescriptor(\CreditCard.name)])
+                        
+                        Text("Z-A")
+                            .tag([SortDescriptor(\CreditCard.name, order: .reverse)])
                     }
                 }
             }
