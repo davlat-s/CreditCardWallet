@@ -15,6 +15,7 @@ struct FormView: View {
     var paymentProcessors: [PaymentProcessor]
     
     var onSave: () -> Void
+    var onCancel: (() -> Void)? = nil
     
     var body: some View {
         ScrollView {
@@ -105,25 +106,6 @@ struct FormView: View {
                 }
             }
             .formStyle(.grouped)
-        }
-        .toolbar {
-            ToolbarItem(placement: .confirmationAction) {
-                Button("Save") {
-                    onSave()
-                }
-                .disabled(creditCard.name.isEmpty || creditCard.bank == nil || creditCard.paymentProcessor == nil || creditCard.lastDigits.isEmpty)
-            }
-            ToolbarItem(placement: .cancellationAction) {
-                Button("Cancel") {
-                    modelContext.delete(creditCard)
-                    dismiss()
-                }
-            }
-        }
-        .onAppear {
-            if existingBanks.isEmpty {
-                isNewBank = true
-            }
         }
     }
 }

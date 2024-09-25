@@ -11,16 +11,32 @@ struct EditCreditCardView: View {
     var paymentProcessors: [PaymentProcessor]
     
     var body: some View {
-        FormView(creditCard: $creditCard,
-                 isNewBank: false,
-                 existingBanks: existingBanks,
-                 paymentProcessors: paymentProcessors) {
-            try? modelContext.save()
-            dismiss()
+        VStack {
+            FormView(
+                creditCard: $creditCard,
+                isNewBank: false,
+                existingBanks: existingBanks,
+                paymentProcessors: paymentProcessors,
+                onSave: {
+                    try? modelContext.save()
+                    dismiss()
+                },
+                onCancel: {
+                    dismiss()
+                }
+            )
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Done") {
+                        try? modelContext.save()
+                        dismiss()
+                    }
+                    .disabled(creditCard.name.isEmpty || creditCard.bank == nil || creditCard.paymentProcessor == nil || creditCard.lastDigits.isEmpty)
+                }
+            }
         }
     }
 }
-
 
 
 #Preview {
