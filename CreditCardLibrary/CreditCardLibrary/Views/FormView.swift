@@ -19,11 +19,15 @@ struct FormView: View {
     var body: some View {
         ScrollView {
             Form {
-                CardView(creditCard: creditCard)
-                    .frame(width: 48.6, height: 30.6, alignment: .init(horizontal: .leading, vertical: .center))
-                    .scaleEffect(0.3)
-                    .padding(.top, 80)
-                    .padding(.bottom,50)
+                HStack {
+                    Spacer()
+                    CardView(creditCard: creditCard)
+                        .scaleEffect(0.45)
+                        .frame(width: CreditCard.cardWidth/4, height: CreditCard.cardHeight/4)
+                        .padding(50)
+                    Spacer()
+                }
+
                 ColorPicker("Card Color", selection: Binding(
                     get: { creditCard.color ?? .gray },
                     set: { newColor in
@@ -61,17 +65,15 @@ struct FormView: View {
                     }
                 }
                 .pickerStyle(.menu)
-                .padding(.leading, 20)
-                Divider()
                 
-                if !existingBanks.isEmpty {
-                    Picker("Bank", selection: $creditCard.bank) {
-                        ForEach(existingBanks) { bank in
-                            Text(bank.name).tag(Optional(bank))
-                        }
+         
+                Picker("Bank", selection: $creditCard.bank) {
+                    ForEach(existingBanks) { bank in
+                        Text(bank.name).tag(Optional(bank))
                     }
-                    .pickerStyle(.menu)
                 }
+                .pickerStyle(.menu)
+      
                 
                 Toggle("New Bank", isOn: $isNewBank)
                 
@@ -81,7 +83,6 @@ struct FormView: View {
                         creditCard.bank = newBank
                     }
                 }
-                Divider()
                 Text(creditCard.promotion?.name ?? "No Promotions")
                 
                 Toggle("New Promo", isOn: $isNewPromo)
@@ -92,7 +93,6 @@ struct FormView: View {
                         creditCard.promotion = newPromo
                     }
                 }
-                Divider()
                 Text(creditCard.bonus?.name ?? "No Bonuses")
                 
                 Toggle("New Bonus", isOn: $isNewBonus)
@@ -104,11 +104,7 @@ struct FormView: View {
                     }
                 }
             }
-        }
-        .onAppear {
-            if existingBanks.isEmpty {
-                isNewBank = true
-            }
+            .formStyle(.grouped)
         }
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
@@ -124,10 +120,16 @@ struct FormView: View {
                 }
             }
         }
+        .onAppear {
+            if existingBanks.isEmpty {
+                isNewBank = true
+            }
+        }
     }
 }
 
 
 #Preview {
     FormView(creditCard: .constant(PreviewData.shared.creditCard), existingBanks: Bank.sampleData, paymentProcessors: PaymentProcessor.sampleData, onSave: {print("")})
+        .frame(height: 1000)
 }

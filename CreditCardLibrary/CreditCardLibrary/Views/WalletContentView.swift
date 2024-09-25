@@ -84,7 +84,7 @@ struct WalletContentView: View {
         .sheet(isPresented: $isEditing) {
             if let selectedCard = selectedCard {
                 EditCreditCardView(creditCard: selectedCard, existingBanks: existingBanks, paymentProcessors: paymentProcessors)
-                    .frame(width: 600, height: 300, alignment: .center)
+                    .frame(width: 600, height: 500, alignment: .center)
             }
         }
         
@@ -94,7 +94,7 @@ struct WalletContentView: View {
                 existingBanks: existingBanks,
                 paymentProcessors: paymentProcessors
             )
-            .frame(width: 600, height: 300, alignment: .center)
+            .frame(width: 600, height: 500, alignment: .center)
         }
     }
     
