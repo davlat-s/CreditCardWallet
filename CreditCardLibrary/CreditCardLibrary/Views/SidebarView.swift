@@ -24,26 +24,26 @@ struct SidebarView: View {
                     }
                 }
                 DisclosureGroup(
-                                    isExpanded: $isExpanded,
-                                    content: {
-                                        ForEach(banksWCards, id: \.self) { bank in
-                                            NavigationLink(value: SideBarCategories.bank(bank)) {
-                                                Text(bank.name)
-                                            }
-                                            .simultaneousGesture(TapGesture().onEnded {
-                                                selectedCategory = .bank(bank)  // Update the selected category to the bank
-                                            })
-                                        }
-                                    },
-                                    label: {
-                                        Label("By Bank", systemImage: "building.columns")
-                                            .onTapGesture {
-                                                withAnimation() {
-                                                    isExpanded.toggle()
-                                                }
-                                            }
-                                    }
-                                )
+                    isExpanded: $isExpanded,
+                    content: {
+                        ForEach(banksWCards, id: \.self) { bank in
+                            NavigationLink(value: SideBarCategories.bank(bank)) {
+                                Text(bank.name)
+                            }
+                            .simultaneousGesture(TapGesture().onEnded {
+                                selectedCategory = .bank(bank)
+                            })
+                        }
+                    },
+                    label: {
+                        Label("By Bank", systemImage: "building.columns")
+                            .onTapGesture {
+                                withAnimation() {
+                                    isExpanded.toggle()
+                                }
+                            }
+                    }
+                )
             }
             
             Section("Other") {

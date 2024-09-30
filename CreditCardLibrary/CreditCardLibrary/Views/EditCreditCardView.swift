@@ -10,6 +10,8 @@ struct EditCreditCardView: View {
     var existingBanks: [Bank]
     var paymentProcessors: [PaymentProcessor]
     
+    var filterCallback: () -> Void
+    
     var body: some View {
         VStack {
             FormView(
@@ -30,6 +32,7 @@ struct EditCreditCardView: View {
                     Button("Done") {
                         try? modelContext.save()
                         dismiss()
+                        filterCallback()
                     }
                     .disabled(creditCard.name.isEmpty || creditCard.bank == nil || creditCard.paymentProcessor == nil || creditCard.lastDigits.isEmpty)
                 }
@@ -40,5 +43,5 @@ struct EditCreditCardView: View {
 
 
 #Preview {
-    EditCreditCardView(creditCard: PreviewData.shared.creditCard, existingBanks: Bank.sampleData, paymentProcessors: PaymentProcessor.sampleData)
+    EditCreditCardView(creditCard: PreviewData.shared.creditCard, existingBanks: Bank.sampleData, paymentProcessors: PaymentProcessor.sampleData, filterCallback: {print("test")})
 }

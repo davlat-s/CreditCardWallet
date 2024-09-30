@@ -36,7 +36,7 @@ struct WalletContentView: View {
                     .foregroundStyle(.secondary)
             }
         }
-        .onAppear(perform: filterBanksWithCreditCards)
+        .onAppear(perform: filterBanksWithCreditCards) // Filter banks on view appearance
         .onChange(of: existingBanks) {
             filterBanksWithCreditCards()
         }
@@ -82,7 +82,7 @@ struct WalletContentView: View {
             ToolbarItem(placement: .destructiveAction) {
                 if let selectedCard = selectedCard {
                     Button(action: {
-                        deleteCard(selectedCard) // Wrap in a closure
+                        deleteCard(selectedCard)
                     }) {
                         Label("Delete", systemImage: "trash")
                     }
@@ -91,7 +91,11 @@ struct WalletContentView: View {
         }
         .sheet(isPresented: $isEditing) {
             if let selectedCard = selectedCard {
-                EditCreditCardView(creditCard: selectedCard, existingBanks: existingBanks, paymentProcessors: paymentProcessors)
+                EditCreditCardView(
+                    creditCard: selectedCard,
+                    existingBanks: existingBanks,
+                    paymentProcessors: paymentProcessors,
+                    filterCallback: filterBanksWithCreditCards)
                     .frame(width: 600, height: 500, alignment: .center)
             }
         }
@@ -100,13 +104,14 @@ struct WalletContentView: View {
             AddCreditCardView(
                 creditCard: card,
                 existingBanks: existingBanks,
-                paymentProcessors: paymentProcessors
+                paymentProcessors: paymentProcessors, 
+                filterCallback: filterBanksWithCreditCards
             )
             .frame(width: 600, height: 500, alignment: .center)
         }
     }
     
-    private func filterBanksWithCreditCards() {
+    func filterBanksWithCreditCards() {
             banksWithCreditCards = existingBanks.filter { !$0.creditCards.isEmpty }
         }
     
@@ -126,6 +131,7 @@ struct WalletContentView: View {
         withAnimation {
             modelContext.delete(card)
             selectedCard = nil
+            filterBanksWithCreditCards()
         }
     }
 }
