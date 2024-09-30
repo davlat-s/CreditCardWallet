@@ -12,14 +12,17 @@ struct WalletContentView: View {
     @State private var newCard: CreditCard?
     @State private var isEditing: Bool = false
     @Query(sort:[SortDescriptor(\Bank.name, order: .forward)]) var existingBanks: [Bank]
+    
     @Query(sort:[SortDescriptor(\PaymentProcessor.name, order: .forward)]) var paymentProcessors: [PaymentProcessor]
     
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     
+    @State private var banksWithCreditCards: [Bank] = []
+    
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
-            SidebarView(selectedCategory: $selectedCategory)
+            SidebarView(selectedCategory: $selectedCategory, banksWCards: $banksWithCreditCards)
                 .navigationSplitViewColumnWidth(min: 150, ideal: 200, max: 400)
         } content: {
             CardListView(searchString: searchText, sortOrder: sortOrder, selectedCard: $selectedCard, selectedCategory: $selectedCategory)
@@ -33,6 +36,11 @@ struct WalletContentView: View {
                     .foregroundStyle(.secondary)
             }
         }
+        .onAppear(perform: filterBanksWithCreditCards)
+        .onChange(of: existingBanks) {
+            filterBanksWithCreditCards()
+        }
+
         .toolbar {
             ToolbarItem(placement: .secondaryAction) {
                 Menu("Sort", systemImage: "arrow.up.arrow.down") {
@@ -97,6 +105,10 @@ struct WalletContentView: View {
             .frame(width: 600, height: 500, alignment: .center)
         }
     }
+    
+    private func filterBanksWithCreditCards() {
+            banksWithCreditCards = existingBanks.filter { !$0.creditCards.isEmpty }
+        }
     
     private func addCard() {
         withAnimation {

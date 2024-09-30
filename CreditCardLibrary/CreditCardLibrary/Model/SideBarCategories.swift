@@ -1,40 +1,52 @@
-import Foundation
-
-enum SideBarCategories: Int, CaseIterable, Identifiable {
-    var id: Int { rawValue }
-    
-    case open
-    case personal
+enum SideBarCategories: Hashable {
     case business
+    case personal
+    case open
     case closed
-    case bank
+    case bank(Bank)
     
     var displayName: String {
         switch self {
-        case .open: return "All"
-        case .personal: return "Personal"
-        case .business: return "Business"
-        case .closed: return "Closed"
-        case .bank: return "By Bank"
+        case .business:
+            return "Business"
+        case .personal:
+            return "Personal"
+        case .open:
+            return "Open"
+        case .closed:
+            return "Closed"
+        case .bank(let bank):
+            return bank.name
         }
     }
     
     var displayImageName: String {
         switch self {
-        case .open: return "creditcard"
-        case .personal: return "person"
-        case .business: return "briefcase"
-        case .closed: return "archivebox"
-        case .bank: return "building.columns"
+        case .business:
+            return "briefcase"
+        case .personal:
+            return "person"
+        case .open:
+            return "tray"
+        case .closed:
+            return "archivebox"
+        case .bank:
+            return "banknote"
         }
     }
-    var sidebarFilter: (CreditCard) -> Bool {
+    
+    func sidebarFilter(_ creditCard: CreditCard) -> Bool {
         switch self {
-        case .open: return { $0.closed == nil}
-        case .personal: return { $0.isBusiness == false}
-        case .business: return { $0.isBusiness == true}
-        case .closed: return { $0.closed != nil}
-        case .bank: return { $0.closed == nil} // Not used, placeholder
+        case .open:
+            return creditCard.closed == nil
+        case .personal:
+            return !creditCard.isBusiness
+        case .business:
+            return creditCard.isBusiness
+        case .closed:
+            return creditCard.closed != nil
+        case .bank(let bank):
+            return creditCard.bank == bank
         }
     }
 }

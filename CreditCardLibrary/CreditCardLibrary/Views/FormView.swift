@@ -29,79 +29,84 @@ struct FormView: View {
                     Spacer()
                 }
 
-                ColorPicker("Card Color", selection: Binding(
-                    get: { creditCard.color ?? .gray },
-                    set: { newColor in
-                        creditCard.color = newColor
-                    }))
+                Section() {
+                    ColorPicker("Card Color", selection: Binding(
+                        get: { creditCard.color ?? .gray },
+                        set: { newColor in
+                            creditCard.color = newColor
+                        }))
                     .pickerStyle(.inline)
-                
-                DatePicker("Open Date", selection: $creditCard.openDate, displayedComponents: .date)
-                    .datePickerStyle(.compact)
-                
-                TextField("Card Name", text: $creditCard.name)
-                    .textContentType(.creditCardName)
-                    .textFieldStyle(.roundedBorder)
-                
-                TextField("Last Digits", text: $creditCard.lastDigits)
-                    .textContentType(.creditCardNumber)
-                    .textFieldStyle(.roundedBorder)
-                
-                Toggle("Charge Card", isOn: $creditCard.isChargeCard)
-                    .onChange(of: creditCard.isChargeCard) {
-                        if creditCard.isChargeCard {
-                            creditCard.creditLimit = "0"
+                    DatePicker("Open Date", selection: $creditCard.openDate, displayedComponents: .date)
+                        .datePickerStyle(.compact)
+                    
+                    TextField("Card Name", text: $creditCard.name)
+                        .textContentType(.creditCardName)
+                        .textFieldStyle(.roundedBorder)
+                    
+                    TextField("Last Digits", text: $creditCard.lastDigits)
+                        .textContentType(.creditCardNumber)
+                        .textFieldStyle(.roundedBorder)
+                    
+                    Toggle("Charge Card", isOn: $creditCard.isChargeCard)
+                        .onChange(of: creditCard.isChargeCard) {
+                            if creditCard.isChargeCard {
+                                creditCard.creditLimit = "0"
+                            }
+                        }
+                    
+                    TextField("Credit Limit", text: $creditCard.creditLimit)
+                        .disabled(creditCard.isChargeCard)
+                        .opacity(creditCard.isChargeCard ? 0.5 : 1.0)
+                    
+                    Toggle("Business", isOn: $creditCard.isBusiness)
+                    
+                    Picker("Payment Processor", selection: $creditCard.paymentProcessor) {
+                        ForEach(paymentProcessors) { pp in
+                            Text(pp.name).tag(Optional(pp))
                         }
                     }
-                
-                TextField("Credit Limit", text: $creditCard.creditLimit)
-                    .disabled(creditCard.isChargeCard)
-                    .opacity(creditCard.isChargeCard ? 0.5 : 1.0)
-                
-                Toggle("Business", isOn: $creditCard.isBusiness)
-                
-                Picker("Payment Processor", selection: $creditCard.paymentProcessor) {
-                    ForEach(paymentProcessors) { pp in
-                        Text(pp.name).tag(Optional(pp))
+                    .pickerStyle(.menu)
+                }
+
+                Section() {
+                    Picker("Bank", selection: $creditCard.bank) {
+                        ForEach(existingBanks) { bank in
+                            Text(bank.name).tag(Optional(bank))
+                        }
+                    }
+                    .pickerStyle(.menu)
+                    Toggle("New Bank", isOn: $isNewBank)
+                    
+                    if isNewBank {
+                        AddBankView(textFieldWidth: $textFieldWidth) { newBank in
+                            modelContext.insert(newBank)
+                            creditCard.bank = newBank
+                        }
                     }
                 }
-                .pickerStyle(.menu)
                 
-         
-                Picker("Bank", selection: $creditCard.bank) {
-                    ForEach(existingBanks) { bank in
-                        Text(bank.name).tag(Optional(bank))
+                Section() {
+                    Text(creditCard.promotion?.name ?? "No Promotions")
+                    Toggle("New Promo", isOn: $isNewPromo)
+                    
+                    if isNewPromo {
+                        AddPromotionView(textFieldWidth: $textFieldWidth) { newPromo in
+                            modelContext.insert(newPromo)
+                            creditCard.promotion = newPromo
+                        }
                     }
                 }
-                .pickerStyle(.menu)
-      
                 
-                Toggle("New Bank", isOn: $isNewBank)
-                
-                if isNewBank {
-                    AddBankView(textFieldWidth: $textFieldWidth) { newBank in
-                        modelContext.insert(newBank)
-                        creditCard.bank = newBank
-                    }
-                }
-                Text(creditCard.promotion?.name ?? "No Promotions")
-                
-                Toggle("New Promo", isOn: $isNewPromo)
-                
-                if isNewPromo {
-                    AddPromotionView(textFieldWidth: $textFieldWidth) { newPromo in
-                        modelContext.insert(newPromo)
-                        creditCard.promotion = newPromo
-                    }
-                }
-                Text(creditCard.bonus?.name ?? "No Bonuses")
-                
-                Toggle("New Bonus", isOn: $isNewBonus)
-                
-                if isNewBonus {
-                    AddBonusView(textFieldWidth: $textFieldWidth) { newBonus in
-                        modelContext.insert(newBonus)
-                        creditCard.bonus = newBonus
+                Section() {
+                    Text(creditCard.bonus?.name ?? "No Bonuses")
+                    
+                    Toggle("New Bonus", isOn: $isNewBonus)
+                    
+                    if isNewBonus {
+                        AddBonusView(textFieldWidth: $textFieldWidth) { newBonus in
+                            modelContext.insert(newBonus)
+                            creditCard.bonus = newBonus
+                        }
                     }
                 }
             }

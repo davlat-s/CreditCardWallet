@@ -2,8 +2,9 @@ import SwiftUI
 
 struct SidebarView: View {
     @Binding var selectedCategory: SideBarCategories
-    @State private var isExpanded: Bool = true
-    // TODO: make isExpanded persistent across user sessions. UserDefaultsBacked
+    @AppStorage("isExpanded") private var isExpanded: Bool = false
+    @Binding var banksWCards: [Bank]
+    // TODO: make isExpanded persistent across user sessions.
 
     private func sortedCategories() -> [SideBarCategories] {
         let categories: [SideBarCategories] = [
@@ -23,10 +24,26 @@ struct SidebarView: View {
                     }
                 }
                 DisclosureGroup(
-                    isExpanded: $isExpanded,
-                    content: {Text("placeholder")},
-                    label: { Label(SideBarCategories.bank.displayName, systemImage: SideBarCategories.bank.displayImageName) }
-                )
+                                    isExpanded: $isExpanded,
+                                    content: {
+                                        ForEach(banksWCards, id: \.self) { bank in
+                                            NavigationLink(value: SideBarCategories.bank(bank)) {
+                                                Text(bank.name)
+                                            }
+                                            .simultaneousGesture(TapGesture().onEnded {
+                                                selectedCategory = .bank(bank)  // Update the selected category to the bank
+                                            })
+                                        }
+                                    },
+                                    label: {
+                                        Label("By Bank", systemImage: "building.columns")
+                                            .onTapGesture {
+                                                withAnimation() {
+                                                    isExpanded.toggle()
+                                                }
+                                            }
+                                    }
+                                )
             }
             
             Section("Other") {
@@ -41,5 +58,5 @@ struct SidebarView: View {
 }
 
 #Preview {
-    SidebarView(selectedCategory: .constant(PreviewData.shared.closedCategory))
+    SidebarView(selectedCategory: .constant(PreviewData.shared.closedCategory), banksWCards: .constant(Bank.sampleData))
 }
