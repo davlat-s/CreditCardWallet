@@ -87,7 +87,7 @@ struct FormView: View {
                 }
                 
                 Section() {
-                    Text(creditCard.promotion?.name ?? "No Promotions")
+                    Text(creditCard.promotion?.details ?? "No Promotions")
                     Toggle("New Promo", isOn: $isNewPromo)
                     
                     if isNewPromo {
@@ -99,7 +99,7 @@ struct FormView: View {
                 }
                 
                 Section() {
-                    Text(creditCard.bonus?.name ?? "No Bonuses")
+                    Text(creditCard.bonus?.details ?? "No Bonuses")
                     
                     Toggle("New Bonus", isOn: $isNewBonus)
                     

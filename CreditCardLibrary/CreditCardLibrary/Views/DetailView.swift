@@ -53,21 +53,55 @@ struct DetailView: View {
                             }
                         }
                         
-                        if creditCard.promotion != nil{
-                            HStack {
-                                Text("Promotion Name")
-                                Spacer()
-                                Text(creditCard.promotion?.name ?? "None")
+                        Section("Promotions"){
+                            if creditCard.promotion != nil{
+                                HStack {
+                                    Text("Promotion Details")
+                                    Spacer()
+                                    Text(creditCard.promotion?.details ?? "None")
+                                }
+                                HStack {
+                                    Text("Start Date")
+                                    Spacer()
+                                    Text(creditCard.promotion?.startDate?.description ?? "None")
+                                }
+                                HStack {
+                                    Text("End Date")
+                                    Spacer()
+                                    Text(creditCard.promotion?.endDate?.description ?? "None")
+                                }
+                            } else {
+                                HStack{
+                                    Text("No promotions available")
+                                    Spacer()
+                                }
                             }
                         }
+                       
                         
-                        if creditCard.bonus != nil{
-                            HStack {
-                                Text("Bonus Details")
-                                Spacer()
-                                Text(creditCard.bonus?.name ?? "Bonus details not specified")
+                        Section("Bonuses"){
+                            if creditCard.bonus != nil{
+                                HStack {
+                                    Text("Bonus Details")
+                                    Spacer()
+                                    Text(creditCard.bonus?.details ?? "Bonus details not specified")
+                                }
+                                HStack {
+                                    Text("Start Date")
+                                    Spacer()
+                                    Text(creditCard.bonus?.startDate?.description ?? "None")
+                                }
+                                HStack {
+                                    Text("End Date")
+                                    Spacer()
+                                    Text(creditCard.bonus?.endDate?.description ?? "None")
+                                }
+                            }else {
+                                HStack{
+                                    Text("No bonuses available")
+                                    Spacer()
+                                }
                             }
-
                         }
                         
                         if creditCard.closed != nil{

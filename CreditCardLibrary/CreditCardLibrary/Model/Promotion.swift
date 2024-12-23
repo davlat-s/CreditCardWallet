@@ -4,15 +4,20 @@ import SwiftData
 
 @Model
 final class Promotion {
-    var name: String
+    var details: String
+    var startDate: Date?
+    var endDate: Date?
     var creditCard: CreditCard?
     
-    init(name: String) {
-        self.name = name
+    init(details: String, startDate: Date? = nil, endDate: Date? = nil, creditCard: CreditCard? = nil) {
+        self.details = details
+        self.startDate = startDate
+        self.endDate = endDate
+        self.creditCard = creditCard
     }
     
     static let sampleData = [
-        Promotion(name: "0% APR for 12 moths"),
-        Promotion(name: "0% APR for 18 moths"),
+        Promotion(details: "0% APR for 12 moths", startDate: Date.now, endDate: Date.now.addingTimeInterval(60*60*24*30*12)),
+        Promotion(details: "0% APR for 18 moths", startDate: Date.now, endDate: Date.now.addingTimeInterval(60*60*24*30*18)),
     ]
 }

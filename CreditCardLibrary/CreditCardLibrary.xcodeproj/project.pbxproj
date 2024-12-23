@@ -16,7 +16,6 @@
 		314BD4702C97F06200E32E74 /* AddBonusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314BD46F2C97F06200E32E74 /* AddBonusView.swift */; };
 		314BD4722C98AC6400E32E74 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314BD4712C98AC6400E32E74 /* CardView.swift */; };
 		314BD4742C992D0000E32E74 /* PaymentProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314BD4732C992D0000E32E74 /* PaymentProcessor.swift */; };
-		314BD4782C9CB56C00E32E74 /* PaymentProcessorInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314BD4772C9CB56C00E32E74 /* PaymentProcessorInstances.swift */; };
 		314BD47A2C9CB92F00E32E74 /* SwiftDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314BD4792C9CB92F00E32E74 /* SwiftDataManager.swift */; };
 		314BD47C2C9E01BE00E32E74 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314BD47B2C9E01BE00E32E74 /* AppContainer.swift */; };
 		314BD4802C9EB2FA00E32E74 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314BD47F2C9EB2FA00E32E74 /* SidebarView.swift */; };
@@ -46,7 +45,6 @@
 		314BD46F2C97F06200E32E74 /* AddBonusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBonusView.swift; sourceTree = "<group>"; };
 		314BD4712C98AC6400E32E74 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		314BD4732C992D0000E32E74 /* PaymentProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProcessor.swift; sourceTree = "<group>"; };
-		314BD4772C9CB56C00E32E74 /* PaymentProcessorInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProcessorInstances.swift; sourceTree = "<group>"; };
 		314BD4792C9CB92F00E32E74 /* SwiftDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataManager.swift; sourceTree = "<group>"; };
 		314BD47B2C9E01BE00E32E74 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		314BD47F2C9EB2FA00E32E74 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
@@ -151,7 +149,6 @@
 			children = (
 				310E5EE32C699A960062DDFA /* CreditCard.swift */,
 				314BD4732C992D0000E32E74 /* PaymentProcessor.swift */,
-				314BD4772C9CB56C00E32E74 /* PaymentProcessorInstances.swift */,
 				3176D8F32C75AD1600C57FBB /* Promotion.swift */,
 				3176D8EA2C74362800C57FBB /* Bank.swift */,
 				314BD4832C9F7C0A00E32E74 /* Color.swift */,
@@ -253,7 +250,6 @@
 				314BD47A2C9CB92F00E32E74 /* SwiftDataManager.swift in Sources */,
 				318A66372C7C14300039487E /* SideBarCategories.swift in Sources */,
 				314BD47C2C9E01BE00E32E74 /* AppContainer.swift in Sources */,
-				314BD4782C9CB56C00E32E74 /* PaymentProcessorInstances.swift in Sources */,
 				3176D8F42C75AD1600C57FBB /* Promotion.swift in Sources */,
 				3176D8EB2C74362800C57FBB /* Bank.swift in Sources */,
 				319F558D2C5F2B1500C054D2 /* CreditCardLibraryApp.swift in Sources */,
