@@ -19,10 +19,11 @@ struct CardListView: View {
                     NavigationLink(value: card) {
                         HStack {
                             CardView(creditCard: card)
-                                .frame(width: 48.6, height: 30.6)
+                                .frame(width: CreditCard.cardWidth/15, height: CreditCard.cardHeight/50)
                                 .scaleEffect(0.15)
-                                .padding(20)
+                                .padding(30)
                             Text(card.name)
+                            
                         }
                     }
                 }
@@ -50,7 +51,7 @@ struct CardListView: View {
 #Preview("Open") {
     CardListView(
         selectedCard: .constant(nil),
-        selectedCategory: .constant(.open)
+        selectedCategory: .constant(.all)
     )
     .modelContainer(PreviewData.shared.modelContainer)
 }

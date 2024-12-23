@@ -4,15 +4,20 @@ import SwiftData
 
 @Model
 final class Bonus {
-    var name: String
+    var details: String
+    var startDate: Date?
+    var endDate: Date?
     var creditCard: CreditCard?
     
-    init(name: String) {
-        self.name = name
+    init(details: String, startDate: Date? = nil, endDate: Date? = nil, creditCard: CreditCard? = nil) {
+        self.details = details
+        self.startDate = startDate
+        self.endDate = endDate
+        self.creditCard = creditCard
     }
     
     static let sampleData = [
-        Bonus(name: "80k sign up bonus after $6,000 spend in 3 months"),
-        Bonus(name: "180k sign up bonus after $12,000 spend in 3 months"),
+        Bonus(details: "80k sign up bonus after $6,000 spend in 3 months", startDate: Date.now, endDate: Date.now.addingTimeInterval(60*60*24*30*3)),
+        Bonus(details: "180k sign up bonus after $12,000 spend in 3 months", startDate: Date.now, endDate: Date.now.addingTimeInterval(60*60*24*30*3)),
     ]
 }

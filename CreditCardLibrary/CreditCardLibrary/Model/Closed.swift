@@ -4,17 +4,18 @@ import SwiftData
 
 @Model
 final class Closed {
-    var isClosed: Bool
     var reason: String
+    var closedDate: Date?
     var creditCard: CreditCard?
-    
-    init(reason: String, isClosed: Bool) {
+
+    init(reason: String, closedDate: Date? = nil, creditCard: CreditCard? = nil) {
         self.reason = reason
-        self.isClosed = isClosed
+        self.closedDate = closedDate
+        self.creditCard = creditCard
     }
     
     static let sampleData = [
-        Closed(reason: "Closed due to high annual fee", isClosed: true),
-        Closed(reason: "Closed due to inactivity", isClosed: true),
+        Closed(reason: "Closed due to high annual fee", closedDate: Date.now),
+        Closed(reason: "Closed due to inactivity", closedDate: Date.now),
     ]
 }

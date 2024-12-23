@@ -9,8 +9,8 @@ struct CardView: View {
     }
         
     var body: some View {
-        let w: CGFloat = 486
-        let h: CGFloat = 306
+        let w = CreditCard.cardWidth
+        let h = CreditCard.cardHeight
         
         return ZStack{
             Color(creditCard.color ?? .gray)
@@ -55,7 +55,6 @@ struct CardView: View {
             .padding(20)
         }
         .frame(width: w, height: h)
-        .padding(20)
     }
 }
 

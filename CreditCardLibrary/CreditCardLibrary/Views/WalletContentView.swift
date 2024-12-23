@@ -12,14 +12,17 @@ struct WalletContentView: View {
     @State private var newCard: CreditCard?
     @State private var isEditing: Bool = false
     @Query(sort:[SortDescriptor(\Bank.name, order: .forward)]) var existingBanks: [Bank]
+    
     @Query(sort:[SortDescriptor(\PaymentProcessor.name, order: .forward)]) var paymentProcessors: [PaymentProcessor]
     
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     
+    @State private var banksWithCreditCards: [Bank] = []
+    
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
-            SidebarView(selectedCategory: $selectedCategory)
+            SidebarView(selectedCategory: $selectedCategory, banksWCards: $banksWithCreditCards)
                 .navigationSplitViewColumnWidth(min: 150, ideal: 200, max: 400)
         } content: {
             CardListView(searchString: searchText, sortOrder: sortOrder, selectedCard: $selectedCard, selectedCategory: $selectedCategory)
@@ -33,16 +36,14 @@ struct WalletContentView: View {
                     .foregroundStyle(.secondary)
             }
         }
+        .onAppear(perform: filterBanksWithCreditCards) // Filter banks on view appearance
+        .onChange(of: existingBanks) {
+            filterBanksWithCreditCards()
+        }
+
         .toolbar {
             ToolbarItem(placement: .secondaryAction) {
                 Menu("Sort", systemImage: "arrow.up.arrow.down") {
-                    Picker("Name", selection: $sortOrder) {
-                        Text("A-Z")
-                            .tag([SortDescriptor(\CreditCard.name)])
-                        
-                        Text("Z-A")
-                            .tag([SortDescriptor(\CreditCard.name, order: .reverse)])
-                    }
                     Picker("Open Date", selection: $sortOrder) {
                         Text("Newest")
                             .tag([SortDescriptor(\CreditCard.openDate, order: .reverse)])
@@ -55,6 +56,13 @@ struct WalletContentView: View {
                             .tag([SortDescriptor(\CreditCard.creditLimit, order: .reverse)])
                         Text("Lowest")
                             .tag([SortDescriptor(\CreditCard.creditLimit)])
+                    }
+                    Picker("Name", selection: $sortOrder) {
+                        Text("A-Z")
+                            .tag([SortDescriptor(\CreditCard.name)])
+                        
+                        Text("Z-A")
+                            .tag([SortDescriptor(\CreditCard.name, order: .reverse)])
                     }
                 }
             }
@@ -74,7 +82,7 @@ struct WalletContentView: View {
             ToolbarItem(placement: .destructiveAction) {
                 if let selectedCard = selectedCard {
                     Button(action: {
-                        deleteCard(selectedCard) // Wrap in a closure
+                        deleteCard(selectedCard)
                     }) {
                         Label("Delete", systemImage: "trash")
                     }
@@ -83,8 +91,12 @@ struct WalletContentView: View {
         }
         .sheet(isPresented: $isEditing) {
             if let selectedCard = selectedCard {
-                EditCreditCardView(creditCard: selectedCard, existingBanks: existingBanks, paymentProcessors: paymentProcessors)
-                    .frame(width: 600, height: 300, alignment: .center)
+                EditCreditCardView(
+                    creditCard: selectedCard,
+                    existingBanks: existingBanks,
+                    paymentProcessors: paymentProcessors,
+                    filterCallback: filterBanksWithCreditCards)
+                    .frame(width: 600, height: 500, alignment: .center)
             }
         }
         
@@ -92,11 +104,16 @@ struct WalletContentView: View {
             AddCreditCardView(
                 creditCard: card,
                 existingBanks: existingBanks,
-                paymentProcessors: paymentProcessors
+                paymentProcessors: paymentProcessors, 
+                filterCallback: filterBanksWithCreditCards
             )
-            .frame(width: 600, height: 300, alignment: .center)
+            .frame(width: 600, height: 500, alignment: .center)
         }
     }
+    
+    func filterBanksWithCreditCards() {
+            banksWithCreditCards = existingBanks.filter { !$0.creditCards.isEmpty }
+        }
     
     private func addCard() {
         withAnimation {
@@ -114,6 +131,7 @@ struct WalletContentView: View {
         withAnimation {
             modelContext.delete(card)
             selectedCard = nil
+            filterBanksWithCreditCards()
         }
     }
 }
@@ -122,6 +140,6 @@ struct WalletContentView: View {
 // MARK: - Previews
 
 #Preview {
-    WalletContentView(selectedCategory: .constant(.open), columnVisibility: .constant(.all))
+    WalletContentView(selectedCategory: .constant(.all), columnVisibility: .constant(.all))
         .modelContainer(PreviewData.shared.modelContainer)
 }
