@@ -51,7 +51,7 @@ struct CardListView: View {
 #Preview("Open") {
     CardListView(
         selectedCard: .constant(nil),
-        selectedCategory: .constant(.open)
+        selectedCategory: .constant(.all)
     )
     .modelContainer(PreviewData.shared.modelContainer)
 }

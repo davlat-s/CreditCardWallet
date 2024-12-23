@@ -17,31 +17,72 @@ struct DetailView: View {
                 .frame(width: 486/2, height: 306/2)
                 .scaleEffect(0.6)
                 .padding(40)
-            HStack {
-                Text("CardName")
-                Spacer()
-                Text(creditCard.name)
+            
+            Section("Card Details"){
+                HStack{
+                    Spacer()
+                    VStack{
+                        HStack {
+                            Text("CardName")
+                            Spacer()
+                            Text(creditCard.name)
+                        }
+                        HStack {
+                            Text("Type")
+                            Spacer()
+                            Text(creditCard.isBusiness ? "Business" : "Personal")
+                        }
+                        if !creditCard.isChargeCard {
+                            HStack {
+                                Text("Credit Limit")
+                                Spacer()
+                                Text(creditCard.creditLimit)
+                            }
+                        }
+                        
+                        HStack {
+                            Text("Charge Card")
+                            Spacer()
+                            Text(creditCard.isChargeCard ? "Yes" : "No")
+                        }
+                        if creditCard.bank != nil {
+                            HStack {
+                                Text("Bank Name")
+                                Spacer()
+                                Text(creditCard.bank?.name ?? "Bank is not specified")
+                            }
+                        }
+                        
+                        if creditCard.promotion != nil{
+                            HStack {
+                                Text("Promotion Name")
+                                Spacer()
+                                Text(creditCard.promotion?.name ?? "None")
+                            }
+                        }
+                        
+                        if creditCard.bonus != nil{
+                            HStack {
+                                Text("Bonus Details")
+                                Spacer()
+                                Text(creditCard.bonus?.name ?? "Bonus details not specified")
+                            }
+
+                        }
+                        
+                        if creditCard.closed != nil{
+                            HStack {
+                                Text("Closed Reason")
+                                Spacer()
+                                Text(creditCard.closed?.reason ?? "Reason not specified")
+                            }
+                        }
+                    }
+                    Spacer()
+                }
+            
             }
-            HStack {
-                Text("Type")
-                Spacer()
-                Text(creditCard.isBusiness ? "Business" : "Personal")
-            }
-            HStack {
-                Text("Bank Name")
-                Spacer()
-                Text(creditCard.bank?.name ?? "No Bank")
-            }
-            HStack {
-                Text("Promotion Name")
-                Spacer()
-                Text(creditCard.promotion?.name ?? "None")
-            }
-            HStack {
-                Text("Bonus Name")
-                Spacer()
-                Text(creditCard.bonus?.name ?? "None")
-            }
+            
             Spacer()
         }
         .navigationTitle("Credit Card Details")

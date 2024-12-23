@@ -61,8 +61,8 @@ final class CreditCard {
     static let cardHeight: CGFloat = 306
     
     static let sampleData = [
-        CreditCard(name: "Platinum", creditLimit: "110.23", openDate: .now, isBusiness: false, isChargeCard: false, lastDigits: "62376", bank: Bank(name: "American Express"), promotion: Promotion(name: "Zero APR for 12 months"), bonus: Bonus(name: "100k sign up bonus"), closed: Closed(reason: "Too expensive", isClosed: true), paymentProcessor: PaymentProcessor.amex),
-        CreditCard(name: "Saphire Reserve", creditLimit: "4520.6", openDate: .now, isBusiness: false, isChargeCard: false, lastDigits: "3552", bank: Bank(name: "Chase"), promotion: Promotion(name: "Zero APR for 18 months"), bonus: Bonus(name: "80k sign up bonus"), closed: Closed(reason: "", isClosed: false)),
+        CreditCard(name: "Platinum", creditLimit: "110.23", openDate: .now, isBusiness: false, isChargeCard: false, lastDigits: "62376", bank: Bank(name: "American Express"), promotion: Promotion(name: "Zero APR for 12 months"), bonus: Bonus(name: "100k sign up bonus"), closed: Closed(reason: "Too expensive"), paymentProcessor: PaymentProcessor.amex),
+        CreditCard(name: "Saphire Reserve", creditLimit: "4520.6", openDate: .now, isBusiness: false, isChargeCard: false, lastDigits: "3552", bank: Bank(name: "Chase"), promotion: Promotion(name: "Zero APR for 18 months"), bonus: Bonus(name: "80k sign up bonus"), closed: Closed(reason: ""), paymentProcessor: PaymentProcessor.visa),
         CreditCard(name: "Ink Preffered", creditLimit: "520.3",openDate: .now,isBusiness: true, isChargeCard: false, lastDigits: "7743"),
         CreditCard(name: "AmEx Gold", creditLimit: "630.67", openDate: .now, isBusiness: false, isChargeCard: false, lastDigits: "6343"),
         CreditCard(name: "Flex", creditLimit: "0", openDate: .now, isBusiness: false, isChargeCard: false, lastDigits: "8234"),

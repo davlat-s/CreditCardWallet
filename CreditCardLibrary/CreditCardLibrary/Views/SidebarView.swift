@@ -10,43 +10,22 @@ struct SidebarView: View {
         let categories: [SideBarCategories] = [
             .business,
             .personal,
-            .open
+            .all
         ]
         return categories.sorted { $0.displayName < $1.displayName }
     }
     
     var body: some View {
         List(selection: $selectedCategory) {
-            Section("Open") {
+            Section("Open Cards") {
                 ForEach(sortedCategories(), id: \.self) { category in
                     NavigationLink(value: category) {
                         Label(category.displayName, systemImage: category.displayImageName)
                     }
                 }
-                DisclosureGroup(
-                    isExpanded: $isExpanded,
-                    content: {
-                        ForEach(banksWCards, id: \.self) { bank in
-                            NavigationLink(value: SideBarCategories.bank(bank)) {
-                                Text(bank.name)
-                            }
-                            .simultaneousGesture(TapGesture().onEnded {
-                                selectedCategory = .bank(bank)
-                            })
-                        }
-                    },
-                    label: {
-                        Label("By Bank", systemImage: "building.columns")
-                            .onTapGesture {
-                                withAnimation() {
-                                    isExpanded.toggle()
-                                }
-                            }
-                    }
-                )
             }
             
-            Section("Other") {
+            Section("Other Categories") {
                 ForEach([SideBarCategories.closed], id: \.self) { category in
                     NavigationLink(value: category) {
                         Label(category.displayName, systemImage: category.displayImageName)

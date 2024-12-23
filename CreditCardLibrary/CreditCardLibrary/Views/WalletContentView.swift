@@ -140,6 +140,6 @@ struct WalletContentView: View {
 // MARK: - Previews
 
 #Preview {
-    WalletContentView(selectedCategory: .constant(.open), columnVisibility: .constant(.all))
+    WalletContentView(selectedCategory: .constant(.all), columnVisibility: .constant(.all))
         .modelContainer(PreviewData.shared.modelContainer)
 }

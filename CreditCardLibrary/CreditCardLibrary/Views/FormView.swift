@@ -9,6 +9,7 @@ struct FormView: View {
     @State var isNewBank: Bool = false
     @State var isNewPromo: Bool = false
     @State var isNewBonus: Bool = false
+    @State var isClosed: Bool = false
     @State var textFieldWidth: CGFloat = 236
     
     var existingBanks: [Bank]
@@ -106,6 +107,19 @@ struct FormView: View {
                         AddBonusView(textFieldWidth: $textFieldWidth) { newBonus in
                             modelContext.insert(newBonus)
                             creditCard.bonus = newBonus
+                        }
+                    }
+                }
+                
+                Section() {
+                    Text(creditCard.closed?.reason ?? "Open")
+                    
+                    Toggle("Close Card", isOn: $isClosed)
+                    
+                    if isClosed {
+                        AddClosedView(textFieldWidth: $textFieldWidth) { newClosed in
+                            modelContext.insert(newClosed)
+                            creditCard.closed = newClosed
                         }
                     }
                 }

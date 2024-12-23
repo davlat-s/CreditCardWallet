@@ -1,7 +1,7 @@
 enum SideBarCategories: Hashable {
     case business
     case personal
-    case open
+    case all
     case closed
     case bank(Bank)
     
@@ -11,10 +11,10 @@ enum SideBarCategories: Hashable {
             return "Business"
         case .personal:
             return "Personal"
-        case .open:
-            return "Open"
+        case .all:
+            return "All Cards"
         case .closed:
-            return "Closed"
+            return "Closed Cards"
         case .bank(let bank):
             return bank.name
         }
@@ -26,7 +26,7 @@ enum SideBarCategories: Hashable {
             return "briefcase"
         case .personal:
             return "person"
-        case .open:
+        case .all:
             return "tray"
         case .closed:
             return "archivebox"
@@ -37,12 +37,12 @@ enum SideBarCategories: Hashable {
     
     func sidebarFilter(_ creditCard: CreditCard) -> Bool {
         switch self {
-        case .open:
+        case .all:
             return creditCard.closed == nil
         case .personal:
-            return !creditCard.isBusiness
+            return !creditCard.isBusiness && creditCard.closed == nil
         case .business:
-            return creditCard.isBusiness
+            return creditCard.isBusiness && creditCard.closed == nil
         case .closed:
             return creditCard.closed != nil
         case .bank(let bank):
