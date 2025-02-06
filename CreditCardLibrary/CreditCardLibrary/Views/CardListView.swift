@@ -18,14 +18,10 @@ struct CardListView: View {
                 List(filteredCreditCards, selection: $selectedCard) { card in
                     NavigationLink(value: card) {
                         HStack {
-                            CardView(creditCard: card)
-                                .frame(width: CreditCard.cardWidth/15, height: CreditCard.cardHeight/50)
-                                .scaleEffect(0.15)
-                                .padding(30)
-                            Text(card.name)
-                            
+                            CardRowView(creditCard: card)
                         }
                     }
+                    .listRowInsets(EdgeInsets())
                 }
                 .buttonStyle(.plain)
             } else {
