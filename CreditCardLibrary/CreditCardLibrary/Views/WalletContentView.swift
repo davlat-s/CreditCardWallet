@@ -92,14 +92,16 @@ struct WalletContentView: View {
             .searchable(text: $searchText)
             .navigationSplitViewColumnWidth(min: 200, ideal: 250, max: 350)
         } detail: {
-            if let selectedCard = selectedCard {
-                DetailPanelView(creditCard: selectedCard)
-            } else {
-                NavigationStack {
-                    SelectCardView()
+            NavigationStack{
+                if let selectedCard = selectedCard {
+                    DetailPanelView(creditCard: selectedCard)
+                } else {
+                    NavigationStack {
+                        SelectCardView()
+                    }
                 }
-                .navigationSplitViewColumnWidth(min: 250, ideal: 400)
             }
+            .navigationSplitViewColumnWidth(min: 350, ideal: 400)
         }
         .onChange(of: existingBanks) {
             filterBanksWithCreditCards()

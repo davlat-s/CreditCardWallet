@@ -23,6 +23,7 @@ struct CardListView: View {
                     }
                     .listRowInsets(EdgeInsets())
                 }
+                .animation(.easeInOut, value: filteredCreditCards)
                 .buttonStyle(.plain)
             } else {
                 Text("No cards available")
