@@ -23,7 +23,6 @@ struct WalletContentView: View {
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
             SidebarView(selectedCategory: $selectedCategory, banksWCards: $banksWithCreditCards)
-                .navigationSplitViewColumnWidth(min: 100, ideal: 150, max: 150)
                 .toolbar(removing: .sidebarToggle)
                 .toolbar {
                     ToolbarItem(placement: .primaryAction) {
@@ -35,6 +34,7 @@ struct WalletContentView: View {
                         }
                     }
                 }
+                .navigationSplitViewColumnWidth(min: 150, ideal: 150, max: 250)
             
             
             
@@ -95,8 +95,10 @@ struct WalletContentView: View {
             if let selectedCard = selectedCard {
                 DetailPanelView(creditCard: selectedCard)
             } else {
-                Text("Select a credit card")
-                    .foregroundStyle(.secondary)
+                NavigationStack {
+                    SelectCardView()
+                }
+                .navigationSplitViewColumnWidth(min: 250, ideal: 400)
             }
         }
         .onChange(of: existingBanks) {
