@@ -24,6 +24,13 @@
 		3176D8EF2C7437E000C57FBB /* Bonus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176D8EE2C7437DF00C57FBB /* Bonus.swift */; };
 		3176D8F22C75AC2B00C57FBB /* Closed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176D8F12C75AC2B00C57FBB /* Closed.swift */; };
 		3176D8F42C75AD1600C57FBB /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176D8F32C75AD1600C57FBB /* Promotion.swift */; };
+		3189C6E22D5AE2DB00EDA7A4 /* CardArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C6E12D5AE2DB00EDA7A4 /* CardArt.swift */; };
+		3189C6E62D5AF03600EDA7A4 /* loadBankCardArtData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C6E52D5AF03600EDA7A4 /* loadBankCardArtData.swift */; };
+		3189C6E82D5BD5DE00EDA7A4 /* CardGridCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C6E72D5BD5DE00EDA7A4 /* CardGridCellView.swift */; };
+		3189C6EE2D5BE48500EDA7A4 /* CardGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C6ED2D5BE48500EDA7A4 /* CardGridView.swift */; };
+		3189C6F02D5BFA7400EDA7A4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C6EF2D5BFA7400EDA7A4 /* ContentView.swift */; };
+		3189C6F22D5C44F100EDA7A4 /* BankCardArtData.json in Resources */ = {isa = PBXBuildFile; fileRef = 3189C6F12D5C44F100EDA7A4 /* BankCardArtData.json */; };
+		3189C6F42D5C4A9100EDA7A4 /* CardImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C6F32D5C4A9100EDA7A4 /* CardImagePickerView.swift */; };
 		318A66302C7BD3EC0039487E /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318A662F2C7BD3EC0039487E /* PreviewData.swift */; };
 		318A66332C7BDF950039487E /* WalletContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318A66322C7BDF950039487E /* WalletContentView.swift */; };
 		318A66372C7C14300039487E /* SideBarCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318A66362C7C14300039487E /* SideBarCategories.swift */; };
@@ -58,6 +65,13 @@
 		3176D8EE2C7437DF00C57FBB /* Bonus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bonus.swift; sourceTree = "<group>"; };
 		3176D8F12C75AC2B00C57FBB /* Closed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Closed.swift; sourceTree = "<group>"; };
 		3176D8F32C75AD1600C57FBB /* Promotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promotion.swift; sourceTree = "<group>"; };
+		3189C6E12D5AE2DB00EDA7A4 /* CardArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardArt.swift; sourceTree = "<group>"; };
+		3189C6E52D5AF03600EDA7A4 /* loadBankCardArtData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadBankCardArtData.swift; sourceTree = "<group>"; };
+		3189C6E72D5BD5DE00EDA7A4 /* CardGridCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGridCellView.swift; sourceTree = "<group>"; };
+		3189C6ED2D5BE48500EDA7A4 /* CardGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGridView.swift; sourceTree = "<group>"; };
+		3189C6EF2D5BFA7400EDA7A4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3189C6F12D5C44F100EDA7A4 /* BankCardArtData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BankCardArtData.json; sourceTree = "<group>"; };
+		3189C6F32D5C4A9100EDA7A4 /* CardImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardImagePickerView.swift; sourceTree = "<group>"; };
 		318A662F2C7BD3EC0039487E /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
 		318A66322C7BDF950039487E /* WalletContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletContentView.swift; sourceTree = "<group>"; };
 		318A66362C7C14300039487E /* SideBarCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarCategories.swift; sourceTree = "<group>"; };
@@ -95,26 +109,62 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		318A66312C7BDD980039487E /* Views */ = {
+		3189C6E92D5BE1BC00EDA7A4 /* NaviationViews */ = {
 			isa = PBXGroup;
 			children = (
 				318A66322C7BDF950039487E /* WalletContentView.swift */,
+				3189C6EF2D5BFA7400EDA7A4 /* ContentView.swift */,
 				314BD47F2C9EB2FA00E32E74 /* SidebarView.swift */,
-				314BD4692C95377400E32E74 /* EditCreditCardView.swift */,
-				314BD4672C94A5C300E32E74 /* AddCreditCardView.swift */,
-				314BD46B2C9689DB00E32E74 /* FormView.swift */,
-				318A66382C7C21020039487E /* CardListView.swift */,
-				318D833C2D53270E00951AE6 /* CardRowView.swift */,
+			);
+			path = NaviationViews;
+			sourceTree = "<group>";
+		};
+		3189C6EA2D5BE20E00EDA7A4 /* CardDetailViews */ = {
+			isa = PBXGroup;
+			children = (
 				318D83322D51BF5D00951AE6 /* DetailPanelView.swift */,
 				318A663A2C7C37B10039487E /* DetailView.swift */,
 				318D83362D53080200951AE6 /* SelectCardView.swift */,
 				318D833A2D530B3E00951AE6 /* ShowHistoryView.swift */,
 				318D83342D51C50D00951AE6 /* CardHistoryView.swift */,
-				314BD4712C98AC6400E32E74 /* CardView.swift */,
+			);
+			path = CardDetailViews;
+			sourceTree = "<group>";
+		};
+		3189C6EB2D5BE24300EDA7A4 /* ToolBarViews */ = {
+			isa = PBXGroup;
+			children = (
+				314BD4692C95377400E32E74 /* EditCreditCardView.swift */,
+				314BD4672C94A5C300E32E74 /* AddCreditCardView.swift */,
+				314BD46B2C9689DB00E32E74 /* FormView.swift */,
 				314BD46F2C97F06200E32E74 /* AddBonusView.swift */,
 				314BD46D2C977D1A00E32E74 /* AddPromotionView.swift */,
 				318A663C2C7E5B0D0039487E /* AddBankView.swift */,
 				3116763F2D173D340098BF92 /* AddClosedView.swift */,
+				3189C6F32D5C4A9100EDA7A4 /* CardImagePickerView.swift */,
+			);
+			path = ToolBarViews;
+			sourceTree = "<group>";
+		};
+		3189C6EC2D5BE28400EDA7A4 /* CardViews */ = {
+			isa = PBXGroup;
+			children = (
+				3189C6ED2D5BE48500EDA7A4 /* CardGridView.swift */,
+				3189C6E72D5BD5DE00EDA7A4 /* CardGridCellView.swift */,
+				314BD4712C98AC6400E32E74 /* CardView.swift */,
+				318A66382C7C21020039487E /* CardListView.swift */,
+				318D833C2D53270E00951AE6 /* CardRowView.swift */,
+			);
+			path = CardViews;
+			sourceTree = "<group>";
+		};
+		318A66312C7BDD980039487E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3189C6E92D5BE1BC00EDA7A4 /* NaviationViews */,
+				3189C6EC2D5BE28400EDA7A4 /* CardViews */,
+				3189C6EA2D5BE20E00EDA7A4 /* CardDetailViews */,
+				3189C6EB2D5BE24300EDA7A4 /* ToolBarViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -166,6 +216,9 @@
 				314BD4732C992D0000E32E74 /* PaymentProcessor.swift */,
 				3176D8F32C75AD1600C57FBB /* Promotion.swift */,
 				3176D8EA2C74362800C57FBB /* Bank.swift */,
+				3189C6E12D5AE2DB00EDA7A4 /* CardArt.swift */,
+				3189C6F12D5C44F100EDA7A4 /* BankCardArtData.json */,
+				3189C6E52D5AF03600EDA7A4 /* loadBankCardArtData.swift */,
 				314BD4832C9F7C0A00E32E74 /* Color.swift */,
 				3176D8EE2C7437DF00C57FBB /* Bonus.swift */,
 				3176D8F12C75AC2B00C57FBB /* Closed.swift */,
@@ -234,6 +287,7 @@
 			files = (
 				319F55942C5F2B1600C054D2 /* Preview Assets.xcassets in Resources */,
 				319F55912C5F2B1600C054D2 /* Assets.xcassets in Resources */,
+				3189C6F22D5C44F100EDA7A4 /* BankCardArtData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,10 +302,13 @@
 				314BD4802C9EB2FA00E32E74 /* SidebarView.swift in Sources */,
 				314BD46E2C977D1A00E32E74 /* AddPromotionView.swift in Sources */,
 				314BD4742C992D0000E32E74 /* PaymentProcessor.swift in Sources */,
+				3189C6F42D5C4A9100EDA7A4 /* CardImagePickerView.swift in Sources */,
 				318A66302C7BD3EC0039487E /* PreviewData.swift in Sources */,
 				314BD4842C9F7C0A00E32E74 /* Color.swift in Sources */,
 				314BD46A2C95377400E32E74 /* EditCreditCardView.swift in Sources */,
 				314BD4722C98AC6400E32E74 /* CardView.swift in Sources */,
+				3189C6EE2D5BE48500EDA7A4 /* CardGridView.swift in Sources */,
+				3189C6E82D5BD5DE00EDA7A4 /* CardGridCellView.swift in Sources */,
 				3176D8EF2C7437E000C57FBB /* Bonus.swift in Sources */,
 				314BD46C2C9689DB00E32E74 /* FormView.swift in Sources */,
 				318D833B2D530B3E00951AE6 /* ShowHistoryView.swift in Sources */,
@@ -266,10 +323,13 @@
 				311676402D173D340098BF92 /* AddClosedView.swift in Sources */,
 				318D833D2D53270E00951AE6 /* CardRowView.swift in Sources */,
 				318D83372D53080200951AE6 /* SelectCardView.swift in Sources */,
+				3189C6F02D5BFA7400EDA7A4 /* ContentView.swift in Sources */,
 				318A66332C7BDF950039487E /* WalletContentView.swift in Sources */,
 				314BD47A2C9CB92F00E32E74 /* SwiftDataManager.swift in Sources */,
 				318A66372C7C14300039487E /* SideBarCategories.swift in Sources */,
+				3189C6E22D5AE2DB00EDA7A4 /* CardArt.swift in Sources */,
 				314BD47C2C9E01BE00E32E74 /* AppContainer.swift in Sources */,
+				3189C6E62D5AF03600EDA7A4 /* loadBankCardArtData.swift in Sources */,
 				3176D8F42C75AD1600C57FBB /* Promotion.swift in Sources */,
 				3176D8EB2C74362800C57FBB /* Bank.swift in Sources */,
 				319F558D2C5F2B1500C054D2 /* CreditCardLibraryApp.swift in Sources */,
@@ -412,6 +472,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -440,6 +501,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

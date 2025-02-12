@@ -59,6 +59,10 @@ class PreviewData {
             context.insert(pp)
         }
         
+        for cardArt in CardArt.sampleData {
+            context.insert(cardArt)
+        }
+        
         if let sampleCreditCard = CreditCard.sampleData.first {
             sampleCreditCard.bank = Bank.sampleData[1]
             sampleCreditCard.closed = Closed.sampleData[0]

@@ -4,8 +4,9 @@ import SwiftData
 
 @Model
 final class Bank {
-    var name: String
-    var creditCards: [CreditCard] = []
+    @Attribute(.unique) var name: String        
+    @Relationship var creditCards: [CreditCard] = []
+    @Relationship var cardArts: [CardArt] = []
     
     init(name: String) {
         self.name = name
@@ -15,4 +16,5 @@ final class Bank {
         Bank(name: "Chace"),
         Bank(name: "American Express"),
     ]
+    
 }
