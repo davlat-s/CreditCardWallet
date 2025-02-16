@@ -14,11 +14,11 @@ struct CardGridView: View {
     
     var onDoubleTap: (CreditCard) -> Void
     
-    let columns: [GridItem] = [GridItem(.adaptive(minimum: 200, maximum: 230), spacing: 75)]
+    let columns: [GridItem] = [GridItem(.adaptive(minimum: 270, maximum: 350), spacing: 0)]
     
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: columns, spacing: 10) {
+            LazyVGrid(columns: columns, spacing: 5) {
                 ForEach(filteredCreditCards, id: \.id) { card in
                     CardGridCellView(creditCard: card)
                         .overlay(
@@ -35,13 +35,11 @@ struct CardGridView: View {
                             TapGesture(count: 1)
                                 .onEnded {
                                     DispatchQueue.main.async {
-                                        selectedCard = card
-                                    }
+                                        selectedCard = card}
                                 }
                         )
                 }
             }
-            .padding()
         }
     }
 }

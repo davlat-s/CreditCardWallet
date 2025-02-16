@@ -16,8 +16,8 @@ final class CardArt {
     }
     
     static let sampleData = [
-        CardArt(assetID: "American_Express-Personal-Platinum_Schwab.png", bank: Bank.sampleData[0]),
-        CardArt(assetID: "American_Express-Personal-Platinum_Schwab.png", bank: Bank.sampleData[1])
+        CardArt(assetID: "American_Express-Personal-Platinum_Schwab"),
+        CardArt(assetID: "American_Express-Personal-Platinum_Schwab")
     ]
     
 }

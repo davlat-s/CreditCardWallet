@@ -24,14 +24,14 @@ struct CardImagePickerView: View {
         NavigationStack {
             List {
                 ForEach(groupedCardArts.keys.sorted(), id: \.self) { bankName in
-                    Section(header: Text(bankName)) {
-                        LazyVGrid(columns: columns, spacing: 10) {
+                    Section {
+                        LazyVGrid(columns: columns) {
                             ForEach(groupedCardArts[bankName] ?? [], id: \.assetID) { cardArt in
                                 Image(cardArt.assetID)
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 150)
-                                    .padding(2)
+                                    .padding(.vertical, 5)
                                     .clipShape(.rect(cornerRadius: 12))
                                     .onTapGesture {
                                         selectedCardArt = cardArt
@@ -39,7 +39,8 @@ struct CardImagePickerView: View {
                                     }
                             }
                         }
-                        .padding(.vertical, 3)
+                    } header: {
+                        CardImagePickerSectionHeaderView(bankName: bankName)
                     }
                 }
             }

@@ -6,8 +6,8 @@ struct CardGridCellView: View {
     var body: some View {
         let w = 250.00
         let h = (w / 8.56) * 5.389
-        
-        VStack(alignment: .leading, spacing: 8) {
+    
+        VStack(alignment: .center, spacing: 8) {
             Image(creditCard.cardArt?.assetID ?? "default")
                 .resizable()
                 .interpolation(.low)
@@ -17,7 +17,7 @@ struct CardGridCellView: View {
             Text(creditCard.name)
                 .font(.headline)
                 .lineLimit(1)
-            Text("Opened: \(creditCard.openDate, style: .date)")
+            Text("Opened \(creditCard.openDate, style: .relative) ago")
                 .font(.caption)
                 .foregroundColor(.secondary)
                 .font(.caption)
@@ -29,5 +29,7 @@ struct CardGridCellView: View {
     }
 }
 #Preview {
-    CardGridCellView(creditCard: CreditCard.sampleData[0])
+    CardGridCellView(creditCard: CreditCard(name: "test", creditLimit: "2000", openDate: Date.now, isBusiness: false, isChargeCard: false, lastDigits: "3523", history: [""], paymentProcessor: PaymentProcessor.amex, cardArt: CardArt(assetID: "American_Express-Business-Plum")))
+        .modelContainer(PreviewData.shared.modelContainer)
+
 }

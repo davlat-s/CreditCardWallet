@@ -152,8 +152,7 @@ struct FormView: View {
         }
         .sheet(isPresented: $showCardArtPicker) {
             CardImagePickerView(selectedCardArt: $cardArt)
-                .frame(width: 800)
-                .frame(minHeight: 600, idealHeight: 650, maxHeight: 700)
+                .frame(width: 700, height: 650)
         }
     }
 }

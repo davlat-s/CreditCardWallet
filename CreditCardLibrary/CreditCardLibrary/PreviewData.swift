@@ -18,7 +18,9 @@ class PreviewData {
             Bank.self,
             Promotion.self,
             Bonus.self,
-            Closed.self
+            Closed.self,
+            PaymentProcessor.self,
+            CardArt.self
         ])
         
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
