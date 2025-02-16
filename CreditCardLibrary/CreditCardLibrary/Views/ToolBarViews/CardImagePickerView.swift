@@ -2,21 +2,17 @@ import SwiftUI
 import SwiftData
 
 struct CardImagePickerView: View {
-    /// The selected CardArt is passed back via this binding.
     @Binding var selectedCardArt: CardArt?
     
-    /// Environment dismissal to close the sheet when a selection is made.
     @Environment(\.dismiss) var dismiss
     
-    @Query var cardArts: [CardArt]  // No sort descriptor here
+    @Query var cardArts: [CardArt]
 
-    // Grouping after sorting in memory
     var groupedCardArts: [String: [CardArt]] {
         let sortedCardArts = cardArts.sorted { $0.bankName < $1.bankName }
         return Dictionary(grouping: sortedCardArts, by: { $0.bankName })
     }
     
-    /// Define a grid layout with three columns.
     let columns: [GridItem] = [
         GridItem(.flexible(), spacing: 5),
         GridItem(.flexible(), spacing: 5),
@@ -27,7 +23,6 @@ struct CardImagePickerView: View {
     var body: some View {
         NavigationStack {
             List {
-                // Iterate over sorted bank names.
                 ForEach(groupedCardArts.keys.sorted(), id: \.self) { bankName in
                     Section(header: Text(bankName)) {
                         LazyVGrid(columns: columns, spacing: 10) {
@@ -39,7 +34,6 @@ struct CardImagePickerView: View {
                                     .padding(2)
                                     .clipShape(.rect(cornerRadius: 12))
                                     .onTapGesture {
-                                        // Update the selection and dismiss.
                                         selectedCardArt = cardArt
                                         dismiss()
                                     }
@@ -52,11 +46,12 @@ struct CardImagePickerView: View {
             .navigationTitle("Select Card Art")
         }
         .toolbar {
-            ToolbarItem{
+            ToolbarItem(placement: .cancellationAction){
                 Button("Cancel"){
                     dismiss()
                 }
             }
+            
         }
     }
 }

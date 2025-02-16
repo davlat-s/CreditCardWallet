@@ -14,19 +14,15 @@ struct EditCreditCardView: View {
     
     var body: some View {
         VStack {
-            FormView(
-                creditCard: $creditCard,
-                isNewBank: false,
-                existingBanks: existingBanks,
-                paymentProcessors: paymentProcessors,
-                onSave: {
-                    try? modelContext.save()
-                    dismiss()
-                },
-                onCancel: {
-                    dismiss()
-                }
-            )
+            FormView(creditCard: $creditCard,
+                     bank: $creditCard.bank,
+                     promo: $creditCard.promotion,
+                     bonus: $creditCard.bonus,
+                     closed: $creditCard.closed,
+                     cardArt: $creditCard.cardArt,
+                     paymentProcessor: $creditCard.paymentProcessor,
+                     existingBanks: existingBanks,
+                     paymentProcessors: paymentProcessors)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done") {

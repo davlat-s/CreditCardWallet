@@ -16,6 +16,10 @@ final class Promotion {
         self.creditCard = creditCard
     }
     
+    static func returnNewPromotion() -> Promotion {
+        return Promotion(details: "")
+    }
+    
     static let sampleData = [
         Promotion(details: "0% APR for 12 moths", startDate: Date.now, endDate: Date.now.addingTimeInterval(60*60*24*30*12)),
         Promotion(details: "0% APR for 18 moths", startDate: Date.now, endDate: Date.now.addingTimeInterval(60*60*24*30*18)),

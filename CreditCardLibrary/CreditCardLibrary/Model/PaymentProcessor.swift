@@ -17,6 +17,10 @@ final class PaymentProcessor {
         self.logo = logo
     }
     
+    static func returnNewPaymentProcessor() -> PaymentProcessor {
+        return PaymentProcessor(name: "", logo: "")
+    }
+    
     static let sampleData: [PaymentProcessor] = [
         PaymentProcessor(name: "Visa", logo: "visa_logo"),
         PaymentProcessor(name: "Mastercard", logo: "mastercard_logo"),

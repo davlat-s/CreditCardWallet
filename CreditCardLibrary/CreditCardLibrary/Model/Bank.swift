@@ -12,6 +12,10 @@ final class Bank {
         self.name = name
     }
     
+    static func returnNewBank() -> Bank {
+        return Bank(name: "")
+    }
+    
     static let sampleData = [
         Bank(name: "Chace"),
         Bank(name: "American Express"),

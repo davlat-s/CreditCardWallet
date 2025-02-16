@@ -11,6 +11,10 @@ final class CardArt {
         self.bank = bank
     }
     
+    static func returnNewCardArt() -> CardArt {
+        return CardArt(assetID: "default")
+    }
+    
     static let sampleData = [
         CardArt(assetID: "American_Express-Personal-Platinum_Schwab.png", bank: Bank.sampleData[0]),
         CardArt(assetID: "American_Express-Personal-Platinum_Schwab.png", bank: Bank.sampleData[1])

@@ -6,6 +6,14 @@ struct FormView: View {
     @Environment(\.modelContext) var modelContext
 
     @Binding var creditCard: CreditCard
+    @Binding var bank: Bank?
+    @Binding var promo: Promotion?
+    @Binding var bonus: Bonus?
+    @Binding var closed: Closed?
+    @Binding var cardArt: CardArt?
+    @Binding var paymentProcessor: PaymentProcessor?
+    
+    
     @State var isNewBank: Bool = false
     @State var isNewPromo: Bool = false
     @State var isNewBonus: Bool = false
@@ -15,10 +23,6 @@ struct FormView: View {
     var existingBanks: [Bank]
     var paymentProcessors: [PaymentProcessor]
     
-    var onSave: () -> Void
-    var onCancel: (() -> Void)? = nil
-
-    /// New state to control the presentation of the CardArt picker.
     @State private var showCardArtPicker: Bool = false
 
     var body: some View {
@@ -27,28 +31,27 @@ struct FormView: View {
                 Section(header: Text("Card Art")) {
                     HStack {
                         Spacer()
-                        
-                        if let cardArt = creditCard.cardArt {
+                        if let cardArt = cardArt {
                             Image(cardArt.assetID)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: 150)
-                                .clipShape(.rect(cornerRadius: 8))
-
+                                .clipShape(RoundedRectangle(cornerRadius: 8))
                         } else {
                             Text("Select Image")
                                 .foregroundColor(.secondary)
                                 .font(.system(size: 20))
                         }
-                        
-                        
                         Spacer()
                     }
                     HStack {
                         Spacer()
-                        Button("Images") {
+                        Button(action: {
                             showCardArtPicker = true
-                        }                        
+                        }) {
+                            Label("Choose Card Image", systemImage: "photo")
+                        }
+                        Spacer()
                     }
                 }
 
@@ -71,13 +74,19 @@ struct FormView: View {
                             }
                         }
                     
-                    TextField("Credit Limit", text: $creditCard.creditLimit)
-                        .disabled(creditCard.isChargeCard)
-                        .opacity(creditCard.isChargeCard ? 0.5 : 1.0)
+                        if !creditCard.isChargeCard {
+                            TextField("Credit Limit", text: $creditCard.creditLimit)
+                                .textFieldStyle(.roundedBorder)
+                        } else {
+ 
+                            Text("Credit Limit is not applicable for Charge Cards")
+                                .foregroundColor(.secondary)
+                                .font(.caption)
+                        }
                     
                     Toggle("Business", isOn: $creditCard.isBusiness)
                     
-                    Picker("Payment Processor", selection: $creditCard.paymentProcessor) {
+                    Picker("Payment Processor", selection: $paymentProcessor) {
                         Text("Select").tag(Optional<PaymentProcessor>(nil))
                         ForEach(paymentProcessors) { pp in
                             Text(pp.name).tag(Optional(pp))
@@ -87,7 +96,7 @@ struct FormView: View {
                 }
 
                 Section {
-                    Picker("Bank", selection: $creditCard.bank) {
+                    Picker("Bank", selection: $bank) {
                         Text("Select").tag(Optional<Bank>(nil))
                         ForEach(existingBanks) { bank in
                             Text(bank.name).tag(Optional(bank))
@@ -99,44 +108,40 @@ struct FormView: View {
                     
                     if isNewBank {
                         AddBankView(textFieldWidth: $textFieldWidth) { newBank in
-                            modelContext.insert(newBank)
-                            creditCard.bank = newBank
+                            bank = newBank
                         }
                     }
                 }
                 
                 Section {
-                    Text(creditCard.promotion?.details ?? "No Promotions")
+                    Text(promo?.details ?? "No Promotions")
                     Toggle("New Promo", isOn: $isNewPromo)
                     
                     if isNewPromo {
                         AddPromotionView(textFieldWidth: $textFieldWidth) { newPromo in
-                            modelContext.insert(newPromo)
-                            creditCard.promotion = newPromo
+                            promo = newPromo
                         }
                     }
                 }
                 
                 Section {
-                    Text(creditCard.bonus?.details ?? "No Bonuses")
+                    Text(bonus?.details ?? "No Bonuses")
                     Toggle("New Bonus", isOn: $isNewBonus)
                     
                     if isNewBonus {
                         AddBonusView(textFieldWidth: $textFieldWidth) { newBonus in
-                            modelContext.insert(newBonus)
-                            creditCard.bonus = newBonus
+                            bonus = newBonus
                         }
                     }
                 }
                 
                 Section {
-                    Text(creditCard.closed?.reason ?? "Open")
+                    Text(closed?.reason ?? "Open")
                     Toggle("Close Card", isOn: $isClosed)
                     
                     if isClosed {
                         AddClosedView(textFieldWidth: $textFieldWidth) { newClosed in
-                            modelContext.insert(newClosed)
-                            creditCard.closed = newClosed
+                            closed = newClosed
                         }
                     }
                 }
@@ -145,9 +150,8 @@ struct FormView: View {
             }
             .formStyle(.grouped)
         }
-        // Present the CardArtPicker sheet.
         .sheet(isPresented: $showCardArtPicker) {
-            CardImagePickerView(selectedCardArt: $creditCard.cardArt)
+            CardImagePickerView(selectedCardArt: $cardArt)
                 .frame(width: 800)
                 .frame(minHeight: 600, idealHeight: 650, maxHeight: 700)
         }
@@ -157,8 +161,13 @@ struct FormView: View {
 
 #Preview {
     FormView(creditCard: .constant(PreviewData.shared.creditCard),
+             bank: .constant(PreviewData.shared.bank),
+             promo: .constant(PreviewData.shared.promotion),
+             bonus: .constant(PreviewData.shared.bonus),
+             closed: .constant(PreviewData.shared.closed),
+             cardArt: .constant(CardArt.sampleData[0]),
+             paymentProcessor: .constant(PreviewData.shared.paymentProcessor),
              existingBanks: Bank.sampleData,
-             paymentProcessors: PaymentProcessor.sampleData,
-             onSave: { print("Saved") })
+             paymentProcessors: PaymentProcessor.sampleData)
         .frame(height: 1000)
 }

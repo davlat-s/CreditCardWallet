@@ -14,6 +14,10 @@ final class Closed {
         self.creditCard = creditCard
     }
     
+    static func returnNewClosed() -> Closed {
+        return Closed(reason: "")
+    }
+    
     static let sampleData = [
         Closed(reason: "Closed due to high annual fee", closedDate: Date.now),
         Closed(reason: "Closed due to inactivity", closedDate: Date.now),

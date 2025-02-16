@@ -146,8 +146,7 @@ struct WalletContentView: View {
     
     private func addCard() {
         withAnimation {
-            let newItem = CreditCard.createNewCard()
-            modelContext.insert(newItem)
+            let newItem = CreditCard.returnNewCreditCard()
             newCard = newItem
         }
     }

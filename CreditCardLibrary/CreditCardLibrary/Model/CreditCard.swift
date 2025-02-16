@@ -50,8 +50,8 @@ final class CreditCard {
         self.cardArt = cardArt
     }
     
-    static func createNewCard() -> CreditCard {
-        return CreditCard(name: "", creditLimit: "0", openDate: .now, isBusiness: false, isChargeCard: false, lastDigits: "", history: ["\(Date.now) Credit Card Added", "sdfsdfs", "sdfsdf", "dfsdff"])
+    static func returnNewCreditCard() -> CreditCard {
+        return CreditCard(name: "", creditLimit: "0", openDate: .now, isBusiness: false, isChargeCard: false, lastDigits: "", history: ["\(Date.now) Credit Card Added", "sdfsdfs", "sdfsdf", "dfsdff"], cardArt: CardArt(assetID: "default"))
     }
     
     
