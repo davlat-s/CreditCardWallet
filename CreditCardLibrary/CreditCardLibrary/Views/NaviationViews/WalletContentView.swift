@@ -54,8 +54,20 @@ struct WalletContentView: View {
                     Color(NSColor.windowBackgroundColor)
                     DetailPanelView(creditCard: card)
                         .background(Color(.background))
-                    
-
+                        .navigationBarBackButtonHidden(true)
+                        .toolbar {
+                            ToolbarItem(placement: .navigation) {
+                                Button {
+                                    withAnimation(.spring()) {
+                                        navigationPath.removeLast()
+                                    }
+                                } label: {
+                                    Label("Back", systemImage: "chevron.left")
+                                        .imageScale(.large)
+                                    
+                                }
+                            }
+                        }
                 }
             }
         }
@@ -64,8 +76,9 @@ struct WalletContentView: View {
         
     }
     .toolbar {
-        ToolbarItemGroup(placement: .primaryAction) {
+        ToolbarItemGroup(placement: .automatic) {
             Menu("Sort", systemImage: "arrow.up.arrow.down") {
+                
                 Picker("Open Date", selection: $sortOrder) {
                     Text("Newest").tag([SortDescriptor(\CreditCard.openDate, order: .reverse)])
                     Text("Oldest").tag([SortDescriptor(\CreditCard.openDate)])
@@ -84,13 +97,12 @@ struct WalletContentView: View {
                 }
                 .imageScale(.large)
                 
-            }
+            }.disabled(!navigationPath.isEmpty)
             
             Button(action: addCard) {
                 Label("Add Card", systemImage: "plus")
                     .imageScale(.large)
-                
-            }
+            }.disabled(!navigationPath.isEmpty)
             
             
             Button(action: toggleEditing) {

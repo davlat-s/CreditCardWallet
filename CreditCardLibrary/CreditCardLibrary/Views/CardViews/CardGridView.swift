@@ -14,7 +14,7 @@ struct CardGridView: View {
     
     var onDoubleTap: (CreditCard) -> Void
     
-    let columns: [GridItem] = [GridItem(.adaptive(minimum: 270, maximum: 350), spacing: 0)]
+    let columns: [GridItem] = [GridItem(.adaptive(minimum: 275, maximum: 350), spacing: 0)]
     
     var body: some View {
         ScrollView {
@@ -40,6 +40,7 @@ struct CardGridView: View {
                         )
                 }
             }
+            .padding()
         }
     }
     init(searchString: String = "", 

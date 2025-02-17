@@ -16,7 +16,6 @@ struct DetailView: View {
             VStack {
                 CardView(creditCard: creditCard)
                     .padding()
-                    .padding(.bottom, 25)
                     .shadow(color: Color.black.opacity(0.1), radius: 25)
                 
                 GroupBox {
