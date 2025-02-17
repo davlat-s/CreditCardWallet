@@ -16,7 +16,6 @@ struct AddCreditCardView: View {
     var existingBanks: [Bank]
     var paymentProcessors: [PaymentProcessor]
     
-    var filterCallback: () -> Void
     
     var body: some View {
         VStack {
@@ -43,7 +42,6 @@ struct AddCreditCardView: View {
                         
                         try? modelContext.save()
                         dismiss()
-                        filterCallback()
                     }
                     .disabled(creditCard.name.isEmpty || bank == nil || paymentProcessor == nil || creditCard.lastDigits.isEmpty)
                 }
@@ -51,7 +49,6 @@ struct AddCreditCardView: View {
                     Button("Cancel") {
                         modelContext.delete(creditCard)
                         dismiss()
-                        filterCallback()
                     }
                 }
             }
@@ -61,5 +58,5 @@ struct AddCreditCardView: View {
 
 
 #Preview {
-    AddCreditCardView(creditCard: CreditCard(name: "", creditLimit: "", openDate: .now, isBusiness: false, isChargeCard: false, lastDigits: ""), existingBanks: Bank.sampleData, paymentProcessors: PaymentProcessor.sampleData, filterCallback: {print("test")})
+    AddCreditCardView(creditCard: CreditCard(name: "", creditLimit: "", openDate: .now, isBusiness: false, isChargeCard: false, lastDigits: ""), existingBanks: Bank.sampleData, paymentProcessors: PaymentProcessor.sampleData)
 }

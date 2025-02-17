@@ -9,7 +9,7 @@ struct CardView: View {
     }
     
     var body: some View {
-        let w = 400.00
+        let w = 300.00
         let h = (w / 8.56) * 5.389
         
         return ZStack{
@@ -18,7 +18,7 @@ struct CardView: View {
                 .interpolation(.low)
                 .aspectRatio(contentMode: .fit)
                 .frame(width: w, height: h)
-                .clipShape(.rect(cornerRadius: 15))
+                .clipShape(.rect(cornerRadius: 8))
 
                 
         }

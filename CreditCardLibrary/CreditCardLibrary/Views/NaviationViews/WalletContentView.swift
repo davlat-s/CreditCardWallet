@@ -11,6 +11,7 @@ struct WalletContentView: View {
     @State private var selectedCard: CreditCard?
     @State private var newCard: CreditCard?
     @State private var isEditing: Bool = false
+    @State private var toggleHelper = true
     
     @State private var navigationPath = NavigationPath()
     
@@ -20,9 +21,7 @@ struct WalletContentView: View {
     
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
-    
-    @State private var banksWithCreditCards: [Bank] = []
-    
+        
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
             SidebarView(selectedCategory: $selectedCategory)
@@ -38,30 +37,32 @@ struct WalletContentView: View {
                     }
                 }
                 .navigationSplitViewColumnWidth(min: 150, ideal: 150, max: 250)
-            
-            
-            
         }
     detail: {
         NavigationStack(path: $navigationPath){
-            CardGridView(selectedCategory: $selectedCategory,
+            CardGridView(searchString: searchText,
+                         sortOrder: sortOrder,
                          selectedCard: $selectedCard,
+                         selectedCategory: $selectedCategory,
                          onDoubleTap: { card in
                 withAnimation(.spring()) {
                     navigationPath.append(card)
-                }}
-            )
+                }})
+            .searchable(text: $searchText, placement: .toolbar, prompt: "search")
             .navigationDestination(for: CreditCard.self) { card in
                 ZStack {
                     Color(NSColor.windowBackgroundColor)
                     DetailPanelView(creditCard: card)
+                        .background(Color(.background))
+                    
+
                 }
             }
         }
+        .background(Color(.background))
         .navigationSplitViewColumnWidth(min: 350, ideal: 400)
         
     }
-        
     .toolbar {
         ToolbarItemGroup(placement: .primaryAction) {
             Menu("Sort", systemImage: "arrow.up.arrow.down") {
@@ -106,19 +107,12 @@ struct WalletContentView: View {
             
         }
     }
-        
-    .onChange(of: existingBanks) {
-        filterBanksWithCreditCards()
-    }
-        
-        
     .sheet(isPresented: $isEditing) {
         if let selectedCard = selectedCard {
             EditCreditCardView(
                 creditCard: selectedCard,
                 existingBanks: existingBanks,
-                paymentProcessors: paymentProcessors,
-                filterCallback: filterBanksWithCreditCards)
+                paymentProcessors: paymentProcessors)
             .frame(width: 600, height: 500, alignment: .center)
         }
     }
@@ -127,21 +121,17 @@ struct WalletContentView: View {
         AddCreditCardView(
             creditCard: card,
             existingBanks: existingBanks,
-            paymentProcessors: paymentProcessors,
-            filterCallback: filterBanksWithCreditCards
+            paymentProcessors: paymentProcessors
         )
         .frame(width: 600, height: 500, alignment: .center)
     }
     }
     
     private func toggleSidebar() {
-        withAnimation{
-            columnVisibility = columnVisibility == .automatic ? .all : .automatic
+        withAnimation {
+            toggleHelper.toggle()
+            columnVisibility = toggleHelper ? .all : .detailOnly
         }
-    }
-    
-    func filterBanksWithCreditCards() {
-        banksWithCreditCards = existingBanks.filter { !$0.creditCards.isEmpty }
     }
     
     private func addCard() {
@@ -159,7 +149,6 @@ struct WalletContentView: View {
         withAnimation {
             modelContext.delete(card)
             selectedCard = nil
-            filterBanksWithCreditCards()
         }
     }
 }

@@ -15,115 +15,101 @@ struct DetailView: View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack {
                 CardView(creditCard: creditCard)
-                    .padding(40)
+                    .padding()
+                    .padding(.bottom, 25)
+                    .shadow(color: Color.black.opacity(0.1), radius: 25)
                 
-                Section("Card Details"){
-                    HStack{
-                        Spacer()
+                GroupBox {
                         VStack{
-                            HStack {
-                                Text("CardName")
-                                Spacer()
-                                Text(creditCard.name)
-                            }
-                            HStack {
-                                Text("Type")
-                                Spacer()
-                                Text(creditCard.isBusiness ? "Business" : "Personal")
-                            }
+                            
+                            DetailRowView(label: "Card Name", value: creditCard.name)
+                            DetailRowView(label: "Type", value: creditCard.isBusiness ? "Business" : "Personal")
+                            
                             if !creditCard.isChargeCard {
-                                HStack {
-                                    Text("Credit Limit")
-                                    Spacer()
-                                    Text(creditCard.creditLimit)
-                                }
+                                DetailRowView(label: "Credit Limit", value: creditCard.creditLimit)
                             }
                             
-                            HStack {
-                                Text("Charge Card")
-                                Spacer()
-                                Text(creditCard.isChargeCard ? "Yes" : "No")
-                            }
+                            DetailRowView(label: "Charge Card", value: creditCard.isChargeCard ? "Yes" : "No")
+                            
                             if creditCard.bank != nil {
-                                HStack {
-                                    Text("Bank Name")
-                                    Spacer()
-                                    Text(creditCard.bank?.name ?? "Bank is not specified")
-                                }
+                                DetailRowView(label: "Bank Name", value: creditCard.bank?.name ?? "Bank is not specified")
                             }
                             
-                            Section("Promotions"){
-                                if creditCard.promotion != nil{
-                                    HStack {
-                                        Text("Promotion Details")
-                                        Spacer()
-                                        Text(creditCard.promotion?.details ?? "None")
-                                    }
-                                    HStack {
-                                        Text("Start Date")
-                                        Spacer()
-                                        Text(creditCard.promotion?.startDate?.description ?? "None")
-                                    }
-                                    HStack {
-                                        Text("End Date")
-                                        Spacer()
-                                        Text(creditCard.promotion?.endDate?.description ?? "None")
-                                    }
-                                } else {
-                                    HStack{
-                                        Text("No promotions available")
-                                        Spacer()
-                                    }
-                                }
-                            }
-                           
-                            
-                            Section("Bonuses"){
-                                if creditCard.bonus != nil{
-                                    HStack {
-                                        Text("Bonus Details")
-                                        Spacer()
-                                        Text(creditCard.bonus?.details ?? "Bonus details not specified")
-                                    }
-                                    HStack {
-                                        Text("Start Date")
-                                        Spacer()
-                                        Text(creditCard.bonus?.startDate?.description ?? "None")
-                                    }
-                                    HStack {
-                                        Text("End Date")
-                                        Spacer()
-                                        Text(creditCard.bonus?.endDate?.description ?? "None")
-                                    }
-                                }else {
-                                    HStack{
-                                        Text("No bonuses available")
-                                        Spacer()
-                                    }
-                                }
-                            }
-                            
-                            if creditCard.closed != nil{
-                                HStack {
-                                    Text("Closed Reason")
-                                    Spacer()
-                                    Text(creditCard.closed?.reason ?? "Reason not specified")
-                                }
+                            if creditCard.closed != nil {
+                                DetailRowView(label: "Closed Reson", value: creditCard.closed?.reason ?? "Reason not specified")
                             }
                         }
-                        Spacer()
-                    }
+                } label: {
+                    Label("Card Details", systemImage: "creditcard")
+                        .font(.headline)
+                }
+                .groupBoxStyle(ModernGroupBoxStyle())
+                .padding(.horizontal)
                 
+                
+                if creditCard.bonus != nil {
+                    GroupBox {
+                        VStack{
+                            DetailRowView(label: "Bonus Details", value: creditCard.bonus?.details ?? "Bonus details not specified")
+                            DetailRowView(label: "Start Date", value: creditCard.bonus?.startDate?.description ?? "None")
+                            DetailRowView(label: "End Date", value: creditCard.bonus?.endDate?.description ?? "None")
+                        }
+                        
+                        
+                    } label: {
+                        Label("Bonus", systemImage: "dollarsign.square")
+                            .font(.headline)
+
+                    }
+                    .groupBoxStyle(ModernGroupBoxStyle())
+                                    .padding(.horizontal)
                 }
                 
+                if creditCard.promotion != nil {
+                    GroupBox {
+                        VStack{
+                            DetailRowView(label: "Promotion Details", value: creditCard.promotion?.details ?? "None")
+                            
+                            DetailRowView(label: "Start Date", value: creditCard.promotion?.startDate?.description ?? "None")
+                            
+                            DetailRowView(label: "End Date", value: creditCard.promotion?.endDate?.description ?? "None")
+                        }
+                        
+                    } label: {
+                        Label("Promotion", systemImage: "percent")
+                            .font(.headline)
+
+                    }
+                    .groupBoxStyle(ModernGroupBoxStyle())
+                    .padding(.horizontal)
+                }
                 Spacer()
             }
             .padding()
-            .navigationTitle("Credit Card Details")
         }
+        .navigationTitle("Credit Card Details")
+
     }
 }
 
+struct ModernGroupBoxStyle: GroupBoxStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            configuration.label
+            configuration.content
+                .background(Color.grayDetailRow.opacity(0.2))
+                .cornerRadius(8)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .strokeBorder(Color.grayDetailRow.opacity(0.8)))
+        }
+        .padding()
+        .background(Color(.background))
+        .cornerRadius(12)
+        .shadow(color: Color.black.opacity(0.05), radius: 5)
+
+    }
+}
 // MARK: Previews
 
 #Preview("Details") {

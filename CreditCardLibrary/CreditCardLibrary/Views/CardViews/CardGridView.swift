@@ -7,7 +7,7 @@ struct CardGridView: View {
     @Binding var selectedCard: CreditCard?
     
     @Query(sort: \CreditCard.name) private var cards: [CreditCard]
-    
+
     var filteredCreditCards: [CreditCard] {
         cards.filter(selectedCategory.sidebarFilter)
     }
@@ -42,9 +42,28 @@ struct CardGridView: View {
             }
         }
     }
+    init(searchString: String = "", 
+         sortOrder: [SortDescriptor<CreditCard>] = [],
+         selectedCard: Binding<CreditCard?>,
+         selectedCategory: Binding<SideBarCategories>,
+         onDoubleTap: @escaping (CreditCard) -> Void
+    ) {
+            _selectedCard = selectedCard
+            _selectedCategory = selectedCategory
+            self.onDoubleTap = onDoubleTap
+            _cards = Query(filter: #Predicate { card in
+                if searchString.isEmpty {
+                    return true
+                } else {
+                    return card.name.localizedStandardContains(searchString)
+                }
+            }, sort: sortOrder)
+        }
 }
 
 #Preview {
-    CardGridView(selectedCategory: .constant(.all), selectedCard: .constant(nil), onDoubleTap: {card in print(card.name)})
-        .frame(width: 400)
+    CardGridView(selectedCard: .constant(CreditCard.sampleData[0]),
+                 selectedCategory: .constant(.all),
+                 onDoubleTap: {_ in print("double tapped")})
+    .frame(width: 400)
 }
