@@ -9,14 +9,15 @@ struct SidebarView: View {
         let categories: [SideBarCategories] = [
             .business,
             .personal,
-            .all
+            .all,
+            .closed
         ]
-        return categories.sorted { $0.displayName < $1.displayName }
+        return categories.sorted { $0.order < $1.order }
     }
     
     var body: some View {
         List(selection: $selectedCategory) {
-            Section("Open Cards") {
+            Section("Card Categories") {
                 ForEach(sortedCategories(), id: \.self) { category in
                     NavigationLink(value: category) {
                         Label(category.displayName, systemImage: category.displayImageName)
@@ -25,10 +26,8 @@ struct SidebarView: View {
             }
             
             Section("Other Categories") {
-                ForEach([SideBarCategories.closed], id: \.self) { category in
-                    NavigationLink(value: category) {
-                        Label(category.displayName, systemImage: category.displayImageName)
-                    }
+                NavigationLink(destination: ChartsView()) {
+                    Label("Charts", systemImage: "chart.line.uptrend.xyaxis")
                 }
             }
         }

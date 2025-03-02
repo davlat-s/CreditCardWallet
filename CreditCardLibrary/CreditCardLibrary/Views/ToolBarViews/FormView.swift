@@ -7,8 +7,8 @@ struct FormView: View {
 
     @Binding var creditCard: CreditCard
     @Binding var bank: Bank?
-    @Binding var promo: Promotion?
-    @Binding var bonus: Bonus?
+    @Binding var promotions: [Promotion]
+    @Binding var bonuses: [Bonus]
     @Binding var closed: Closed?
     @Binding var cardArt: CardArt?
     @Binding var paymentProcessor: PaymentProcessor?
@@ -54,8 +54,8 @@ struct FormView: View {
                         Spacer()
                     }
                 }
-
-                Section {
+                
+                Section("Card Details") {
                     DatePicker("Open Date", selection: $creditCard.openDate, displayedComponents: .date)
                         .datePickerStyle(.automatic)
                     
@@ -74,15 +74,15 @@ struct FormView: View {
                             }
                         }
                     
-                        if !creditCard.isChargeCard {
-                            TextField("Credit Limit", text: $creditCard.creditLimit)
-                                .textFieldStyle(.roundedBorder)
-                        } else {
- 
-                            Text("Credit Limit is not applicable for Charge Cards")
-                                .foregroundColor(.secondary)
-                                .font(.caption)
-                        }
+                    if !creditCard.isChargeCard {
+                        TextField("Credit Limit", text: $creditCard.creditLimit)
+                            .textFieldStyle(.roundedBorder)
+                    } else {
+                        
+                        Text("Credit Limit is not applicable for Charge Cards")
+                            .foregroundColor(.secondary)
+                            .font(.caption)
+                    }
                     
                     Toggle("Business", isOn: $creditCard.isBusiness)
                     
@@ -94,8 +94,8 @@ struct FormView: View {
                     }
                     .pickerStyle(.menu)
                 }
-
-                Section {
+                
+                Section("Bank") {
                     Picker("Bank", selection: $bank) {
                         Text("Select").tag(Optional<Bank>(nil))
                         ForEach(existingBanks) { bank in
@@ -104,45 +104,64 @@ struct FormView: View {
                     }
                     .pickerStyle(.menu)
                     
-                    Toggle("New Bank", isOn: $isNewBank)
-                    
-                    if isNewBank {
-                        AddBankView(textFieldWidth: $textFieldWidth) { newBank in
-                            bank = newBank
+                    HStack {
+                        Spacer()
+                        Button {
+                            isNewBank.toggle()
+                        }label: {
+                            Image(systemName: "plus")
                         }
+                        .buttonStyle(.plain)
                     }
+
                 }
                 
-                Section {
-                    Text(promo?.details ?? "No Promotions")
-                    Toggle("New Promo", isOn: $isNewPromo)
-                    
-                    if isNewPromo {
-                        AddPromotionView(textFieldWidth: $textFieldWidth) { newPromo in
-                            promo = newPromo
+                Section("Promotions") {
+                    ForEach(promotions){promo in
+                        HStack {
+                            Text(promo.details)
                         }
                     }
+                    HStack {
+                        Spacer()
+                        Button {
+                            isNewPromo.toggle()
+                        } label: {
+                            Image(systemName: "plus")
+                        }
+                        .buttonStyle(.plain)
+                    }
+
                 }
                 
-                Section {
-                    Text(bonus?.details ?? "No Bonuses")
-                    Toggle("New Bonus", isOn: $isNewBonus)
-                    
-                    if isNewBonus {
-                        AddBonusView(textFieldWidth: $textFieldWidth) { newBonus in
-                            bonus = newBonus
+                Section("Bonuses") {
+                    ForEach(bonuses){bonus in
+                        HStack {
+                            Text(bonus.details)
                         }
                     }
+                    HStack {
+                        Spacer()
+                        Button {
+                            isNewBonus.toggle()
+                        } label: {
+                            Image(systemName: "plus")
+                        }
+                        .buttonStyle(.plain)
+                    }
+
                 }
                 
-                Section {
+                Section("Card Status") {
                     Text(closed?.reason ?? "Open")
-                    Toggle("Close Card", isOn: $isClosed)
-                    
-                    if isClosed {
-                        AddClosedView(textFieldWidth: $textFieldWidth) { newClosed in
-                            closed = newClosed
+                    HStack {
+                        Spacer()
+                        Button {
+                            isClosed.toggle()
+                        } label: {
+                            Image(systemName: "plus")
                         }
+                        .buttonStyle(.plain)
                     }
                 }
                 
@@ -154,19 +173,39 @@ struct FormView: View {
             CardImagePickerView(selectedCardArt: $cardArt)
                 .frame(width: 700, height: 650)
         }
+        .sheet(isPresented: $isNewBank) {
+            AddBankView(textFieldWidth: $textFieldWidth) { newBank in
+                bank = newBank
+            }
+        }
+        .sheet(isPresented: $isNewPromo) {
+            AddPromotionView(textFieldWidth: $textFieldWidth) { newPromo in
+                promotions.append(newPromo)
+            }
+        }
+        .sheet(isPresented : $isNewBonus) {
+            AddBonusView(textFieldWidth: $textFieldWidth) { newBonus in
+                bonuses.append(newBonus)
+            }
+        }
+        .sheet(isPresented : $isClosed) {
+            AddClosedView(textFieldWidth: $textFieldWidth) { newClosed in
+                closed = newClosed
+            }
+        }
     }
 }
 
 
-#Preview {
-    FormView(creditCard: .constant(PreviewData.shared.creditCard),
-             bank: .constant(PreviewData.shared.bank),
-             promo: .constant(PreviewData.shared.promotion),
-             bonus: .constant(PreviewData.shared.bonus),
-             closed: .constant(PreviewData.shared.closed),
-             cardArt: .constant(CardArt.sampleData[0]),
-             paymentProcessor: .constant(PreviewData.shared.paymentProcessor),
-             existingBanks: Bank.sampleData,
-             paymentProcessors: PaymentProcessor.sampleData)
-        .frame(height: 1000)
-}
+//#Preview {
+//    FormView(creditCard: .constant(PreviewData.shared.creditCard),
+//             bank: .constant(PreviewData.shared.bank),
+//             promotions: .constant(PreviewData.shared.promotion),
+//             bonus: .constant(PreviewData.shared.bonus),
+//             closed: .constant(PreviewData.shared.closed),
+//             cardArt: .constant(CardArt.sampleData[0]),
+//             paymentProcessor: .constant(PreviewData.shared.paymentProcessor),
+//             existingBanks: Bank.sampleData,
+//             paymentProcessors: PaymentProcessor.sampleData)
+//        .frame(height: 1000)
+//}

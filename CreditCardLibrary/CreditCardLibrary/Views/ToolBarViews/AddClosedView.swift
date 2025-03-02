@@ -16,8 +16,13 @@ struct AddClosedView: View {
                 
                 onSave(newReason)
                 closedReason = ""
+                dismiss()
+            }
+            Button("Cancel") {
+                dismiss()
             }
         }
+        .padding()
     }
 }
 

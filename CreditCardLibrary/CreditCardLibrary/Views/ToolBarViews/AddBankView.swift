@@ -16,8 +16,13 @@ struct AddBankView: View {
                 
                 onSave(newBank)
                 bankName = ""
+                dismiss()
+            }
+            Button("Cancel") {
+                dismiss()
             }
         }
+        .padding()
     }
 }
 

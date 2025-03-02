@@ -46,12 +46,14 @@ struct DetailView: View {
                 .padding(.horizontal)
                 
                 
-                if creditCard.bonus != nil {
+                if !creditCard.bonuses.isEmpty {
                     GroupBox {
-                        VStack{
-                            DetailRowView(label: "Bonus Details", value: creditCard.bonus?.details ?? "Bonus details not specified")
-                            DetailRowView(label: "Start Date", value: creditCard.bonus?.startDate?.description ?? "None")
-                            DetailRowView(label: "End Date", value: creditCard.bonus?.endDate?.description ?? "None")
+                        ForEach(creditCard.bonuses, id: \.self) { bonus in
+                            VStack{
+                                DetailRowView(label: "Bonus Details", value: bonus.details)
+                                DetailRowView(label: "Start Date", value: bonus.startDate?.description ?? "None")
+                                DetailRowView(label: "End Date", value: bonus.endDate?.description ?? "None")
+                            }
                         }
                         
                         
@@ -64,15 +66,16 @@ struct DetailView: View {
                                     .padding(.horizontal)
                 }
                 
-                if creditCard.promotion != nil {
+                if !creditCard.promotions.isEmpty {
                     GroupBox {
-                        VStack{
-                            DetailRowView(label: "Promotion Details", value: creditCard.promotion?.details ?? "None")
-                            
-                            DetailRowView(label: "Start Date", value: creditCard.promotion?.startDate?.description ?? "None")
-                            
-                            DetailRowView(label: "End Date", value: creditCard.promotion?.endDate?.description ?? "None")
+                        ForEach(creditCard.promotions, id: \.self) { promo in
+                                VStack{
+                                    DetailRowView(label: "Promotion Details", value: promo.details)
+                                    DetailRowView(label: "Start Date", value: promo.startDate?.description ?? "None")
+                                    DetailRowView(label: "End Date", value: promo.endDate?.description ?? "None")
+                                }
                         }
+                        
                         
                     } label: {
                         Label("Promotion", systemImage: "percent")

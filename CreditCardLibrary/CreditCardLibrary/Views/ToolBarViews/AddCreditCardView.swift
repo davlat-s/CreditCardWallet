@@ -7,8 +7,8 @@ struct AddCreditCardView: View {
     
     @State var creditCard: CreditCard
     @State var bank: Bank? = nil
-    @State var promo: Promotion? = nil
-    @State var bonus: Bonus? = nil
+    @State var promotions: [Promotion] = []
+    @State var bonuses: [Bonus] = []
     @State var closed: Closed? = nil
     @State var cardArt: CardArt? = CardArt.returnNewCardArt()
     @State var paymentProcessor: PaymentProcessor? = PaymentProcessor.returnNewPaymentProcessor()
@@ -21,8 +21,8 @@ struct AddCreditCardView: View {
         VStack {
             FormView(creditCard: $creditCard,
                      bank: $bank,
-                     promo: $promo,
-                     bonus: $bonus,
+                     promotions: $promotions,
+                     bonuses: $bonuses,
                      closed: $closed,
                      cardArt: $cardArt,
                      paymentProcessor: $paymentProcessor,
@@ -32,8 +32,8 @@ struct AddCreditCardView: View {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Save") {
                         creditCard.bank = bank
-                        creditCard.promotion = promo
-                        creditCard.bonus = bonus
+                        creditCard.promotions = promotions
+                        creditCard.bonuses = bonuses
                         creditCard.closed = closed
                         creditCard.cardArt = cardArt
                         creditCard.paymentProcessor = paymentProcessor

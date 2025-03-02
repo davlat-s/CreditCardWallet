@@ -29,8 +29,13 @@ struct AddBonusView: View {
                 
                 onSave(newBonus)
                 bonusName = ""
+                dismiss()
+            }
+            Button("Cancel") {
+                dismiss()
             }
         }
+        .padding()
     }
 }
 

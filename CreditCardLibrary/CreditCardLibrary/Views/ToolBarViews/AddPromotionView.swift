@@ -22,8 +22,13 @@ struct AddPromotionView: View {
                 
                 onSave(newPromo)
                 promoName = ""
+                dismiss()
+            }
+            Button("Cancel") {
+                dismiss()
             }
         }
+        .padding()
     }
 }
 

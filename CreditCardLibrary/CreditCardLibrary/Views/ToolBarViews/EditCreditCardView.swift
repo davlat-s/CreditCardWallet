@@ -15,8 +15,8 @@ struct EditCreditCardView: View {
         VStack {
             FormView(creditCard: $creditCard,
                      bank: $creditCard.bank,
-                     promo: $creditCard.promotion,
-                     bonus: $creditCard.bonus,
+                     promotions: $creditCard.promotions,
+                     bonuses: $creditCard.bonuses,
                      closed: $creditCard.closed,
                      cardArt: $creditCard.cardArt,
                      paymentProcessor: $creditCard.paymentProcessor,
