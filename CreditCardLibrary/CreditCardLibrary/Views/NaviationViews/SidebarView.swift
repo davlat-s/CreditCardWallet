@@ -24,7 +24,7 @@ struct SidebarView: View {
                     }
                 }
             }
-            
+            // TODO: make navigation more centralized
             Section("Other Categories") {
                 NavigationLink(destination: ChartsView()) {
                     Label("Charts", systemImage: "chart.line.uptrend.xyaxis")

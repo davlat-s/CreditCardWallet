@@ -8,7 +8,7 @@ struct CreditCardLibraryApp: App {
         WindowGroup("Main Widnow") {
             WalletContentView(selectedCategory: $sidebarSelection, columnVisibility: $columnVisibility)
                 .toolbarBackground(.ultraThickMaterial)
-                .frame(minWidth: 600, idealWidth: 1200, maxWidth: 1400, minHeight: 300, idealHeight: 600, maxHeight: 700)
+                .frame(minWidth: 600, idealWidth: 1200, maxWidth: 1400, minHeight: 300, idealHeight: 600, maxHeight: 900)
                 .onAppear {
                     columnVisibility = .all
                 }

@@ -2,7 +2,6 @@ import SwiftUI
 import SwiftData
 
 struct WalletContentView: View {
-    
     @Binding var selectedCategory: SideBarCategories
     @Binding var columnVisibility: NavigationSplitViewVisibility
     
@@ -12,12 +11,11 @@ struct WalletContentView: View {
     @State private var newCard: CreditCard?
     @State private var isEditing: Bool = false
     @State private var toggleHelper = true
-    
     @State private var navigationPath = NavigationPath()
+    @State private var cardToDelete: CreditCard?
     
-    @Query(sort:[SortDescriptor(\Bank.name, order: .forward)]) var existingBanks: [Bank]
-    
-    @Query(sort:[SortDescriptor(\PaymentProcessor.name, order: .forward)]) var paymentProcessors: [PaymentProcessor]
+    @Query(sort: [SortDescriptor(\Bank.name, order: .forward)]) var existingBanks: [Bank]
+    @Query(sort: [SortDescriptor(\PaymentProcessor.name, order: .forward)]) var paymentProcessors: [PaymentProcessor]
     
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
@@ -37,106 +35,116 @@ struct WalletContentView: View {
                     }
                 }
                 .navigationSplitViewColumnWidth(min: 150, ideal: 150, max: 250)
-        }
-    detail: {
-        NavigationStack(path: $navigationPath){
-            CardGridView(searchString: searchText,
-                         sortOrder: sortOrder,
-                         selectedCard: $selectedCard,
-                         selectedCategory: $selectedCategory,
-                         onDoubleTap: { card in
-                withAnimation(.spring()) {
-                    navigationPath.append(card)
-                }})
-            .searchable(text: $searchText, placement: .toolbar, prompt: "search")
-            .navigationDestination(for: CreditCard.self) { card in
-                ZStack {
-                    Color(NSColor.windowBackgroundColor)
-                    DetailPanelView(creditCard: card)
-                        .background(Color(.background))
-                        .navigationBarBackButtonHidden(true)
-                        .toolbar {
-                            ToolbarItem(placement: .navigation) {
-                                Button {
-                                    withAnimation(.spring()) {
-                                        navigationPath.removeLast()
+        } detail: {
+            NavigationStack(path: $navigationPath) {
+                CardGridView(searchString: searchText,
+                             sortOrder: sortOrder,
+                             selectedCard: $selectedCard,
+                             selectedCategory: $selectedCategory,
+                             onDoubleTap: { card in
+                    withAnimation(.spring()) {
+                        navigationPath.append(card)
+                    }
+                })
+                .searchable(text: $searchText, placement: .toolbar, prompt: "search")
+                .navigationDestination(for: CreditCard.self) { card in
+                    ZStack {
+                        Color(NSColor.windowBackgroundColor)
+                        DetailPanelView(creditCard: card)
+                            .background(Color(.background))
+                            .navigationBarBackButtonHidden(true)
+                            .toolbar {
+                                ToolbarItem(placement: .navigation) {
+                                    Button {
+                                        withAnimation(.spring()) {
+                                            navigationPath.removeLast()
+                                        }
+                                    } label: {
+                                        Label("Back", systemImage: "chevron.left")
+                                            .imageScale(.large)
                                     }
-                                } label: {
-                                    Label("Back", systemImage: "chevron.left")
-                                        .imageScale(.large)
-                                    
                                 }
                             }
-                        }
+                    }
                 }
             }
+            .background(Color(.background))
+            .navigationSplitViewColumnWidth(min: 350, ideal: 400)
         }
-        .background(Color(.background))
-        .navigationSplitViewColumnWidth(min: 350, ideal: 400)
-        
-    }
-    .toolbar {
-        ToolbarItemGroup(placement: .automatic) {
-            Menu("Sort", systemImage: "arrow.up.arrow.down") {
-                
-                Picker("Open Date", selection: $sortOrder) {
-                    Text("Newest").tag([SortDescriptor(\CreditCard.openDate, order: .reverse)])
-                    Text("Oldest").tag([SortDescriptor(\CreditCard.openDate)])
-                }
-                .imageScale(.large)
-                
-                Picker("Credit Limit", selection: $sortOrder) {
-                    Text("Highest").tag([SortDescriptor(\CreditCard.creditLimit, order: .reverse)])
-                    Text("Lowest").tag([SortDescriptor(\CreditCard.creditLimit)])
-                }
-                .imageScale(.large)
-                
-                Picker("Name", selection: $sortOrder) {
-                    Text("A-Z").tag([SortDescriptor(\CreditCard.name)])
-                    Text("Z-A").tag([SortDescriptor(\CreditCard.name, order: .reverse)])
-                }
-                .imageScale(.large)
-                
-            }.disabled(!navigationPath.isEmpty)
-            
-            Button(action: addCard) {
-                Label("Add Card", systemImage: "plus")
+        .toolbar {
+            ToolbarItemGroup(placement: .automatic) {
+                Menu("Sort", systemImage: "arrow.up.arrow.down") {
+                    Picker("Open Date", selection: $sortOrder) {
+                        Text("Newest").tag([SortDescriptor(\CreditCard.openDate, order: .reverse)])
+                        Text("Oldest").tag([SortDescriptor(\CreditCard.openDate)])
+                    }
                     .imageScale(.large)
-            }.disabled(!navigationPath.isEmpty)
-            
-            
-            Button(action: toggleEditing) {
-                Label("Edit", systemImage: "square.and.pencil")
+                    
+                    Picker("Credit Limit", selection: $sortOrder) {
+                        Text("Highest").tag([SortDescriptor(\CreditCard.creditLimit, order: .reverse)])
+                        Text("Lowest").tag([SortDescriptor(\CreditCard.creditLimit)])
+                    }
                     .imageScale(.large)
-            }.disabled(selectedCard == nil)
-            
-            Button(action: {
-                deleteCard(selectedCard!)
-            }) {
-                Label("Delete", systemImage: "trash")
+                    
+                    Picker("Name", selection: $sortOrder) {
+                        Text("A-Z").tag([SortDescriptor(\CreditCard.name)])
+                        Text("Z-A").tag([SortDescriptor(\CreditCard.name, order: .reverse)])
+                    }
                     .imageScale(.large)
-            }.disabled(selectedCard == nil)
-            
+                }
+                .disabled(!navigationPath.isEmpty)
+                
+                Button(action: addCard) {
+                    Label("Add Card", systemImage: "plus")
+                        .imageScale(.large)
+                }
+                .disabled(!navigationPath.isEmpty)
+                
+                Button(action: toggleEditing) {
+                    Label("Edit", systemImage: "square.and.pencil")
+                        .imageScale(.large)
+                }
+                .disabled(selectedCard == nil)
+                
+                Button(action: {
+                    if let selected = selectedCard {
+                        cardToDelete = selected
+                    }
+                }) {
+                    Label("Delete", systemImage: "trash")
+                        .imageScale(.large)
+                }
+                .disabled(selectedCard == nil)
+            }
         }
-    }
-    .sheet(isPresented: $isEditing) {
-        if let selectedCard = selectedCard {
-            EditCreditCardView(
-                creditCard: selectedCard,
+        .alert(item: $cardToDelete) { card in
+            Alert(
+                title: Text("Delete Card"),
+                message: Text("Are you sure you want to delete \(card.name)?"),
+                primaryButton: .destructive(Text("Delete")) {
+                    deleteCard(card)
+                },
+                secondaryButton: .cancel()
+            )
+        }
+        .sheet(isPresented: $isEditing) {
+            if let selectedCard = selectedCard {
+                EditCreditCardView(
+                    creditCard: selectedCard,
+                    existingBanks: existingBanks,
+                    paymentProcessors: paymentProcessors
+                )
+                .frame(width: 600, height: 500, alignment: .center)
+            }
+        }
+        .sheet(item: $newCard) { card in
+            AddCreditCardView(
+                creditCard: card,
                 existingBanks: existingBanks,
-                paymentProcessors: paymentProcessors)
+                paymentProcessors: paymentProcessors
+            )
             .frame(width: 600, height: 500, alignment: .center)
         }
-    }
-        
-    .sheet(item: $newCard) { card in
-        AddCreditCardView(
-            creditCard: card,
-            existingBanks: existingBanks,
-            paymentProcessors: paymentProcessors
-        )
-        .frame(width: 600, height: 500, alignment: .center)
-    }
     }
     
     private func toggleSidebar() {
@@ -163,12 +171,4 @@ struct WalletContentView: View {
             selectedCard = nil
         }
     }
-}
-
-
-// MARK: - Previews
-
-#Preview {
-    WalletContentView(selectedCategory: .constant(.all), columnVisibility: .constant(.all))
-        .modelContainer(PreviewData.shared.modelContainer)
 }

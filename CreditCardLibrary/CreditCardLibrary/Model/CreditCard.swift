@@ -9,6 +9,7 @@ final class CreditCard {
     var creditLimit: String
     var isBusiness: Bool
     var isChargeCard: Bool
+    var annualFee: Double?
     var openDate: Date
     var lastDigits: String
     var colorHex: String?
@@ -25,6 +26,7 @@ final class CreditCard {
          openDate: Date,
          isBusiness: Bool,
          isChargeCard: Bool,
+         annualFee: Double? = 0,
          lastDigits: String,
          colorHex: String? = nil,
          history: [String] = [],
@@ -38,6 +40,7 @@ final class CreditCard {
         self.creditLimit = creditLimit
         self.openDate = openDate
         self.isBusiness = isBusiness
+        self.annualFee = annualFee
         self.lastDigits = lastDigits
         self.bank = bank
         self.promotions = promotions
