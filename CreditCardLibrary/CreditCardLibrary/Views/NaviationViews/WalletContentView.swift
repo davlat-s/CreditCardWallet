@@ -37,15 +37,21 @@ struct WalletContentView: View {
                 .navigationSplitViewColumnWidth(min: 150, ideal: 150, max: 250)
         } detail: {
             NavigationStack(path: $navigationPath) {
-                CardGridView(searchString: searchText,
-                             sortOrder: sortOrder,
-                             selectedCard: $selectedCard,
-                             selectedCategory: $selectedCategory,
-                             onDoubleTap: { card in
-                    withAnimation(.spring()) {
-                        navigationPath.append(card)
+                Group {
+                    if selectedCategory == SideBarCategories.charts {
+                        ChartsView()
+                    } else {
+                        CardGridView(searchString: searchText,
+                                     sortOrder: sortOrder,
+                                     selectedCard: $selectedCard,
+                                     selectedCategory: $selectedCategory,
+                                     onDoubleTap: { card in
+                            withAnimation(.spring()) {
+                                navigationPath.append(card)
+                            }
+                        })
                     }
-                })
+                }
                 .searchable(text: $searchText, placement: .toolbar, prompt: "search")
                 .navigationDestination(for: CreditCard.self) { card in
                     ZStack {

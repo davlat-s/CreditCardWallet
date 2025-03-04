@@ -3,6 +3,7 @@ enum SideBarCategories: Hashable {
     case personal
     case all
     case closed
+    case charts
     
     var displayName: String {
         switch self {
@@ -10,6 +11,7 @@ enum SideBarCategories: Hashable {
         case .personal: return "Personal"
         case .all: return "All Cards"
         case .closed: return "Closed Cards"
+        case .charts: return "Charts"
         }
     }
     
@@ -20,6 +22,7 @@ enum SideBarCategories: Hashable {
         case .business: return 3
         case .personal: return 2
         case .closed: return 4
+        case .charts: return 5
         }
     }
     
@@ -33,6 +36,8 @@ enum SideBarCategories: Hashable {
             return "tray"
         case .closed:
             return "archivebox"
+        case .charts:
+            return "chart.line.uptrend.xyaxis"
         }
     }
     
@@ -46,6 +51,8 @@ enum SideBarCategories: Hashable {
             return creditCard.isBusiness && creditCard.closed == nil
         case .closed:
             return creditCard.closed != nil
+        case .charts:
+            return false
         }
     }
 }
