@@ -53,13 +53,18 @@ struct FormView: View {
                             HStack {
                                 RequiredTextField(title: "Credit Limit",
                                                   text: $creditCard.creditLimit,
-                                                  width: .infinity,
+                                                  width: 225,
                                                   prompt: creditCard.isChargeCard ? "Not Applicable to Charge Cards" : "$24,000",
-                                                  borderColor: .accent
+                                                  borderColor: .accent,
+                                                  variable: !creditCard.isChargeCard
+                                        
                                 )
                                 .disabled(creditCard.isChargeCard)
-                                .padding(.trailing, 10)
-                                RequiredTextField(title: "Last 4-5 Digits", text: $creditCard.lastDigits, width: 250, prompt: "**** **** **** 5032", borderColor: .accent)
+                                RequiredTextField(title: "Last 4-5 Digits", text: $creditCard.lastDigits, width: .infinity, prompt: "**** **** **** 5032", borderColor: .accent)
+                                
+                                HStack {
+                                    CustomPickerView(title: "Select Bank", options: existingBanks, selection: $bank, isNewBank: $isNewBank, width: 175, borderColor: .accent)
+                                }
                                 
                             }
                             HStack {
@@ -68,18 +73,10 @@ struct FormView: View {
                                 FormToggleModifierView(title: "Business", isOn: $creditCard.isBusiness, width: 100)
                                 
                                 Spacer()
-                                
-                                HStack {
-                                    CustomPickerView(title: "Select Bank", options: existingBanks, selection: $bank, width: 100)
-                                    Button {
-                                        isNewBank.toggle()
-                                    }label: {
-                                        Image(systemName: "plus")
-                                    }
-                                    .buttonStyle(.plain)
-                                }
+                            
                                 
                             }
+                            .padding(.top, 10)
                             
                             
                             

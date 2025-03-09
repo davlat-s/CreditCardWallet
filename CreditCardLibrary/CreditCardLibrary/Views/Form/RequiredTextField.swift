@@ -7,6 +7,7 @@ struct RequiredTextField: View {
     var color : Color = .white
     var prompt : String = "Optional"
     var borderColor : Color = .white
+    var variable : Bool = true
 
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
@@ -14,7 +15,7 @@ struct RequiredTextField: View {
             TextField("", text: $text, prompt: Text(prompt))
                 .background(
                     RoundedRectangle(cornerRadius: 8)
-                        .stroke(text.isEmpty ? borderColor : Color.white, lineWidth: 0.5)
+                        .stroke(text.isEmpty && variable ? borderColor : Color.white, lineWidth: 0.5)
                         .disableAutocorrection(true)
                 )
         }
