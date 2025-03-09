@@ -1,13 +1,6 @@
-//
-//  StyledChartCellView.swift
-//  CreditCardLibrary
-//
-//  Created by Davlat Sirojitdinov on 3/2/25.
-//
-
 import SwiftUI
 
-struct StyledChartCellView<Content: View>: View {
+struct StyledPieCharCellView<Content: View>: View {
     let content: Content
         
         init(@ViewBuilder content: () -> Content) {
@@ -16,13 +9,13 @@ struct StyledChartCellView<Content: View>: View {
         
         var body: some View {
             content
-                .frame(width: 400, height: 300, alignment: .center)
+                .frame(width: 400, height: 400, alignment: .center)
                 .padding()
                 .cornerRadius(12)
                 .shadow(radius: 5)
         }
 }
 
-#Preview {
-    StyledChartCellView{Text("Hello")}
-}
+//#Preview {
+//    StyledPieCharCellView()
+//}

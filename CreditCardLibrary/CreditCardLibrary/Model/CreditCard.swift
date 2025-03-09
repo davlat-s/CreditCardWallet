@@ -54,9 +54,16 @@ final class CreditCard {
     }
     
     static func returnNewCreditCard() -> CreditCard {
-        return CreditCard(name: "", creditLimit: "0", openDate: .now, isBusiness: false, isChargeCard: false, lastDigits: "", history: ["\(Date.now) Credit Card Added", "sdfsdfs", "sdfsdf", "dfsdff"], cardArt: CardArt(assetID: "default"))
+        return CreditCard(name: "", creditLimit: "", openDate: .now, isBusiness: false, isChargeCard: false, lastDigits: "", history: ["\(Date.now) Credit Card Added", "sdfsdfs", "sdfsdf", "dfsdff"], cardArt: CardArt(assetID: "default"))
     }
     
+    static func getHeight(width: Double) -> Double {
+        return (width / 8.56) * 5.389
+    }
+    
+    static func getWidth(height: Double) -> Double {
+        return height * (8.56 / 5.389)
+    }
     
     static let cardWidth: CGFloat = 486
     static let cardHeight: CGFloat = 306

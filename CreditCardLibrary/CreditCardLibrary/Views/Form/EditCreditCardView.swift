@@ -24,11 +24,11 @@ struct EditCreditCardView: View {
                      paymentProcessors: paymentProcessors)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Done") {
+                    Button("Save") {
                         try? modelContext.save()
                         dismiss()
                     }
-                    .disabled(creditCard.name.isEmpty || creditCard.bank == nil || creditCard.paymentProcessor == nil || creditCard.lastDigits.isEmpty)
+                    .disabled(creditCard.name.isEmpty || creditCard.bank == nil || creditCard.lastDigits.isEmpty)
                 }
             }
         }

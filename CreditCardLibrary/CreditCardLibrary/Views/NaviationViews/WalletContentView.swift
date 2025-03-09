@@ -140,7 +140,7 @@ struct WalletContentView: View {
                     existingBanks: existingBanks,
                     paymentProcessors: paymentProcessors
                 )
-                .frame(width: 600, height: 500, alignment: .center)
+                .frame(width: 700, height: 500, alignment: .center)
             }
         }
         .sheet(item: $newCard) { card in
@@ -149,7 +149,7 @@ struct WalletContentView: View {
                 existingBanks: existingBanks,
                 paymentProcessors: paymentProcessors
             )
-            .frame(width: 600, height: 500, alignment: .center)
+            .frame(width: 700, height: 500, alignment: .center)
         }
     }
     

@@ -10,7 +10,7 @@ struct AddCreditCardView: View {
     @State var promotions: [Promotion] = []
     @State var bonuses: [Bonus] = []
     @State var closed: Closed? = nil
-    @State var cardArt: CardArt? = CardArt.returnNewCardArt()
+    @State var cardArt: CardArt? = nil
     @State var paymentProcessor: PaymentProcessor? = PaymentProcessor.returnNewPaymentProcessor()
     
     var existingBanks: [Bank]
@@ -30,7 +30,7 @@ struct AddCreditCardView: View {
                      paymentProcessors: paymentProcessors)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Save") {
+                    Button("Add Card") {
                         creditCard.bank = bank
                         creditCard.promotions = promotions
                         creditCard.bonuses = bonuses
@@ -46,7 +46,7 @@ struct AddCreditCardView: View {
                     .disabled(creditCard.name.isEmpty || bank == nil || paymentProcessor == nil || creditCard.lastDigits.isEmpty)
                 }
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") {
+                    Button("Discard") {
                         modelContext.delete(creditCard)
                         dismiss()
                     }

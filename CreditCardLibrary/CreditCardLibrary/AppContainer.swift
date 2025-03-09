@@ -268,6 +268,28 @@ let appContainer: ModelContainer = {
             }
         }
         
+        if let wellsFargo = bank(withName: "Wells Fargo", in: container.mainContext) {
+            let newCards = [
+                CreditCard(
+                    name: "BILT",
+                    creditLimit: "16000",
+                    openDate: Calendar.current.date(byAdding: .year, value: Int(-1.5), to: Date.now) ?? Date.now,
+                    isBusiness: false,
+                    isChargeCard: false,
+                    annualFee: 0,
+                    lastDigits: "5852",
+                    bank: wellsFargo,
+                    promotions: [/*...*/],
+                    bonuses: [/*...*/],
+                    closed: nil,
+                    paymentProcessor: PaymentProcessor.visa,
+                    cardArt: CardArt(assetID: "Others-Credit_Cards-jpeg-Bilt")
+                )]
+            for card in newCards {
+                container.mainContext.insert(card)
+            }
+        }
+        
         
         return container
     } catch {
