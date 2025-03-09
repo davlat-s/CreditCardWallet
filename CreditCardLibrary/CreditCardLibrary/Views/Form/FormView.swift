@@ -57,17 +57,20 @@ struct FormView: View {
                                 
                             }
                             HStack {
+                                DatePickerModifierView(title: "Open Date", selection: $creditCard.openDate, width: 0)
+
                                 FormToggleModifierView(title: "Charge Card", isOn: $creditCard.isChargeCard, width: 100)
                                 FormToggleModifierView(title: "Business", isOn: $creditCard.isBusiness, width: 100)
-                                DatePickerModifierView(title: "Open Date", selection: $creditCard.openDate, width: 0)
+                                
                                 Spacer()
-                                CustomPickerView(title: "Required Bank Name", options: existingBanks, selection: $bank, width: 100)
+                                CustomPickerView(title: "Bank Name Required", options: existingBanks, selection: $bank, width: 100)
                                 Button {
                                     isNewBank.toggle()
                                 }label: {
                                     Image(systemName: "plus")
                                 }
                                 .buttonStyle(.plain)
+                                
                             }
                             
                             

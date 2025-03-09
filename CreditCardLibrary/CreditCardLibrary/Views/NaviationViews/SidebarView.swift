@@ -25,7 +25,7 @@ struct SidebarView: View {
                 }
             }
             // TODO: make navigation more centralized
-            Section("Other Categories") {
+            Section("Dashboard") {
                 NavigationLink(value: SideBarCategories.charts) {
                     Label(SideBarCategories.charts.displayName, systemImage: SideBarCategories.charts.displayImageName)
                 }

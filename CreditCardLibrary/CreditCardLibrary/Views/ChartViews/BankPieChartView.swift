@@ -34,11 +34,11 @@ struct BankPieChartView: View {
                         innerRadius: .ratio(0.618),
                         angularInset: 3
                     )
-                    .foregroundStyle(colors[index % colors.count])
+                    .foregroundStyle(colors[index % colors.count]).opacity(0.95)
                     .cornerRadius(6)
                     .annotation(position: .overlay, content: {
                         Text(bank.name)
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(.primary)
                     })
                 }
             }
