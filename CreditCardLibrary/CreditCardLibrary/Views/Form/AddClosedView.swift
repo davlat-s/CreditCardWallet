@@ -9,20 +9,29 @@ struct AddClosedView: View {
     
     var body: some View {
         Form {
-            TextField("Closed Reason", text: $closedReason)
-                .frame(width:textFieldWidth)
-            Button("Close Card") {
-                let newReason = Closed(reason: closedReason)
-                
-                onSave(newReason)
-                closedReason = ""
-                dismiss()
+            RequiredTextField(title: "Closed Reason", text: $closedReason, width: .infinity, prompt: "Did not want to pay the annual fee")
+        }
+        .toolbar {
+            ToolbarItem(placement: .confirmationAction) {
+                Button("Close Card") {
+                    let newReason = Closed(reason: closedReason)
+                    
+                    onSave(newReason)
+                    closedReason = ""
+                    dismiss()
+                }
+                .disabled(closedReason.isEmpty)
+
             }
-            Button("Cancel") {
-                dismiss()
+            ToolbarItem(placement: .cancellationAction){
+                Button("Cancel") {
+                    dismiss()
+                }
             }
         }
-        .padding()
+        .formStyle(.grouped)
+        
+        .frame(width: 500)
     }
 }
 

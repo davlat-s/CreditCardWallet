@@ -43,7 +43,7 @@ struct AddCreditCardView: View {
                         try? modelContext.save()
                         dismiss()
                     }
-                    .disabled(creditCard.name.isEmpty || bank == nil || paymentProcessor == nil || creditCard.lastDigits.isEmpty)
+                    .disabled(creditCard.name.isEmpty || bank == nil)
                 }
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Discard") {

@@ -22,7 +22,6 @@ struct DatePickerModifierView: View {
                 .focusable(false)
                 .focusEffectDisabled(true)
                 .padding(.vertical, 5)
-
         }
         .padding(.trailing, 10)
     }

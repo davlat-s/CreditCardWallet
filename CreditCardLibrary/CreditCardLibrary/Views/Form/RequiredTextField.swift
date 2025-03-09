@@ -10,7 +10,7 @@ struct RequiredTextField: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            CustomTextView(text: title)
+            CustomTextView(text: title, color: color)
             TextField("", text: $text, prompt: Text(prompt))
                 .background(
                     RoundedRectangle(cornerRadius: 8)

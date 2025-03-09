@@ -29,17 +29,22 @@ struct FormView: View {
         ScrollView {
             Form {
                 Section("Card Details") {
-                    HStack {
-                        Spacer()
-                        FormCardImageView(cardArt: $cardArt, isShowingImagePicker: $showCardArtPicker)
-                        Spacer()
-                    }
+//                    HStack {
+//                        Spacer()
+//                        FormCardImageView(cardArt: $cardArt, isShowingImagePicker: $showCardArtPicker)
+//                        Spacer()
+//                    }
                     
                     HStack {
 //                                                DatePickerModifierView(title: "Open Date", selection: $creditCard.openDate, width: 0)
                         VStack {
                             HStack {
-                                RequiredTextField(title: "Card Name", text: $creditCard.name, width: .infinity, prompt: "Required")
+                                Spacer()
+                                FormCardImageView(cardArt: $cardArt, isShowingImagePicker: $showCardArtPicker)
+                                Spacer()
+                            }
+                            HStack {
+                                RequiredTextField(title: "Card Name", text: $creditCard.name, width: .infinity, prompt: "Sapphire Reserve", borderColor: .accent)
                                 
                                 
                             }
@@ -49,27 +54,30 @@ struct FormView: View {
                                 RequiredTextField(title: "Credit Limit",
                                                   text: $creditCard.creditLimit,
                                                   width: .infinity,
-                                                  prompt: creditCard.isChargeCard ? "Not Applicable to Charge Cards" : "Required"
+                                                  prompt: creditCard.isChargeCard ? "Not Applicable to Charge Cards" : "$24,000",
+                                                  borderColor: .accent
                                 )
                                 .disabled(creditCard.isChargeCard)
                                 .padding(.trailing, 10)
-                                RequiredTextField(title: "Last 4-5 Digits", text: $creditCard.lastDigits, width: 250, prompt: "Required")
+                                RequiredTextField(title: "Last 4-5 Digits", text: $creditCard.lastDigits, width: 250, prompt: "**** **** **** 5032", borderColor: .accent)
                                 
                             }
                             HStack {
                                 DatePickerModifierView(title: "Open Date", selection: $creditCard.openDate, width: 0)
-
                                 FormToggleModifierView(title: "Charge Card", isOn: $creditCard.isChargeCard, width: 100)
                                 FormToggleModifierView(title: "Business", isOn: $creditCard.isBusiness, width: 100)
                                 
                                 Spacer()
-                                CustomPickerView(title: "Bank Name Required", options: existingBanks, selection: $bank, width: 100)
-                                Button {
-                                    isNewBank.toggle()
-                                }label: {
-                                    Image(systemName: "plus")
+                                
+                                HStack {
+                                    CustomPickerView(title: "Select Bank", options: existingBanks, selection: $bank, width: 100)
+                                    Button {
+                                        isNewBank.toggle()
+                                    }label: {
+                                        Image(systemName: "plus")
+                                    }
+                                    .buttonStyle(.plain)
                                 }
-                                .buttonStyle(.plain)
                                 
                             }
                             
@@ -130,10 +138,11 @@ struct FormView: View {
                             Button {
                                 closed = nil
                             } label: {
-                                Label("Open Card", systemImage: "archivebox")
+                                Label("Open Card", systemImage: "archivebox.fill")
                                     .labelStyle(.titleOnly)
                                 
                             }
+                            .buttonStyle(.plain)
                         }
                     } else {
                         HStack {
@@ -142,10 +151,12 @@ struct FormView: View {
                             Button {
                                 isClosed.toggle()
                             } label: {
-                                Label("Close Card", systemImage: "archivebox")
+                                Label("Close Card", systemImage: "archivebox.fill")
                                     .labelStyle(.titleOnly)
                                 
                             }
+                            .buttonBorderShape(.roundedRectangle)
+
                         }
                     }
                     

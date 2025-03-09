@@ -28,7 +28,7 @@ struct EditCreditCardView: View {
                         try? modelContext.save()
                         dismiss()
                     }
-                    .disabled(creditCard.name.isEmpty || creditCard.bank == nil || creditCard.lastDigits.isEmpty)
+                    .disabled(creditCard.name.isEmpty || creditCard.bank == nil)
                 }
             }
         }

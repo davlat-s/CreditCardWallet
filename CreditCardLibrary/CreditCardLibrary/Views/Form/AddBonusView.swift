@@ -17,26 +17,41 @@ struct AddBonusView: View {
     var onSave: (Bonus) -> Void
     
     var body: some View {
+        
         Form {
-            TextField("Bonus Details", text: $bonusName, axis: .vertical)
-                .frame(width:textFieldWidth)
-            DatePicker("Start Date", selection: $startDate, displayedComponents: .date)
-                .datePickerStyle(.compact)
-            DatePicker("End Date", selection: $endDate, displayedComponents: .date)
-                .datePickerStyle(.compact)
-            Button("Add Bonus") {
-                let newBonus = Bonus(details: bonusName)
-                
-                onSave(newBonus)
-                bonusName = ""
-                dismiss()
-            }
-            Button("Cancel") {
-                dismiss()
-            }
+            RequiredTextField(title: "Bonus Details", text: $bonusName, width: .infinity, prompt: "$200 cash back after spending $1,000 in the first 3 months")
+            
+                DatePicker("Start Date", selection: $startDate, displayedComponents: .date)
+                    .datePickerStyle(.compact)
+         
+                DatePicker("End Date", selection: $endDate, displayedComponents: .date)
+                    .datePickerStyle(.compact)
         }
         .padding()
+        .formStyle(.grouped)
+        
+        .toolbar {
+            ToolbarItem(placement: .confirmationAction) {
+                Button("Add Bonus") {
+                    let newBonus = Bonus(details: bonusName)
+                    
+                    onSave(newBonus)
+                    bonusName = ""
+                    dismiss()
+                }
+                .disabled(bonusName.isEmpty)
+
+            }
+            ToolbarItem(placement: .cancellationAction) {
+                Button("Cancel") {
+                    dismiss()
+                }
+                
+            }
+        }
+        .frame(width: 500)
     }
+    
 }
 
 #Preview {

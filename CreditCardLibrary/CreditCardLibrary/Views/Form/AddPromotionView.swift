@@ -11,24 +11,35 @@ struct AddPromotionView: View {
     
     var body: some View {
         Form {
-            TextField("Promotion Details", text: $promoName, axis: .vertical)
-                .frame(width:textFieldWidth)
+            RequiredTextField(title: "Promotion Details", text: $promoName, width: .infinity, prompt: "0% APR for 12 months on purchases and balance transfers", borderColor: .accent)
+        
             DatePicker("Start Date", selection: $startDate, displayedComponents: .date)
                 .datePickerStyle(.compact)
             DatePicker("End Date", selection: $endDate, displayedComponents: .date)
                 .datePickerStyle(.compact)
-            Button("Add Promotion") {
-                let newPromo = Promotion(details: promoName)
-                
-                onSave(newPromo)
-                promoName = ""
-                dismiss()
+       
+        }
+        .formStyle(.grouped)
+        .toolbar {
+            ToolbarItem(placement: .confirmationAction) {
+                Button("Add Promotion") {
+                    let newPromo = Promotion(details: promoName)
+                    
+                    onSave(newPromo)
+                    promoName = ""
+                    dismiss()
+                }
+                .disabled(promoName.isEmpty)
             }
-            Button("Cancel") {
-                dismiss()
+
+            ToolbarItem(placement: .cancellationAction) {
+                Button("Cancel") {
+                    dismiss()
+                }
             }
         }
-        .padding()
+        .frame(width: 500)
+        
     }
 }
 
