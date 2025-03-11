@@ -19,7 +19,7 @@ struct DetailPanelView: View {
                 .scrollIndicatorsFlash(onAppear: true)
             if isShowingHistory {
                 CardHistoryView(creditCard: creditCard)
-                    .frame(height: 400)
+                    .frame(minHeight: 100, idealHeight: 250, maxHeight: 500)
             }
             
             ShowHistoryView(isShowingHistory: $isShowingHistory)

@@ -1,77 +1,287 @@
-//Users/davlatsirojitdinov/CreditCardLibrary
+//Users/davlatsirojitdinov/git/CreditCardLibrary/CreditCardLibrary
 ├── CreditCardLibrary/
-│   ├── CreditCardLibrary/
-│   │   ├── AppContainer.swift
-│   │   ├── Assets.xcassets/
-│   │   │   ├── 1.imageset/
-│   │   │   ├── 10.imageset/
-│   │   │   ├── 2.imageset/
-│   │   │   ├── 3.imageset/
-│   │   │   ├── 4.imageset/
-│   │   │   ├── 5.imageset/
-│   │   │   ├── 6.imageset/
-│   │   │   ├── 7.imageset/
-│   │   │   ├── 8.imageset/
-│   │   │   ├── 9.imageset/
-│   │   │   ├── AccentColor.colorset/
-│   │   │   ├── AppIcon.appiconset/
-│   │   │   ├── C-AA-PlatSelect.imageset/
-│   │   │   ├── Citi_Strata_Premier.imageset/
-│   │   │   ├── Citi_simplicity.imageset/
-│   │   │   ├── amexLogo.imageset/
-│   │   │   ├── blue-business-cash.imageset/
-│   │   │   ├── business-gold.imageset/
-│   │   │   ├── cc_cashrewards.imageset/
-│   │   │   ├── centurion.imageset/
-│   │   │   ├── centurioncard.imageset/
-│   │   │   ├── chase.imageset/
-│   │   │   ├── chip.imageset/
-│   │   │   ├── chip1.imageset/
-│   │   │   ├── chip2.imageset/
-│   │   │   ├── default.imageset/
-│   │   │   ├── delta-skymiles-gold.imageset/
-│   │   │   ├── discoverLogo.imageset/
-│   │   │   ├── mastercardLogo.imageset/
-│   │   │   ├── navy-federal-go-rewards.imageset/
-│   │   │   ├── navy-federal-more-rewards.imageset/
-│   │   │   └── visaLogo.imageset/
-│   │   ├── CreditCardLibraryApp.swift
-│   │   ├── Model/
-│   │   │   ├── Bank.swift
-│   │   │   ├── Bonus.swift
-│   │   │   ├── Closed.swift
-│   │   │   ├── Color.swift
-│   │   │   ├── CreditCard.swift
-│   │   │   ├── PaymentProcessor.swift
-│   │   │   ├── PaymentProcessorInstances.swift
-│   │   │   ├── Promotion.swift
-│   │   │   └── SideBarCategories.swift
-│   │   ├── Preview Content/
-│   │   │   └── Preview Assets.xcassets/
-│   │   ├── PreviewData.swift
-│   │   ├── Utilities/
-│   │   │   └── SwiftDataManager.swift
-│   │   └── Views/
-│   │       ├── AddBankView.swift
-│   │       ├── AddBonusView.swift
-│   │       ├── AddCreditCardView.swift
-│   │       ├── AddPromotionView.swift
-│   │       ├── CardListView.swift
-│   │       ├── CardView.swift
-│   │       ├── DetailView.swift
-│   │       ├── EditCreditCardView.swift
-│   │       ├── FormView.swift
-│   │       ├── SidebarView.swift
-│   │       └── WalletContentView.swift
-│   └── CreditCardLibrary.xcodeproj/
-│       ├── project.xcworkspace/
-│       │   ├── xcshareddata/
-│       │   │   └── swiftpm/
-│       │   │       └── configuration/
-│       │   └── xcuserdata/
-│       ├── xcshareddata/
-│       │   └── xcschemes/
-│       └── xcuserdata/
+│   ├── AppContainer.swift
+│   ├── Assets.xcassets/
+│   │   ├── AccentColor.colorset/
+│   │   ├── American Express_resized/
+│   │   │   ├── American_Express-Business-Additional_Card.imageset/
+│   │   │   ├── American_Express-Business-Amazon_Business_Prime.imageset/
+│   │   │   ├── American_Express-Business-Blue_Business_Plus.imageset/
+│   │   │   ├── American_Express-Business-Business_Gold.imageset/
+│   │   │   ├── American_Express-Business-Business_Green.imageset/
+│   │   │   ├── American_Express-Business-Business_Platinum.imageset/
+│   │   │   ├── American_Express-Business-Plum.imageset/
+│   │   │   ├── American_Express-Business-jpeg-Bunisess_Platinum_2024.imageset/
+│   │   │   ├── American_Express-Business-jpeg-Business_Delta_Reserve_747.imageset/
+│   │   │   ├── American_Express-Business-jpeg-Business_Marriot_Bonvey.imageset/
+│   │   │   ├── American_Express-Business-low_res-Blue_Business_Plus_2020.imageset/
+│   │   │   ├── American_Express-Business-low_res-Business_Cash.imageset/
+│   │   │   ├── American_Express-Other-lowres-Send.imageset/
+│   │   │   ├── American_Express-Personal-Blue_Cash_Everyday.imageset/
+│   │   │   ├── American_Express-Personal-Blue_Cash_Preferred.imageset/
+│   │   │   ├── American_Express-Personal-Blue_Sky.imageset/
+│   │   │   ├── American_Express-Personal-Companion.imageset/
+│   │   │   ├── American_Express-Personal-Delta_Gold.imageset/
+│   │   │   ├── American_Express-Personal-Delta_Platinum.imageset/
+│   │   │   ├── American_Express-Personal-Every_Day.imageset/
+│   │   │   ├── American_Express-Personal-Gold.imageset/
+│   │   │   ├── American_Express-Personal-Green.imageset/
+│   │   │   ├── American_Express-Personal-Hilton_Honors.imageset/
+│   │   │   ├── American_Express-Personal-Hilton_Honors_Aspire_2023.imageset/
+│   │   │   ├── American_Express-Personal-Hilton_Honors_Aspire_old.imageset/
+│   │   │   ├── American_Express-Personal-Hilton_Honors_Surpass_2024.imageset/
+│   │   │   ├── American_Express-Personal-Hilton_Honors_Surpass_old.imageset/
+│   │   │   ├── American_Express-Personal-Hilton_Honors_old.imageset/
+│   │   │   ├── American_Express-Personal-Marriott_Bonvoy.imageset/
+│   │   │   ├── American_Express-Personal-Marriott_Bonvoy_Brilliant_old.imageset/
+│   │   │   ├── American_Express-Personal-Morgan_Stanley.imageset/
+│   │   │   ├── American_Express-Personal-Platinum.imageset/
+│   │   │   ├── American_Express-Personal-Platinum_Morgan_Stanley.imageset/
+│   │   │   ├── American_Express-Personal-Platinum_Schwab.imageset/
+│   │   │   ├── American_Express-Personal-Platinum_x_Kehinde_Wiley.imageset/
+│   │   │   ├── American_Express-Personal-Rose_Gold.imageset/
+│   │   │   ├── American_Express-Personal-White_Gold.imageset/
+│   │   │   ├── American_Express-Personal-jpeg-Centurion.imageset/
+│   │   │   ├── American_Express-Personal-jpeg-Centurion_2.imageset/
+│   │   │   ├── American_Express-Personal-jpeg-Schwab.imageset/
+│   │   │   ├── American_Express-Personal-low_res-Delta_Blue.imageset/
+│   │   │   ├── American_Express-Personal-low_res-Every_Day_2024.imageset/
+│   │   │   ├── American_Express-Personal-low_res-Every_Day_Preferred.imageset/
+│   │   │   ├── American_Express-Personal-low_res-Platinum_Pre_2020.imageset/
+│   │   │   ├── American_Express-Personal-low_res-debit.imageset/
+│   │   │   └── American_Express-Personal-low_res_jpeg-Marriott_Bonvoy_Brilliant_2024.imageset/
+│   │   ├── AppIcon.appiconset/
+│   │   ├── Background.colorset/
+│   │   ├── Bank of America_resized/
+│   │   │   ├── Bank_of_America-Credit_Cards-Alaska_Airlines.imageset/
+│   │   │   ├── Bank_of_America-Credit_Cards-BankAmericard.imageset/
+│   │   │   ├── Bank_of_America-Credit_Cards-Better_Balance_Rewards.imageset/
+│   │   │   ├── Bank_of_America-Credit_Cards-Cash_Rewards.imageset/
+│   │   │   ├── Bank_of_America-Credit_Cards-Cash_Rewards_2020_Mastercard.imageset/
+│   │   │   ├── Bank_of_America-Credit_Cards-Cash_Rewards_2020_Visa.imageset/
+│   │   │   ├── Bank_of_America-Credit_Cards-Custom_Cash_Rewards_Mastercard.imageset/
+│   │   │   ├── Bank_of_America-Credit_Cards-Custom_Cash_Rewards_Visa.imageset/
+│   │   │   ├── Bank_of_America-Credit_Cards-MLB.imageset/
+│   │   │   ├── Bank_of_America-Credit_Cards-Premium_Rewards.imageset/
+│   │   │   ├── Bank_of_America-Credit_Cards-Travel_Rewards.imageset/
+│   │   │   ├── Bank_of_America-Credit_Cards-UCI.imageset/
+│   │   │   ├── Bank_of_America-Credit_Cards-University_of_Michigan.imageset/
+│   │   │   ├── Bank_of_America-Credit_Cards-jpeg-NWF_Fox.imageset/
+│   │   │   ├── Bank_of_America-Credit_Cards-jpeg-Susan_G_Komen.imageset/
+│   │   │   ├── Bank_of_America-Credit_Cards-jpeg-WWF.imageset/
+│   │   │   ├── Bank_of_America-Credit_Cards-low_res-Premium_Rewards_Elite.imageset/
+│   │   │   ├── Bank_of_America-Credit_Cards-low_res-U.S._Pride.imageset/
+│   │   │   ├── Bank_of_America-Credit_Cards-low_res.-Premium_Rewards_2020.imageset/
+│   │   │   ├── Bank_of_America-Debit_Cards-Another_Default.imageset/
+│   │   │   ├── Bank_of_America-Debit_Cards-BoA_University_of_Michigan_Alumni_Debit.imageset/
+│   │   │   ├── Bank_of_America-Debit_Cards-Columbia.imageset/
+│   │   │   ├── Bank_of_America-Debit_Cards-jpeg-UTAM.imageset/
+│   │   │   ├── Bank_of_America-Debit_Cards-low_res-Bank_of_America_Cal_Association.imageset/
+│   │   │   ├── Bank_of_America-Debit_Cards-low_res-BoA_Brandeis_Alumni_Association.imageset/
+│   │   │   └── Bank_of_America-Debit_Cards-low_res-Default.imageset/
+│   │   ├── Barclays_resized/
+│   │   │   ├── Barclays-AAdvantage_Aviator.imageset/
+│   │   │   ├── Barclays-Arrival.imageset/
+│   │   │   ├── Barclays-JetBlue.imageset/
+│   │   │   ├── Barclays-Rewards.imageset/
+│   │   │   ├── Barclays-Uber.imageset/
+│   │   │   ├── Barclays-jpeg-Avios.imageset/
+│   │   │   └── Barclays-low_res-Premier.imageset/
+│   │   ├── Capital One_resized/
+│   │   │   ├── Capital_One-Capital_One_Quick_Silver.imageset/
+│   │   │   └── Capital_One-Capital_One_Venture_X.imageset/
+│   │   ├── Chase_resized/
+│   │   │   ├── Chase-Business_Cards-Ink_Cash.imageset/
+│   │   │   ├── Chase-Business_Cards-Ink_Cash_old.imageset/
+│   │   │   ├── Chase-Business_Cards-Ink_Preferred.imageset/
+│   │   │   ├── Chase-Business_Cards-Ink_Unlimited.imageset/
+│   │   │   ├── Chase-Business_Cards-jpeg-Hyatt.imageset/
+│   │   │   ├── Chase-Business_Cards-jpeg-Platinum_business.imageset/
+│   │   │   ├── Chase-Business_Cards-jpeg-ink_premier.imageset/
+│   │   │   ├── Chase-Business_Cards-low_res-Ink_Unlimited_old.imageset/
+│   │   │   ├── Chase-Debit_Cards-Debit_Card.imageset/
+│   │   │   ├── Chase-Debit_Cards-Disney_Midnight.imageset/
+│   │   │   ├── Chase-Debit_Cards-Frozen.imageset/
+│   │   │   ├── Chase-Debit_Cards-Private_Client.imageset/
+│   │   │   ├── Chase-Debit_Cards-Star_Wars.imageset/
+│   │   │   ├── Chase-Debit_Cards-jpeg-J.P.Morgan.imageset/
+│   │   │   ├── Chase-Debit_Cards-jpeg-Star_Wars_new.imageset/
+│   │   │   ├── Chase-Personal_Credi_Cards-Amazon_Prime.imageset/
+│   │   │   ├── Chase-Personal_Credi_Cards-Disney.imageset/
+│   │   │   ├── Chase-Personal_Credi_Cards-Freedom.imageset/
+│   │   │   ├── Chase-Personal_Credi_Cards-Freedom_Flex.imageset/
+│   │   │   ├── Chase-Personal_Credi_Cards-Freedom_Unlimited.imageset/
+│   │   │   ├── Chase-Personal_Credi_Cards-IHG_Gold.imageset/
+│   │   │   ├── Chase-Personal_Credi_Cards-IHG_One_Rewards_Premier.imageset/
+│   │   │   ├── Chase-Personal_Credi_Cards-Marriott_Bonvoy_Bold.imageset/
+│   │   │   ├── Chase-Personal_Credi_Cards-Marriott_Bonvoy_Boundless_2023.imageset/
+│   │   │   ├── Chase-Personal_Credi_Cards-Marriott_Bonvoy_Boundless_old.imageset/
+│   │   │   ├── Chase-Personal_Credi_Cards-Ritz-Carlton.imageset/
+│   │   │   ├── Chase-Personal_Credi_Cards-Sapphire_Preferred.imageset/
+│   │   │   ├── Chase-Personal_Credi_Cards-Sapphire_Preferred_2020.imageset/
+│   │   │   ├── Chase-Personal_Credi_Cards-Sapphire_Reserve.imageset/
+│   │   │   ├── Chase-Personal_Credi_Cards-Southwest_Plus.imageset/
+│   │   │   ├── Chase-Personal_Credi_Cards-Southwest_Premier_Business.imageset/
+│   │   │   ├── Chase-Personal_Credi_Cards-Southwest_Priority.imageset/
+│   │   │   ├── Chase-Personal_Credi_Cards-United_Mileage_Plus.imageset/
+│   │   │   ├── Chase-Personal_Credi_Cards-United_Mileage_Plus_Explorer.imageset/
+│   │   │   ├── Chase-Personal_Credi_Cards-World_of_Hyatt.imageset/
+│   │   │   ├── Chase-Personal_Credi_Cards-jpeg-Amazon_not_prime.imageset/
+│   │   │   ├── Chase-Personal_Credi_Cards-jpeg-United_Mileage_Plus_CLUB.imageset/
+│   │   │   ├── Chase-Personal_Credi_Cards-jpeg-United_Mileage_Plus_Gateway_2024.imageset/
+│   │   │   ├── Chase-Personal_Credi_Cards-jpeg-United_Mileage_Plus_Quest_2024.imageset/
+│   │   │   ├── Chase-Personal_Credi_Cards-low_res-Amazon_Prime_Whole_Foods.imageset/
+│   │   │   ├── Chase-Personal_Credi_Cards-low_res-IHG_One_Rewards_Select_old.imageset/
+│   │   │   ├── Chase-Personal_Credi_Cards-low_res-United_Mileage_Plus_Gateway.imageset/
+│   │   │   └── Chase-Personal_Credi_Cards-low_res-United_Mileage_Plus_Quest.imageset/
+│   │   ├── Citi_resized/
+│   │   │   ├── Citi-AAdvantage_Platinum_Select.imageset/
+│   │   │   ├── Citi-CitiBusiness_AAdvantage_Platinum_Select.imageset/
+│   │   │   ├── Citi-Debit_Cards-Citigold_Debit.imageset/
+│   │   │   ├── Citi-Debit_Cards-jpeg-Citigold_Private_Client.imageset/
+│   │   │   ├── Citi-Debit_Cards-low_res-Debit.imageset/
+│   │   │   ├── Citi-Dividend.imageset/
+│   │   │   ├── Citi-Double_Cash_Old.imageset/
+│   │   │   ├── Citi-Premier.imageset/
+│   │   │   ├── Citi-Premier_Pre_2021.imageset/
+│   │   │   ├── Citi-Rewards.imageset/
+│   │   │   ├── Citi-Thank_You_Preferred.imageset/
+│   │   │   ├── Citi-jpeg-CitiBusiness_AAdvantage.imageset/
+│   │   │   ├── Citi-jpeg-Strata_Premier.imageset/
+│   │   │   ├── Citi-low_res-AAdvantage_MileUp.imageset/
+│   │   │   ├── Citi-low_res-Costco_Anywhere.imageset/
+│   │   │   ├── Citi-low_res-Double_Cash_2024.imageset/
+│   │   │   └── Citi-low_res_jpeg-AAdvantage_Executive.imageset/
+│   │   ├── Discover_resized/
+│   │   │   ├── Discover-Cashback_Debit.imageset/
+│   │   │   ├── Discover-Other_Designs-New_York_Skyline.imageset/
+│   │   │   ├── Discover-Other_Designs-Tiger.imageset/
+│   │   │   ├── Discover-Other_Designs-jpeg-Cat.imageset/
+│   │   │   ├── Discover-Other_Designs-jpeg-Green.imageset/
+│   │   │   ├── Discover-Other_Designs-jpeg-Husky.imageset/
+│   │   │   ├── Discover-Other_Designs-jpeg-Polar_Bear.imageset/
+│   │   │   ├── Discover-Other_Designs-jpeg-old.imageset/
+│   │   │   ├── Discover-Other_Designs-mixtape.imageset/
+│   │   │   ├── Discover-Other_Designs-wolf.imageset/
+│   │   │   ├── Discover-it_Standard_Designs-City.imageset/
+│   │   │   ├── Discover-it_Standard_Designs-Garnet.imageset/
+│   │   │   ├── Discover-it_Standard_Designs-Iridescent.imageset/
+│   │   │   ├── Discover-it_Standard_Designs-Mountain.imageset/
+│   │   │   ├── Discover-it_Standard_Designs-Ocean.imageset/
+│   │   │   ├── Discover-it_Standard_Designs-Pride.imageset/
+│   │   │   ├── Discover-it_Standard_Designs-Rose_Quartz.imageset/
+│   │   │   └── Discover-it_Standard_Designs-need_high_res-Blue.imageset/
+│   │   ├── GrayDetailRow.colorset/
+│   │   ├── HSBC_resized/
+│   │   │   ├── HSBC-Premier_Debit.imageset/
+│   │   │   ├── HSBC-Premier_Everyday_Global_Debit.imageset/
+│   │   │   ├── HSBC-Premier_World.imageset/
+│   │   │   ├── HSBC-jpeg-Elite.imageset/
+│   │   │   ├── HSBC-jpeg-Premier_Credit.imageset/
+│   │   │   ├── HSBC-jpeg-Premier_World_Elite_2.imageset/
+│   │   │   ├── HSBC-jpeg-Red.imageset/
+│   │   │   └── HSBC-low_res-Premier_World_Elite.imageset/
+│   │   ├── NotesGrid.colorset/
+│   │   ├── US Bank_resized/
+│   │   │   ├── US_Bank-Attitude_Reserve2020.imageset/
+│   │   │   ├── US_Bank-Attitude_Reserve_20212022.imageset/
+│   │   │   ├── US_Bank-Cash_Plus.imageset/
+│   │   │   ├── US_Bank-Debit-jpeg-US_National_Flag.imageset/
+│   │   │   ├── US_Bank-Debit-low_res-Second_Wave.imageset/
+│   │   │   ├── US_Bank-Go.imageset/
+│   │   │   ├── US_Bank-Leverage.imageset/
+│   │   │   ├── US_Bank-jpeg-Attitude_Reserve_2023.imageset/
+│   │   │   ├── US_Bank-jpeg-Business_Triple_Cash.imageset/
+│   │   │   ├── US_Bank-jpeg-Pride.imageset/
+│   │   │   ├── US_Bank-jpeg-Ralphs.imageset/
+│   │   │   ├── US_Bank-low_res-Altitude_Connect.imageset/
+│   │   │   ├── US_Bank-low_res-Cash_Plus_2020.imageset/
+│   │   │   ├── US_Bank-low_res-Cash_Plus_2024.imageset/
+│   │   │   └── US_Bank-low_res-RBC_Avion_VI.imageset/
+│   │   ├── Wells Fargo_resized/
+│   │   │   ├── Others-Credit_Cards-Wells_Fargo_Propel.imageset/
+│   │   │   └── Others-Credit_Cards-jpeg-Bilt.imageset/
+│   │   ├── default.imageset/
+│   │   └── modular card design/
+│   │       ├── amexLogo.imageset/
+│   │       ├── chip.imageset/
+│   │       ├── chip1.imageset/
+│   │       ├── chip2.imageset/
+│   │       ├── discoverLogo.imageset/
+│   │       ├── mastercardLogo.imageset/
+│   │       └── visaLogo.imageset/
+│   ├── CreditCardLibraryApp.swift
+│   ├── Model/
+│   │   ├── Bank.swift
+│   │   ├── Bonus.swift
+│   │   ├── CardArt.swift
+│   │   ├── Closed.swift
+│   │   ├── CreditCard.swift
+│   │   ├── PaymentProcessor.swift
+│   │   ├── PaymentProcessorInstances.swift
+│   │   ├── Promotion.swift
+│   │   ├── SideBarCategories.swift
+│   │   └── loadBankCardArtData.swift
+│   ├── Preview Content/
+│   │   └── Preview Assets.xcassets/
+│   ├── PreviewData.swift
+│   ├── Utilities/
+│   │   └── SwiftDataManager.swift
+│   └── Views/
+│       ├── CardDetailViews/
+│       │   ├── CardHistoryView.swift
+│       │   ├── DetailPanelView.swift
+│       │   ├── DetailRowView.swift
+│       │   ├── DetailView.swift
+│       │   ├── SelectCardView.swift
+│       │   └── ShowHistoryView.swift
+│       ├── CardViews/
+│       │   ├── CardGridCellView.swift
+│       │   ├── CardGridView.swift
+│       │   ├── CardListView.swift
+│       │   ├── CardRowView.swift
+│       │   └── CardView.swift
+│       ├── ChartViews/
+│       │   ├── BankPieChartView.swift
+│       │   ├── ChartsView.swift
+│       │   ├── CreditAgeChartView.swift
+│       │   ├── CreditLimitChartView.swift
+│       │   ├── StyledBarChartCellView.swift
+│       │   └── StyledPieCharCellView.swift
+│       ├── Form/
+│       │   ├── AddBankView.swift
+│       │   ├── AddBonusView.swift
+│       │   ├── AddClosedView.swift
+│       │   ├── AddCreditCardView.swift
+│       │   ├── AddPromotionView.swift
+│       │   ├── CardImagePickerSectionHeaderView.swift
+│       │   ├── CardImagePickerView.swift
+│       │   ├── CustomPickerView.swift
+│       │   ├── CustomTextView.swift
+│       │   ├── DatePickerModifierView.swift
+│       │   ├── EditCreditCardView.swift
+│       │   ├── FormCardImageView.swift
+│       │   ├── FormToggleModifierView.swift
+│       │   ├── FormView.swift
+│       │   └── RequiredTextField.swift
+│       ├── NaviationViews/
+│       │   ├── ContentView.swift
+│       │   ├── SidebarView.swift
+│       │   └── WalletContentView.swift
+│       └── ToolBarViews/
+└── CreditCardLibrary.xcodeproj/
+    ├── project.xcworkspace/
+    │   ├── xcshareddata/
+    │   │   └── swiftpm/
+    │   │       └── configuration/
+    │   └── xcuserdata/
+    │       └── davlatsirojitdinov.xcuserdatad/
+    ├── xcshareddata/
+    │   └── xcschemes/
+    └── xcuserdata/
+        └── davlatsirojitdinov.xcuserdatad/
+            ├── xcdebugger/
+            └── xcschemes/
 
 
 
@@ -81,7 +291,12 @@ import SwiftData
 @MainActor
 let appContainer: ModelContainer = {
  do {
- let container = try ModelContainer(for: CreditCard.self, Bank.self, Closed.self, Promotion.self, Bonus.self, PaymentProcessor.self)
+ let container = try ModelContainer(
+ for: CreditCard.self,
+ Bank.self, Closed.self,
+ Promotion.self, Bonus.self,
+ PaymentProcessor.self,
+ CardArt.self)
  
  
  var PaymentProcessorFetchDescriptor = FetchDescriptor<PaymentProcessor>()
@@ -97,14 +312,6 @@ let appContainer: ModelContainer = {
  PaymentProcessor(name: "Discover", logo: "discoverLogo")
  ]
  
- let Banks = [
- Bank(name: "Chase"),
- Bank(name: "American Express"),
- Bank(name: "Bank of America"),
- Bank(name: "Citi"),
- Bank(name: "Wells Fargo"),
- Bank(name: "U.S. Bank"),
- ]
  
  for pp in PaymentProcessors {
  container.mainContext.insert(pp)
@@ -113,11 +320,263 @@ let appContainer: ModelContainer = {
  var BankFetchDescriptor = FetchDescriptor<Bank>()
  BankFetchDescriptor.fetchLimit = 1
  
- guard try container.mainContext.fetch(BankFetchDescriptor).count == 0 else { return container }
+ guard try container.mainContext.fetch(BankFetchDescriptor).count == 0 else {
  
- for bank in Banks {
- container.mainContext.insert(bank)
+ return container
  }
+ 
+ 
+ if let bankCardArtData = loadBankCardArtData() {
+ 
+ for (bankName, filenames) in bankCardArtData {
+ 
+ let bank = Bank(name: bankName)
+ container.mainContext.insert(bank)
+ 
+ 
+ for artFilename in filenames {
+ let cardArt = CardArt(assetID: artFilename, bank: bank)
+ container.mainContext.insert(cardArt)
+ }
+ }
+ 
+ 
+ try? container.mainContext.save()
+ } else {
+ print("Could not load JSON bank + cardArt data.")
+ }
+ 
+ 
+ func bank(withName name: String, in context: ModelContext) -> Bank? {
+ let request = FetchDescriptor<Bank>(predicate: #Predicate { bank in
+ bank.name == name
+ })
+ return try? context.fetch(request).first
+ }
+ 
+ if let chaseBank = bank(withName: "Chase", in: container.mainContext) {
+ let newCards = [
+ CreditCard(
+ name: "Sapphire Reserve",
+ creditLimit: "12000",
+ openDate: Calendar.current.date(byAdding: .year, value: -2, to: Date.now) ?? Date.now,
+ isBusiness: false,
+ isChargeCard: false,
+ annualFee: 450,
+ lastDigits: "3552",
+ bank: chaseBank,
+ promotions: [],
+ bonuses: [],
+ closed: nil,
+ paymentProcessor: PaymentProcessor.visa,
+ cardArt: CardArt(assetID: "Chase-Personal_Credi_Cards-Sapphire_Reserve")
+ ),
+ CreditCard(
+ name: "Ink Unlimited",
+ creditLimit: "24000",
+ openDate: Calendar.current.date(byAdding: .year, value: -1, to: Date.now) ?? Date.now,
+ isBusiness: true,
+ isChargeCard: false,
+ annualFee: 95,
+ lastDigits: "3532",
+ bank: chaseBank,
+ promotions: [],
+ bonuses: [],
+ closed: nil,
+ paymentProcessor: PaymentProcessor.visa,
+ cardArt: CardArt(assetID: "Chase-Business_Cards-Ink_Unlimited")
+ ),
+ CreditCard(
+ name: "Freedom Flex",
+ creditLimit: "6000",
+ openDate: Calendar.current.date(byAdding: .year, value: -4, to: Date.now) ?? Date.now,
+ isBusiness: false,
+ isChargeCard: false,
+ annualFee: 0,
+ lastDigits: "3556",
+ bank: chaseBank,
+ promotions: [],
+ bonuses: [],
+ closed: nil,
+ paymentProcessor: PaymentProcessor.visa,
+ cardArt: CardArt(assetID: "Chase-Personal_Credi_Cards-Freedom_Flex")
+ ),
+ CreditCard(
+ name: "Freedom Unlimited",
+ creditLimit: "2000",
+ openDate: Calendar.current.date(byAdding: .year, value: -6, to: Date.now) ?? Date.now,
+ isBusiness: false,
+ isChargeCard: false,
+ annualFee: 0,
+ lastDigits: "3656",
+ bank: chaseBank,
+ promotions: [],
+ bonuses: [],
+ closed: Closed(reason: "just because"),
+ paymentProcessor: PaymentProcessor.visa,
+ cardArt: CardArt(assetID: "Chase-Personal_Credi_Cards-Freedom_Unlimited")
+ ),
+ CreditCard(
+ name: "Ink Premier",
+ creditLimit: "28000",
+ openDate: Calendar.current.date(byAdding: .year, value: -3, to: Date.now) ?? Date.now,
+ isBusiness: true,
+ isChargeCard: false,
+ annualFee: 195,
+ lastDigits: "9356",
+ bank: chaseBank,
+ promotions: [],
+ bonuses: [],
+ closed: nil,
+ paymentProcessor: PaymentProcessor.visa,
+ cardArt: CardArt(assetID: "Chase-Business_Cards-jpeg-ink_premier")
+ ),]
+ for card in newCards {
+ container.mainContext.insert(card)
+ }
+ }
+ 
+ if let amExBank = bank(withName: "American Express", in: container.mainContext) {
+ let newCards = [
+ CreditCard(
+ name: "Centurion",
+ creditLimit: "",
+ openDate: Calendar.current.date(byAdding: .year, value: -1, to: Date.now) ?? Date.now,
+ isBusiness: false,
+ isChargeCard: true,
+ annualFee: 950,
+ lastDigits: "35552",
+ bank: amExBank,
+ promotions: [],
+ bonuses: [],
+ closed: nil,
+ paymentProcessor: PaymentProcessor.amex,
+ cardArt: CardArt(assetID: "American_Express-Personal-jpeg-Centurion_2")
+ ),
+ CreditCard(
+ name: "Platinum",
+ creditLimit: "",
+ openDate: Calendar.current.date(byAdding: .year, value: -3, to: Date.now) ?? Date.now,
+ isBusiness: true,
+ isChargeCard: true,
+ annualFee: 695,
+ lastDigits: "35332",
+ bank: amExBank,
+ promotions: [],
+ bonuses: [],
+ closed: nil,
+ paymentProcessor: PaymentProcessor.amex,
+ cardArt: CardArt(assetID: "American_Express-Business-jpeg-Bunisess_Platinum_2024")
+ ),
+ CreditCard(
+ name: "Gold",
+ creditLimit: "",
+ openDate: Calendar.current.date(byAdding: .year, value: -5, to: Date.now) ?? Date.now,
+ isBusiness: false,
+ isChargeCard: false,
+ annualFee: 295,
+ lastDigits: "35356",
+ bank: amExBank,
+ promotions: [],
+ bonuses: [],
+ closed: nil,
+ paymentProcessor: PaymentProcessor.amex,
+ cardArt: CardArt(assetID: "American_Express-Personal-White_Gold")
+ ),
+ CreditCard(
+ name: "Hilton Aspire",
+ creditLimit: "4000",
+ openDate: Calendar.current.date(byAdding: .year, value: -3, to: Date.now) ?? Date.now,
+ isBusiness: false,
+ isChargeCard: false,
+ annualFee: 450,
+ lastDigits: "3652",
+ bank: amExBank,
+ promotions: [],
+ bonuses: [],
+ closed: nil,
+ paymentProcessor: PaymentProcessor.amex,
+ cardArt: CardArt(assetID: "American_Express-Personal-Hilton_Honors_Aspire_old")
+ ),
+ CreditCard(
+ name: "Every Day Preferred",
+ creditLimit: "28000",
+ openDate: Calendar.current.date(byAdding: .year, value: -4, to: Date.now) ?? Date.now,
+ isBusiness: false,
+ isChargeCard: false,
+ annualFee: 95,
+ lastDigits: "33556",
+ bank: amExBank,
+ promotions: [],
+ bonuses: [],
+ closed: nil,
+ paymentProcessor: PaymentProcessor.amex,
+ cardArt: CardArt(assetID: "American_Express-Personal-low_res-Every_Day_Preferred")
+ ),]
+ for card in newCards {
+ container.mainContext.insert(card)
+ }
+ }
+ 
+ if let citiBank = bank(withName: "Citi", in: container.mainContext) {
+ let newCards = [
+ CreditCard(
+ name: "Rewards",
+ creditLimit: "10000",
+ openDate: Calendar.current.date(byAdding: .year, value: -2, to: Date.now) ?? Date.now,
+ isBusiness: false,
+ isChargeCard: false,
+ annualFee: 450,
+ lastDigits: "5552",
+ bank: citiBank,
+ promotions: [],
+ bonuses: [],
+ closed: nil,
+ paymentProcessor: PaymentProcessor.visa,
+ cardArt: CardArt(assetID: "Citi-Rewards")
+ ),
+ CreditCard(
+ name: "Double Cash",
+ creditLimit: "3000",
+ openDate: Calendar.current.date(byAdding: .year, value: -3, to: Date.now) ?? Date.now,
+ isBusiness: false,
+ isChargeCard: false,
+ annualFee: 0,
+ lastDigits: "3752",
+ bank: citiBank,
+ promotions: [],
+ bonuses: [],
+ closed: nil,
+ paymentProcessor: PaymentProcessor.visa,
+ cardArt: CardArt(assetID: "Citi-low_res-Double_Cash_2024")
+ )]
+ for card in newCards {
+ container.mainContext.insert(card)
+ }
+ }
+ 
+ if let wellsFargo = bank(withName: "Wells Fargo", in: container.mainContext) {
+ let newCards = [
+ CreditCard(
+ name: "BILT",
+ creditLimit: "16000",
+ openDate: Calendar.current.date(byAdding: .year, value: Int(-1.5), to: Date.now) ?? Date.now,
+ isBusiness: false,
+ isChargeCard: false,
+ annualFee: 0,
+ lastDigits: "5852",
+ bank: wellsFargo,
+ promotions: [],
+ bonuses: [],
+ closed: nil,
+ paymentProcessor: PaymentProcessor.visa,
+ cardArt: CardArt(assetID: "Others-Credit_Cards-jpeg-Bilt")
+ )]
+ for card in newCards {
+ container.mainContext.insert(card)
+ }
+ }
+ 
  
  return container
  } catch {
@@ -137,13 +596,19 @@ struct CreditCardLibraryApp: App {
  WindowGroup("Main Widnow") {
  WalletContentView(selectedCategory: $sidebarSelection, columnVisibility: $columnVisibility)
  .toolbarBackground(.ultraThickMaterial)
+ .frame(minWidth: 600, idealWidth: 1200, maxWidth: 1400, minHeight: 300, idealHeight: 600, maxHeight: 900)
+ .onAppear {
+ columnVisibility = .all
+ }
  }
  .defaultPosition(.center)
+ .defaultSize(width: 1200, height: 900)
  .modelContainer(appContainer)
  .windowStyle(.hiddenTitleBar)
+ .windowResizability(.contentSize)
  
  }
- @State var sidebarSelection: SideBarCategories = .open
+ @State var sidebarSelection: SideBarCategories = .all
  @State var columnVisibility: NavigationSplitViewVisibility = .all
 }
 
@@ -154,17 +619,23 @@ import Foundation
 import SwiftData
 @Model
 final class Bank {
- var name: String
- var creditCards: [CreditCard] = []
+ @Attribute(.unique) var name: String 
+ @Relationship var creditCards: [CreditCard] = []
+ @Relationship var cardArts: [CardArt] = []
  
  init(name: String) {
  self.name = name
+ }
+ 
+ static func returnNewBank() -> Bank {
+ return Bank(name: "")
  }
  
  static let sampleData = [
  Bank(name: "Chace"),
  Bank(name: "American Express"),
  ]
+ 
 }
 
 
@@ -174,17 +645,56 @@ import Foundation
 import SwiftData
 @Model
 final class Bonus {
- var name: String
+ var details: String
+ var startDate: Date?
+ var endDate: Date?
  var creditCard: CreditCard?
  
- init(name: String) {
- self.name = name
+ init(details: String, startDate: Date? = nil, endDate: Date? = nil, creditCard: CreditCard? = nil) {
+ self.details = details
+ self.startDate = startDate
+ self.endDate = endDate
+ self.creditCard = creditCard
+ }
+ 
+ static func returnNewBonus() -> Bonus {
+ return Bonus(details: "")
  }
  
  static let sampleData = [
- Bonus(name: "80k sign up bonus after $6,000 spend in 3 months"),
- Bonus(name: "180k sign up bonus after $12,000 spend in 3 months"),
+ Bonus(details: "80k sign up bonus after $6,000 spend in 3 months", startDate: Date.now, endDate: Date.now.addingTimeInterval(60*60*24*30*3)),
+ Bonus(details: "180k sign up bonus after $12,000 spend in 3 months", startDate: Date.now, endDate: Date.now.addingTimeInterval(60*60*24*30*3)),
  ]
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Model/CardArt.swift ***************************************/
+import Foundation
+import SwiftData
+@Model
+final class CardArt {
+ var assetID: String
+ @Relationship var bank: Bank?
+ init(assetID: String, bank: Bank? = nil) {
+ self.assetID = assetID
+ self.bank = bank
+ }
+ 
+ static func returnNewCardArt() -> CardArt {
+ return CardArt(assetID: "default")
+ }
+ 
+ static let sampleData = [
+ CardArt(assetID: "American_Express-Personal-Platinum_Schwab"),
+ CardArt(assetID: "American_Express-Personal-Platinum_Schwab")
+ ]
+ 
+}
+extension CardArt {
+ var bankName: String {
+ bank?.name ?? "No Bank"
+ }
 }
 
 
@@ -194,48 +704,23 @@ import Foundation
 import SwiftData
 @Model
 final class Closed {
- var isClosed: Bool
  var reason: String
+ var closedDate: Date?
  var creditCard: CreditCard?
- 
- init(reason: String, isClosed: Bool) {
+ init(reason: String, closedDate: Date? = nil, creditCard: CreditCard? = nil) {
  self.reason = reason
- self.isClosed = isClosed
+ self.closedDate = closedDate
+ self.creditCard = creditCard
+ }
+ 
+ static func returnNewClosed() -> Closed {
+ return Closed(reason: "")
  }
  
  static let sampleData = [
- Closed(reason: "Closed due to high annual fee", isClosed: true),
- Closed(reason: "Closed due to inactivity", isClosed: true),
+ Closed(reason: "Closed due to high annual fee", closedDate: Date.now),
+ Closed(reason: "Closed due to inactivity", closedDate: Date.now),
  ]
-}
-
-
-
-/** File: /CreditCardLibrary/CreditCardLibrary/Model/Color.swift ***************************************/
-import SwiftUI
-extension Color {
- func toHex() -> String? {
- guard let components = self.cgColor?.components, components.count >= 3 else {
- return nil
- }
- let r = components[0]
- let g = components[1]
- let b = components[2]
- return String(format: "#%02lX%02lX%02lX", lroundf(Float(r * 255)), lroundf(Float(g * 255)), lroundf(Float(b * 255)))
- }
- 
- init?(hex: String) {
- var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
- hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")
- var rgb: UInt64 = 0
- Scanner(string: hexSanitized).scanHexInt64(&rgb)
- 
- let red = Double((rgb >> 16) & 0xFF) / 255.0
- let green = Double((rgb >> 8) & 0xFF) / 255.0
- let blue = Double(rgb & 0xFF) / 255.0
- 
- self.init(red: red, green: green, blue: blue)
- }
 }
 
 
@@ -250,64 +735,118 @@ final class CreditCard {
  var creditLimit: String
  var isBusiness: Bool
  var isChargeCard: Bool
+ var annualFee: Double?
  var openDate: Date
  var lastDigits: String
  var colorHex: String?
+ var history: [String]
  var bank: Bank?
- var promotion: Promotion?
- var bonus: Bonus?
+ var promotions: [Promotion]
+ var bonuses: [Bonus]
  var closed: Closed?
  var paymentProcessor: PaymentProcessor?
- var color: Color? {
- get {
- guard let colorHex = colorHex else { return nil }
- return Color(hex: colorHex)
- }
- set {
- colorHex = newValue?.toHex()
- }
- }
+ var cardArt: CardArt?
  
  init(name: String,
  creditLimit: String,
  openDate: Date,
  isBusiness: Bool,
  isChargeCard: Bool,
+ annualFee: Double? = 0,
  lastDigits: String,
  colorHex: String? = nil,
+ history: [String] = [],
  bank: Bank? = nil,
- promotion: Promotion? = nil,
- bonus: Bonus? = nil,
+ promotions: [Promotion] = [],
+ bonuses: [Bonus] = [],
  closed: Closed? = nil,
- paymentProcessor: PaymentProcessor? = nil) {
+ paymentProcessor: PaymentProcessor? = nil,
+ cardArt: CardArt? = nil) {
  self.name = name
  self.creditLimit = creditLimit
  self.openDate = openDate
  self.isBusiness = isBusiness
+ self.annualFee = annualFee
  self.lastDigits = lastDigits
  self.bank = bank
- self.promotion = promotion
- self.bonus = bonus
+ self.promotions = promotions
+ self.bonuses = bonuses
  self.closed = closed
  self.paymentProcessor = paymentProcessor
  self.colorHex = colorHex
+ self.history = history
  self.isChargeCard = isChargeCard
+ self.cardArt = cardArt
  }
  
- static func createNewCard() -> CreditCard {
- return CreditCard(name: "", creditLimit: "0", openDate: .now, isBusiness: false, isChargeCard: false, lastDigits: "")
+ static func returnNewCreditCard() -> CreditCard {
+ return CreditCard(name: "", creditLimit: "", openDate: .now, isBusiness: false, isChargeCard: false, lastDigits: "", history: ["\(Date.now) Credit Card Added", "sdfsdfs", "sdfsdf", "dfsdff"], cardArt: CardArt(assetID: "default"))
+ }
+ 
+ static func getHeight(width: Double) -> Double {
+ return (width / 8.56) * 5.389
+ }
+ 
+ static func getWidth(height: Double) -> Double {
+ return height * (8.56 / 5.389)
  }
  
  static let cardWidth: CGFloat = 486
  static let cardHeight: CGFloat = 306
  
  static let sampleData = [
- CreditCard(name: "Platinum", creditLimit: "110.23", openDate: .now, isBusiness: false, isChargeCard: false, lastDigits: "62376", bank: Bank(name: "American Express"), promotion: Promotion(name: "Zero APR for 12 months"), bonus: Bonus(name: "100k sign up bonus"), closed: Closed(reason: "Too expensive", isClosed: true), paymentProcessor: PaymentProcessor.amex),
- CreditCard(name: "Saphire Reserve", creditLimit: "4520.6", openDate: .now, isBusiness: false, isChargeCard: false, lastDigits: "3552", bank: Bank(name: "Chase"), promotion: Promotion(name: "Zero APR for 18 months"), bonus: Bonus(name: "80k sign up bonus"), closed: Closed(reason: "", isClosed: false)),
- CreditCard(name: "Ink Preffered", creditLimit: "520.3",openDate: .now,isBusiness: true, isChargeCard: false, lastDigits: "7743"),
- CreditCard(name: "AmEx Gold", creditLimit: "630.67", openDate: .now, isBusiness: false, isChargeCard: false, lastDigits: "6343"),
- CreditCard(name: "Flex", creditLimit: "0", openDate: .now, isBusiness: false, isChargeCard: false, lastDigits: "8234"),
- CreditCard(name: "BILT", creditLimit: "730.3", openDate: .now, isBusiness: false, isChargeCard: false, lastDigits: "8322"),
+ CreditCard(
+ name: "Platinum",
+ creditLimit: "110.23",
+ openDate: .now,
+ isBusiness: false,
+ isChargeCard: false,
+ lastDigits: "62376",
+ history: ["credit limit increased from 3000 to 5000", "card downgraded from x to y"],
+ bank: Bank(name: "American Express"),
+ promotions: [
+ Promotion(
+ details: "0 APR",
+ startDate: Date.now,
+ endDate: Date.now.addingTimeInterval(60*60*24*30*12)
+ )
+ ],
+ bonuses: [
+ Bonus(
+ details: "100k sign up bonus",
+ startDate: Date.now,
+ endDate: Date.now.addingTimeInterval(60*60*24*30*3)
+ )
+ ],
+ closed: Closed(reason: "Too expensive"),
+ paymentProcessor: PaymentProcessor.amex,
+ cardArt: CardArt.sampleData[0]
+ ),
+ CreditCard(
+ name: "Saphire Reserve",
+ creditLimit: "4520.6",
+ openDate: .now,
+ isBusiness: false,
+ isChargeCard: false,
+ lastDigits: "3552",
+ bank: Bank(name: "Chase"),
+ promotions: [
+ Promotion(
+ details: "0 APR",
+ startDate: Date.now,
+ endDate: Date.now.addingTimeInterval(60*60*24*30*12)
+ )
+ ],
+ bonuses: [
+ Bonus(
+ details: "70k sign up bonus",
+ startDate: Date.now,
+ endDate: Date.now.addingTimeInterval(60*60*24*30*12)
+ )
+ ],
+ closed: Closed(reason: ""),
+ paymentProcessor: PaymentProcessor.visa
+ )
  ]
 }
 
@@ -329,6 +868,10 @@ final class PaymentProcessor {
  init(name: String, logo: String) {
  self.name = name
  self.logo = logo
+ }
+ 
+ static func returnNewPaymentProcessor() -> PaymentProcessor {
+ return PaymentProcessor(name: "", logo: "")
  }
  
  static let sampleData: [PaymentProcessor] = [
@@ -360,56 +903,112 @@ import Foundation
 import SwiftData
 @Model
 final class Promotion {
- var name: String
+ var details: String
+ var startDate: Date?
+ var endDate: Date?
  var creditCard: CreditCard?
  
- init(name: String) {
- self.name = name
+ init(details: String, startDate: Date? = nil, endDate: Date? = nil, creditCard: CreditCard? = nil) {
+ self.details = details
+ self.startDate = startDate
+ self.endDate = endDate
+ self.creditCard = creditCard
+ }
+ 
+ static func returnNewPromotion() -> Promotion {
+ return Promotion(details: "")
  }
  
  static let sampleData = [
- Promotion(name: "0% APR for 12 moths"),
- Promotion(name: "0% APR for 18 moths"),
+ Promotion(details: "0% APR for 12 moths", startDate: Date.now, endDate: Date.now.addingTimeInterval(60*60*24*30*12)),
+ Promotion(details: "0% APR for 18 moths", startDate: Date.now, endDate: Date.now.addingTimeInterval(60*60*24*30*18)),
  ]
 }
 
 
 
 /** File: /CreditCardLibrary/CreditCardLibrary/Model/SideBarCategories.swift ***************************************/
-import Foundation
-enum SideBarCategories: Int, CaseIterable, Identifiable {
- var id: Int { rawValue }
- 
- case open
- case personal
+enum SideBarCategories: Hashable {
  case business
+ case personal
+ case all
  case closed
+ case charts
  
  var displayName: String {
  switch self {
- case .open: return "All"
- case .personal: return "Personal"
  case .business: return "Business"
- case .closed: return "Closed"
+ case .personal: return "Personal"
+ case .all: return "All Cards"
+ case .closed: return "Closed Cards"
+ case .charts: return "Charts"
+ }
+ }
+ 
+ var order: Int {
+ switch self {
+ 
+ case .all : return 1
+ case .business: return 3
+ case .personal: return 2
+ case .closed: return 4
+ case .charts: return 5
  }
  }
  
  var displayImageName: String {
  switch self {
- case .open: return "creditcard"
- case .personal: return "person"
- case .business: return "building.columns"
- case .closed: return "archivebox"
+ case .business:
+ return "briefcase"
+ case .personal:
+ return "person"
+ case .all:
+ return "tray"
+ case .closed:
+ return "archivebox"
+ case .charts:
+ return "chart.line.uptrend.xyaxis"
  }
- }
- var sidebarFilter: (CreditCard) -> Bool {
- switch self {
- case .open: return { $0.closed == nil}
- case .personal: return { $0.isBusiness == false}
- case .business: return { $0.isBusiness == true}
- case .closed: return { $0.closed != nil}
  }
  
+ func sidebarFilter(_ creditCard: CreditCard) -> Bool {
+ switch self {
+ case .all:
+ return creditCard.closed == nil
+ case .personal:
+ return !creditCard.isBusiness && creditCard.closed == nil
+ case .business:
+ return creditCard.isBusiness && creditCard.closed == nil
+ case .closed:
+ return creditCard.closed != nil
+ case .charts:
+ return false
+ }
+ }
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Model/loadBankCardArtData.swift ***************************************/
+import Foundation
+typealias BankCardArtData = [String: [String]]
+func loadBankCardArtData() -> BankCardArtData? {
+ let fileName = "BankCardArtData"
+ 
+ guard let url = Bundle.main.url(forResource: fileName, withExtension: "json") else {
+ print("Could not find \(fileName).json in the bundle.")
+ return nil
+ }
+ 
+ do {
+ 
+ let data = try Data(contentsOf: url)
+ 
+ let decoded = try JSONDecoder().decode(BankCardArtData.self, from: data)
+ return decoded
+ } catch {
+ print("Error decoding \(fileName).json: \(error)")
+ return nil
  }
 }
 
@@ -435,7 +1034,9 @@ class PreviewData {
  Bank.self,
  Promotion.self,
  Bonus.self,
- Closed.self
+ Closed.self,
+ PaymentProcessor.self,
+ CardArt.self
  ])
  
  let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
@@ -476,10 +1077,14 @@ class PreviewData {
  context.insert(pp)
  }
  
+ for cardArt in CardArt.sampleData {
+ context.insert(cardArt)
+ }
+ 
  if let sampleCreditCard = CreditCard.sampleData.first {
  sampleCreditCard.bank = Bank.sampleData[1]
  sampleCreditCard.closed = Closed.sampleData[0]
- sampleCreditCard.bonus = Bonus.sampleData[0]
+ sampleCreditCard.bonuses.append(Bonus.sampleData[0])
  sampleCreditCard.closed = Closed.sampleData[0]
  }
  
@@ -516,7 +1121,7 @@ class PreviewData {
  PaymentProcessor.sampleData[0]
  }
  
- var openCategory = SideBarCategories.open
+ var openCategory = SideBarCategories.all
  var businessCategory = SideBarCategories.business
  var personalCategory = SideBarCategories.personal
  var closedCategory = SideBarCategories.closed
@@ -526,125 +1131,368 @@ class PreviewData {
 
 
 
-/** File: /CreditCardLibrary/CreditCardLibrary/Views/AddBankView.swift ***************************************/
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/CardDetailViews/CardHistoryView.swift ***************************************/
 import SwiftUI
-struct AddBankView: View {
- @Environment(\.dismiss) private var dismiss
- @State private var bankName: String = ""
- @Binding var textFieldWidth: CGFloat
- var onSave: (Bank) -> Void
+struct CardHistoryView: View {
+ @Bindable var creditCard: CreditCard
+ var body: some View {
+ VStack {
+ HStack {
+ if creditCard.history.isEmpty {
+ Text("No history available")
+ .font(.body)
+ .padding(.vertical, 2)
+ } else {
+ List {
+ ForEach(creditCard.history, id: \.self) { entry in
+ Text("\(entry)")
+ }
+ .onDelete(perform: deleteHistory)
+ }
+ }
+ Spacer()
+ }
+ .padding()
+ Spacer()
+ }
+ .frame(minHeight: 100)
+ }
+ 
+ 
+ private func deleteHistory(at offsets: IndexSet) {
+ creditCard.history.remove(atOffsets: offsets)
+ }
+}
+#Preview {
+ CardHistoryView(creditCard: PreviewData.shared.creditCard)
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/CardDetailViews/DetailPanelView.swift ***************************************/
+
+import SwiftUI
+struct DetailPanelView: View {
+ 
+ @Bindable var creditCard: CreditCard
+ @State private var isShowingHistory: Bool = false
  
  var body: some View {
- Form {
- TextField("Bank Name", text: $bankName)
- .frame(width:textFieldWidth)
- Button("Add Bank") {
- let newBank = Bank(name: bankName)
- 
- onSave(newBank)
- bankName = ""
+ VSplitView {
+ DetailView(creditCard: creditCard)
+ .scrollIndicatorsFlash(onAppear: true)
+ if isShowingHistory {
+ CardHistoryView(creditCard: creditCard)
+ .frame(height: 400)
  }
+ 
+ ShowHistoryView(isShowingHistory: $isShowingHistory)
  }
  }
 }
 #Preview {
- AddBankView(textFieldWidth: .constant(236), onSave: { bank in print(bank.name)})
- .modelContainer(PreviewData.shared.modelContainer)
+ DetailPanelView(creditCard: PreviewData.shared.creditCard)
 }
 
 
 
-/** File: /CreditCardLibrary/CreditCardLibrary/Views/AddBonusView.swift ***************************************/
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/CardDetailViews/DetailRowView.swift ***************************************/
 
 import SwiftUI
-struct AddBonusView: View {
- @Environment(\.dismiss) private var dismiss
- @Binding var textFieldWidth: CGFloat
- @State private var bonusName: String = ""
+struct DetailRowView: View {
  
- var onSave: (Bonus) -> Void
+ var label: String
+ var value: String
  
  var body: some View {
- Form {
- TextField("Bonus Name", text: $bonusName, axis: .vertical)
- .frame(width:textFieldWidth)
- Button("Add Bonus") {
- let newBonus = Bonus(name: bonusName)
- 
- onSave(newBonus)
- bonusName = ""
+ HStack{
+ Text(label)
+ Spacer()
+ Text(value)
  }
- }
+ .padding()
+ .frame(minWidth: 200, idealWidth: 400, alignment: .center)
  }
 }
 #Preview {
- AddBonusView(textFieldWidth: .constant(236), onSave: { bonus in print(bonus.name)})
- .modelContainer(PreviewData.shared.modelContainer)
+ DetailRowView(label: "label", value: "value")
 }
 
 
 
-/** File: /CreditCardLibrary/CreditCardLibrary/Views/AddCreditCardView.swift ***************************************/
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/CardDetailViews/DetailView.swift ***************************************/
 import SwiftUI
-import SwiftData
-struct AddCreditCardView: View {
+struct DetailView: View {
+ 
+ @Bindable var creditCard: CreditCard
+ 
  @Environment(\.dismiss) private var dismiss
  @Environment(\.modelContext) private var modelContext
  
- @State var creditCard: CreditCard
- 
- var existingBanks: [Bank]
- var paymentProcessors: [PaymentProcessor]
+ init(creditCard: CreditCard) {
+ self.creditCard = creditCard
+ }
  
  var body: some View {
+ ScrollView(.vertical, showsIndicators: false) {
+ VStack {
+ CardView(creditCard: creditCard)
+ .padding()
+ .shadow(color: Color.black.opacity(0.1), radius: 25)
  
- FormView(
- creditCard: $creditCard,
- isNewBank: false,
- existingBanks: existingBanks,
- paymentProcessors: paymentProcessors
- ) {
- try? modelContext.save()
- dismiss()
+ GroupBox {
+ VStack{
+ 
+ DetailRowView(label: "Card Name", value: creditCard.name)
+ DetailRowView(label: "Type", value: creditCard.isBusiness ? "Business" : "Personal")
+ 
+ if !creditCard.isChargeCard {
+ DetailRowView(label: "Credit Limit", value: creditCard.creditLimit)
  }
+ 
+ DetailRowView(label: "Charge Card", value: creditCard.isChargeCard ? "Yes" : "No")
+ 
+ if creditCard.bank != nil {
+ DetailRowView(label: "Bank Name", value: creditCard.bank?.name ?? "Bank is not specified")
+ }
+ 
+ if creditCard.closed != nil {
+ DetailRowView(label: "Closed Reson", value: creditCard.closed?.reason ?? "Reason not specified")
+ }
+ }
+ } label: {
+ Label("Card Details", systemImage: "creditcard")
+ .font(.headline)
+ }
+ .groupBoxStyle(ModernGroupBoxStyle())
+ .padding(.horizontal)
+ 
+ 
+ if !creditCard.bonuses.isEmpty {
+ GroupBox {
+ ForEach(creditCard.bonuses, id: \.self) { bonus in
+ VStack{
+ DetailRowView(label: "Bonus Details", value: bonus.details)
+ DetailRowView(label: "Start Date", value: bonus.startDate?.description ?? "None")
+ DetailRowView(label: "End Date", value: bonus.endDate?.description ?? "None")
+ }
+ }
+ 
+ 
+ } label: {
+ Label("Bonus", systemImage: "dollarsign.square")
+ .font(.headline)
+ }
+ .groupBoxStyle(ModernGroupBoxStyle())
+ .padding(.horizontal)
+ }
+ 
+ if !creditCard.promotions.isEmpty {
+ GroupBox {
+ ForEach(creditCard.promotions, id: \.self) { promo in
+ VStack{
+ DetailRowView(label: "Promotion Details", value: promo.details)
+ DetailRowView(label: "Start Date", value: promo.startDate?.description ?? "None")
+ DetailRowView(label: "End Date", value: promo.endDate?.description ?? "None")
+ }
+ }
+ 
+ 
+ } label: {
+ Label("Promotion", systemImage: "percent")
+ .font(.headline)
+ }
+ .groupBoxStyle(ModernGroupBoxStyle())
+ .padding(.horizontal)
+ }
+ Spacer()
+ }
+ .padding()
+ }
+ .navigationTitle("Credit Card Details")
  }
 }
-#Preview {
- AddCreditCardView(creditCard: CreditCard(name: "", creditLimit: "", openDate: .now, isBusiness: false, isChargeCard: false, lastDigits: ""), existingBanks: Bank.sampleData, paymentProcessors: PaymentProcessor.sampleData)
-}
-
-
-
-/** File: /CreditCardLibrary/CreditCardLibrary/Views/AddPromotionView.swift ***************************************/
-import SwiftUI
-struct AddPromotionView: View {
- @Environment(\.dismiss) private var dismiss
- @Binding var textFieldWidth: CGFloat
- @State private var promoName: String = ""
- 
- var onSave: (Promotion) -> Void
- 
- var body: some View {
- Form {
- TextField("Promotion Name", text: $promoName, axis: .vertical)
- .frame(width:textFieldWidth)
- Button("Add Promotion") {
- let newPromo = Promotion(name: promoName)
- 
- onSave(newPromo)
- promoName = ""
+struct ModernGroupBoxStyle: GroupBoxStyle {
+ func makeBody(configuration: Configuration) -> some View {
+ VStack(alignment: .leading, spacing: 8) {
+ configuration.label
+ configuration.content
+ .background(Color.grayDetailRow.opacity(0.2))
+ .cornerRadius(8)
+ .overlay(
+ RoundedRectangle(cornerRadius: 8)
+ .strokeBorder(Color.grayDetailRow.opacity(0.8)))
  }
- }
+ .padding()
+ .background(Color(.background))
+ .cornerRadius(12)
+ .shadow(color: Color.black.opacity(0.05), radius: 5)
  }
 }
-#Preview {
- AddPromotionView(textFieldWidth: .constant(236), onSave: { promo in print(promo.name)})
+#Preview("Details") {
+ DetailView(creditCard: PreviewData.shared.creditCard)
  .modelContainer(PreviewData.shared.modelContainer)
 }
 
 
 
-/** File: /CreditCardLibrary/CreditCardLibrary/Views/CardListView.swift ***************************************/
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/CardDetailViews/SelectCardView.swift ***************************************/
+
+import SwiftUI
+struct SelectCardView: View {
+ var body: some View {
+ HStack {
+ Spacer()
+ Text("Select a card")
+ .foregroundStyle(.secondary)
+ .lineLimit(1)
+ .truncationMode(.tail)
+ .fixedSize() 
+ Spacer()
+ }
+ }
+}
+#Preview {
+ SelectCardView()
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/CardDetailViews/ShowHistoryView.swift ***************************************/
+
+import SwiftUI
+struct ShowHistoryView: View {
+ @Binding var isShowingHistory: Bool
+ 
+ var body: some View {
+ HStack {
+ Spacer()
+ Button(action: {
+ isShowingHistory.toggle()
+ }, label: {
+ Text(isShowingHistory ? "Hide History" : "Show History")
+ })
+ .padding()
+ }
+ .frame(height: 35)
+ }
+ 
+}
+#Preview {
+ ShowHistoryView(isShowingHistory: .constant(true))
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/CardViews/CardGridCellView.swift ***************************************/
+import SwiftUI
+struct CardGridCellView: View {
+ let creditCard: CreditCard
+ 
+ var body: some View {
+ let w = 250.00
+ let h = (w / 8.56) * 5.389
+ 
+ VStack(alignment: .center, spacing: 8) {
+ Image(creditCard.cardArt?.assetID ?? "default")
+ .resizable()
+ .interpolation(.low)
+ .aspectRatio(contentMode: .fit)
+ .frame(width: w, height: h)
+ .clipShape(.rect(cornerRadius: 8))
+ Text(creditCard.name)
+ .font(.headline)
+ .lineLimit(1)
+ Text("Opened \(creditCard.openDate, style: .relative) ago")
+ .font(.caption)
+ .foregroundColor(.secondary)
+ .font(.caption)
+ .foregroundColor(.secondary)
+ }
+ .padding()
+ .cornerRadius(8)
+ .shadow(color: Color.black.opacity(0.1), radius: 2, x: 0, y: 2)
+ }
+}
+#Preview {
+ CardGridCellView(creditCard: CreditCard(name: "test", creditLimit: "2000", openDate: Date.now, isBusiness: false, isChargeCard: false, lastDigits: "3523", history: [""], paymentProcessor: PaymentProcessor.amex, cardArt: CardArt(assetID: "American_Express-Business-Plum")))
+ .modelContainer(PreviewData.shared.modelContainer)
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/CardViews/CardGridView.swift ***************************************/
+import SwiftUI
+import SwiftData
+struct CardGridView: View {
+ 
+ @Binding var selectedCategory: SideBarCategories
+ @Binding var selectedCard: CreditCard?
+ 
+ @Query(sort: \CreditCard.name) private var cards: [CreditCard]
+ var filteredCreditCards: [CreditCard] {
+ cards.filter(selectedCategory.sidebarFilter)
+ }
+ 
+ var onDoubleTap: (CreditCard) -> Void
+ 
+ let columns: [GridItem] = [GridItem(.adaptive(minimum: 275, maximum: 350), spacing: 0)]
+ 
+ var body: some View {
+ ScrollView {
+ LazyVGrid(columns: columns, spacing: 5) {
+ ForEach(filteredCreditCards, id: \.id) { card in
+ CardGridCellView(creditCard: card)
+ .overlay(
+ RoundedRectangle(cornerRadius: 8)
+ .strokeBorder(selectedCard == card ? Color.accentColor.opacity(0.8) : Color.clear, lineWidth: 3)
+ )
+ .simultaneousGesture(
+ TapGesture(count: 2)
+ .onEnded {
+ onDoubleTap(card)
+ }
+ )
+ .simultaneousGesture(
+ TapGesture(count: 1)
+ .onEnded {
+ DispatchQueue.main.async {
+ selectedCard = card}
+ }
+ )
+ }
+ }
+ .padding()
+ }
+ }
+ init(searchString: String = "", 
+ sortOrder: [SortDescriptor<CreditCard>] = [],
+ selectedCard: Binding<CreditCard?>,
+ selectedCategory: Binding<SideBarCategories>,
+ onDoubleTap: @escaping (CreditCard) -> Void
+ ) {
+ _selectedCard = selectedCard
+ _selectedCategory = selectedCategory
+ self.onDoubleTap = onDoubleTap
+ _cards = Query(filter: #Predicate { card in
+ if searchString.isEmpty {
+ return true
+ } else {
+ return card.name.localizedStandardContains(searchString)
+ }
+ }, sort: sortOrder)
+ }
+}
+#Preview {
+ CardGridView(selectedCard: .constant(CreditCard.sampleData[0]),
+ selectedCategory: .constant(.all),
+ onDoubleTap: {_ in print("double tapped")})
+ .frame(width: 400)
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/CardViews/CardListView.swift ***************************************/
 import SwiftUI
 import SwiftData
 struct CardListView: View {
@@ -656,22 +1504,18 @@ struct CardListView: View {
  var filteredCreditCards: [CreditCard] {
  cards.filter(selectedCategory.sidebarFilter)
  }
- 
  var body: some View {
  Group {
  if !filteredCreditCards.isEmpty {
  List(filteredCreditCards, selection: $selectedCard) { card in
  NavigationLink(value: card) {
  HStack {
- CardView(creditCard: card)
- .frame(width: CreditCard.cardWidth/15, height: CreditCard.cardHeight/50)
- .scaleEffect(0.15)
- .padding(30)
- Text(card.name)
- 
+ CardRowView(creditCard: card) 
  }
  }
+ .listRowInsets(EdgeInsets())
  }
+ .animation(.easeInOut, value: filteredCreditCards)
  .buttonStyle(.plain)
  } else {
  Text("No cards available")
@@ -692,8 +1536,7 @@ struct CardListView: View {
 }
 #Preview("Open") {
  CardListView(
- selectedCard: .constant(nil),
- selectedCategory: .constant(.open)
+ selectedCard: .constant(nil), selectedCategory: .constant(.all)
  )
  .modelContainer(PreviewData.shared.modelContainer)
 }
@@ -721,7 +1564,35 @@ struct CardListView: View {
 
 
 
-/** File: /CreditCardLibrary/CreditCardLibrary/Views/CardView.swift ***************************************/
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/CardViews/CardRowView.swift ***************************************/
+import SwiftUI
+struct CardRowView: View {
+ @State var creditCard: CreditCard
+ var body: some View {
+ HStack {
+ Spacer()
+ let w = 250.00
+ let h = (w / 8.56) * 5.389
+ VStack {
+ Image("American_Express-Personal-Platinum_Schwab")
+ .resizable()
+ .aspectRatio(contentMode: .fit)
+ .frame(width: w, height: h)
+ .drawingGroup()
+ Text(creditCard.name)
+ }
+ Spacer()
+ }
+ .padding(.vertical, 10)
+ }
+}
+#Preview {
+ CardRowView(creditCard: (PreviewData.shared.creditCard))
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/CardViews/CardView.swift ***************************************/
 import SwiftUI
 struct CardView: View {
  @Bindable var creditCard: CreditCard
@@ -731,50 +1602,18 @@ struct CardView: View {
  }
  
  var body: some View {
- let w = CreditCard.cardWidth
- let h = CreditCard.cardHeight
+ let w = 300.00
+ let h = (w / 8.56) * 5.389
  
  return ZStack{
- Color(creditCard.color ?? .gray)
- .cornerRadius(16)
- HStack {
- VStack(alignment:.leading) {
- HStack {
- Text(creditCard.bank?.name ?? "")
- .font(.custom("Courier", size: w/15))
- }
- HStack {
- Text(creditCard.name)
- .font(.custom("Courier", size: w/20))
- }
- HStack {
- Image("chip")
+ Image(creditCard.cardArt?.assetID ?? "default")
  .resizable()
- .frame(width: w/7, height: w/10)
- Spacer()
- 
- }
- .padding(.top)
- .padding(.bottom)
- Text("***** ****** \(creditCard.lastDigits)")
- .font(.custom("Courier", size: w/13))
- HStack {
- Text(creditCard.isBusiness ? "Business" : "Personal")
- .font(.custom("Courier", size: w/25))
- Spacer()
- Image(creditCard.paymentProcessor?.logo ?? "amexLogo")
- .resizable()
- .frame(width: w/7, height: w/8)
- 
- }
- 
- }
- .padding(3)
- Spacer()
- }
- .padding(20)
- }
+ .interpolation(.low)
+ .aspectRatio(contentMode: .fit)
  .frame(width: w, height: h)
+ .clipShape(.rect(cornerRadius: 8))
+ 
+ }
  }
 }
 #Preview {
@@ -783,63 +1622,698 @@ struct CardView: View {
 
 
 
-/** File: /CreditCardLibrary/CreditCardLibrary/Views/DetailView.swift ***************************************/
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/ChartViews/BankPieChartView.swift ***************************************/
 import SwiftUI
-struct DetailView: View {
+import Charts
+struct BankPieChartView: View {
  
- @Bindable var creditCard: CreditCard
+ var banks: [Bank]
  
- @Environment(\.dismiss) private var dismiss
- @Environment(\.modelContext) private var modelContext
+ var filteredBanks: [Bank] {
+ banks.filter { !$0.creditCards.isEmpty }
+ }
  
- init(creditCard: CreditCard) {
- self.creditCard = creditCard
+ 
+ let colors: [Color] = [.red, .blue, .green, .orange, .indigo]
+ 
+ 
+ var totalCardCount: Int {
+ filteredBanks.reduce(0) { $0 + $1.creditCards.filter { $0.closed == nil }.count }
  }
  
  var body: some View {
- VStack {
- CardView(creditCard: creditCard)
- .frame(width: 486/2, height: 306/2)
- .scaleEffect(0.6)
- .padding(40)
- HStack {
- Text("CardName")
- Spacer()
- Text(creditCard.name)
+ VStack(alignment: .leading, spacing: 4) {
+ Text("Open credit cards by bank")
+ Text("Total cards: \(totalCardCount)")
+ .fontWeight(.semibold)
+ .font(.footnote)
+ .foregroundColor(.secondary)
+ .padding(.bottom, 12)
+ Chart {
+ 
+ ForEach(Array(filteredBanks.enumerated()), id: \.element.id) { index, bank in
+ let openCount = bank.creditCards.filter { $0.closed == nil }.count
+ SectorMark(
+ angle: .value("Cards", openCount),
+ innerRadius: .ratio(0.618),
+ angularInset: 3
+ )
+ .foregroundStyle(colors[index % colors.count]).opacity(0.95)
+ .cornerRadius(6)
+ .annotation(position: .overlay, content: {
+ Text(bank.name)
+ .foregroundStyle(.primary)
+ })
  }
- HStack {
- Text("Type")
- Spacer()
- Text(creditCard.isBusiness ? "Business" : "Personal")
  }
- HStack {
- Text("Bank Name")
- Spacer()
- Text(creditCard.bank?.name ?? "No Bank")
+ .chartLegend(.hidden)
+ .padding(.vertical)
  }
- HStack {
- Text("Promotion Name")
- Spacer()
- Text(creditCard.promotion?.name ?? "None")
- }
- HStack {
- Text("Bonus Name")
- Spacer()
- Text(creditCard.bonus?.name ?? "None")
- }
- Spacer()
- }
- .navigationTitle("Credit Card Details")
  }
 }
-#Preview("Details") {
- DetailView(creditCard: PreviewData.shared.creditCard)
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/ChartViews/ChartsView.swift ***************************************/
+import SwiftUI
+import SwiftData
+import Charts
+struct ChartsView: View {
+ 
+ @Query(sort: \CreditCard.openDate) private var cards: [CreditCard]
+ @Query(sort: \Bank.name) private var banks: [Bank]
+ 
+ let columns: [GridItem] = [GridItem(.adaptive(minimum: 375, maximum: 650), spacing: 50)]
+ 
+ var body: some View {
+ ScrollView {
+ LazyVGrid(columns: columns, spacing: 20) {
+ StyledBarChartCellView {
+ CreditLimitChartView(cards: cards)
+ }
+ StyledBarChartCellView {
+ CreditAgeChartView(cards: cards)
+ }
+ StyledPieCharCellView {
+ BankPieChartView(banks: banks)
+ }
+ }
+ .padding()
+ }
+ }
+}
+#Preview {
+ ChartsView()
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/ChartViews/CreditAgeChartView.swift ***************************************/
+import SwiftUI
+import Charts
+struct CreditAgeChartView: View {
+ var cards: [CreditCard]
+ 
+ 
+ var filteredCards: [CreditCard] {
+ cards.filter { $0.closed == nil && !$0.isBusiness }
+ }
+ 
+ 
+ var totalCreditAge: Double {
+ filteredCards.reduce(0.0) { sum, card in
+ let ageInSeconds = Date().timeIntervalSince(card.openDate)
+ let ageInYears = ageInSeconds / (365.25 * 24 * 3600)
+ return sum + ageInYears
+ }
+ }
+ 
+ 
+ var averageCreditAge: Double {
+ filteredCards.isEmpty ? 0 : totalCreditAge / Double(filteredCards.count)
+ }
+ 
+ var body: some View {
+ VStack(alignment: .leading, spacing: 4) {
+ Text ("Credit age of personal cards")
+ Text("Average: \(averageCreditAge.formatted(.number.precision(.fractionLength(1)))) years")
+ .fontWeight(.semibold)
+ .font(.footnote)
+ .foregroundColor(.secondary)
+ .padding(.bottom, 12)
+ Chart {
+ ForEach(Array(filteredCards.enumerated()), id: \.offset) { index, card in
+ BarMark(
+ x: .value("Card", index),
+ y: .value("Card Age", Date().timeIntervalSince(card.openDate) / (365.25 * 24 * 3600))
+ )
+ .foregroundStyle(Color.purple.gradient)
+ .cornerRadius(10)
+ 
+ RuleMark(y: .value("Average", averageCreditAge))
+ .foregroundStyle(Color.blue)
+ .lineStyle(StrokeStyle(lineWidth: 2, dash: [5]))
+ }
+ }
+ .padding(.vertical)
+ .chartXAxis {
+ AxisMarks { mark in
+ }
+ }
+ .chartYAxis {
+ AxisMarks { mark in
+ AxisGridLine()
+ AxisValueLabel()
+ }
+ }
+ }
+ }
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/ChartViews/CreditLimitChartView.swift ***************************************/
+import SwiftUI
+import Charts
+struct CreditLimitChartView: View {
+ var cards: [CreditCard]
+ 
+ var filteredCards: [CreditCard] {
+ cards.filter { Double($0.creditLimit) ?? 0 > 0 }
+ }
+ 
+ var totalCreditLimit: Double {
+ filteredCards.reduce(0) { $0 + (Double($1.creditLimit) ?? 0) }
+ }
+ 
+ var averageCreditLimit: Double {
+ let total = filteredCards.reduce(0) { $0 + (Double($1.creditLimit) ?? 0) }
+ return filteredCards.isEmpty ? 0 : total / Double(filteredCards.count)
+ }
+ 
+ var body: some View {
+ VStack(alignment: .leading, spacing: 4) {
+ Text ("Credit limits of all open cards")
+ Text("Total: $\(totalCreditLimit.formatted(.number.precision(.fractionLength(0))))")
+ .fontWeight(.semibold)
+ .font(.footnote)
+ .foregroundColor(.secondary)
+ .padding(.bottom, 12)
+ 
+ Chart {
+ ForEach(Array(filteredCards.enumerated()), id: \.offset) { index, card in
+ BarMark(
+ x: .value("Card", index),
+ y: .value("Credit Limit", Double(card.creditLimit) ?? 0)
+ )
+ .foregroundStyle(Color.pink.gradient)
+ .cornerRadius(10)
+ 
+ RuleMark(y: .value("Average", averageCreditLimit))
+ .foregroundStyle(Color.blue)
+ .lineStyle(StrokeStyle(lineWidth: 2, dash: [5]))
+ }
+ }
+ .padding(.vertical)
+ .chartXAxis {
+ AxisMarks { mark in
+ }
+ }
+ .chartYAxis {
+ AxisMarks { mark in
+ AxisGridLine()
+ AxisValueLabel()
+ }
+ }
+ }
+ }
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/ChartViews/StyledBarChartCellView.swift ***************************************/
+import SwiftUI
+struct StyledBarChartCellView<Content: View>: View {
+ let content: Content
+ 
+ init(@ViewBuilder content: () -> Content) {
+ self.content = content()
+ }
+ 
+ var body: some View {
+ content
+ .frame(width: 350, height: 300, alignment: .center)
+ .padding()
+ .cornerRadius(12)
+ .shadow(radius: 5)
+ }
+}
+#Preview {
+ StyledBarChartCellView{Text("Hello")}
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/ChartViews/StyledPieCharCellView.swift ***************************************/
+import SwiftUI
+struct StyledPieCharCellView<Content: View>: View {
+ let content: Content
+ 
+ init(@ViewBuilder content: () -> Content) {
+ self.content = content()
+ }
+ 
+ var body: some View {
+ content
+ .frame(width: 350, height: 400, alignment: .center)
+ .padding()
+ .cornerRadius(12)
+ .shadow(radius: 5)
+ }
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/Form/AddBankView.swift ***************************************/
+import SwiftUI
+struct AddBankView: View {
+ @Environment(\.dismiss) private var dismiss
+ @State private var bankName: String = ""
+ @Binding var textFieldWidth: CGFloat
+ var onSave: (Bank) -> Void
+ 
+ var body: some View {
+ Form {
+ RequiredTextField(title: "Bank Name", text: $bankName, width: .infinity, prompt: "Charles Schwab", borderColor: .accent)
+ }
+ .toolbar {
+ ToolbarItem(placement: .confirmationAction) {
+ Button("Add Bank") {
+ let newBank = Bank(name: bankName)
+ 
+ onSave(newBank)
+ bankName = ""
+ dismiss()
+ }
+ .disabled(bankName.isEmpty)
+ }
+ ToolbarItem(placement: .cancellationAction) {
+ Button("Cancel") {
+ dismiss()
+ }
+ }
+ }
+ .formStyle(.grouped)
+ .padding()
+ .frame(width: 500)
+ }
+}
+#Preview {
+ AddBankView(textFieldWidth: .constant(236), onSave: { bank in print(bank.name)})
  .modelContainer(PreviewData.shared.modelContainer)
 }
 
 
 
-/** File: /CreditCardLibrary/CreditCardLibrary/Views/EditCreditCardView.swift ***************************************/
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/Form/AddBonusView.swift ***************************************/
+
+import SwiftUI
+struct AddBonusView: View {
+ @Environment(\.dismiss) private var dismiss
+ @Binding var textFieldWidth: CGFloat
+ @State private var bonusName: String = ""
+ @State private var startDate: Date = .now
+ @State private var endDate: Date = Date.now.addingTimeInterval(60*60*24*30*3)
+ 
+ var onSave: (Bonus) -> Void
+ 
+ var body: some View {
+ 
+ Form {
+ RequiredTextField(title: "Bonus Details", text: $bonusName, width: .infinity, prompt: "$200 cash back after spending $1,000 in the first 3 months")
+ 
+ DatePicker("Start Date", selection: $startDate, displayedComponents: .date)
+ .datePickerStyle(.compact)
+ 
+ DatePicker("End Date", selection: $endDate, displayedComponents: .date)
+ .datePickerStyle(.compact)
+ }
+ .padding()
+ .formStyle(.grouped)
+ 
+ .toolbar {
+ ToolbarItem(placement: .confirmationAction) {
+ Button("Add Bonus") {
+ let newBonus = Bonus(details: bonusName)
+ 
+ onSave(newBonus)
+ bonusName = ""
+ dismiss()
+ }
+ .disabled(bonusName.isEmpty)
+ }
+ ToolbarItem(placement: .cancellationAction) {
+ Button("Cancel") {
+ dismiss()
+ }
+ 
+ }
+ }
+ .frame(width: 500)
+ }
+ 
+}
+#Preview {
+ AddBonusView(textFieldWidth: .constant(236), onSave: { bonus in print(bonus.details)})
+ .modelContainer(PreviewData.shared.modelContainer)
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/Form/AddClosedView.swift ***************************************/
+import SwiftUI
+struct AddClosedView: View {
+ @Environment(\.dismiss) private var dismiss
+ @State private var closedReason: String = ""
+ @Binding var textFieldWidth: CGFloat
+ var onSave: (Closed) -> Void
+ 
+ var body: some View {
+ Form {
+ RequiredTextField(title: "Closed Reason", text: $closedReason, width: .infinity, prompt: "Did not want to pay the annual fee")
+ }
+ .toolbar {
+ ToolbarItem(placement: .confirmationAction) {
+ Button("Close Card") {
+ let newReason = Closed(reason: closedReason)
+ 
+ onSave(newReason)
+ closedReason = ""
+ dismiss()
+ }
+ .disabled(closedReason.isEmpty)
+ }
+ ToolbarItem(placement: .cancellationAction){
+ Button("Cancel") {
+ dismiss()
+ }
+ }
+ }
+ .formStyle(.grouped)
+ 
+ .frame(width: 500)
+ }
+}
+#Preview {
+ AddBankView(textFieldWidth: .constant(236), onSave: { bank in print(bank.name)})
+ .modelContainer(PreviewData.shared.modelContainer)
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/Form/AddCreditCardView.swift ***************************************/
+import SwiftUI
+import SwiftData
+struct AddCreditCardView: View {
+ @Environment(\.dismiss) private var dismiss
+ @Environment(\.modelContext) private var modelContext
+ 
+ @State var creditCard: CreditCard
+ @State var bank: Bank? = nil
+ @State var promotions: [Promotion] = []
+ @State var bonuses: [Bonus] = []
+ @State var closed: Closed? = nil
+ @State var cardArt: CardArt? = nil
+ @State var paymentProcessor: PaymentProcessor? = PaymentProcessor.returnNewPaymentProcessor()
+ 
+ var existingBanks: [Bank]
+ var paymentProcessors: [PaymentProcessor]
+ 
+ 
+ var body: some View {
+ VStack {
+ FormView(creditCard: $creditCard,
+ bank: $bank,
+ promotions: $promotions,
+ bonuses: $bonuses,
+ closed: $closed,
+ cardArt: $cardArt,
+ paymentProcessor: $paymentProcessor,
+ existingBanks: existingBanks,
+ paymentProcessors: paymentProcessors)
+ .toolbar {
+ ToolbarItem(placement: .confirmationAction) {
+ Button("Add Card") {
+ creditCard.bank = bank
+ creditCard.promotions = promotions
+ creditCard.bonuses = bonuses
+ creditCard.closed = closed
+ creditCard.cardArt = cardArt
+ creditCard.paymentProcessor = paymentProcessor
+ 
+ modelContext.insert(creditCard)
+ 
+ try? modelContext.save()
+ dismiss()
+ }
+ .disabled(creditCard.name.isEmpty || bank == nil)
+ }
+ ToolbarItem(placement: .cancellationAction) {
+ Button("Discard") {
+ modelContext.delete(creditCard)
+ dismiss()
+ }
+ }
+ }
+ }
+ }
+}
+#Preview {
+ AddCreditCardView(creditCard: CreditCard(name: "", creditLimit: "", openDate: .now, isBusiness: false, isChargeCard: false, lastDigits: ""), existingBanks: Bank.sampleData, paymentProcessors: PaymentProcessor.sampleData)
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/Form/AddPromotionView.swift ***************************************/
+import SwiftUI
+struct AddPromotionView: View {
+ @Environment(\.dismiss) private var dismiss
+ @Binding var textFieldWidth: CGFloat
+ @State private var promoName: String = ""
+ @State private var startDate: Date = .now
+ @State private var endDate: Date = Date.now.addingTimeInterval(60*60*24*30*12)
+ 
+ var onSave: (Promotion) -> Void
+ 
+ var body: some View {
+ Form {
+ RequiredTextField(title: "Promotion Details", text: $promoName, width: .infinity, prompt: "0% APR for 12 months on purchases and balance transfers", borderColor: .accent)
+ 
+ DatePicker("Start Date", selection: $startDate, displayedComponents: .date)
+ .datePickerStyle(.compact)
+ DatePicker("End Date", selection: $endDate, displayedComponents: .date)
+ .datePickerStyle(.compact)
+ 
+ }
+ .formStyle(.grouped)
+ .toolbar {
+ ToolbarItem(placement: .confirmationAction) {
+ Button("Add Promotion") {
+ let newPromo = Promotion(details: promoName)
+ 
+ onSave(newPromo)
+ promoName = ""
+ dismiss()
+ }
+ .disabled(promoName.isEmpty)
+ }
+ ToolbarItem(placement: .cancellationAction) {
+ Button("Cancel") {
+ dismiss()
+ }
+ }
+ }
+ .frame(width: 500)
+ 
+ }
+}
+#Preview {
+ AddPromotionView(textFieldWidth: .constant(236), onSave: { promo in print(promo.details)})
+ .modelContainer(PreviewData.shared.modelContainer)
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/Form/CardImagePickerSectionHeaderView.swift ***************************************/
+
+import SwiftUI
+struct CardImagePickerSectionHeaderView: View {
+ 
+ @State var bankName: Dictionary<String, [CardArt]>.Keys.Element
+ 
+ var body: some View {
+ Text(bankName)
+ .frame(maxWidth: .infinity)
+ .frame(height: 50)
+ .font(.title)
+ 
+ 
+ }
+}
+#Preview {
+ CardImagePickerSectionHeaderView(bankName: "American Express")
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/Form/CardImagePickerView.swift ***************************************/
+import SwiftUI
+import SwiftData
+struct CardImagePickerView: View {
+ @Binding var selectedCardArt: CardArt?
+ 
+ @Environment(\.dismiss) var dismiss
+ 
+ @Query var cardArts: [CardArt]
+ var groupedCardArts: [String: [CardArt]] {
+ let sortedCardArts = cardArts.sorted { $0.bankName < $1.bankName }
+ return Dictionary(grouping: sortedCardArts, by: { $0.bankName })
+ }
+ 
+ let columns: [GridItem] = [
+ GridItem(.flexible(), spacing: 5),
+ GridItem(.flexible(), spacing: 5),
+ GridItem(.flexible(), spacing: 5),
+ GridItem(.flexible(), spacing: 5)
+ ]
+ 
+ var body: some View {
+ NavigationStack {
+ List {
+ ForEach(groupedCardArts.keys.sorted(), id: \.self) { bankName in
+ Section {
+ LazyVGrid(columns: columns) {
+ ForEach(groupedCardArts[bankName] ?? [], id: \.assetID) { cardArt in
+ Image(cardArt.assetID)
+ .resizable()
+ .aspectRatio(contentMode: .fit)
+ .frame(width: 150)
+ .padding(.vertical, 5)
+ .clipShape(.rect(cornerRadius: 12))
+ .onTapGesture {
+ selectedCardArt = cardArt
+ dismiss()
+ }
+ }
+ }
+ } header: {
+ CardImagePickerSectionHeaderView(bankName: bankName)
+ }
+ }
+ }
+ .navigationTitle("Select Card Art")
+ }
+ .toolbar {
+ ToolbarItem(placement: .cancellationAction){
+ Button("Cancel"){
+ dismiss()
+ }
+ }
+ 
+ }
+ }
+}
+#Preview {
+ CardImagePickerView(selectedCardArt: .constant(nil))
+ .modelContainer(PreviewData.shared.modelContainer)
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/Form/CustomPickerView.swift ***************************************/
+import SwiftUI
+struct CustomPickerView: View {
+ var title: String
+ var options: [Bank]
+ @Binding var selection: Bank?
+ @Binding var isNewBank: Bool
+ var width: CGFloat
+ var textColor: Color = .primary
+ var borderColor: Color = .gray
+ 
+ var body: some View {
+ VStack(alignment: .leading, spacing: 4) {
+ 
+ CustomTextView(text: "Bank")
+ 
+ HStack {
+ Spacer()
+ Picker(title, selection: $selection) {
+ Text(title)
+ .tag(Optional<Bank>(nil))
+ ForEach(options) { bank in
+ Text(bank.name).tag(Optional(bank))
+ }
+ }
+ .frame(height: 35)
+ 
+ 
+ 
+ 
+ 
+ 
+ .frame(width: .infinity)
+ .labelsHidden()
+ .pickerStyle(.menu)
+ Button {
+ isNewBank.toggle()
+ }label: {
+ Image(systemName: "plus")
+ }
+ .buttonStyle(.plain)
+ .padding(.trailing, 10)
+ }
+ .background(
+ RoundedRectangle(cornerRadius: 8)
+ .stroke(selection != nil ? Color.white : borderColor, lineWidth: 0.5) .disableAutocorrection(true)
+ )
+ .frame(width: width)
+ }
+ }
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/Form/CustomTextView.swift ***************************************/
+
+import SwiftUI
+struct CustomTextView: View {
+ 
+ var text: String
+ var color: Color = .white
+ 
+ var body: some View {
+ Text(text)
+ .font(.callout)
+ .foregroundColor(color)
+ 
+ }
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/Form/DatePickerModifierView.swift ***************************************/
+import SwiftUI
+struct DatePickerModifierView: View {
+ 
+ var title: String
+ @Binding var selection: Date
+ var width : CGFloat
+ var color : Color = .white
+ var startDate: Date = .distantPast
+ var endDate: Date = .now
+ var borderColor : Color = .gray
+ 
+ var body: some View {
+ HStack(alignment: .center, spacing: 4) {
+ CustomTextView(text: title)
+ DatePicker(title, selection: $selection, 
+ in: startDate...endDate, 
+ displayedComponents: .date
+ )
+ .labelsHidden()
+ .datePickerStyle(.stepperField)
+ .focusable(false)
+ .focusEffectDisabled(true)
+ .padding(.vertical, 5)
+ }
+ .padding(.trailing, 10)
+ }
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/Form/EditCreditCardView.swift ***************************************/
 import SwiftUI
 import SwiftData
 struct EditCreditCardView: View {
@@ -851,13 +2325,27 @@ struct EditCreditCardView: View {
  var existingBanks: [Bank]
  var paymentProcessors: [PaymentProcessor]
  
+ 
  var body: some View {
+ VStack {
  FormView(creditCard: $creditCard,
- isNewBank: false,
+ bank: $creditCard.bank,
+ promotions: $creditCard.promotions,
+ bonuses: $creditCard.bonuses,
+ closed: $creditCard.closed,
+ cardArt: $creditCard.cardArt,
+ paymentProcessor: $creditCard.paymentProcessor,
  existingBanks: existingBanks,
- paymentProcessors: paymentProcessors) {
+ paymentProcessors: paymentProcessors)
+ .toolbar {
+ ToolbarItem(placement: .confirmationAction) {
+ Button("Save") {
  try? modelContext.save()
  dismiss()
+ }
+ .disabled(creditCard.name.isEmpty || creditCard.bank == nil)
+ }
+ }
  }
  }
 }
@@ -867,7 +2355,96 @@ struct EditCreditCardView: View {
 
 
 
-/** File: /CreditCardLibrary/CreditCardLibrary/Views/FormView.swift ***************************************/
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/Form/FormCardImageView.swift ***************************************/
+import SwiftUI
+struct FormCardImageView: View {
+ @Binding var cardArt: CardArt?
+ @Binding var isShowingImagePicker: Bool
+ 
+ var body: some View {
+ let h = 175.0
+ let w = h * (8.56 / 5.389)
+ 
+ 
+ HStack {
+ Spacer()
+ Button(action: {
+ isShowingImagePicker.toggle()
+ }) {
+ Group {
+ if let cardArt = cardArt {
+ Image(cardArt.assetID)
+ .resizable()
+ .scaledToFit()
+ .clipShape(RoundedRectangle(cornerRadius: 8))
+ .frame(height: h)
+ } else {
+ 
+ Color.black.opacity(0.02)
+ .frame(width: w, height: h)
+ .clipShape(RoundedRectangle(cornerRadius: 8))
+ .foregroundColor(.gray)
+ 
+ .overlay(alignment: .center, content: {
+ Text("Select Card Image")
+ .font(.headline)
+ .foregroundColor(.secondary)
+ .frame(width: w, height: h)
+ .frame(maxWidth: .infinity)
+ .background(Color.black.opacity(0.3))
+ .clipShape(RoundedRectangle(cornerRadius: 8))
+ })
+ }
+ }
+ }
+ .shadow(color: .black.opacity(0.1), radius: 5)
+ .buttonStyle(BouncyDarkenButtonStyle())
+ Spacer()
+ }
+ 
+ 
+ 
+ .frame(width: w, height:200)
+ 
+ }
+}
+struct BouncyDarkenButtonStyle: ButtonStyle {
+ func makeBody(configuration: Configuration) -> some View {
+ configuration.label
+ .overlay(
+ Color.black
+ .opacity(configuration.isPressed ? 0.3 : 0)
+ .clipShape(RoundedRectangle(cornerRadius: 8))
+ )
+ }
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/Form/FormToggleModifierView.swift ***************************************/
+import SwiftUI
+struct FormToggleModifierView: View {
+ var title: String
+ @Binding var isOn: Bool
+ var width: CGFloat
+ var textColor: Color = .white
+ var borderColor: Color = .gray
+ 
+ var body: some View {
+ HStack {
+ Toggle("", isOn: $isOn)
+ .labelsHidden()
+ .toggleStyle(.checkbox)
+ CustomTextView(text: title)
+ .frame(alignment: .leading)
+ }
+ .frame(width: width, height: 55, alignment: .leading)
+ }
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/Form/FormView.swift ***************************************/
 import SwiftUI
 import SwiftData
 struct FormView: View {
@@ -875,150 +2452,282 @@ struct FormView: View {
  @Environment(\.modelContext) var modelContext
  
  @Binding var creditCard: CreditCard
+ @Binding var bank: Bank?
+ @Binding var promotions: [Promotion]
+ @Binding var bonuses: [Bonus]
+ @Binding var closed: Closed?
+ @Binding var cardArt: CardArt?
+ @Binding var paymentProcessor: PaymentProcessor?
+ 
+ 
  @State var isNewBank: Bool = false
  @State var isNewPromo: Bool = false
  @State var isNewBonus: Bool = false
+ @State var isClosed: Bool = false
  @State var textFieldWidth: CGFloat = 236
  
  var existingBanks: [Bank]
  var paymentProcessors: [PaymentProcessor]
  
- var onSave: () -> Void
+ @State private var showCardArtPicker: Bool = false
  
  var body: some View {
  ScrollView {
  Form {
+ Section("Card Details") {
+ 
+ HStack {
+ VStack {
  HStack {
  Spacer()
- CardView(creditCard: creditCard)
- .scaleEffect(0.45)
- .frame(width: CreditCard.cardWidth/4, height: CreditCard.cardHeight/4)
- .padding(50)
+ FormCardImageView(cardArt: $cardArt, isShowingImagePicker: $showCardArtPicker)
  Spacer()
  }
- ColorPicker("Card Color", selection: Binding(
- get: { creditCard.color ?? .gray },
- set: { newColor in
- creditCard.color = newColor
- }))
- .pickerStyle(.inline)
+ HStack {
+ RequiredTextField(title: "Card Name", text: $creditCard.name, width: .infinity, prompt: "Sapphire Reserve", borderColor: .accent)
  
- DatePicker("Open Date", selection: $creditCard.openDate, displayedComponents: .date)
- .datePickerStyle(.compact)
  
- TextField("Card Name", text: $creditCard.name)
- .textContentType(.creditCardName)
- .textFieldStyle(.roundedBorder)
- 
- TextField("Last Digits", text: $creditCard.lastDigits)
- .textContentType(.creditCardNumber)
- .textFieldStyle(.roundedBorder)
- 
- Toggle("Charge Card", isOn: $creditCard.isChargeCard)
- .onChange(of: creditCard.isChargeCard) {
- if creditCard.isChargeCard {
- creditCard.creditLimit = "0"
- }
  }
  
- TextField("Credit Limit", text: $creditCard.creditLimit)
+ 
+ HStack {
+ RequiredTextField(title: "Credit Limit",
+ text: $creditCard.creditLimit,
+ width: 225,
+ prompt: creditCard.isChargeCard ? "Not Applicable to Charge Cards" : "$24,000",
+ borderColor: .accent,
+ variable: !creditCard.isChargeCard
+ 
+ )
  .disabled(creditCard.isChargeCard)
- .opacity(creditCard.isChargeCard ? 0.5 : 1.0)
+ RequiredTextField(title: "Last 4-5 Digits", text: $creditCard.lastDigits, width: .infinity, prompt: "**** **** **** 5032", borderColor: .accent)
  
- Toggle("Business", isOn: $creditCard.isBusiness)
+ HStack {
+ CustomPickerView(title: "Select Bank", options: existingBanks, selection: $bank, isNewBank: $isNewBank, width: 175, borderColor: .accent)
+ }
  
- Picker("Payment Processor", selection: $creditCard.paymentProcessor) {
- ForEach(paymentProcessors) { pp in
- Text(pp.name).tag(Optional(pp))
+ }
+ HStack {
+ DatePickerModifierView(title: "Open Date", selection: $creditCard.openDate, width: 0)
+ FormToggleModifierView(title: "Charge Card", isOn: $creditCard.isChargeCard, width: 100)
+ FormToggleModifierView(title: "Business", isOn: $creditCard.isBusiness, width: 100)
+ 
+ Spacer()
+ 
+ 
+ }
+ .padding(.top, 10)
+ 
+ 
+ 
+ 
+ }
+ 
+ }
+ .padding(.vertical, 10)
+ .padding(.horizontal, 10)
+ 
+ }
+ 
+ Section("Promotions") {
+ ForEach(promotions){promo in
+ HStack {
+ Text(promo.details)
  }
  }
- .pickerStyle(.menu)
+ HStack {
+ Spacer()
+ Button {
+ isNewPromo.toggle()
+ } label: {
+ Image(systemName: "plus")
+ }
+ .buttonStyle(.plain)
+ }
  
+ }
  
- Picker("Bank", selection: $creditCard.bank) {
- ForEach(existingBanks) { bank in
- Text(bank.name).tag(Optional(bank))
+ Section("Bonuses") {
+ ForEach(bonuses){bonus in
+ HStack {
+ Text(bonus.details)
  }
  }
- .pickerStyle(.menu)
+ HStack {
+ Spacer()
+ Button {
+ isNewBonus.toggle()
+ } label: {
+ Image(systemName: "plus")
+ }
+ .buttonStyle(.plain)
+ }
+ 
+ }
+ 
+ Section("Card Status") {
  
  
- Toggle("New Bank", isOn: $isNewBank)
+ if let close = closed?.reason {
+ HStack {
+ Text("Closed: \(close)")
+ Spacer()
+ Button {
+ closed = nil
+ } label: {
+ Label("Open Card", systemImage: "archivebox.fill")
+ .labelStyle(.titleOnly)
  
- if isNewBank {
- AddBankView(textFieldWidth: $textFieldWidth) { newBank in
- modelContext.insert(newBank)
- creditCard.bank = newBank
+ }
+ .buttonStyle(.plain)
+ }
+ } else {
+ HStack {
+ Text("Active")
+ Spacer()
+ Button {
+ isClosed.toggle()
+ } label: {
+ Label("Close Card", systemImage: "archivebox.fill")
+ .labelStyle(.titleOnly)
+ 
+ }
+ .buttonBorderShape(.roundedRectangle)
  }
  }
- Text(creditCard.promotion?.name ?? "No Promotions")
  
- Toggle("New Promo", isOn: $isNewPromo)
  
- if isNewPromo {
- AddPromotionView(textFieldWidth: $textFieldWidth) { newPromo in
- modelContext.insert(newPromo)
- creditCard.promotion = newPromo
  }
- }
- Text(creditCard.bonus?.name ?? "No Bonuses")
  
- Toggle("New Bonus", isOn: $isNewBonus)
  
- if isNewBonus {
- AddBonusView(textFieldWidth: $textFieldWidth) { newBonus in
- modelContext.insert(newBonus)
- creditCard.bonus = newBonus
- }
- }
  }
  .formStyle(.grouped)
  }
+ .sheet(isPresented: $showCardArtPicker) {
+ CardImagePickerView(selectedCardArt: $cardArt)
+ .frame(width: 700, height: 650)
+ }
+ .sheet(isPresented: $isNewBank) {
+ AddBankView(textFieldWidth: $textFieldWidth) { newBank in
+ modelContext.insert(newBank)
+ bank = newBank
+ }
+ }
+ .sheet(isPresented: $isNewPromo) {
+ AddPromotionView(textFieldWidth: $textFieldWidth) { newPromo in
+ promotions.append(newPromo)
+ }
+ }
+ .sheet(isPresented : $isNewBonus) {
+ AddBonusView(textFieldWidth: $textFieldWidth) { newBonus in
+ bonuses.append(newBonus)
+ }
+ }
+ .sheet(isPresented : $isClosed) {
+ AddClosedView(textFieldWidth: $textFieldWidth) { newClosed in
+ closed = newClosed
+ }
+ }
+ }
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/Form/RequiredTextField.swift ***************************************/
+import SwiftUI
+struct RequiredTextField: View {
+ var title: String
+ @Binding var text: String
+ var width : CGFloat
+ var color : Color = .white
+ var prompt : String = "Optional"
+ var borderColor : Color = .white
+ var variable : Bool = true
+ var body: some View {
+ VStack(alignment: .leading, spacing: 4) {
+ CustomTextView(text: title, color: color)
+ TextField("", text: $text, prompt: Text(prompt))
+ .background(
+ RoundedRectangle(cornerRadius: 8)
+ .stroke(text.isEmpty && variable ? borderColor : Color.white, lineWidth: 0.5)
+ .disableAutocorrection(true)
+ )
+ }
+ .frame(width: width, height: 55)
+ }
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/NaviationViews/ContentView.swift ***************************************/
+import SwiftUI
+import SwiftData
+struct ContentView: View {
+ 
+ @Binding var selectedCategory: SideBarCategories
+ 
+ @State private var selectedCard: CreditCard?
+ @State private var newCard: CreditCard?
+ 
+ @Query(sort:[SortDescriptor(\Bank.name, order: .forward)]) var existingBanks: [Bank]
+ 
+ 
+ @Environment(\.modelContext) private var modelContext
+ @Environment(\.dismiss) private var dismiss
+ 
+ 
+ var body: some View {
+ NavigationSplitView{
+ SidebarView(selectedCategory: $selectedCategory)
+ }detail: {
+ NavigationStack{
+ Text("")
+ }
+ }
  .toolbar {
- ToolbarItem(placement: .confirmationAction) {
- Button("Save") {
- onSave()
- }
- .disabled(creditCard.name.isEmpty || creditCard.bank == nil || creditCard.paymentProcessor == nil || creditCard.lastDigits.isEmpty)
- }
- ToolbarItem(placement: .cancellationAction) {
- Button("Cancel") {
- modelContext.delete(creditCard)
- dismiss()
+ ToolbarItem{
+ Button(action: addCard) {
+ Label("Add Card", systemImage: "plus")
+ .imageScale(.large)
+ 
  }
  }
  }
- .onAppear {
- if existingBanks.isEmpty {
- isNewBank = true
  }
+ 
+ private func addCard() {
+ withAnimation {
+ let newItem = CreditCard.createNewCard()
+ modelContext.insert(newItem)
+ newCard = newItem
  }
  }
 }
 #Preview {
- FormView(creditCard: .constant(PreviewData.shared.creditCard), existingBanks: Bank.sampleData, paymentProcessors: PaymentProcessor.sampleData, onSave: {print("")})
- .frame(height: 1000)
+ ContentView(selectedCategory: .constant(.all))
 }
 
 
 
-/** File: /CreditCardLibrary/CreditCardLibrary/Views/SidebarView.swift ***************************************/
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/NaviationViews/SidebarView.swift ***************************************/
 import SwiftUI
 struct SidebarView: View {
  @Binding var selectedCategory: SideBarCategories
- @State private var isOpenExpanded: Bool = true
+ @AppStorage("isExpanded") private var isExpanded: Bool = false
+ 
  private func sortedCategories() -> [SideBarCategories] {
  let categories: [SideBarCategories] = [
  .business,
  .personal,
- .open
+ .all,
+ .closed
  ]
- return categories.sorted { $0.displayName < $1.displayName }
+ return categories.sorted { $0.order < $1.order }
  }
  
  var body: some View {
  List(selection: $selectedCategory) {
- Section("Open") {
+ Section("Card Categories") {
  ForEach(sortedCategories(), id: \.self) { category in
  NavigationLink(value: category) {
  Label(category.displayName, systemImage: category.displayImageName)
@@ -1026,11 +2735,9 @@ struct SidebarView: View {
  }
  }
  
- Section("Other") {
- ForEach([SideBarCategories.closed], id: \.self) { category in
- NavigationLink(value: category) {
- Label(category.displayName, systemImage: category.displayImageName)
- }
+ Section("Dashboard") {
+ NavigationLink(value: SideBarCategories.charts) {
+ Label(SideBarCategories.charts.displayName, systemImage: SideBarCategories.charts.displayImageName)
  }
  }
  }
@@ -1042,11 +2749,10 @@ struct SidebarView: View {
 
 
 
-/** File: /CreditCardLibrary/CreditCardLibrary/Views/WalletContentView.swift ***************************************/
+/** File: /CreditCardLibrary/CreditCardLibrary/Views/NaviationViews/WalletContentView.swift ***************************************/
 import SwiftUI
 import SwiftData
 struct WalletContentView: View {
- 
  @Binding var selectedCategory: SideBarCategories
  @Binding var columnVisibility: NavigationSplitViewVisibility
  
@@ -1055,8 +2761,12 @@ struct WalletContentView: View {
  @State private var selectedCard: CreditCard?
  @State private var newCard: CreditCard?
  @State private var isEditing: Bool = false
- @Query(sort:[SortDescriptor(\Bank.name, order: .forward)]) var existingBanks: [Bank]
- @Query(sort:[SortDescriptor(\PaymentProcessor.name, order: .forward)]) var paymentProcessors: [PaymentProcessor]
+ @State private var toggleHelper = true
+ @State private var navigationPath = NavigationPath()
+ @State private var cardToDelete: CreditCard?
+ 
+ @Query(sort: [SortDescriptor(\Bank.name, order: .forward)]) var existingBanks: [Bank]
+ @Query(sort: [SortDescriptor(\PaymentProcessor.name, order: .forward)]) var paymentProcessors: [PaymentProcessor]
  
  @Environment(\.modelContext) private var modelContext
  @Environment(\.dismiss) private var dismiss
@@ -1064,88 +2774,146 @@ struct WalletContentView: View {
  var body: some View {
  NavigationSplitView(columnVisibility: $columnVisibility) {
  SidebarView(selectedCategory: $selectedCategory)
- .navigationSplitViewColumnWidth(min: 150, ideal: 200, max: 400)
- } content: {
- CardListView(searchString: searchText, sortOrder: sortOrder, selectedCard: $selectedCard, selectedCategory: $selectedCategory)
- .navigationSplitViewColumnWidth(min: 200, ideal: 220, max: 400)
- .searchable(text: $searchText)
- } detail: {
- if let selectedCard = selectedCard {
- DetailView(creditCard: selectedCard)
- } else {
- Text("Select a credit card")
- .foregroundStyle(.secondary)
+ .toolbar(removing: .sidebarToggle)
+ .toolbar {
+ ToolbarItem(placement: .primaryAction) {
+ Button(action: {
+ toggleSidebar()
+ }) {
+ Label("Toggle Sidebar", systemImage: "sidebar.leading")
+ .imageScale(.large)
  }
+ }
+ }
+ .navigationSplitViewColumnWidth(min: 150, ideal: 150, max: 250)
+ } detail: {
+ NavigationStack(path: $navigationPath) {
+ Group {
+ if selectedCategory == SideBarCategories.charts {
+ ChartsView()
+ } else {
+ CardGridView(searchString: searchText,
+ sortOrder: sortOrder,
+ selectedCard: $selectedCard,
+ selectedCategory: $selectedCategory,
+ onDoubleTap: { card in
+ withAnimation(.spring()) {
+ navigationPath.append(card)
+ }
+ })
+ }
+ }
+ .searchable(text: $searchText, placement: .toolbar, prompt: "search")
+ .navigationDestination(for: CreditCard.self) { card in
+ ZStack {
+ Color(NSColor.windowBackgroundColor)
+ DetailPanelView(creditCard: card)
+ .background(Color(.background))
+ .navigationBarBackButtonHidden(true)
+ .toolbar {
+ ToolbarItem(placement: .navigation) {
+ Button {
+ withAnimation(.spring()) {
+ navigationPath.removeLast()
+ }
+ } label: {
+ Label("Back", systemImage: "chevron.left")
+ .imageScale(.large)
+ }
+ }
+ }
+ }
+ }
+ }
+ .background(Color(.background))
+ .navigationSplitViewColumnWidth(min: 350, ideal: 400)
  }
  .toolbar {
- ToolbarItem(placement: .secondaryAction) {
+ ToolbarItemGroup(placement: .automatic) {
  Menu("Sort", systemImage: "arrow.up.arrow.down") {
- Picker("Name", selection: $sortOrder) {
- Text("A-Z")
- .tag([SortDescriptor(\CreditCard.name)])
- 
- Text("Z-A")
- .tag([SortDescriptor(\CreditCard.name, order: .reverse)])
- }
  Picker("Open Date", selection: $sortOrder) {
- Text("Newest")
- .tag([SortDescriptor(\CreditCard.openDate, order: .reverse)])
- Text("Oldest")
- .tag([SortDescriptor(\CreditCard.openDate)])
- 
+ Text("Newest").tag([SortDescriptor(\CreditCard.openDate, order: .reverse)])
+ Text("Oldest").tag([SortDescriptor(\CreditCard.openDate)])
  }
+ .imageScale(.large)
+ 
  Picker("Credit Limit", selection: $sortOrder) {
- Text("Highest")
- .tag([SortDescriptor(\CreditCard.creditLimit, order: .reverse)])
- Text("Lowest")
- .tag([SortDescriptor(\CreditCard.creditLimit)])
+ Text("Highest").tag([SortDescriptor(\CreditCard.creditLimit, order: .reverse)])
+ Text("Lowest").tag([SortDescriptor(\CreditCard.creditLimit)])
  }
- }
- }
+ .imageScale(.large)
  
- ToolbarItem(placement: .primaryAction) {
+ Picker("Name", selection: $sortOrder) {
+ Text("A-Z").tag([SortDescriptor(\CreditCard.name)])
+ Text("Z-A").tag([SortDescriptor(\CreditCard.name, order: .reverse)])
+ }
+ .imageScale(.large)
+ }
+ .disabled(!navigationPath.isEmpty)
+ 
  Button(action: addCard) {
  Label("Add Card", systemImage: "plus")
+ .imageScale(.large)
  }
- }
- ToolbarItem(placement: .secondaryAction) {
- if selectedCard != nil {
+ .disabled(!navigationPath.isEmpty)
+ 
  Button(action: toggleEditing) {
  Label("Edit", systemImage: "square.and.pencil")
+ .imageScale(.large)
  }
- }
- }
- ToolbarItem(placement: .destructiveAction) {
- if let selectedCard = selectedCard {
+ .disabled(selectedCard == nil)
+ 
  Button(action: {
- deleteCard(selectedCard) 
+ if let selected = selectedCard {
+ cardToDelete = selected
+ }
  }) {
  Label("Delete", systemImage: "trash")
+ .imageScale(.large)
+ }
+ .disabled(selectedCard == nil)
  }
  }
- }
+ .alert(item: $cardToDelete) { card in
+ Alert(
+ title: Text("Delete Card"),
+ message: Text("Are you sure you want to delete \(card.name)?"),
+ primaryButton: .destructive(Text("Delete")) {
+ deleteCard(card)
+ },
+ secondaryButton: .cancel()
+ )
  }
  .sheet(isPresented: $isEditing) {
  if let selectedCard = selectedCard {
- EditCreditCardView(creditCard: selectedCard, existingBanks: existingBanks, paymentProcessors: paymentProcessors)
- .frame(width: 600, height: 500, alignment: .center)
+ EditCreditCardView(
+ creditCard: selectedCard,
+ existingBanks: existingBanks,
+ paymentProcessors: paymentProcessors
+ )
+ .frame(width: 700, height: 500, alignment: .center)
  }
  }
- 
  .sheet(item: $newCard) { card in
  AddCreditCardView(
  creditCard: card,
  existingBanks: existingBanks,
  paymentProcessors: paymentProcessors
  )
- .frame(width: 600, height: 500, alignment: .center)
+ .frame(width: 700, height: 500, alignment: .center)
+ }
+ }
+ 
+ private func toggleSidebar() {
+ withAnimation {
+ toggleHelper.toggle()
+ columnVisibility = toggleHelper ? .all : .detailOnly
  }
  }
  
  private func addCard() {
  withAnimation {
- let newItem = CreditCard.createNewCard()
- modelContext.insert(newItem)
+ let newItem = CreditCard.returnNewCreditCard()
  newCard = newItem
  }
  }
@@ -1160,8 +2928,4 @@ struct WalletContentView: View {
  selectedCard = nil
  }
  }
-}
-#Preview {
- WalletContentView(selectedCategory: .constant(.open), columnVisibility: .constant(.all))
- .modelContainer(PreviewData.shared.modelContainer)
 }

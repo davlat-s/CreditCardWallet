@@ -28,8 +28,8 @@ struct CardGridCellView: View {
         .shadow(color: Color.black.opacity(0.1), radius: 2, x: 0, y: 2)
     }
 }
-#Preview {
-    CardGridCellView(creditCard: CreditCard(name: "test", creditLimit: "2000", openDate: Date.now, isBusiness: false, isChargeCard: false, lastDigits: "3523", history: [""], paymentProcessor: PaymentProcessor.amex, cardArt: CardArt(assetID: "American_Express-Business-Plum")))
-        .modelContainer(PreviewData.shared.modelContainer)
-
-}
+//#Preview {
+//    CardGridCellView(creditCard: CreditCard(name: "test", creditLimit: "2000", openDate: Date.now, isBusiness: false, isChargeCard: false, lastDigits: "3523", history: [""], paymentProcessor: PaymentProcessor.amex, cardArt: CardArt(assetID: "American_Express-Business-Plum")))
+//        .modelContainer(PreviewData.shared.modelContainer)
+//
+//}
