@@ -18,7 +18,6 @@ struct FormView: View {
     @State var isNewPromo: Bool = false
     @State var isNewBonus: Bool = false
     @State var isClosed: Bool = false
-    @State var textFieldWidth: CGFloat = 236
     
     var existingBanks: [Bank]
     var paymentProcessors: [PaymentProcessor]
@@ -44,15 +43,17 @@ struct FormView: View {
                                 Spacer()
                             }
                             HStack {
-                                RequiredTextField(title: "Card Name", text: $creditCard.name, width: .infinity, prompt: "Sapphire Reserve", borderColor: .accent)
+                                StringCustomTextField(title: "Card Name", text: $creditCard.name, width: .infinity, prompt: "Sapphire Reserve", borderColor: .accent)
+                                NumberCustomTextField(title: "Annual Fee", number: $creditCard.annualFee, width: 200, prompt: "$495", borderColor: .accent)
                                 
                                 
                             }
                             
                             
+                            
                             HStack {
-                                RequiredTextField(title: "Credit Limit",
-                                                  text: $creditCard.creditLimit,
+                                NumberCustomTextField(title: "Credit Limit",
+                                                  number: $creditCard.creditLimit,
                                                   width: 225,
                                                   prompt: creditCard.isChargeCard ? "Not Applicable to Charge Cards" : "$24,000",
                                                   borderColor: .accent,
@@ -60,7 +61,7 @@ struct FormView: View {
                                         
                                 )
                                 .disabled(creditCard.isChargeCard)
-                                RequiredTextField(title: "Last 4-5 Digits", text: $creditCard.lastDigits, width: .infinity, prompt: "**** **** **** 5032", borderColor: .accent)
+                                StringCustomTextField(title: "Last 4-5 Digits", text: $creditCard.lastDigits, width: .infinity, prompt: "**** **** **** 5032", borderColor: .accent)
                                 
                                 HStack {
                                     CustomPickerView(title: "Select Bank", options: existingBanks, selection: $bank, isNewBank: $isNewBank, width: 175, borderColor: .accent)
@@ -169,23 +170,23 @@ struct FormView: View {
                 .frame(width: 700, height: 650)
         }
         .sheet(isPresented: $isNewBank) {
-            AddBankView(textFieldWidth: $textFieldWidth) { newBank in
+            AddBankView() { newBank in
                 modelContext.insert(newBank)
                 bank = newBank
             }
         }
         .sheet(isPresented: $isNewPromo) {
-            AddPromotionView(textFieldWidth: $textFieldWidth) { newPromo in
+            AddPromotionView() { newPromo in
                 promotions.append(newPromo)
             }
         }
         .sheet(isPresented : $isNewBonus) {
-            AddBonusView(textFieldWidth: $textFieldWidth) { newBonus in
+            AddBonusView() { newBonus in
                 bonuses.append(newBonus)
             }
         }
         .sheet(isPresented : $isClosed) {
-            AddClosedView(textFieldWidth: $textFieldWidth) { newClosed in
+            AddClosedView() { newClosed in
                 closed = newClosed
             }
         }

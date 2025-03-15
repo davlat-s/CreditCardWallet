@@ -3,13 +3,12 @@ import SwiftUI
 struct AddClosedView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var closedReason: String = ""
-    @Binding var textFieldWidth: CGFloat
 
     var onSave: (Closed) -> Void
     
     var body: some View {
         Form {
-            RequiredTextField(title: "Closed Reason", text: $closedReason, width: .infinity, prompt: "Did not want to pay the annual fee")
+            StringCustomTextField(title: "Closed Reason", text: $closedReason, width: .infinity, prompt: "Did not want to pay the annual fee")
         }
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
@@ -35,7 +34,4 @@ struct AddClosedView: View {
     }
 }
 
-#Preview {
-    AddBankView(textFieldWidth: .constant(236), onSave: { bank in print(bank.name)})
-        .modelContainer(PreviewData.shared.modelContainer)
-}
+

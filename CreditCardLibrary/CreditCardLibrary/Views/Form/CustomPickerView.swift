@@ -46,9 +46,13 @@ struct CustomPickerView: View {
             }
             .background(
                 RoundedRectangle(cornerRadius: 8)
-                    .stroke(selection != nil ? Color.white : borderColor, lineWidth: 0.5)                    .disableAutocorrection(true)
+                    .stroke(selection != nil ? Color.white : borderColor, lineWidth: 0.5)     
+                    .frame(height: .infinity)
+
+                    .disableAutocorrection(true)
             )
-            .frame(width: width)
         }
+        .frame(width: width, height: 55)
+
     }
 }

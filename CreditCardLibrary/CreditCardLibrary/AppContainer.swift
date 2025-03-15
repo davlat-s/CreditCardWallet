@@ -71,7 +71,7 @@ let appContainer: ModelContainer = {
             let newCards = [
                 CreditCard(
                     name: "Sapphire Reserve",
-                    creditLimit: "12000",
+                    creditLimit: 12000,
                     openDate: Calendar.current.date(byAdding: .year, value: -2, to: Date.now) ?? Date.now,
                     isBusiness: false,
                     isChargeCard: false,
@@ -86,7 +86,7 @@ let appContainer: ModelContainer = {
                 ),
                 CreditCard(
                     name: "Ink Unlimited",
-                    creditLimit: "24000",
+                    creditLimit: 24000,
                     openDate: Calendar.current.date(byAdding: .year, value: -1, to: Date.now) ?? Date.now,
                     isBusiness: true,
                     isChargeCard: false,
@@ -101,7 +101,7 @@ let appContainer: ModelContainer = {
                 ),
                 CreditCard(
                     name: "Freedom Flex",
-                    creditLimit: "6000",
+                    creditLimit: 6000,
                     openDate: Calendar.current.date(byAdding: .year, value: -4, to: Date.now) ?? Date.now,
                     isBusiness: false,
                     isChargeCard: false,
@@ -116,7 +116,7 @@ let appContainer: ModelContainer = {
                 ),
                 CreditCard(
                     name: "Freedom Unlimited",
-                    creditLimit: "2000",
+                    creditLimit: 2000,
                     openDate: Calendar.current.date(byAdding: .year, value: -6, to: Date.now) ?? Date.now,
                     isBusiness: false,
                     isChargeCard: false,
@@ -131,7 +131,7 @@ let appContainer: ModelContainer = {
                 ),
                 CreditCard(
                     name: "Ink Premier",
-                    creditLimit: "28000",
+                    creditLimit: 28000,
                     openDate: Calendar.current.date(byAdding: .year, value: -3, to: Date.now) ?? Date.now,
                     isBusiness: true,
                     isChargeCard: false,
@@ -153,7 +153,7 @@ let appContainer: ModelContainer = {
             let newCards = [
                 CreditCard(
                     name: "Centurion",
-                    creditLimit: "",
+                    creditLimit: nil,
                     openDate: Calendar.current.date(byAdding: .year, value: -1, to: Date.now) ?? Date.now,
                     isBusiness: false,
                     isChargeCard: true,
@@ -168,7 +168,7 @@ let appContainer: ModelContainer = {
                 ),
                 CreditCard(
                     name: "Platinum",
-                    creditLimit: "",
+                    creditLimit: nil,
                     openDate: Calendar.current.date(byAdding: .year, value: -3, to: Date.now) ?? Date.now,
                     isBusiness: true,
                     isChargeCard: true,
@@ -183,7 +183,7 @@ let appContainer: ModelContainer = {
                 ),
                 CreditCard(
                     name: "Gold",
-                    creditLimit: "",
+                    creditLimit: nil,
                     openDate: Calendar.current.date(byAdding: .year, value: -5, to: Date.now) ?? Date.now,
                     isBusiness: false,
                     isChargeCard: false,
@@ -198,7 +198,7 @@ let appContainer: ModelContainer = {
                 ),
                 CreditCard(
                     name: "Hilton Aspire",
-                    creditLimit: "4000",
+                    creditLimit: 4000,
                     openDate: Calendar.current.date(byAdding: .year, value: -3, to: Date.now) ?? Date.now,
                     isBusiness: false,
                     isChargeCard: false,
@@ -213,7 +213,7 @@ let appContainer: ModelContainer = {
                 ),
                 CreditCard(
                     name: "Every Day Preferred",
-                    creditLimit: "28000",
+                    creditLimit: 28000,
                     openDate: Calendar.current.date(byAdding: .year, value: -4, to: Date.now) ?? Date.now,
                     isBusiness: false,
                     isChargeCard: false,
@@ -235,7 +235,7 @@ let appContainer: ModelContainer = {
             let newCards = [
                 CreditCard(
                     name: "Rewards",
-                    creditLimit: "10000",
+                    creditLimit: 10000,
                     openDate: Calendar.current.date(byAdding: .year, value: -2, to: Date.now) ?? Date.now,
                     isBusiness: false,
                     isChargeCard: false,
@@ -250,7 +250,7 @@ let appContainer: ModelContainer = {
                 ),
                 CreditCard(
                     name: "Double Cash",
-                    creditLimit: "3000",
+                    creditLimit: 3000,
                     openDate: Calendar.current.date(byAdding: .year, value: -3, to: Date.now) ?? Date.now,
                     isBusiness: false,
                     isChargeCard: false,
@@ -272,7 +272,7 @@ let appContainer: ModelContainer = {
             let newCards = [
                 CreditCard(
                     name: "BILT",
-                    creditLimit: "16000",
+                    creditLimit: 16000,
                     openDate: Calendar.current.date(byAdding: .year, value: Int(-1.5), to: Date.now) ?? Date.now,
                     isBusiness: false,
                     isChargeCard: false,

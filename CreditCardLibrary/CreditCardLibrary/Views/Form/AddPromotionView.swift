@@ -2,7 +2,6 @@ import SwiftUI
 
 struct AddPromotionView: View {
     @Environment(\.dismiss) private var dismiss
-    @Binding var textFieldWidth: CGFloat
     @State private var promoName: String = ""
     @State private var startDate: Date = .now
     @State private var endDate: Date = Date.now.addingTimeInterval(60*60*24*30*12)
@@ -11,7 +10,7 @@ struct AddPromotionView: View {
     
     var body: some View {
         Form {
-            RequiredTextField(title: "Promotion Details", text: $promoName, width: .infinity, prompt: "0% APR for 12 months on purchases and balance transfers", borderColor: .accent)
+            StringCustomTextField(title: "Promotion Details", text: $promoName, width: .infinity, prompt: "0% APR for 12 months on purchases and balance transfers", borderColor: .accent)
         
             DatePicker("Start Date", selection: $startDate, displayedComponents: .date)
                 .datePickerStyle(.compact)
@@ -43,7 +42,4 @@ struct AddPromotionView: View {
     }
 }
 
-#Preview {
-    AddPromotionView(textFieldWidth: .constant(236), onSave: { promo in print(promo.details)})
-        .modelContainer(PreviewData.shared.modelContainer)
-}
+

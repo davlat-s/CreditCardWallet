@@ -37,14 +37,18 @@
 		3189C7042D74F3A200EDA7A4 /* CreditAgeChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C7032D74F3A200EDA7A4 /* CreditAgeChartView.swift */; };
 		3189C7082D76AFFC00EDA7A4 /* BankPieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C7072D76AFFC00EDA7A4 /* BankPieChartView.swift */; };
 		3189C70A2D76BBF800EDA7A4 /* StyledPieCharCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C7092D76BBF800EDA7A4 /* StyledPieCharCellView.swift */; };
-		3189C70C2D7A9CC800EDA7A4 /* RequiredTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C70B2D7A9CC800EDA7A4 /* RequiredTextField.swift */; };
+		3189C70C2D7A9CC800EDA7A4 /* StringCustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C70B2D7A9CC800EDA7A4 /* StringCustomTextField.swift */; };
 		3189C70E2D7BE01700EDA7A4 /* DatePickerModifierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C70D2D7BE01700EDA7A4 /* DatePickerModifierView.swift */; };
 		3189C7102D7BF30E00EDA7A4 /* FormCardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C70F2D7BF30E00EDA7A4 /* FormCardImageView.swift */; };
 		3189C7122D7D02FF00EDA7A4 /* FormToggleModifierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C7112D7D02FF00EDA7A4 /* FormToggleModifierView.swift */; };
 		3189C7142D7D29E500EDA7A4 /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C7132D7D29E500EDA7A4 /* CustomPickerView.swift */; };
 		3189C7172D7D346C00EDA7A4 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C7162D7D346C00EDA7A4 /* CustomTextView.swift */; };
 		3189C71D2D7FC6A000EDA7A4 /* HistoryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C71C2D7FC6A000EDA7A4 /* HistoryEntry.swift */; };
-		3189C71F2D7FD1B700EDA7A4 /* DoubleFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C71E2D7FD1B700EDA7A4 /* DoubleFieldView.swift */; };
+		3189C7212D81123600EDA7A4 /* NumberCustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C7202D81123600EDA7A4 /* NumberCustomTextField.swift */; };
+		3189C7242D853E8600EDA7A4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C7232D853E8600EDA7A4 /* SettingsView.swift */; };
+		3189C7262D853EA300EDA7A4 /* BankSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C7252D853EA300EDA7A4 /* BankSettingsView.swift */; };
+		3189C7282D853EB600EDA7A4 /* PromotionsSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C7272D853EB600EDA7A4 /* PromotionsSettingsView.swift */; };
+		3189C72A2D853EBD00EDA7A4 /* BonusSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C7292D853EBD00EDA7A4 /* BonusSettingsView.swift */; };
 		318A66302C7BD3EC0039487E /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318A662F2C7BD3EC0039487E /* PreviewData.swift */; };
 		318A66332C7BDF950039487E /* WalletContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318A66322C7BDF950039487E /* WalletContentView.swift */; };
 		318A66372C7C14300039487E /* SideBarCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318A66362C7C14300039487E /* SideBarCategories.swift */; };
@@ -54,7 +58,7 @@
 		318D83332D51BF5D00951AE6 /* DetailPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318D83322D51BF5D00951AE6 /* DetailPanelView.swift */; };
 		318D83352D51C50D00951AE6 /* CardHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318D83342D51C50D00951AE6 /* CardHistoryView.swift */; };
 		318D83372D53080200951AE6 /* SelectCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318D83362D53080200951AE6 /* SelectCardView.swift */; };
-		318D833B2D530B3E00951AE6 /* ShowHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318D833A2D530B3E00951AE6 /* ShowHistoryView.swift */; };
+		318D833B2D530B3E00951AE6 /* ToggleHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318D833A2D530B3E00951AE6 /* ToggleHistoryView.swift */; };
 		318D833D2D53270E00951AE6 /* CardRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318D833C2D53270E00951AE6 /* CardRowView.swift */; };
 		319F558D2C5F2B1500C054D2 /* CreditCardLibraryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319F558C2C5F2B1500C054D2 /* CreditCardLibraryApp.swift */; };
 		319F55912C5F2B1600C054D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 319F55902C5F2B1600C054D2 /* Assets.xcassets */; };
@@ -92,14 +96,18 @@
 		3189C7032D74F3A200EDA7A4 /* CreditAgeChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditAgeChartView.swift; sourceTree = "<group>"; };
 		3189C7072D76AFFC00EDA7A4 /* BankPieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankPieChartView.swift; sourceTree = "<group>"; };
 		3189C7092D76BBF800EDA7A4 /* StyledPieCharCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledPieCharCellView.swift; sourceTree = "<group>"; };
-		3189C70B2D7A9CC800EDA7A4 /* RequiredTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequiredTextField.swift; sourceTree = "<group>"; };
+		3189C70B2D7A9CC800EDA7A4 /* StringCustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringCustomTextField.swift; sourceTree = "<group>"; };
 		3189C70D2D7BE01700EDA7A4 /* DatePickerModifierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerModifierView.swift; sourceTree = "<group>"; };
 		3189C70F2D7BF30E00EDA7A4 /* FormCardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormCardImageView.swift; sourceTree = "<group>"; };
 		3189C7112D7D02FF00EDA7A4 /* FormToggleModifierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormToggleModifierView.swift; sourceTree = "<group>"; };
 		3189C7132D7D29E500EDA7A4 /* CustomPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
 		3189C7162D7D346C00EDA7A4 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		3189C71C2D7FC6A000EDA7A4 /* HistoryEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryEntry.swift; sourceTree = "<group>"; };
-		3189C71E2D7FD1B700EDA7A4 /* DoubleFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleFieldView.swift; sourceTree = "<group>"; };
+		3189C7202D81123600EDA7A4 /* NumberCustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberCustomTextField.swift; sourceTree = "<group>"; };
+		3189C7232D853E8600EDA7A4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		3189C7252D853EA300EDA7A4 /* BankSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankSettingsView.swift; sourceTree = "<group>"; };
+		3189C7272D853EB600EDA7A4 /* PromotionsSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionsSettingsView.swift; sourceTree = "<group>"; };
+		3189C7292D853EBD00EDA7A4 /* BonusSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusSettingsView.swift; sourceTree = "<group>"; };
 		318A662F2C7BD3EC0039487E /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
 		318A66322C7BDF950039487E /* WalletContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletContentView.swift; sourceTree = "<group>"; };
 		318A66362C7C14300039487E /* SideBarCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarCategories.swift; sourceTree = "<group>"; };
@@ -109,7 +117,7 @@
 		318D83322D51BF5D00951AE6 /* DetailPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPanelView.swift; sourceTree = "<group>"; };
 		318D83342D51C50D00951AE6 /* CardHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardHistoryView.swift; sourceTree = "<group>"; };
 		318D83362D53080200951AE6 /* SelectCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCardView.swift; sourceTree = "<group>"; };
-		318D833A2D530B3E00951AE6 /* ShowHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowHistoryView.swift; sourceTree = "<group>"; };
+		318D833A2D530B3E00951AE6 /* ToggleHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleHistoryView.swift; sourceTree = "<group>"; };
 		318D833C2D53270E00951AE6 /* CardRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRowView.swift; sourceTree = "<group>"; };
 		319F55892C5F2B1500C054D2 /* CreditCardLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CreditCardLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		319F558C2C5F2B1500C054D2 /* CreditCardLibraryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardLibraryApp.swift; sourceTree = "<group>"; };
@@ -152,7 +160,7 @@
 				318D83322D51BF5D00951AE6 /* DetailPanelView.swift */,
 				318A663A2C7C37B10039487E /* DetailView.swift */,
 				318D83362D53080200951AE6 /* SelectCardView.swift */,
-				318D833A2D530B3E00951AE6 /* ShowHistoryView.swift */,
+				318D833A2D530B3E00951AE6 /* ToggleHistoryView.swift */,
 				318D83342D51C50D00951AE6 /* CardHistoryView.swift */,
 				3189C6F82D62F48600EDA7A4 /* DetailRowView.swift */,
 			);
@@ -196,8 +204,8 @@
 			children = (
 				314BD4692C95377400E32E74 /* EditCreditCardView.swift */,
 				314BD4672C94A5C300E32E74 /* AddCreditCardView.swift */,
-				3189C70B2D7A9CC800EDA7A4 /* RequiredTextField.swift */,
-				3189C71E2D7FD1B700EDA7A4 /* DoubleFieldView.swift */,
+				3189C70B2D7A9CC800EDA7A4 /* StringCustomTextField.swift */,
+				3189C7202D81123600EDA7A4 /* NumberCustomTextField.swift */,
 				3189C70D2D7BE01700EDA7A4 /* DatePickerModifierView.swift */,
 				314BD46B2C9689DB00E32E74 /* FormView.swift */,
 				3189C7132D7D29E500EDA7A4 /* CustomPickerView.swift */,
@@ -214,9 +222,21 @@
 			path = Form;
 			sourceTree = "<group>";
 		};
+		3189C7222D853E7600EDA7A4 /* SettingsWindow */ = {
+			isa = PBXGroup;
+			children = (
+				3189C7232D853E8600EDA7A4 /* SettingsView.swift */,
+				3189C7252D853EA300EDA7A4 /* BankSettingsView.swift */,
+				3189C7272D853EB600EDA7A4 /* PromotionsSettingsView.swift */,
+				3189C7292D853EBD00EDA7A4 /* BonusSettingsView.swift */,
+			);
+			path = SettingsWindow;
+			sourceTree = "<group>";
+		};
 		318A66312C7BDD980039487E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3189C7222D853E7600EDA7A4 /* SettingsWindow */,
 				3189C6E92D5BE1BC00EDA7A4 /* NaviationViews */,
 				3189C6FA2D73EE9E00EDA7A4 /* ChartViews */,
 				3189C6EC2D5BE28400EDA7A4 /* CardViews */,
@@ -356,13 +376,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3189C70C2D7A9CC800EDA7A4 /* RequiredTextField.swift in Sources */,
-				3189C71F2D7FD1B700EDA7A4 /* DoubleFieldView.swift in Sources */,
+				3189C70C2D7A9CC800EDA7A4 /* StringCustomTextField.swift in Sources */,
+				3189C7282D853EB600EDA7A4 /* PromotionsSettingsView.swift in Sources */,
 				3189C70E2D7BE01700EDA7A4 /* DatePickerModifierView.swift in Sources */,
 				318A66392C7C21020039487E /* CardListView.swift in Sources */,
 				314BD4802C9EB2FA00E32E74 /* SidebarView.swift in Sources */,
 				314BD46E2C977D1A00E32E74 /* AddPromotionView.swift in Sources */,
 				314BD4742C992D0000E32E74 /* PaymentProcessor.swift in Sources */,
+				3189C7212D81123600EDA7A4 /* NumberCustomTextField.swift in Sources */,
+				3189C72A2D853EBD00EDA7A4 /* BonusSettingsView.swift in Sources */,
 				3189C6F42D5C4A9100EDA7A4 /* CardImagePickerView.swift in Sources */,
 				318A66302C7BD3EC0039487E /* PreviewData.swift in Sources */,
 				314BD46A2C95377400E32E74 /* EditCreditCardView.swift in Sources */,
@@ -371,11 +393,12 @@
 				3189C6EE2D5BE48500EDA7A4 /* CardGridView.swift in Sources */,
 				3189C6E82D5BD5DE00EDA7A4 /* CardGridCellView.swift in Sources */,
 				3189C6FC2D73F98B00EDA7A4 /* ChartsView.swift in Sources */,
+				3189C7242D853E8600EDA7A4 /* SettingsView.swift in Sources */,
 				3189C7022D74B94200EDA7A4 /* StyledBarChartCellView.swift in Sources */,
 				3176D8EF2C7437E000C57FBB /* Bonus.swift in Sources */,
 				314BD46C2C9689DB00E32E74 /* FormView.swift in Sources */,
 				3189C6F92D62F48600EDA7A4 /* DetailRowView.swift in Sources */,
-				318D833B2D530B3E00951AE6 /* ShowHistoryView.swift in Sources */,
+				318D833B2D530B3E00951AE6 /* ToggleHistoryView.swift in Sources */,
 				318A663D2C7E5B0E0039487E /* AddBankView.swift in Sources */,
 				318D83352D51C50D00951AE6 /* CardHistoryView.swift in Sources */,
 				3176D8F22C75AC2B00C57FBB /* Closed.swift in Sources */,
@@ -404,6 +427,7 @@
 				3189C7122D7D02FF00EDA7A4 /* FormToggleModifierView.swift in Sources */,
 				3176D8EB2C74362800C57FBB /* Bank.swift in Sources */,
 				319F558D2C5F2B1500C054D2 /* CreditCardLibraryApp.swift in Sources */,
+				3189C7262D853EA300EDA7A4 /* BankSettingsView.swift in Sources */,
 				3189C7142D7D29E500EDA7A4 /* CustomPickerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

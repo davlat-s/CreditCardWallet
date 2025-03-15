@@ -6,13 +6,13 @@ import SwiftUI
 @Model
 final class CreditCard {
     var name: String
-    var creditLimit: String
+    var creditLimit: Double?
     var isBusiness: Bool
     var isChargeCard: Bool
     var annualFee: Double?
     var openDate: Date
     var lastDigits: String
-    var history: [String]
+    var history: [HistoryEntry]
     var bank: Bank?
     var promotions: [Promotion]
     var bonuses: [Bonus]
@@ -21,13 +21,13 @@ final class CreditCard {
     var cardArt: CardArt?
     
     init(name: String,
-         creditLimit: String,
+         creditLimit: Double? = nil,
          openDate: Date,
          isBusiness: Bool,
          isChargeCard: Bool,
          annualFee: Double? = 0,
          lastDigits: String,
-         history: [String] = [],
+         history: [HistoryEntry] = [],
          bank: Bank? = nil,
          promotions: [Promotion] = [],
          bonuses: [Bonus] = [],
@@ -53,7 +53,7 @@ final class CreditCard {
     
     
     static func returnNewCreditCard() -> CreditCard {
-        return CreditCard(name: "", creditLimit: "", openDate: .now, isBusiness: false, isChargeCard: false, lastDigits: "", history: ["\(Date.now) Credit Card Added", "sdfsdfs", "sdfsdf", "dfsdff"], cardArt: CardArt(assetID: "default"))
+        return CreditCard(name: "", creditLimit: nil, openDate: .now, isBusiness: false, isChargeCard: false, lastDigits: "", history: [], cardArt: CardArt(assetID: "default"))
     }
     
     static func getHeight(width: Double) -> Double {
@@ -70,12 +70,12 @@ final class CreditCard {
     static let sampleData = [
         CreditCard(
             name: "Platinum",
-            creditLimit: "110.23",
+            creditLimit: 110,
             openDate: .now,
             isBusiness: false,
             isChargeCard: false,
             lastDigits: "62376",
-            history: ["credit limit increased from 3000 to 5000", "card downgraded from x to y"],
+            history: [],
             bank: Bank(name: "American Express"),
             promotions: [
                 Promotion(
@@ -97,7 +97,7 @@ final class CreditCard {
         ),
         CreditCard(
             name: "Saphire Reserve",
-            creditLimit: "4520.6",
+            creditLimit: 3000,
             openDate: .now,
             isBusiness: false,
             isChargeCard: false,

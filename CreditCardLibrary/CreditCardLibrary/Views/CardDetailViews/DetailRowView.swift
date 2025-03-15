@@ -1,10 +1,3 @@
-//
-//  DetailRowView.swift
-//  CreditCardLibrary
-//
-//  Created by Davlat Sirojitdinov on 2/16/25.
-//
-
 import SwiftUI
 
 struct DetailRowView: View {
@@ -20,6 +13,7 @@ struct DetailRowView: View {
         }
         .padding()
         .frame(minWidth: 200, idealWidth: 400, alignment: .center)
+        
 
     }
 }

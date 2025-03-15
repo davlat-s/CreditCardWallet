@@ -19,6 +19,11 @@ struct CreditCardLibraryApp: App {
         .windowStyle(.hiddenTitleBar)
         .windowResizability(.contentSize)
         
+        Settings {
+            SettingsView()
+        }
+        .modelContainer(appContainer)
+
     }
     @State var sidebarSelection: SideBarCategories = .all
     @State var columnVisibility: NavigationSplitViewVisibility = .all

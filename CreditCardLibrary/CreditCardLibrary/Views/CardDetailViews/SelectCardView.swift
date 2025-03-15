@@ -1,10 +1,3 @@
-//
-//  SelectCardView.swift
-//  CreditCardLibrary
-//
-//  Created by Davlat Sirojitdinov on 2/4/25.
-//
-
 import SwiftUI
 
 struct SelectCardView: View {
@@ -15,8 +8,7 @@ struct SelectCardView: View {
                 .foregroundStyle(.secondary)
                 .lineLimit(1)
                 .truncationMode(.tail)
-                .fixedSize() // Ensures text takes only as much space as it needs
-
+                .fixedSize()
             Spacer()
         }
     }

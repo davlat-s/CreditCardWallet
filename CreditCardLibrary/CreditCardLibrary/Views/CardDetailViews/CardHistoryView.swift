@@ -12,10 +12,12 @@ struct CardHistoryView: View {
                             .padding(.vertical, 2)
                     } else {
                         List {
-                            ForEach(creditCard.history, id: \.self) { entry in
-                                Text("\(entry)")
+                            ForEach(creditCard.history, id: \.self) { history in
+                                Text("\(history.date, style: .date)  \(history.entry)")
+                                    .font(.custom(
+                                            "Menlo",
+                                            fixedSize: 18))
                             }
-                            .onDelete(perform: deleteHistory)
                         }
                     }
                     Spacer()
@@ -24,12 +26,6 @@ struct CardHistoryView: View {
                 Spacer()
             }
             .frame(minHeight: 100)
-    }
-
-    
-    // Delete function
-    private func deleteHistory(at offsets: IndexSet) {
-        creditCard.history.remove(atOffsets: offsets)
     }
 }
 

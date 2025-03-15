@@ -5,15 +5,15 @@ struct CreditLimitChartView: View {
     var cards: [CreditCard]
     
     var filteredCards: [CreditCard] {
-        cards.filter { Double($0.creditLimit) ?? 0 > 0 }
+        cards.filter { $0.creditLimit ?? 0 > 0 }
     }
     
     var totalCreditLimit: Double {
-        filteredCards.reduce(0) { $0 + (Double($1.creditLimit) ?? 0) }
+        filteredCards.reduce(0) { $0 + ($1.creditLimit ?? 0) }
     }
     
     var averageCreditLimit: Double {
-        let total = filteredCards.reduce(0) { $0 + (Double($1.creditLimit) ?? 0) }
+        let total = filteredCards.reduce(0) { $0 + ($1.creditLimit ?? 0) }
         return filteredCards.isEmpty ? 0 : total / Double(filteredCards.count)
     }
     
@@ -30,7 +30,7 @@ struct CreditLimitChartView: View {
                 ForEach(Array(filteredCards.enumerated()), id: \.offset) { index, card in
                     BarMark(
                         x: .value("Card", index),
-                        y: .value("Credit Limit", Double(card.creditLimit) ?? 0)
+                        y: .value("Credit Limit", card.creditLimit ?? 0)
                     )
                     .foregroundStyle(Color.pink.gradient)
                     .cornerRadius(10)

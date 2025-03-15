@@ -37,6 +37,7 @@ struct AddCreditCardView: View {
                         creditCard.closed = closed
                         creditCard.cardArt = cardArt
                         creditCard.paymentProcessor = paymentProcessor
+                        creditCard.history.append(HistoryEntry(date: .now, entry: "\(creditCard.name) was added"))
                         
                         modelContext.insert(creditCard)
                         

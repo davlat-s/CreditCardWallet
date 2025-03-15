@@ -1,13 +1,6 @@
-//
-//  ShowLogsView.swift
-//  CreditCardLibrary
-//
-//  Created by Davlat Sirojitdinov on 2/4/25.
-//
-
 import SwiftUI
 
-struct ShowHistoryView: View {
+struct ToggleHistoryView: View {
     @Binding var isShowingHistory: Bool
     
     var body: some View {
@@ -26,5 +19,5 @@ struct ShowHistoryView: View {
 }
 
 #Preview {
-    ShowHistoryView(isShowingHistory: .constant(true))
+    ToggleHistoryView(isShowingHistory: .constant(true))
 }

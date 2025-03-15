@@ -24,8 +24,8 @@ struct DetailView: View {
                             DetailRowView(label: "Card Name", value: creditCard.name)
                             DetailRowView(label: "Type", value: creditCard.isBusiness ? "Business" : "Personal")
                             
-                            if !creditCard.isChargeCard {
-                                DetailRowView(label: "Credit Limit", value: creditCard.creditLimit)
+                            if let limit = creditCard.creditLimit {
+                                DetailRowView(label: "Credit Limit", value: String(limit))
                             }
                             
                             DetailRowView(label: "Charge Card", value: creditCard.isChargeCard ? "Yes" : "No")

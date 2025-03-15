@@ -1,10 +1,3 @@
-//
-//  DetailPanelView.swift
-//  CreditCardLibrary
-//
-//  Created by Davlat Sirojitdinov on 2/3/25.
-//
-
 import SwiftUI
 
 struct DetailPanelView: View {
@@ -22,7 +15,7 @@ struct DetailPanelView: View {
                     .frame(minHeight: 100, idealHeight: 250, maxHeight: 500)
             }
             
-            ShowHistoryView(isShowingHistory: $isShowingHistory)
+            ToggleHistoryView(isShowingHistory: $isShowingHistory)
         }
     }
 }
