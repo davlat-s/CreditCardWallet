@@ -28,23 +28,23 @@ struct FormView: View {
         ScrollView {
             Form {
                 Section("Card Details") {
-//                    HStack {
-//                        Spacer()
-//                        FormCardImageView(cardArt: $cardArt, isShowingImagePicker: $showCardArtPicker)
-//                        Spacer()
-//                    }
+                    //                    HStack {
+                    //                        Spacer()
+                    //                        FormCardImageView(cardArt: $cardArt, isShowingImagePicker: $showCardArtPicker)
+                    //                        Spacer()
+                    //                    }
                     
                     HStack {
-//                                                DatePickerModifierView(title: "Open Date", selection: $creditCard.openDate, width: 0)
+                        //                                                DatePickerModifierView(title: "Open Date", selection: $creditCard.openDate, width: 0)
                         VStack {
                             HStack {
                                 Spacer()
-                                FormCardImageView(cardArt: $cardArt, isShowingImagePicker: $showCardArtPicker)
+                                SelectCardImageView(cardArt: $cardArt, isShowingImagePicker: $showCardArtPicker)
                                 Spacer()
                             }
                             HStack {
-                                StringCustomTextField(title: "Card Name", text: $creditCard.name, width: .infinity, prompt: "Sapphire Reserve", borderColor: .accent)
-                                NumberCustomTextField(title: "Annual Fee", number: $creditCard.annualFee, width: 200, prompt: "$495", borderColor: .accent)
+                                CustomTextField(title: "Card Name", text: $creditCard.name, width: .infinity, prompt: "Sapphire Reserve", borderColor: .accent)
+                                CustomNumberField(title: "Annual Fee", number: $creditCard.annualFee, width: 200, prompt: "$495", borderColor: .accent)
                                 
                                 
                             }
@@ -52,29 +52,29 @@ struct FormView: View {
                             
                             
                             HStack {
-                                NumberCustomTextField(title: "Credit Limit",
+                                CustomNumberField(title: "Credit Limit",
                                                   number: $creditCard.creditLimit,
                                                   width: 225,
                                                   prompt: creditCard.isChargeCard ? "Not Applicable to Charge Cards" : "$24,000",
                                                   borderColor: .accent,
                                                   variable: !creditCard.isChargeCard
-                                        
+                                                  
                                 )
                                 .disabled(creditCard.isChargeCard)
-                                StringCustomTextField(title: "Last 4-5 Digits", text: $creditCard.lastDigits, width: .infinity, prompt: "**** **** **** 5032", borderColor: .accent)
+                                CustomTextField(title: "Last 4-5 Digits", text: $creditCard.lastDigits, width: .infinity, prompt: "**** **** **** 5032", borderColor: .accent)
                                 
                                 HStack {
-                                    CustomPickerView(title: "Select Bank", options: existingBanks, selection: $bank, isNewBank: $isNewBank, width: 175, borderColor: .accent)
+                                    CustomPicker(title: "Select Bank", options: existingBanks, selection: $bank, isNewBank: $isNewBank, width: 175, borderColor: .accent)
                                 }
                                 
                             }
                             HStack {
-                                DatePickerModifierView(title: "Open Date", selection: $creditCard.openDate, width: 0)
-                                FormToggleModifierView(title: "Charge Card", isOn: $creditCard.isChargeCard, width: 100)
-                                FormToggleModifierView(title: "Business", isOn: $creditCard.isBusiness, width: 100)
+                                CustomDatePicker(title: "Open Date", selection: $creditCard.openDate, width: 0)
+                                CustomToggle(title: "Charge Card", isOn: $creditCard.isChargeCard, width: 100)
+                                CustomToggle(title: "Business", isOn: $creditCard.isBusiness, width: 100)
                                 
                                 Spacer()
-                            
+                                
                                 
                             }
                             .padding(.top, 10)
@@ -154,7 +154,7 @@ struct FormView: View {
                                 
                             }
                             .buttonBorderShape(.roundedRectangle)
-
+                            
                         }
                     }
                     
@@ -186,7 +186,7 @@ struct FormView: View {
             }
         }
         .sheet(isPresented : $isClosed) {
-            AddClosedView() { newClosed in
+            CloseCardView() { newClosed in
                 closed = newClosed
             }
         }

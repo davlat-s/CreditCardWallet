@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct SettingsTabView: View {
+struct PromotionsTabView: View {
     var body: some View {
         Text("Coming Soon...")
             .padding()

@@ -7,7 +7,7 @@ struct CardImagePickerView: View {
     @Environment(\.dismiss) var dismiss
     
     @Query var cardArts: [CardArt]
-
+    
     var groupedCardArts: [String: [CardArt]] {
         let sortedCardArts = cardArts.sorted { $0.bankName < $1.bankName }
         return Dictionary(grouping: sortedCardArts, by: { $0.bankName })
@@ -55,9 +55,4 @@ struct CardImagePickerView: View {
             
         }
     }
-}
-
-#Preview {
-    CardImagePickerView(selectedCardArt: .constant(nil))
-        .modelContainer(PreviewData.shared.modelContainer)
 }

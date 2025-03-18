@@ -1,10 +1,3 @@
-//
-//  AddBonusView.swift
-//  CreditCardLibrary
-//
-//  Created by Davlat Sirojitdinov on 9/15/24.
-//
-
 import SwiftUI
 
 struct AddBonusView: View {
@@ -18,13 +11,13 @@ struct AddBonusView: View {
     var body: some View {
         
         Form {
-            StringCustomTextField(title: "Bonus Details", text: $bonusName, width: .infinity, prompt: "$200 cash back after spending $1,000 in the first 3 months")
+            CustomTextField(title: "Bonus Details", text: $bonusName, width: .infinity, prompt: "$200 cash back after spending $1,000 in the first 3 months")
             
-                DatePicker("Start Date", selection: $startDate, displayedComponents: .date)
-                    .datePickerStyle(.compact)
-         
-                DatePicker("End Date", selection: $endDate, displayedComponents: .date)
-                    .datePickerStyle(.compact)
+            DatePicker("Start Date", selection: $startDate, displayedComponents: .date)
+                .datePickerStyle(.compact)
+            
+            DatePicker("End Date", selection: $endDate, displayedComponents: .date)
+                .datePickerStyle(.compact)
         }
         .padding()
         .formStyle(.grouped)
@@ -39,7 +32,7 @@ struct AddBonusView: View {
                     dismiss()
                 }
                 .disabled(bonusName.isEmpty)
-
+                
             }
             ToolbarItem(placement: .cancellationAction) {
                 Button("Cancel") {

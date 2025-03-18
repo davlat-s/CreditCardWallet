@@ -8,11 +8,11 @@ struct CreditCardLibraryApp: App {
     @AppStorage(AppStorageKeys.menuBarShown) var menuBarShown: Bool = true
     
     let modelContainer = try! ModelContainer(for: CreditCard.self, Bank.self, PaymentProcessor.self)
-
+    
     var body: some Scene {
         
         WindowGroup("Main Widnow") {
-            WalletContentView(selectedCategory: $sidebarSelection, columnVisibility: $columnVisibility)
+            MainContentView(selectedCategory: $sidebarSelection, columnVisibility: $columnVisibility)
                 .toolbarBackground(.ultraThickMaterial)
                 .frame(minWidth: 600, idealWidth: 1200, maxWidth: 1400, minHeight: 300, idealHeight: 600, maxHeight: 900)
                 .onAppear {
@@ -21,32 +21,36 @@ struct CreditCardLibraryApp: App {
         }
         .defaultPosition(.center)
         .defaultSize(width: 1200, height: 900)
-        .modelContainer(appContainer)
+        .modelContainer(MainAppContainer
+        )
         .windowStyle(.hiddenTitleBar)
         .windowResizability(.contentSize)
         
         Settings {
-            SettingsView()
+            SettingsContentView()
         }
-        .modelContainer(appContainer)
+        .modelContainer(MainAppContainer
+        )
         
         MenuBarExtra(isInserted: $menuBarShown) {
-            MenuBarView()
+            MenuBarContentView()
         } label: {
             Label("WalletApp", systemImage: "creditcard.fill")
         }
-        .modelContainer(appContainer)
+        .modelContainer(MainAppContainer
+        )
         .menuBarExtraStyle(.menu)
-
+        
         WindowGroup("Add Credit Card", id: "AddCreditCardWindow") {
-            AddCreditCardView()
+            FormAddView()
                 .frame(width: 700, height: 800, alignment: .center)
-
+            
         }
-        .defaultPosition(.top)
-        .modelContainer(appContainer)
+        .defaultPosition(.top )
+        .modelContainer(MainAppContainer
+        )
         .windowResizability(.contentSize)
-   
+        
     }
     @State var sidebarSelection: SideBarCategories = .all
     @State var columnVisibility: NavigationSplitViewVisibility = .all

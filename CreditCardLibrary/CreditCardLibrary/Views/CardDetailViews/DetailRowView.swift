@@ -1,5 +1,8 @@
 import SwiftUI
 
+
+// TODO: Turn this into a modifier
+
 struct DetailRowView: View {
     
     var label: String
@@ -14,10 +17,7 @@ struct DetailRowView: View {
         .padding()
         .frame(minWidth: 200, idealWidth: 400, alignment: .center)
         
-
+        
     }
 }
 
-#Preview {
-    DetailRowView(label: "label", value: "value")
-}

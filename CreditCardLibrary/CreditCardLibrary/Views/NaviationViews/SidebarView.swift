@@ -4,7 +4,7 @@ struct SidebarView: View {
     @Binding var selectedCategory: SideBarCategories
     @AppStorage("isExpanded") private var isExpanded: Bool = false
     // TODO: make isExpanded persistent across user sessions.
-
+    
     private func sortedCategories() -> [SideBarCategories] {
         let categories: [SideBarCategories] = [
             .business,
@@ -34,6 +34,3 @@ struct SidebarView: View {
     }
 }
 
-#Preview {
-    SidebarView(selectedCategory: .constant(PreviewData.shared.closedCategory))
-}

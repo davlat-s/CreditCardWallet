@@ -10,13 +10,13 @@ struct AddPromotionView: View {
     
     var body: some View {
         Form {
-            StringCustomTextField(title: "Promotion Details", text: $promoName, width: .infinity, prompt: "0% APR for 12 months on purchases and balance transfers", borderColor: .accent)
-        
+            CustomTextField(title: "Promotion Details", text: $promoName, width: .infinity, prompt: "0% APR for 12 months on purchases and balance transfers", borderColor: .accent)
+            
             DatePicker("Start Date", selection: $startDate, displayedComponents: .date)
                 .datePickerStyle(.compact)
             DatePicker("End Date", selection: $endDate, displayedComponents: .date)
                 .datePickerStyle(.compact)
-       
+            
         }
         .formStyle(.grouped)
         .toolbar {
@@ -30,7 +30,7 @@ struct AddPromotionView: View {
                 }
                 .disabled(promoName.isEmpty)
             }
-
+            
             ToolbarItem(placement: .cancellationAction) {
                 Button("Cancel") {
                     dismiss()
