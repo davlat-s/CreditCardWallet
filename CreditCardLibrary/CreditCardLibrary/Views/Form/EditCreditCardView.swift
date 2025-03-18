@@ -14,10 +14,10 @@ struct EditCreditCardView: View {
     @State private var editedClosed: Closed?
     @State private var editedPaymentProcessor: PaymentProcessor?
     
-    var existingBanks: [Bank]
-    var paymentProcessors: [PaymentProcessor]
+    @Query(sort: [SortDescriptor(\Bank.name, order: .forward)]) var existingBanks: [Bank]
+    @Query(sort: [SortDescriptor(\PaymentProcessor.name, order: .forward)]) var paymentProcessors: [PaymentProcessor]
     
-    init(creditCard: CreditCard, existingBanks: [Bank], paymentProcessors: [PaymentProcessor]) {
+    init(creditCard: CreditCard) {
         _creditCard = State(initialValue: creditCard)
         _editedCreditCard = State(initialValue: creditCard.deepCopy())
         _editedBank = State(initialValue: creditCard.bankInstance)
@@ -25,8 +25,6 @@ struct EditCreditCardView: View {
         _editedPromotions = State(initialValue: creditCard.promotionsInstance)
         _editedBonuses = State(initialValue: creditCard.bonusesInstance)
         _editedClosed = State(initialValue: creditCard.closedInstance)
-        self.existingBanks = existingBanks
-        self.paymentProcessors = paymentProcessors
     }
     
     var body: some View {

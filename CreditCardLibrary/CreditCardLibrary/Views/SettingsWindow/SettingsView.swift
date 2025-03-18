@@ -22,6 +22,10 @@ struct SettingsView: View {
                 .tabItem {
                     Label("Bonuses", systemImage: "dollarsign.arrow.circlepath")
                 }
+            SettingsTabView()
+                .tabItem{
+                    Label("Settings", systemImage:"gear")
+                }
         }
         .frame(width: 400, height: 400)
         .padding()

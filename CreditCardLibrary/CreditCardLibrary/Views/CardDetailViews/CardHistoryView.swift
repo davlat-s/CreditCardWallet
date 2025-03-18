@@ -19,6 +19,7 @@ struct CardHistoryView: View {
                                             fixedSize: 18))
                             }
                         }
+                        .clipShape(.rect(cornerRadius: 10))
                     }
                     Spacer()
                 }

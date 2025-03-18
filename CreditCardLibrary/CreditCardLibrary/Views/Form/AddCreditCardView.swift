@@ -5,16 +5,16 @@ struct AddCreditCardView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     
-    @State var creditCard: CreditCard
+    @Query(sort: [SortDescriptor(\Bank.name, order: .forward)]) var existingBanks: [Bank]
+    @Query(sort: [SortDescriptor(\PaymentProcessor.name, order: .forward)]) var paymentProcessors: [PaymentProcessor]
+    
+    @State var creditCard: CreditCard = CreditCard.returnNewCreditCard()
     @State var bank: Bank? = nil
     @State var promotions: [Promotion] = []
     @State var bonuses: [Bonus] = []
     @State var closed: Closed? = nil
     @State var cardArt: CardArt? = nil
     @State var paymentProcessor: PaymentProcessor? = PaymentProcessor.returnNewPaymentProcessor()
-    
-    var existingBanks: [Bank]
-    var paymentProcessors: [PaymentProcessor]
     
     
     var body: some View {
@@ -52,6 +52,9 @@ struct AddCreditCardView: View {
                         dismiss()
                     }
                 }
+            }
+            .onAppear {
+                creditCard = CreditCard.returnNewCreditCard()
             }
         }
     }

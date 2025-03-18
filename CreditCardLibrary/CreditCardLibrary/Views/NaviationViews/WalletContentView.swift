@@ -8,7 +8,7 @@ struct WalletContentView: View {
     @State private var sortOrder = [SortDescriptor(\CreditCard.openDate, order: .reverse)]
     @State private var searchText: String = ""
     @State private var selectedCard: CreditCard?
-    @State private var newCard: CreditCard?
+    @State private var newCard: Bool = false
     @State private var isEditing: Bool = false
     @State private var toggleHelper = true
     @State private var navigationPath = NavigationPath()
@@ -136,19 +136,13 @@ struct WalletContentView: View {
         .sheet(isPresented: $isEditing) {
             if let selectedCard = selectedCard {
                 EditCreditCardView(
-                    creditCard: selectedCard,
-                    existingBanks: existingBanks,
-                    paymentProcessors: paymentProcessors
+                    creditCard: selectedCard
                 )
                 .frame(width: 700, height: 500, alignment: .center)
             }
         }
-        .sheet(item: $newCard) { card in
-            AddCreditCardView(
-                creditCard: card,
-                existingBanks: existingBanks,
-                paymentProcessors: paymentProcessors
-            )
+        .sheet(isPresented: $newCard) {
+            AddCreditCardView()
             .frame(width: 700, height: 500, alignment: .center)
         }
     }
@@ -162,8 +156,7 @@ struct WalletContentView: View {
     
     private func addCard() {
         withAnimation {
-            let newItem = CreditCard.returnNewCreditCard()
-            newCard = newItem
+            newCard.toggle()
         }
     }
     

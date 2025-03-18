@@ -16,7 +16,6 @@
 		314BD4702C97F06200E32E74 /* AddBonusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314BD46F2C97F06200E32E74 /* AddBonusView.swift */; };
 		314BD4722C98AC6400E32E74 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314BD4712C98AC6400E32E74 /* CardView.swift */; };
 		314BD4742C992D0000E32E74 /* PaymentProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314BD4732C992D0000E32E74 /* PaymentProcessor.swift */; };
-		314BD47A2C9CB92F00E32E74 /* SwiftDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314BD4792C9CB92F00E32E74 /* SwiftDataManager.swift */; };
 		314BD47C2C9E01BE00E32E74 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314BD47B2C9E01BE00E32E74 /* AppContainer.swift */; };
 		314BD4802C9EB2FA00E32E74 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314BD47F2C9EB2FA00E32E74 /* SidebarView.swift */; };
 		3176D8EB2C74362800C57FBB /* Bank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176D8EA2C74362800C57FBB /* Bank.swift */; };
@@ -49,6 +48,9 @@
 		3189C7262D853EA300EDA7A4 /* BankSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C7252D853EA300EDA7A4 /* BankSettingsView.swift */; };
 		3189C7282D853EB600EDA7A4 /* PromotionsSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C7272D853EB600EDA7A4 /* PromotionsSettingsView.swift */; };
 		3189C72A2D853EBD00EDA7A4 /* BonusSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C7292D853EBD00EDA7A4 /* BonusSettingsView.swift */; };
+		3189C72C2D87611800EDA7A4 /* AppStorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C72B2D87611800EDA7A4 /* AppStorageKeys.swift */; };
+		3189C72F2D87623200EDA7A4 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C72E2D87623200EDA7A4 /* MenuBarView.swift */; };
+		3189C7312D8776FC00EDA7A4 /* SettingsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C7302D8776FC00EDA7A4 /* SettingsTabView.swift */; };
 		318A66302C7BD3EC0039487E /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318A662F2C7BD3EC0039487E /* PreviewData.swift */; };
 		318A66332C7BDF950039487E /* WalletContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318A66322C7BDF950039487E /* WalletContentView.swift */; };
 		318A66372C7C14300039487E /* SideBarCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318A66362C7C14300039487E /* SideBarCategories.swift */; };
@@ -75,7 +77,6 @@
 		314BD46F2C97F06200E32E74 /* AddBonusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBonusView.swift; sourceTree = "<group>"; };
 		314BD4712C98AC6400E32E74 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		314BD4732C992D0000E32E74 /* PaymentProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProcessor.swift; sourceTree = "<group>"; };
-		314BD4792C9CB92F00E32E74 /* SwiftDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataManager.swift; sourceTree = "<group>"; };
 		314BD47B2C9E01BE00E32E74 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		314BD47F2C9EB2FA00E32E74 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		3176D8EA2C74362800C57FBB /* Bank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bank.swift; sourceTree = "<group>"; };
@@ -108,6 +109,9 @@
 		3189C7252D853EA300EDA7A4 /* BankSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankSettingsView.swift; sourceTree = "<group>"; };
 		3189C7272D853EB600EDA7A4 /* PromotionsSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionsSettingsView.swift; sourceTree = "<group>"; };
 		3189C7292D853EBD00EDA7A4 /* BonusSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusSettingsView.swift; sourceTree = "<group>"; };
+		3189C72B2D87611800EDA7A4 /* AppStorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageKeys.swift; sourceTree = "<group>"; };
+		3189C72E2D87623200EDA7A4 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
+		3189C7302D8776FC00EDA7A4 /* SettingsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTabView.swift; sourceTree = "<group>"; };
 		318A662F2C7BD3EC0039487E /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
 		318A66322C7BDF950039487E /* WalletContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletContentView.swift; sourceTree = "<group>"; };
 		318A66362C7C14300039487E /* SideBarCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarCategories.swift; sourceTree = "<group>"; };
@@ -140,7 +144,8 @@
 		3176D8F02C743F0900C57FBB /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				314BD4792C9CB92F00E32E74 /* SwiftDataManager.swift */,
+				3189C72B2D87611800EDA7A4 /* AppStorageKeys.swift */,
+				318A662F2C7BD3EC0039487E /* PreviewData.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -229,15 +234,25 @@
 				3189C7252D853EA300EDA7A4 /* BankSettingsView.swift */,
 				3189C7272D853EB600EDA7A4 /* PromotionsSettingsView.swift */,
 				3189C7292D853EBD00EDA7A4 /* BonusSettingsView.swift */,
+				3189C7302D8776FC00EDA7A4 /* SettingsTabView.swift */,
 			);
 			path = SettingsWindow;
+			sourceTree = "<group>";
+		};
+		3189C72D2D87622300EDA7A4 /* ManuBar */ = {
+			isa = PBXGroup;
+			children = (
+				3189C72E2D87623200EDA7A4 /* MenuBarView.swift */,
+			);
+			path = ManuBar;
 			sourceTree = "<group>";
 		};
 		318A66312C7BDD980039487E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3189C7222D853E7600EDA7A4 /* SettingsWindow */,
 				3189C6E92D5BE1BC00EDA7A4 /* NaviationViews */,
+				3189C72D2D87622300EDA7A4 /* ManuBar */,
+				3189C7222D853E7600EDA7A4 /* SettingsWindow */,
 				3189C6FA2D73EE9E00EDA7A4 /* ChartViews */,
 				3189C6EC2D5BE28400EDA7A4 /* CardViews */,
 				3189C6EA2D5BE20E00EDA7A4 /* CardDetailViews */,
@@ -268,10 +283,9 @@
 			children = (
 				319F558C2C5F2B1500C054D2 /* CreditCardLibraryApp.swift */,
 				314BD47B2C9E01BE00E32E74 /* AppContainer.swift */,
-				3176D8F02C743F0900C57FBB /* Utilities */,
 				318A66312C7BDD980039487E /* Views */,
 				31AAFEDE2C5F436A00CE1BDC /* Model */,
-				318A662F2C7BD3EC0039487E /* PreviewData.swift */,
+				3176D8F02C743F0900C57FBB /* Utilities */,
 				319F55902C5F2B1600C054D2 /* Assets.xcassets */,
 				319F55952C5F2B1600C054D2 /* CreditCardLibrary.entitlements */,
 				319F55922C5F2B1600C054D2 /* Preview Content */,
@@ -417,18 +431,20 @@
 				3189C70A2D76BBF800EDA7A4 /* StyledPieCharCellView.swift in Sources */,
 				318A66332C7BDF950039487E /* WalletContentView.swift in Sources */,
 				3189C7042D74F3A200EDA7A4 /* CreditAgeChartView.swift in Sources */,
-				314BD47A2C9CB92F00E32E74 /* SwiftDataManager.swift in Sources */,
 				3189C7082D76AFFC00EDA7A4 /* BankPieChartView.swift in Sources */,
 				318A66372C7C14300039487E /* SideBarCategories.swift in Sources */,
 				3189C6E22D5AE2DB00EDA7A4 /* CardArt.swift in Sources */,
 				314BD47C2C9E01BE00E32E74 /* AppContainer.swift in Sources */,
 				3189C6E62D5AF03600EDA7A4 /* loadBankCardArtData.swift in Sources */,
+				3189C72C2D87611800EDA7A4 /* AppStorageKeys.swift in Sources */,
 				3176D8F42C75AD1600C57FBB /* Promotion.swift in Sources */,
+				3189C7312D8776FC00EDA7A4 /* SettingsTabView.swift in Sources */,
 				3189C7122D7D02FF00EDA7A4 /* FormToggleModifierView.swift in Sources */,
 				3176D8EB2C74362800C57FBB /* Bank.swift in Sources */,
 				319F558D2C5F2B1500C054D2 /* CreditCardLibraryApp.swift in Sources */,
 				3189C7262D853EA300EDA7A4 /* BankSettingsView.swift in Sources */,
 				3189C7142D7D29E500EDA7A4 /* CustomPickerView.swift in Sources */,
+				3189C72F2D87623200EDA7A4 /* MenuBarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

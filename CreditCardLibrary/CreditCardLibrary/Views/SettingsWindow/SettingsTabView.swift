@@ -1,13 +1,13 @@
 //
-//  PromotionsSettingsView.swift
+//  SettingsTabView.swift
 //  CreditCardLibrary
 //
-//  Created by Davlat Sirojitdinov on 3/14/25.
+//  Created by Davlat Sirojitdinov on 3/16/25.
 //
 
 import SwiftUI
 
-struct PromotionsSettingsView: View {
+struct SettingsTabView: View {
     var body: some View {
         Text("Coming Soon...")
             .padding()
@@ -15,5 +15,5 @@ struct PromotionsSettingsView: View {
 }
 
 #Preview {
-    PromotionsSettingsView()
+    SettingsTabView()
 }

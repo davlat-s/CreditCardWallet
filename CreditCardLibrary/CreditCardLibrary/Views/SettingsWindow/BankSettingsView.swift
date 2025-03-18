@@ -35,6 +35,7 @@ struct BankSettingsView: View {
                 .tag(bank)
             }
         }
+        .clipShape(.rect(cornerRadius: 10))
         .alert(item: $bankToDelete) { bank in
             Alert(
                 title: Text("Delete Bank"),
