@@ -168,6 +168,8 @@ struct MainContentView: View {
         withAnimation {
             modelContext.delete(card)
             selectedCard = nil
+            selectedCard = nil
+            navigationPath = NavigationPath()
         }
     }
 }

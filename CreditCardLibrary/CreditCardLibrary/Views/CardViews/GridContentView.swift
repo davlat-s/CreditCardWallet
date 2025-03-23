@@ -40,6 +40,10 @@ struct GridContentView: View {
                         )
                 }
             }
+            .contentShape(Rectangle())
+            .onTapGesture {
+                selectedCard = nil
+            }
             .padding()
         }
     }

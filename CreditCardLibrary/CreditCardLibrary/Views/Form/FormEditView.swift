@@ -53,87 +53,106 @@ struct FormEditView: View {
     }
     
     private func applyEdits() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        
         // Compare name
         if creditCard.name != editedCreditCard.name {
-            creditCard.history.append(HistoryEntry(date: .now, entry: "Name changed from '\(creditCard.name)' to '\(editedCreditCard.name)'") )
+            creditCard.history.append(HistoryEntry(date: .now, entry: "Card name changed from '\(creditCard.name)' to '\(editedCreditCard.name)'"))
             creditCard.name = editedCreditCard.name
         }
         
         // Compare creditLimit
         if creditCard.creditLimit != editedCreditCard.creditLimit {
-            creditCard.history.append(HistoryEntry(date: .now, entry: "Credit limit changed from '\(String(describing: creditCard.creditLimit))' to '\(String(describing: editedCreditCard.creditLimit))'"))
+            let oldLimit = creditCard.creditLimit?.formatted(.currency(code: "USD")) ?? "None"
+            let newLimit = editedCreditCard.creditLimit?.formatted(.currency(code: "USD")) ?? "None"
+            creditCard.history.append(HistoryEntry(date: .now, entry: "Credit limit changed from \(oldLimit) to \(newLimit)"))
             creditCard.creditLimit = editedCreditCard.creditLimit
         }
         
         // Compare openDate
         if creditCard.openDate != editedCreditCard.openDate {
-            creditCard.history.append(HistoryEntry(date: .now, entry: "Open date changed from '\(creditCard.openDate)' to '\(editedCreditCard.openDate)'"))
+            creditCard.history.append(HistoryEntry(date: .now, entry: "Open date changed from \(dateFormatter.string(from: creditCard.openDate)) to \(dateFormatter.string(from: editedCreditCard.openDate))"))
             creditCard.openDate = editedCreditCard.openDate
         }
         
         // Compare isBusiness
         if creditCard.isBusiness != editedCreditCard.isBusiness {
-            creditCard.history.append(HistoryEntry(date: .now, entry: "Business status changed from '\(creditCard.isBusiness)' to '\(editedCreditCard.isBusiness)'"))
+            let oldStatus = creditCard.isBusiness ? "Business" : "Personal"
+            let newStatus = editedCreditCard.isBusiness ? "Business" : "Personal"
+            creditCard.history.append(HistoryEntry(date: .now, entry: "Card type changed from \(oldStatus) to \(newStatus)"))
             creditCard.isBusiness = editedCreditCard.isBusiness
         }
         
         // Compare isChargeCard
         if creditCard.isChargeCard != editedCreditCard.isChargeCard {
-            creditCard.history.append(HistoryEntry(date: .now, entry: "Charge card status changed from '\(creditCard.isChargeCard)' to '\(editedCreditCard.isChargeCard)'"))
+            let oldStatus = creditCard.isChargeCard ? "Charge Card" : "Credit Card"
+            let newStatus = editedCreditCard.isChargeCard ? "Charge Card" : "Credit Card"
+            creditCard.history.append(HistoryEntry(date: .now, entry: "Card type changed from \(oldStatus) to \(newStatus)"))
             creditCard.isChargeCard = editedCreditCard.isChargeCard
         }
         
         // Compare annualFee
         if creditCard.annualFee != editedCreditCard.annualFee {
-            creditCard.history.append(HistoryEntry(date: .now, entry: "Annual fee changed from '\(String(describing: creditCard.annualFee))' to '\(String(describing: editedCreditCard.annualFee))'"))
+            let oldFee = creditCard.annualFee?.formatted(.currency(code: "USD")) ?? "None"
+            let newFee = editedCreditCard.annualFee?.formatted(.currency(code: "USD")) ?? "None"
+            creditCard.history.append(HistoryEntry(date: .now, entry: "Annual fee changed from \(oldFee) to \(newFee)"))
             creditCard.annualFee = editedCreditCard.annualFee
         }
         
         // Compare lastDigits
         if creditCard.lastDigits != editedCreditCard.lastDigits {
-            creditCard.history.append(HistoryEntry(date: .now, entry: "Last digits changed from '\(creditCard.lastDigits)' to '\(editedCreditCard.lastDigits)'"))
+            creditCard.history.append(HistoryEntry(date: .now, entry: "Last four digits changed from '\(creditCard.lastDigits)' to '\(editedCreditCard.lastDigits)'"))
             creditCard.lastDigits = editedCreditCard.lastDigits
         }
         
         // Compare bank
         if creditCard.bank?.name != editedBank?.name {
-            let oldBank = creditCard.bank?.name ?? "nil"
-            let newBank = editedBank?.name ?? "nil"
+            let oldBank = creditCard.bank?.name ?? "None"
+            let newBank = editedBank?.name ?? "None"
             creditCard.history.append(HistoryEntry(date: .now, entry: "Bank changed from '\(oldBank)' to '\(newBank)'"))
             creditCard.bank = editedBank
         }
         
         // Compare promotions
-        if creditCard.promotions.count != editedPromotions.count {
-            creditCard.history.append(HistoryEntry(date: .now, entry: "Promotions updated"))
+        let addedPromotions = editedPromotions.filter { !creditCard.promotions.contains($0) }
+        let removedPromotions = creditCard.promotions.filter { !editedPromotions.contains($0) }
+        if !addedPromotions.isEmpty || !removedPromotions.isEmpty {
+            let addedList = addedPromotions.map { $0.details }.joined(separator: ", ")
+            let removedList = removedPromotions.map { $0.details }.joined(separator: ", ")
+            var entry = "Promotions updated."
+            if !addedPromotions.isEmpty { entry += " Added: \(addedList)." }
+            if !removedPromotions.isEmpty { entry += " Removed: \(removedList)." }
+            creditCard.history.append(HistoryEntry(date: .now, entry: entry))
         }
         creditCard.promotions = editedPromotions
         
         // Compare bonuses
-        if creditCard.bonuses.count != editedBonuses.count {
-            creditCard.history.append(HistoryEntry(date: .now, entry: "Bonuses updated"))
+        let addedBonuses = editedBonuses.filter { !creditCard.bonuses.contains($0) }
+        let removedBonuses = creditCard.bonuses.filter { !editedBonuses.contains($0) }
+        if !addedBonuses.isEmpty || !removedBonuses.isEmpty {
+            let addedList = addedBonuses.map { $0.details }.joined(separator: ", ")
+            let removedList = removedBonuses.map { $0.details }.joined(separator: ", ")
+            var entry = "Bonuses updated."
+            if !addedBonuses.isEmpty { entry += " Added: \(addedList)." }
+            if !removedBonuses.isEmpty { entry += " Removed: \(removedList)." }
+            creditCard.history.append(HistoryEntry(date: .now, entry: entry))
         }
         creditCard.bonuses = editedBonuses
         
         // Compare closed
         if creditCard.closed?.reason != editedClosed?.reason {
-            let oldClosed = creditCard.closed?.reason ?? "nil"
-            let newClosed = editedClosed?.reason ?? "nil"
-            creditCard.history.append(HistoryEntry(date: .now, entry: "Closed reason changed from '\(oldClosed)' to '\(newClosed)'"))
+            let oldClosed = creditCard.closed?.reason ?? "None"
+            let newClosed = editedClosed?.reason ?? "None"
+            creditCard.history.append(HistoryEntry(date: .now, entry: "Closure reason changed from '\(oldClosed)' to '\(newClosed)'"))
             creditCard.closed = editedClosed
-        }
-        
-        // Compare paymentProcessor
-        if creditCard.paymentProcessor != editedPaymentProcessor {
-            creditCard.history.append(HistoryEntry(date: .now, entry: "Payment processor changed from '\(String(describing: creditCard.paymentProcessor))' to '\(String(describing: editedPaymentProcessor))'"))
-            creditCard.paymentProcessor = editedPaymentProcessor
         }
         
         // Compare cardArt
         if creditCard.cardArt?.assetID != editedCardArt?.assetID {
-            let oldArt = creditCard.cardArt?.assetID ?? "nil"
-            let newArt = editedCardArt?.assetID ?? "nil"
-            creditCard.history.append(HistoryEntry(date: .now, entry: "Card art changed from '\(oldArt)' to '\(newArt)'"))
+            let oldArt = creditCard.cardArt?.assetID ?? "None"
+            let newArt = editedCardArt?.assetID ?? "None"
+            creditCard.history.append(HistoryEntry(date: .now, entry: "Card design changed from '\(oldArt)' to '\(newArt)'"))
             creditCard.cardArt = editedCardArt
         }
         

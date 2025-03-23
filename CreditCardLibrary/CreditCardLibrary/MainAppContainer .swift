@@ -1,6 +1,8 @@
 import Foundation
 import SwiftData
 
+// TODO: Decouple the injected data from the MainAppContainer
+
 @MainActor
 let MainAppContainer
 : ModelContainer = {
