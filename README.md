@@ -6,6 +6,15 @@
 ![SwiftUI](https://img.shields.io/badge/SwiftUI-compatible-blue?style=flat-square)
 ![Swift](https://img.shields.io/badge/swift-5.9-orange?style=flat-square)
 
+## Table of Contents
+
+- [About the Project](#-about-the-project)
+- [Features](#-features)
+- [Initial Design Concepts](#-initial-design-concepts)
+- [Planned Features](#-planned-features)
+- [View Heirarchy](#-view-heirarchy)
+- [SwiftData Model Schema](#-swiftdata-model-schema)
+
 ---
 
 ## ✨ About the Project
