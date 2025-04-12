@@ -60,18 +60,15 @@ Check out the walkthrough of the Card Wallet app [here](https://davlat-s.github.
 </div>
 
 <div style="display: flex; align-items: center; margin-top: 10px;">
-  <img src="./previews/GridView.png" width="400" style="margin-right: 10px;" />
-  <img src="./previews/DetailView.png" width="400" />
+  <img src="./previews/GridView.png" width="250" style="margin-right: 10px;" />
+  <img src="./previews/DetailView.png" width="250" />
+  <img src="./previews/Charts.png" width="250" />
 </div>
 
 <div style="display: flex; align-items: center;">
-  <img src="./previews/Form.png" width="400" style="margin-right: 10px;" />
-  <img src="./previews/Charts.png" width="400" />
-</div>
-
-<div style="display: flex; align-items: center;">
-  <img src="./previews/HideHistory.png" width="400" style="margin-right: 10px;" />
-  <img src="./previews/SidebarToolbar.png" width="400" />
+  <img src="./previews/Form.png" width="250" style="margin-right: 10px;" />
+  <img src="./previews/HideHistory.png" width="250"/>
+  <img src="./previews/SidebarToolbar.png" width="250" />
 </div>
 
 ---
