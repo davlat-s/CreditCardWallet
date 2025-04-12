@@ -9,8 +9,8 @@
 ## Table of Contents
 
 - [About the Project](#about-the-project)
-- [Features](#features)
-- [Initial Design Concepts](#initial-design-concepts)
+- [Features](#features-section)
+- [Initial Design Concepts](#initial-design-concepts-section)
 - [Planned Features](#planned-features)
 - [View Heirarchy](#view-heirarchy)
 
@@ -24,7 +24,7 @@ This started as a personal project to organize a growing number of cards, and ha
 
 ---
 
-<h2 id="features">🖥️ Features</h2>
+<h2 id="features-section">🖥️ Features</h2>
 
 - 💼 Track personal and business credit cards with metadata like limits, APRs, open/close status, and charge card designation
 - 🖼️ Comes with over **100+ high-resolution card designs**, organized by bank
@@ -39,9 +39,17 @@ This started as a personal project to organize a growing number of cards, and ha
 
 ---
 
-<h2 id="initial-design-concepts">✏️ Initial Design Concepts</h2>
-![](./previews/ViewHierarchyChart.png)
-![](./previews/WalletAppIcon.png)
+<h2 id="initial-design-concepts-section">
+✏️ Initial Design Concepts
+</h2>
+
+<div style="display: flex; align-items: center; margin-top: 10px;">
+  <img src="./previews/ViewHierarchyChart.png" width="800" style="margin-right: 10px;" />
+</div>
+
+<div style="display: flex; align-items: center; margin-top: 10px;">
+  <img src="./previews/WalletAppIcon.png" width="800" style="margin-right: 10px;" />
+</div>
 
 <div style="display: flex; align-items: center; margin-top: 10px;">
   <img src="./previews/GridView.png" width="400" style="margin-right: 10px;" />
