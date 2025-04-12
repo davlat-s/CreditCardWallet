@@ -8,15 +8,15 @@
 
 ## Table of Contents
 
-- [About the Project](#-about-the-project)
-- [Features](#-features)
-- [Initial Design Concepts](#-initial-design-concepts)
-- [Planned Features](#-planned-features)
-- [View Heirarchy](#-view-heirarchy)
+- [About the Project](#about-the-project)
+- [Features](#features)
+- [Initial Design Concepts](#initial-design-concepts)
+- [Planned Features](#planned-features)
+- [View Heirarchy](#view-heirarchy)
 
 ---
 
-## ✨ About the Project
+<h2 id="about-the-project">✨ About the Project</h2>
 
 **Credit Card Wallet** is a macOS app built using **SwiftUI** and **SwiftData**, designed to help you keep track of all your credit cards — from credit limits and annual fees to sign-up bonuses and promotional APRs.
 
@@ -24,7 +24,7 @@ This started as a personal project to organize a growing number of cards, and ha
 
 ---
 
-## 🖥️ Features
+<h2 id="features">🖥️ Features</h2>
 
 - 💼 Track personal and business credit cards with metadata like limits, APRs, open/close status, and charge card designation
 - 🖼️ Comes with over **100+ high-resolution card designs**, organized by bank
@@ -39,7 +39,7 @@ This started as a personal project to organize a growing number of cards, and ha
 
 ---
 
-## ✏️ Initial Design Concepts
+<h2 id="initial-design-concepts">✏️ Initial Design Concepts</h2>
 ![](./previews/ViewHierarchyChart.png)
 ![](./previews/WalletAppIcon.png)
 
@@ -58,7 +58,7 @@ This started as a personal project to organize a growing number of cards, and ha
   <img src="./previews/SidebarToolbar.png" width="400" />
 </div>
 
-## 🧠 Planned Features
+<h2 id="planned-features">🧠 Planned Features</h2>
 
 Here are some enhancements planned for future updates:
 
@@ -79,7 +79,7 @@ Here are some enhancements planned for future updates:
 
 ---
 
-## 📂 View Heirarchy
+<h2 id="view-heirarchy">📂 View Heirarchy</h2>
 
 ```plaintext
 ┌────────────────────────────────────┐
