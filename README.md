@@ -33,10 +33,15 @@ This started as a personal project to organize a growing number of cards, and ha
 
 ## ✏️ initial design concepts
 
+<div style="display: flex; align-items: center;">
+  <img src="./previews/ViewHierarchyChart.png" width="300" style="margin-right: 10px;" />
+  <img src="./previews/WalletAppIcon.png" width="300" />
+</div>
 
-![](./previews/GridView.png) ![](./previews/DetailView.png)
-![](./previews/ViewHierarchyChart.png)
-![](./previews/WalletAppIcon.png)
+<div style="display: flex; align-items: center; margin-top: 10px;">
+  <img src="./previews/GridView.png" width="300" style="margin-right: 10px;" />
+  <img src="./previews/DetailView.png" width="300" />
+</div>
 
 ## 🧠 Planned Features
 
@@ -194,4 +199,3 @@ Here are some enhancements planned for future updates:
 @Model CardArt
 • assetID
 • bank: Bank?
-
