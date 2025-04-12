@@ -25,7 +25,7 @@ This started as a personal project to organize a growing number of cards, and ha
 
 ---
 
-<h2 id="view-heirarchy"> 🪧 Walkthrough</h2>
+<h2 id="walkthrough">🪧 Walkthrough</h2>
 
 Check out the walkthrough of the Card Wallet app [here](https://davlat-s.github.io/portfolio/).
 
@@ -49,9 +49,7 @@ Check out the walkthrough of the Card Wallet app [here](https://davlat-s.github.
 
 ---
 
-<h2 id="initial-design-concepts-section">
-✏️ Initial Design Concepts
-</h2>
+<h2 id="initial-design-concepts-section">✏️ Initial Design Concepts</h2>
 
 <div style="display: flex; align-items: center; margin-top: 10px;">
   <img src="./previews/ViewHierarchyChart.png" width="800" />
