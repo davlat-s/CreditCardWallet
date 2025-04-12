@@ -9,7 +9,7 @@
 ## Table of Contents
 
 - [About the Project](#about-the-project)
-- [Demo](#demo)
+- [Walkthrough](#walkthrough)
 - [Features](#features-section)
 - [Initial Design Concepts](#initial-design-concepts-section)
 - [Planned Features](#planned-features)
