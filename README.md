@@ -36,13 +36,18 @@ This started as a personal project to organize a growing number of cards, and ha
 ![](./previews/WalletAppIcon.png)
 
 <div style="display: flex; align-items: center; margin-top: 10px;">
-  <img src="./previews/GridView.png" width="300" style="margin-right: 10px;" />
-  <img src="./previews/DetailView.png" width="300" />
+  <img src="./previews/GridView.png" width="400" style="margin-right: 10px;" />
+  <img src="./previews/DetailView.png" width="400" />
 </div>
 
 <div style="display: flex; align-items: center;">
-  <img src="./previews/Form.png" width="300" style="margin-right: 10px;" />
-  <img src="./previews/Charts.png" width="300" />
+  <img src="./previews/Form.png" width="400" style="margin-right: 10px;" />
+  <img src="./previews/Charts.png" width="400" />
+</div>
+
+<div style="display: flex; align-items: center;">
+  <img src="./previews/HideHistory.png" width="400" style="margin-right: 10px;" />
+  <img src="./previews/SidebarToolbar.png" width="400" />
 </div>
 
 ## 🧠 Planned Features
