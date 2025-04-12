@@ -12,6 +12,7 @@
 - [Features](#features-section)
 - [Initial Design Concepts](#initial-design-concepts-section)
 - [Planned Features](#planned-features)
+- [Demo](#demo)
 - [View Heirarchy](#view-heirarchy)
 
 ---
@@ -84,6 +85,10 @@ Here are some enhancements planned for future updates:
 
 - ⚙️ **Advanced Settings**  
   More customization options — including default sort preferences, dark/light appearance toggles, and data visibility filters.
+
+<h2 id="view-heirarchy">🚀 Demo</h2>
+
+Check out the demo of the Credit Card Wallet app [here](https://davlat-s.github.io/portfolio/).
 
 ---
 
