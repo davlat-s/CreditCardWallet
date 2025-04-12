@@ -1,4 +1,4 @@
-# 💳 Credit Card Wallet (macOS App)
+## 💳 Credit Card Wallet (macOS App)
 
 > A native SwiftUI app to manage, track, and visualize your credit card portfolio with powerful insights and an intuitive UI.
 
@@ -35,25 +35,15 @@ This started as a personal project to organize a growing number of cards, and ha
 
 ### Grid View
 
-<video autoplay loop muted playsinline width="100%" poster="previews/grid-preview.jpg">
-  <source src="previews/Grid.mp4" type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
+![Grid View](previews/Grid.mp4)
 
 ### Card Detail View
 
-<video autoplay loop muted playsinline width="100%" poster="previews/detail-preview.jpg">
-  <source src="previews/DetaiView.mp4" type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
+![Detail View](previews/DetailView.mp4)
 
 ### Charts & Insights
 
-<video autoplay loop muted playsinline width="100%" poster="previews/chart-preview.jpg">
-  <source src="previews/Charts.mp4" type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
-
+![Charts](previews/Charts.mp4)
 ---
 
 ![](./ViewHierarchyChart.png)
