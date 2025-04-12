@@ -9,8 +9,8 @@
 ## Table of Contents
 
 - [About the Project](#-about-the-project)
-- [Features](#features)
-- [Initial Design Concepts](#initial-design-concepts)
+- [Features](#-features)
+- [Initial Design Concepts](#-initial-design-concepts)
 - [Planned Features](#-planned-features)
 - [View Heirarchy](#-view-heirarchy)
 
@@ -39,7 +39,7 @@ This started as a personal project to organize a growing number of cards, and ha
 
 ---
 
-## ✏️ initial design concepts
+## ✏️ Initial Design Concepts
 ![](./previews/ViewHierarchyChart.png)
 ![](./previews/WalletAppIcon.png)
 
