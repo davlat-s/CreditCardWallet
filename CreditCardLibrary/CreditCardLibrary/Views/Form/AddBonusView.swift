@@ -25,10 +25,9 @@ struct AddBonusView: View {
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 Button("Add Bonus") {
-                    let newBonus = Bonus(details: bonusName)
+                    let newBonus = Bonus(details: bonusName, startDate: startDate, endDate: endDate)
                     
                     onSave(newBonus)
-                    bonusName = ""
                     dismiss()
                 }
                 .disabled(bonusName.isEmpty)

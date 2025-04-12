@@ -2,7 +2,7 @@ import SwiftUI
 
 struct AddPromotionView: View {
     @Environment(\.dismiss) private var dismiss
-    @State private var promoName: String = ""
+    @State private var promoDescription: String = ""
     @State private var startDate: Date = .now
     @State private var endDate: Date = Date.now.addingTimeInterval(60*60*24*30*12)
     
@@ -10,7 +10,7 @@ struct AddPromotionView: View {
     
     var body: some View {
         Form {
-            CustomTextField(title: "Promotion Details", text: $promoName, width: .infinity, prompt: "0% APR for 12 months on purchases and balance transfers", borderColor: .accent)
+            CustomTextField(title: "Promotion Details", text: $promoDescription, width: .infinity, prompt: "0% APR for 12 months on purchases and balance transfers", borderColor: .accent)
             
             DatePicker("Start Date", selection: $startDate, displayedComponents: .date)
                 .datePickerStyle(.compact)
@@ -22,13 +22,12 @@ struct AddPromotionView: View {
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 Button("Add Promotion") {
-                    let newPromo = Promotion(details: promoName)
+                    let newPromo = Promotion(details: promoDescription, startDate: startDate, endDate: endDate)
                     
                     onSave(newPromo)
-                    promoName = ""
                     dismiss()
                 }
-                .disabled(promoName.isEmpty)
+                .disabled(promoDescription.isEmpty)
             }
             
             ToolbarItem(placement: .cancellationAction) {

@@ -1,5 +1,11 @@
 import SwiftUI
 
+private let dateFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .medium
+    return formatter
+}()
+
 struct DetailView: View {
     
     @Bindable var creditCard: CreditCard
@@ -51,8 +57,8 @@ struct DetailView: View {
                         ForEach(creditCard.bonuses, id: \.self) { bonus in
                             VStack{
                                 DetailRowView(label: "Bonus Details", value: bonus.details)
-                                DetailRowView(label: "Start Date", value: bonus.startDate?.description ?? "None")
-                                DetailRowView(label: "End Date", value: bonus.endDate?.description ?? "None")
+                                DetailRowView(label: "Start Date", value: bonus.startDate.map { dateFormatter.string(from: $0) } ?? "None")
+                                DetailRowView(label: "End Date", value: bonus.endDate.map { dateFormatter.string(from: $0) } ?? "None")
                             }
                         }
                         
@@ -71,8 +77,8 @@ struct DetailView: View {
                         ForEach(creditCard.promotions, id: \.self) { promo in
                             VStack{
                                 DetailRowView(label: "Promotion Details", value: promo.details)
-                                DetailRowView(label: "Start Date", value: promo.startDate?.description ?? "None")
-                                DetailRowView(label: "End Date", value: promo.endDate?.description ?? "None")
+                                DetailRowView(label: "Start Date", value: promo.startDate.map { dateFormatter.string(from: $0) } ?? "None")
+                                DetailRowView(label: "End Date", value: promo.endDate.map { dateFormatter.string(from: $0) } ?? "None")
                             }
                         }
                         
