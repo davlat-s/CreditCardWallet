@@ -28,6 +28,8 @@ This started as a personal project to organize a growing number of cards, and ha
 <h2 id="view-heirarchy"> 🪧 Walkthrough</h2>
 
 Check out the walkthrough of the Card Wallet app [here](https://davlat-s.github.io/portfolio/).
+![](./previews/Banner.png)
+
 
 ---
 
