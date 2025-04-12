@@ -1,4 +1,4 @@
-## 💳 Credit Card Wallet (macOS App)
+## 💳 Card Wallet (macOS App)
 
 > A native SwiftUI app to manage, track, and visualize your credit card portfolio with powerful insights and an intuitive UI.
 
@@ -9,25 +9,25 @@
 ## Table of Contents
 
 - [About the Project](#about-the-project)
+- [Demo](#demo)
 - [Features](#features-section)
 - [Initial Design Concepts](#initial-design-concepts-section)
 - [Planned Features](#planned-features)
-- [Demo](#demo)
 - [View Heirarchy](#view-heirarchy)
 
 ---
 
 <h2 id="about-the-project">✨ About the Project</h2>
 
-**Credit Card Wallet** is a macOS app built using **SwiftUI** and **SwiftData**, designed to help you keep track of all your credit cards — from credit limits and annual fees to sign-up bonuses and promotional APRs.
+**Card Wallet** is a macOS app built using **SwiftUI** and **SwiftData**, designed to help you keep track of all your credit cards — from credit limits and annual fees to sign-up bonuses and promotional APRs.
 
 This started as a personal project to organize a growing number of cards, and has since evolved into a full-featured app with native macOS behavior, rich visuals, and extensibility in mind.
 
 ---
 
-<h2 id="view-heirarchy">🚀 Demo</h2>
+<h2 id="view-heirarchy"> 🪧 Walkthrough</h2>
 
-Check out the demo of the Credit Card Wallet app [here](https://davlat-s.github.io/portfolio/).
+Check out the walkthrough of the Card Wallet app [here](https://davlat-s.github.io/portfolio/).
 
 ---
 
