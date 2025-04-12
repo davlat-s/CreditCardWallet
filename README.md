@@ -25,6 +25,12 @@ This started as a personal project to organize a growing number of cards, and ha
 
 ---
 
+<h2 id="view-heirarchy">🚀 Demo</h2>
+
+Check out the demo of the Credit Card Wallet app [here](https://davlat-s.github.io/portfolio/).
+
+---
+
 <h2 id="features-section">🖥️ Features</h2>
 
 - 💼 Track personal and business credit cards with metadata like limits, APRs, open/close status, and charge card designation
@@ -67,6 +73,8 @@ This started as a personal project to organize a growing number of cards, and ha
   <img src="./previews/SidebarToolbar.png" width="400" />
 </div>
 
+---
+
 <h2 id="planned-features">🧠 Planned Features</h2>
 
 Here are some enhancements planned for future updates:
@@ -85,10 +93,6 @@ Here are some enhancements planned for future updates:
 
 - ⚙️ **Advanced Settings**  
   More customization options — including default sort preferences, dark/light appearance toggles, and data visibility filters.
-
-<h2 id="view-heirarchy">🚀 Demo</h2>
-
-Check out the demo of the Credit Card Wallet app [here](https://davlat-s.github.io/portfolio/).
 
 ---
 
