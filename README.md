@@ -44,11 +44,11 @@ This started as a personal project to organize a growing number of cards, and ha
 </h2>
 
 <div style="display: flex; align-items: center; margin-top: 10px;">
-  <img src="./previews/ViewHierarchyChart.png" width="800" style="margin-right: 10px;" />
+  <img src="./previews/ViewHierarchyChart.png" width="800" />
 </div>
 
 <div style="display: flex; align-items: center; margin-top: 10px;">
-  <img src="./previews/WalletAppIcon.png" width="800" style="margin-right: 10px;" />
+  <img src="./previews/WalletAppIcon.png" width="800" />
 </div>
 
 <div style="display: flex; align-items: center; margin-top: 10px;">
