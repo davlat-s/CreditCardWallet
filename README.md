@@ -9,11 +9,10 @@
 ## Table of Contents
 
 - [About the Project](#-about-the-project)
-- [Features](#-features)
-- [Initial Design Concepts](#-initial-design-concepts)
+- [Features](#features)
+- [Initial Design Concepts](#initial-design-concepts)
 - [Planned Features](#-planned-features)
 - [View Heirarchy](#-view-heirarchy)
-- [SwiftData Model Schema](#-swiftdata-model-schema)
 
 ---
 
