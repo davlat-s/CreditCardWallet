@@ -55,4 +55,14 @@ enum SideBarCategories: Hashable {
             return false
         }
     }
+    
+    var accessibilityIdentifier: String {
+        switch self {
+        case .business: return "business"
+        case .personal: return "personal"
+        case .all: return "all"
+        case .closed: return "closed"
+        case .charts: return "charts"
+        }
+    }
 }

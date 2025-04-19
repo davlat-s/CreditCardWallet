@@ -21,6 +21,7 @@ struct SidebarView: View {
                 ForEach(sortedCategories(), id: \.self) { category in
                     NavigationLink(value: category) {
                         Label(category.displayName, systemImage: category.displayImageName)
+                            .accessibilityIdentifier("category_\(category.accessibilityIdentifier)")
                     }
                 }
             }
@@ -28,9 +29,9 @@ struct SidebarView: View {
             Section("Dashboard") {
                 NavigationLink(value: SideBarCategories.charts) {
                     Label(SideBarCategories.charts.displayName, systemImage: SideBarCategories.charts.displayImageName)
+                        .accessibilityIdentifier("category_charts")
                 }
             }
         }
     }
 }
-

@@ -19,6 +19,7 @@ struct MainContentView: View {
             }
         }
     }
+    @State private var isShowingDeleteAlert: Bool = false
     
     @Query(sort: [SortDescriptor(\Bank.name, order: .forward)]) var existingBanks: [Bank]
     @Query(sort: [SortDescriptor(\PaymentProcessor.name, order: .forward)]) var paymentProcessors: [PaymentProcessor]
@@ -37,6 +38,7 @@ struct MainContentView: View {
                         }) {
                             Label("Toggle Sidebar", systemImage: "sidebar.leading")
                                 .imageScale(.large)
+                                .accessibilityIdentifier("toggleSidebarButton")
                         }
                     }
                 }
@@ -113,12 +115,14 @@ struct MainContentView: View {
                 Button(action: addCard) {
                     Label("Add Card", systemImage: "plus")
                         .imageScale(.large)
+                        .accessibilityIdentifier("addCardButton")
                 }
                 .disabled(!navigationPath.isEmpty)
                 
                 Button(action: toggleEditing) {
                     Label("Edit", systemImage: "square.and.pencil")
                         .imageScale(.large)
+                        .accessibilityIdentifier("editCardButton")
                 }
                 .disabled(selectedCard == nil)
                 
@@ -126,27 +130,37 @@ struct MainContentView: View {
                     Log.action.info("User clicked trash icon")
                     if let selected = selectedCard {
                         cardToDelete = selected
+                        isShowingDeleteAlert = true
                     }
                 }) {
                     Label("Delete", systemImage: "trash")
                         .imageScale(.large)
+                        .accessibilityIdentifier("deleteCardButton")
                 }
                 .disabled(selectedCard == nil)
             }
         }
-        .alert(item: $cardToDelete) { card in
-            Alert(
-                title: Text("Delete Card"),
-                message: Text("Are you sure you want to delete \(card.name)?"),
-                primaryButton: .destructive(Text("Delete")) {
-                    Log.action.info("User clicked delete")
-                    deleteCard(card)
-                },
-                secondaryButton: .cancel(Text("Cancel"), action: {
+        .alert(
+            "Delete Card",
+            isPresented: $isShowingDeleteAlert,
+            actions: {
+                Button("Delete", role: .destructive) {
+                    if let card = cardToDelete {
+                        Log.action.info("User clicked delete")
+                        deleteCard(card)
+                    }
+                }
+                .accessibilityIdentifier("confirmDeleteButton")
+                
+                Button("Cancel", role: .cancel) {
                     Log.action.info("User cancelled deletion")
-                })
-            )
-        }
+                }
+                .accessibilityIdentifier("cancelDeleteButton")
+            },
+            message: {
+                Text("Are you sure you want to delete \(cardToDelete?.name ?? "this card")?")
+            }
+        )
         .sheet(isPresented: $isEditing) {
             if let selectedCard = selectedCard {
                 FormEditView(

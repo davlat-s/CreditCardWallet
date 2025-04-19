@@ -21,6 +21,8 @@ struct SelectCardImageView: View {
                             .scaledToFit()
                             .clipShape(RoundedRectangle(cornerRadius: 8))
                             .frame(height: h)
+                            .accessibilityIdentifier("SelectedCardImage")
+                            .accessibilityLabel("Selected card image")
                     } else {
                         
                         Color.black.opacity(0.02)
@@ -36,11 +38,15 @@ struct SelectCardImageView: View {
                                     .frame(maxWidth: .infinity)
                                     .background(Color.black.opacity(0.3))
                                     .clipShape(RoundedRectangle(cornerRadius: 8))
+                                    .accessibilityIdentifier("SelectCardImagePlaceholder")
+                                    .accessibilityLabel("Select Card Image placeholder")
                             }
                         )
                     }
                 }
             }
+            .accessibilityIdentifier("SelectCardImageButton")
+            .accessibilityLabel(cardArt != nil ? "Selected Card Image" : "Select Card Image")
             .shadow(color: .black.opacity(0.1), radius: 5)
             .buttonStyle(BouncyDarkenButtonStyle())
             Spacer()

@@ -12,12 +12,18 @@ struct AddBonusView: View {
         
         Form {
             CustomTextField(title: "Bonus Details", text: $bonusName, width: .infinity, prompt: "$200 cash back after spending $1,000 in the first 3 months")
+                .accessibilityLabel("Bonus Details")
+                .accessibilityIdentifier("bonusDetailsTextField")
             
             DatePicker("Start Date", selection: $startDate, displayedComponents: .date)
                 .datePickerStyle(.compact)
+                .accessibilityLabel("Start Date")
+                .accessibilityIdentifier("startDatePicker")
             
             DatePicker("End Date", selection: $endDate, displayedComponents: .date)
                 .datePickerStyle(.compact)
+                .accessibilityLabel("End Date")
+                .accessibilityIdentifier("endDatePicker")
         }
         .padding()
         .formStyle(.grouped)
@@ -30,6 +36,8 @@ struct AddBonusView: View {
                     onSave(newBonus)
                     dismiss()
                 }
+                .accessibilityLabel("Add Bonus")
+                .accessibilityIdentifier("addBonusButton")
                 .disabled(bonusName.isEmpty)
                 
             }
@@ -37,6 +45,8 @@ struct AddBonusView: View {
                 Button("Cancel") {
                     dismiss()
                 }
+                .accessibilityLabel("Cancel")
+                .accessibilityIdentifier("cancelButton")
                 
             }
         }
@@ -44,5 +54,3 @@ struct AddBonusView: View {
     }
     
 }
-
-

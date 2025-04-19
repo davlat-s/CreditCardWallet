@@ -41,6 +41,17 @@
                ReferencedContainer = "container:CreditCardLibrary.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "317635B62DB45D3F00598DD3"
+               BuildableName = "CreditCardLibraryUITests.xctest"
+               BlueprintName = "CreditCardLibraryUITests"
+               ReferencedContainer = "container:CreditCardLibrary.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

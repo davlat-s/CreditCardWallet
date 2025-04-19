@@ -33,6 +33,8 @@ struct CardImagePickerView: View {
                                     .frame(width: 150)
                                     .padding(.vertical, 5)
                                     .clipShape(.rect(cornerRadius: 12))
+                                    .accessibilityIdentifier("CardImagePickerView.cardArt.\(cardArt.assetID)")
+                                    .accessibilityLabel("Select card art \(cardArt.assetID) for \(bankName)")
                                     .onTapGesture {
                                         selectedCardArt = cardArt
                                         dismiss()
@@ -44,6 +46,8 @@ struct CardImagePickerView: View {
                     }
                 }
             }
+            .accessibilityIdentifier("CardImagePickerView.cardArtList")
+            .accessibilityLabel("Card Art List")
             .navigationTitle("Select Card Art")
         }
         .toolbar {
@@ -51,8 +55,9 @@ struct CardImagePickerView: View {
                 Button("Cancel"){
                     dismiss()
                 }
+                .accessibilityIdentifier("CardImagePickerView.cancelButton")
+                .accessibilityLabel("Cancel")
             }
-            
         }
     }
 }

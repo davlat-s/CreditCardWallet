@@ -28,6 +28,8 @@ struct FormAddView: View {
                      paymentProcessor: $paymentProcessor,
                      existingBanks: existingBanks,
                      paymentProcessors: paymentProcessors)
+            .accessibilityIdentifier("formAddView")
+            .accessibilityLabel("Add Card Form")
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Add Card") {
@@ -46,6 +48,8 @@ struct FormAddView: View {
                         Log.action.info("Added \(creditCard.name)")
                         dismiss()
                     }
+                    .accessibilityIdentifier("addCardButton")
+                    .accessibilityLabel("Add Card")
                     .disabled(creditCard.name.isEmpty || bank == nil)
                 }
                 ToolbarItem(placement: .cancellationAction) {
@@ -54,6 +58,8 @@ struct FormAddView: View {
                         modelContext.delete(creditCard)
                         dismiss()
                     }
+                    .accessibilityIdentifier("discardButton")
+                    .accessibilityLabel("Discard")
                 }
             }
             .onAppear {

@@ -15,15 +15,22 @@ struct ChartsContentView: View {
                 BarChartView {
                     CreditLimitBreakdownChart(cards: cards)
                 }
+                .accessibilityIdentifier("ChartsContentView.creditLimitBreakdownChart")
+                .accessibilityLabel("Credit Limit Breakdown Chart")
+                
                 BarChartView {
                     CreditAgeChartView(cards: cards)
                 }
+                .accessibilityIdentifier("ChartsContentView.creditAgeChart")
+                .accessibilityLabel("Credit Age Chart")
+                
                 PieChartView {
                     BankBreakdownChart(banks: banks)
                 }
+                .accessibilityIdentifier("ChartsContentView.bankBreakdownChart")
+                .accessibilityLabel("Bank Breakdown Chart")
             }
             .padding()
         }
     }
 }
-

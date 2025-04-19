@@ -28,14 +28,7 @@ struct FormView: View {
         ScrollView {
             Form {
                 Section("Card Details") {
-                    //                    HStack {
-                    //                        Spacer()
-                    //                        FormCardImageView(cardArt: $cardArt, isShowingImagePicker: $showCardArtPicker)
-                    //                        Spacer()
-                    //                    }
-                    
                     HStack {
-                        //                                                DatePickerModifierView(title: "Open Date", selection: $creditCard.openDate, width: 0)
                         VStack {
                             HStack {
                                 Spacer()
@@ -44,50 +37,52 @@ struct FormView: View {
                             }
                             HStack {
                                 CustomTextField(title: "Card Name", text: $creditCard.name, width: .infinity, prompt: "Sapphire Reserve", borderColor: .accent)
+                                    .accessibilityLabel("Card Name")
+                                    .accessibilityIdentifier("cardNameTextField")
                                 CustomNumberField(title: "Annual Fee", number: $creditCard.annualFee, width: 200, prompt: "$495", borderColor: .accent)
-                                
-                                
+                                    .accessibilityLabel("Annual Fee")
+                                    .accessibilityIdentifier("annualFeeNumberField")
                             }
-                            
-                            
-                            
                             HStack {
-                                CustomNumberField(title: "Credit Limit",
-                                                  number: $creditCard.creditLimit,
-                                                  width: 225,
-                                                  prompt: creditCard.isChargeCard ? "Not Applicable to Charge Cards" : "$24,000",
-                                                  borderColor: .accent,
-                                                  variable: !creditCard.isChargeCard
-                                                  
+                                CustomNumberField(
+                                    title: "Credit Limit",
+                                    number: $creditCard.creditLimit,
+                                    width: 225,
+                                    prompt: creditCard.isChargeCard ? "Not Applicable to Charge Cards" : "$24,000",
+                                    borderColor: .accent,
+                                    variable: !creditCard.isChargeCard
                                 )
                                 .disabled(creditCard.isChargeCard)
+                                .accessibilityLabel("Credit Limit")
+                                .accessibilityIdentifier("creditLimitNumberField")
                                 CustomTextField(title: "Last 4-5 Digits", text: $creditCard.lastDigits, width: .infinity, prompt: "**** **** **** 5032", borderColor: .accent)
+                                    .accessibilityLabel("Last Four or Five Digits")
+                                    .accessibilityIdentifier("lastDigitsTextField")
                                 
                                 HStack {
                                     CustomPicker(title: "Select Bank", options: existingBanks, selection: $bank, isNewBank: $isNewBank, width: 175, borderColor: .accent)
+                                        .accessibilityLabel("Select Bank")
+                                        .accessibilityIdentifier("bankPicker")
                                 }
-                                
                             }
                             HStack {
                                 CustomDatePicker(title: "Open Date", selection: $creditCard.openDate, width: 0)
+                                    .accessibilityLabel("Open Date")
+                                    .accessibilityIdentifier("openDatePicker")
                                 CustomToggle(title: "Charge Card", isOn: $creditCard.isChargeCard, width: 100)
+                                    .accessibilityLabel("Charge Card")
+                                    .accessibilityIdentifier("chargeCardToggle")
                                 CustomToggle(title: "Business", isOn: $creditCard.isBusiness, width: 100)
+                                    .accessibilityLabel("Business")
+                                    .accessibilityIdentifier("businessToggle")
                                 
                                 Spacer()
-                                
-                                
                             }
                             .padding(.top, 10)
-                            
-                            
-                            
-                            
                         }
-                        
                     }
                     .padding(.vertical, 10)
                     .padding(.horizontal, 10)
-                    
                 }
                 
                 Section("Promotions") {
@@ -104,8 +99,9 @@ struct FormView: View {
                             Image(systemName: "plus")
                         }
                         .buttonStyle(.plain)
+                        .accessibilityLabel("Add Promotion")
+                        .accessibilityIdentifier("addPromotionButton")
                     }
-                    
                 }
                 
                 Section("Bonuses") {
@@ -122,13 +118,12 @@ struct FormView: View {
                             Image(systemName: "plus")
                         }
                         .buttonStyle(.plain)
+                        .accessibilityLabel("Add Bonus")
+                        .accessibilityIdentifier("addBonusButton")
                     }
-                    
                 }
                 
                 Section("Card Status") {
-                    
-                    
                     if let close = closed?.reason {
                         HStack {
                             Text("Closed: \(close)")
@@ -138,9 +133,10 @@ struct FormView: View {
                             } label: {
                                 Label("Open Card", systemImage: "archivebox.fill")
                                     .labelStyle(.titleOnly)
-                                
                             }
                             .buttonStyle(.plain)
+                            .accessibilityLabel("Open Card")
+                            .accessibilityIdentifier("openCardButton")
                         }
                     } else {
                         HStack {
@@ -151,17 +147,13 @@ struct FormView: View {
                             } label: {
                                 Label("Close Card", systemImage: "archivebox.fill")
                                     .labelStyle(.titleOnly)
-                                
                             }
                             .buttonBorderShape(.roundedRectangle)
-                            
+                            .accessibilityLabel("Close Card")
+                            .accessibilityIdentifier("closeCardButton")
                         }
                     }
-                    
-                    
                 }
-                
-                
             }
             .formStyle(.grouped)
         }

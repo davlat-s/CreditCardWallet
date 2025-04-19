@@ -11,11 +11,17 @@ struct AddPromotionView: View {
     var body: some View {
         Form {
             CustomTextField(title: "Promotion Details", text: $promoDescription, width: .infinity, prompt: "0% APR for 12 months on purchases and balance transfers", borderColor: .accent)
+                .accessibilityIdentifier("AddPromotionView.promoDescriptionTextField")
+                .accessibilityLabel("Promotion Details")
             
             DatePicker("Start Date", selection: $startDate, displayedComponents: .date)
                 .datePickerStyle(.compact)
+                .accessibilityIdentifier("AddPromotionView.startDatePicker")
+                .accessibilityLabel("Promotion Start Date")
             DatePicker("End Date", selection: $endDate, displayedComponents: .date)
                 .datePickerStyle(.compact)
+                .accessibilityIdentifier("AddPromotionView.endDatePicker")
+                .accessibilityLabel("Promotion End Date")
             
         }
         .formStyle(.grouped)
@@ -28,17 +34,19 @@ struct AddPromotionView: View {
                     dismiss()
                 }
                 .disabled(promoDescription.isEmpty)
+                .accessibilityIdentifier("AddPromotionView.addPromotionButton")
+                .accessibilityLabel("Add Promotion")
             }
             
             ToolbarItem(placement: .cancellationAction) {
                 Button("Cancel") {
                     dismiss()
                 }
+                .accessibilityIdentifier("AddPromotionView.cancelButton")
+                .accessibilityLabel("Cancel")
             }
         }
         .frame(width: 500)
         
     }
 }
-
-
