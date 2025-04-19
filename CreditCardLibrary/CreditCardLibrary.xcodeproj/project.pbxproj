@@ -19,6 +19,8 @@
 		314BD47C2C9E01BE00E32E74 /* MainAppContainer .swift in Sources */ = {isa = PBXBuildFile; fileRef = 314BD47B2C9E01BE00E32E74 /* MainAppContainer .swift */; };
 		314BD4802C9EB2FA00E32E74 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314BD47F2C9EB2FA00E32E74 /* SidebarView.swift */; };
 		317635A32DB432EF00598DD3 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317635A22DB432EF00598DD3 /* Logger.swift */; };
+		317635AB2DB4460100598DD3 /* CreditCardLibraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317635AA2DB4460100598DD3 /* CreditCardLibraryTests.swift */; };
+		317635B22DB4463E00598DD3 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317635B12DB4463E00598DD3 /* ModelTests.swift */; };
 		3176D8EB2C74362800C57FBB /* Bank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176D8EA2C74362800C57FBB /* Bank.swift */; };
 		3176D8EF2C7437E000C57FBB /* Bonus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176D8EE2C7437DF00C57FBB /* Bonus.swift */; };
 		3176D8F22C75AC2B00C57FBB /* Closed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176D8F12C75AC2B00C57FBB /* Closed.swift */; };
@@ -65,6 +67,16 @@
 		319F55942C5F2B1600C054D2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 319F55932C5F2B1600C054D2 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		317635AC2DB4460100598DD3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 319F55812C5F2B1500C054D2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 319F55882C5F2B1500C054D2;
+			remoteInfo = CreditCardLibrary;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		310E5EE32C699A960062DDFA /* CreditCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCard.swift; sourceTree = "<group>"; };
 		3116763F2D173D340098BF92 /* CloseCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseCardView.swift; sourceTree = "<group>"; };
@@ -78,6 +90,9 @@
 		314BD47B2C9E01BE00E32E74 /* MainAppContainer .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainAppContainer .swift"; sourceTree = "<group>"; };
 		314BD47F2C9EB2FA00E32E74 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		317635A22DB432EF00598DD3 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		317635A82DB4460100598DD3 /* CreditCardLibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CreditCardLibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		317635AA2DB4460100598DD3 /* CreditCardLibraryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardLibraryTests.swift; sourceTree = "<group>"; };
+		317635B12DB4463E00598DD3 /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
 		3176D8EA2C74362800C57FBB /* Bank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bank.swift; sourceTree = "<group>"; };
 		3176D8EE2C7437DF00C57FBB /* Bonus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bonus.swift; sourceTree = "<group>"; };
 		3176D8F12C75AC2B00C57FBB /* Closed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Closed.swift; sourceTree = "<group>"; };
@@ -127,6 +142,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		317635A52DB4460100598DD3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		319F55862C5F2B1500C054D2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -137,9 +159,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		317635A92DB4460100598DD3 /* CreditCardLibraryTests */ = {
+			isa = PBXGroup;
+			children = (
+				317635AA2DB4460100598DD3 /* CreditCardLibraryTests.swift */,
+				317635B12DB4463E00598DD3 /* ModelTests.swift */,
+			);
+			path = CreditCardLibraryTests;
+			sourceTree = "<group>";
+		};
 		3176D8F02C743F0900C57FBB /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				3189C6E52D5AF03600EDA7A4 /* loadBankCardArtData.swift */,
 				3189C72B2D87611800EDA7A4 /* AppStorageKeys.swift */,
 				318A662F2C7BD3EC0039487E /* PreviewData.swift */,
 				317635A22DB432EF00598DD3 /* Logger.swift */,
@@ -260,6 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				319F558B2C5F2B1500C054D2 /* CreditCardLibrary */,
+				317635A92DB4460100598DD3 /* CreditCardLibraryTests */,
 				319F558A2C5F2B1500C054D2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -268,6 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				319F55892C5F2B1500C054D2 /* CreditCardLibrary.app */,
+				317635A82DB4460100598DD3 /* CreditCardLibraryTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -305,7 +339,6 @@
 				3176D8EA2C74362800C57FBB /* Bank.swift */,
 				3189C6E12D5AE2DB00EDA7A4 /* CardArt.swift */,
 				3189C6F12D5C44F100EDA7A4 /* BankCardArtData.json */,
-				3189C6E52D5AF03600EDA7A4 /* loadBankCardArtData.swift */,
 				3176D8EE2C7437DF00C57FBB /* Bonus.swift */,
 				3176D8F12C75AC2B00C57FBB /* Closed.swift */,
 				318A66362C7C14300039487E /* SideBarCategories.swift */,
@@ -316,6 +349,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		317635A72DB4460100598DD3 /* CreditCardLibraryTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 317635AE2DB4460100598DD3 /* Build configuration list for PBXNativeTarget "CreditCardLibraryTests" */;
+			buildPhases = (
+				317635A42DB4460100598DD3 /* Sources */,
+				317635A52DB4460100598DD3 /* Frameworks */,
+				317635A62DB4460100598DD3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				317635AD2DB4460100598DD3 /* PBXTargetDependency */,
+			);
+			name = CreditCardLibraryTests;
+			productName = CreditCardLibraryTests;
+			productReference = 317635A82DB4460100598DD3 /* CreditCardLibraryTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		319F55882C5F2B1500C054D2 /* CreditCardLibrary */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 319F55982C5F2B1600C054D2 /* Build configuration list for PBXNativeTarget "CreditCardLibrary" */;
@@ -343,6 +394,10 @@
 				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
+					317635A72DB4460100598DD3 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 319F55882C5F2B1500C054D2;
+					};
 					319F55882C5F2B1500C054D2 = {
 						CreatedOnToolsVersion = 15.4;
 					};
@@ -362,11 +417,19 @@
 			projectRoot = "";
 			targets = (
 				319F55882C5F2B1500C054D2 /* CreditCardLibrary */,
+				317635A72DB4460100598DD3 /* CreditCardLibraryTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		317635A62DB4460100598DD3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		319F55872C5F2B1500C054D2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -380,6 +443,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		317635A42DB4460100598DD3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				317635AB2DB4460100598DD3 /* CreditCardLibraryTests.swift in Sources */,
+				317635B22DB4463E00598DD3 /* ModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		319F55852C5F2B1500C054D2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -442,7 +514,49 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		317635AD2DB4460100598DD3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 319F55882C5F2B1500C054D2 /* CreditCardLibrary */;
+			targetProxy = 317635AC2DB4460100598DD3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		317635AF2DB4460100598DD3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CJQCXZH5MJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Davlat.CreditCardLibraryTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CreditCardLibrary.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CreditCardLibrary";
+			};
+			name = Debug;
+		};
+		317635B02DB4460100598DD3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CJQCXZH5MJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Davlat.CreditCardLibraryTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CreditCardLibrary.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CreditCardLibrary";
+			};
+			name = Release;
+		};
 		319F55962C5F2B1600C054D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -622,6 +736,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		317635AE2DB4460100598DD3 /* Build configuration list for PBXNativeTarget "CreditCardLibraryTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				317635AF2DB4460100598DD3 /* Debug */,
+				317635B02DB4460100598DD3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		319F55842C5F2B1500C054D2 /* Build configuration list for PBXProject "CreditCardLibrary" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
