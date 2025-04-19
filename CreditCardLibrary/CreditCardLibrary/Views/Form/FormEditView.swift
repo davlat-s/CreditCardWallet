@@ -42,13 +42,25 @@ struct FormEditView: View {
                      paymentProcessors: paymentProcessors)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Done") {
+                    Button("Save Changes") {
+                        Log.action.info("User clicked Save Changes")
                         applyEdits()
                         dismiss()
                     }
                     .disabled(editedCreditCard.name.isEmpty || editedBank == nil || editedCreditCard.lastDigits.isEmpty)
                 }
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Discard") {
+                        Log.action.info("User clicked Discard")
+                        resetEdits()
+                        dismiss()
+                    }
+                    .disabled(editedCreditCard.name.isEmpty || editedBank == nil || editedCreditCard.lastDigits.isEmpty)
+                }
             }
+        }
+        .onAppear {
+            Log.general.info("FormEditView appeared")
         }
     }
     
@@ -157,5 +169,15 @@ struct FormEditView: View {
         }
         
         try? modelContext.save()
+    }
+    
+    private func resetEdits() {
+        editedCreditCard = creditCard.deepCopy()
+        editedBank = creditCard.bankInstance
+        editedCardArt = creditCard.cardArtInstance
+        editedPromotions = creditCard.promotionsInstance
+        editedBonuses = creditCard.bonusesInstance
+        editedClosed = creditCard.closedInstance
+        editedPaymentProcessor = creditCard.paymentProcessorInstance
     }
 }

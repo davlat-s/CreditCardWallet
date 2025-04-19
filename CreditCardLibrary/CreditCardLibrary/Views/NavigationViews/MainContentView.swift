@@ -12,7 +12,13 @@ struct MainContentView: View {
     @State private var isEditing: Bool = false
     @State private var toggleHelper = true
     @State private var navigationPath = NavigationPath()
-    @State private var cardToDelete: CreditCard?
+    @State private var cardToDelete: CreditCard? {
+        didSet {
+            if let card = cardToDelete {
+                Log.action.info("Delete alert presented for card: \(card.name)")
+            }
+        }
+    }
     
     @Query(sort: [SortDescriptor(\Bank.name, order: .forward)]) var existingBanks: [Bank]
     @Query(sort: [SortDescriptor(\PaymentProcessor.name, order: .forward)]) var paymentProcessors: [PaymentProcessor]
@@ -57,11 +63,15 @@ struct MainContentView: View {
                     ZStack {
                         Color(NSColor.windowBackgroundColor)
                         DetailContentView(creditCard: card)
+                            .onAppear {
+                                Log.action.info("Detail view appeared for card: \(card.name)")
+                            }
                             .background(Color(.background))
                             .navigationBarBackButtonHidden(true)
                             .toolbar {
                                 ToolbarItem(placement: .navigation) {
                                     Button {
+                                        Log.action.info("User backed out of Detail View for card: \(card.name)")
                                         withAnimation(.spring()) {
                                             navigationPath.removeLast()
                                         }
@@ -113,6 +123,7 @@ struct MainContentView: View {
                 .disabled(selectedCard == nil)
                 
                 Button(action: {
+                    Log.action.info("User clicked trash icon")
                     if let selected = selectedCard {
                         cardToDelete = selected
                     }
@@ -128,9 +139,12 @@ struct MainContentView: View {
                 title: Text("Delete Card"),
                 message: Text("Are you sure you want to delete \(card.name)?"),
                 primaryButton: .destructive(Text("Delete")) {
+                    Log.action.info("User clicked delete")
                     deleteCard(card)
                 },
-                secondaryButton: .cancel()
+                secondaryButton: .cancel(Text("Cancel"), action: {
+                    Log.action.info("User cancelled deletion")
+                })
             )
         }
         .sheet(isPresented: $isEditing) {
@@ -155,6 +169,7 @@ struct MainContentView: View {
     }
     
     private func addCard() {
+        Log.action.info("User clicked plus icon")
         withAnimation {
             newCard.toggle()
         }
@@ -162,11 +177,15 @@ struct MainContentView: View {
     
     private func toggleEditing() {
         isEditing.toggle()
+        if let card = selectedCard {
+                Log.action.info("User clicked Edit \(card.name)")
+            }
     }
     
     private func deleteCard(_ card: CreditCard) {
         withAnimation {
             modelContext.delete(card)
+            Log.action.info("Deleted \(card.name)")
             selectedCard = nil
             selectedCard = nil
             navigationPath = NavigationPath()

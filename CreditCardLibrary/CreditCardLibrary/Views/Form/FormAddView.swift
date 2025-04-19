@@ -31,6 +31,7 @@ struct FormAddView: View {
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Add Card") {
+                        Log.action.info("User clicked Add Card")
                         creditCard.bank = bank
                         creditCard.promotions = promotions
                         creditCard.bonuses = bonuses
@@ -42,18 +43,21 @@ struct FormAddView: View {
                         modelContext.insert(creditCard)
                         
                         try? modelContext.save()
+                        Log.action.info("Added \(creditCard.name)")
                         dismiss()
                     }
                     .disabled(creditCard.name.isEmpty || bank == nil)
                 }
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Discard") {
+                        Log.action.info("User clicked Discard")
                         modelContext.delete(creditCard)
                         dismiss()
                     }
                 }
             }
             .onAppear {
+                Log.general.info("FormAddView appeared")
                 creditCard = CreditCard.returnNewCreditCard()
             }
         }

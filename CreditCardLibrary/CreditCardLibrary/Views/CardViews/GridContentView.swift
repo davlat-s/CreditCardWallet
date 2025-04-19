@@ -28,12 +28,15 @@ struct GridContentView: View {
                         .simultaneousGesture(
                             TapGesture(count: 2)
                                 .onEnded {
+                                    Log.action.info("User double clicked on \(card.name)")
                                     onDoubleTap(card)
                                 }
                         )
                         .simultaneousGesture(
                             TapGesture(count: 1)
                                 .onEnded {
+                                    Log.action.info("User selected \(card.name)")
+
                                     DispatchQueue.main.async {
                                         selectedCard = card}
                                 }
