@@ -115,7 +115,7 @@ struct MainContentView: View {
                 Button(action: addCard) {
                     Label("Add Card", systemImage: "plus")
                         .imageScale(.large)
-                        .accessibilityIdentifier("addCardButton")
+                        .accessibilityIdentifier("plusButton")
                 }
                 .disabled(!navigationPath.isEmpty)
                 

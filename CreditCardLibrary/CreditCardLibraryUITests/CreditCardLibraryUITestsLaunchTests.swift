@@ -1,11 +1,4 @@
-//
-//  CreditCardLibraryUITestsLaunchTests.swift
-//  CreditCardLibraryUITests
-//
-//  Created by Davlat Sirojitdinov on 4/19/25.
-//
-
-import XCTest
+ import XCTest
 
 final class CreditCardLibraryUITestsLaunchTests: XCTestCase {
 

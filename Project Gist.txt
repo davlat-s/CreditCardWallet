@@ -222,14 +222,14 @@
 │   │   │   ├── PaymentProcessor.swift
 │   │   │   ├── PaymentProcessorInstances.swift
 │   │   │   ├── Promotion.swift
-│   │   │   ├── SideBarCategories.swift
-│   │   │   └── loadBankCardArtData.swift
+│   │   │   └── SideBarCategories.swift
 │   │   ├── Preview Content/
 │   │   │   └── Preview Assets.xcassets/
 │   │   ├── Utilities/
 │   │   │   ├── AppStorageKeys.swift
 │   │   │   ├── Logger.swift
-│   │   │   └── PreviewData.swift
+│   │   │   ├── PreviewData.swift
+│   │   │   └── loadBankCardArtData.swift
 │   │   └── Views/
 │   │       ├── CardDetailViews/
 │   │       │   ├── CardHistoryView.swift
@@ -277,15 +277,21 @@
 │   │           ├── PromotionsTabView.swift
 │   │           ├── SettingsContentView.swift
 │   │           └── SettingsTabView.swift
-│   └── CreditCardLibrary.xcodeproj/
-│       ├── project.xcworkspace/
-│       │   ├── xcshareddata/
-│       │   │   └── swiftpm/
-│       │   │       └── configuration/
-│       │   └── xcuserdata/
-│       ├── xcshareddata/
-│       │   └── xcschemes/
-│       └── xcuserdata/
+│   ├── CreditCardLibrary.xcodeproj/
+│   │   ├── project.xcworkspace/
+│   │   │   ├── xcshareddata/
+│   │   │   │   └── swiftpm/
+│   │   │   │       └── configuration/
+│   │   │   └── xcuserdata/
+│   │   ├── xcshareddata/
+│   │   │   └── xcschemes/
+│   │   └── xcuserdata/
+│   ├── CreditCardLibraryTests/
+│   │   ├── CreditCardLibraryTests.swift
+│   │   └── ModelTests.swift
+│   └── CreditCardLibraryUITests/
+│       ├── CreditCardLibraryUITests.swift
+│       └── CreditCardLibraryUITestsLaunchTests.swift
 └── previews/
 
 
@@ -1077,30 +1083,15 @@ enum SideBarCategories: Hashable {
  return false
  }
  }
-}
-
-
-
-/** File: /CreditCardLibrary/CreditCardLibrary/Model/loadBankCardArtData.swift ***************************************/
-import Foundation
-typealias BankCardArtData = [String: [String]]
-func loadBankCardArtData() -> BankCardArtData? {
- let fileName = "BankCardArtData"
  
- guard let url = Bundle.main.url(forResource: fileName, withExtension: "json") else {
- print("Could not find \(fileName).json in the bundle.")
- return nil
+ var accessibilityIdentifier: String {
+ switch self {
+ case .business: return "business"
+ case .personal: return "personal"
+ case .all: return "all"
+ case .closed: return "closed"
+ case .charts: return "charts"
  }
- 
- do {
- 
- let data = try Data(contentsOf: url)
- 
- let decoded = try JSONDecoder().decode(BankCardArtData.self, from: data)
- return decoded
- } catch {
- print("Error decoding \(fileName).json: \(error)")
- return nil
  }
 }
 
@@ -1236,6 +1227,31 @@ class PreviewData {
  var personalCategory = SideBarCategories.personal
  var closedCategory = SideBarCategories.closed
  
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibrary/Utilities/loadBankCardArtData.swift ***************************************/
+import Foundation
+typealias BankCardArtData = [String: [String]]
+func loadBankCardArtData() -> BankCardArtData? {
+ let fileName = "BankCardArtData"
+ 
+ guard let url = Bundle.main.url(forResource: fileName, withExtension: "json") else {
+ print("Could not find \(fileName).json in the bundle.")
+ return nil
+ }
+ 
+ do {
+ 
+ let data = try Data(contentsOf: url)
+ 
+ let decoded = try JSONDecoder().decode(BankCardArtData.self, from: data)
+ return decoded
+ } catch {
+ print("Error decoding \(fileName).json: \(error)")
+ return nil
+ }
 }
 
 
@@ -1457,6 +1473,8 @@ struct HistoryToggleView: View {
  Text(isShowingHistory ? "Hide History" : "Show History")
  })
  .padding()
+ .accessibilityIdentifier("historyToggleButton")
+ .accessibilityLabel(Text(isShowingHistory ? "Hide History" : "Show History"))
  }
  .frame(height: 35)
  }
@@ -1549,6 +1567,8 @@ struct GridContentView: View {
  LazyVGrid(columns: columns, spacing: 5) {
  ForEach(filteredCreditCards, id: \.id) { card in
  CardCellView(creditCard: card)
+ .accessibilityIdentifier("CardCell_\(card.name)")
+ .accessibilityLabel(Text("Credit Card: \(card.name)"))
  .overlay(
  RoundedRectangle(cornerRadius: 8)
  .strokeBorder(selectedCard == card ? Color.accentColor.opacity(0.8) : Color.clear, lineWidth: 3)
@@ -1686,12 +1706,20 @@ struct ChartsContentView: View {
  BarChartView {
  CreditLimitBreakdownChart(cards: cards)
  }
+ .accessibilityIdentifier("ChartsContentView.creditLimitBreakdownChart")
+ .accessibilityLabel("Credit Limit Breakdown Chart")
+ 
  BarChartView {
  CreditAgeChartView(cards: cards)
  }
+ .accessibilityIdentifier("ChartsContentView.creditAgeChart")
+ .accessibilityLabel("Credit Age Chart")
+ 
  PieChartView {
  BankBreakdownChart(banks: banks)
  }
+ .accessibilityIdentifier("ChartsContentView.bankBreakdownChart")
+ .accessibilityLabel("Bank Breakdown Chart")
  }
  .padding()
  }
@@ -1854,6 +1882,8 @@ struct AddBankView: View {
  var body: some View {
  Form {
  CustomTextField(title: "Bank Name", text: $bankName, width: .infinity, prompt: "Charles Schwab", borderColor: .accent)
+ .accessibilityIdentifier("AddBankView.bankNameTextField")
+ .accessibilityLabel("Bank Name")
  
  }
  .toolbar {
@@ -1865,12 +1895,16 @@ struct AddBankView: View {
  bankName = ""
  dismiss()
  }
+ .accessibilityIdentifier("AddBankView.addBankButton")
+ .accessibilityLabel("Add Bank")
  .disabled(bankName.isEmpty)
  }
  ToolbarItem(placement: .cancellationAction) {
  Button("Cancel") {
  dismiss()
  }
+ .accessibilityIdentifier("AddBankView.cancelButton")
+ .accessibilityLabel("Cancel")
  }
  }
  .formStyle(.grouped)
@@ -1895,12 +1929,18 @@ struct AddBonusView: View {
  
  Form {
  CustomTextField(title: "Bonus Details", text: $bonusName, width: .infinity, prompt: "$200 cash back after spending $1,000 in the first 3 months")
+ .accessibilityLabel("Bonus Details")
+ .accessibilityIdentifier("bonusDetailsTextField")
  
  DatePicker("Start Date", selection: $startDate, displayedComponents: .date)
  .datePickerStyle(.compact)
+ .accessibilityLabel("Start Date")
+ .accessibilityIdentifier("startDatePicker")
  
  DatePicker("End Date", selection: $endDate, displayedComponents: .date)
  .datePickerStyle(.compact)
+ .accessibilityLabel("End Date")
+ .accessibilityIdentifier("endDatePicker")
  }
  .padding()
  .formStyle(.grouped)
@@ -1913,6 +1953,8 @@ struct AddBonusView: View {
  onSave(newBonus)
  dismiss()
  }
+ .accessibilityLabel("Add Bonus")
+ .accessibilityIdentifier("addBonusButton")
  .disabled(bonusName.isEmpty)
  
  }
@@ -1920,6 +1962,8 @@ struct AddBonusView: View {
  Button("Cancel") {
  dismiss()
  }
+ .accessibilityLabel("Cancel")
+ .accessibilityIdentifier("cancelButton")
  
  }
  }
@@ -1943,11 +1987,17 @@ struct AddPromotionView: View {
  var body: some View {
  Form {
  CustomTextField(title: "Promotion Details", text: $promoDescription, width: .infinity, prompt: "0% APR for 12 months on purchases and balance transfers", borderColor: .accent)
+ .accessibilityIdentifier("AddPromotionView.promoDescriptionTextField")
+ .accessibilityLabel("Promotion Details")
  
  DatePicker("Start Date", selection: $startDate, displayedComponents: .date)
  .datePickerStyle(.compact)
+ .accessibilityIdentifier("AddPromotionView.startDatePicker")
+ .accessibilityLabel("Promotion Start Date")
  DatePicker("End Date", selection: $endDate, displayedComponents: .date)
  .datePickerStyle(.compact)
+ .accessibilityIdentifier("AddPromotionView.endDatePicker")
+ .accessibilityLabel("Promotion End Date")
  
  }
  .formStyle(.grouped)
@@ -1960,12 +2010,16 @@ struct AddPromotionView: View {
  dismiss()
  }
  .disabled(promoDescription.isEmpty)
+ .accessibilityIdentifier("AddPromotionView.addPromotionButton")
+ .accessibilityLabel("Add Promotion")
  }
  
  ToolbarItem(placement: .cancellationAction) {
  Button("Cancel") {
  dismiss()
  }
+ .accessibilityIdentifier("AddPromotionView.cancelButton")
+ .accessibilityLabel("Cancel")
  }
  }
  .frame(width: 500)
@@ -2010,6 +2064,8 @@ struct CardImagePickerView: View {
  .frame(width: 150)
  .padding(.vertical, 5)
  .clipShape(.rect(cornerRadius: 12))
+ .accessibilityIdentifier("CardImagePickerView.cardArt.\(cardArt.assetID)")
+ .accessibilityLabel("Select card art \(cardArt.assetID) for \(bankName)")
  .onTapGesture {
  selectedCardArt = cardArt
  dismiss()
@@ -2021,6 +2077,8 @@ struct CardImagePickerView: View {
  }
  }
  }
+ .accessibilityIdentifier("CardImagePickerView.cardArtList")
+ .accessibilityLabel("Card Art List")
  .navigationTitle("Select Card Art")
  }
  .toolbar {
@@ -2028,8 +2086,9 @@ struct CardImagePickerView: View {
  Button("Cancel"){
  dismiss()
  }
+ .accessibilityIdentifier("CardImagePickerView.cancelButton")
+ .accessibilityLabel("Cancel")
  }
- 
  }
  }
 }
@@ -2047,6 +2106,8 @@ struct CloseCardView: View {
  var body: some View {
  Form {
  CustomTextField(title: "Closed Reason", text: $closedReason, width: .infinity, prompt: "Did not want to pay the annual fee")
+ .accessibilityIdentifier("CloseCardView.closedReasonTextField")
+ .accessibilityLabel("Closed Reason")
  }
  .toolbar {
  ToolbarItem(placement: .confirmationAction) {
@@ -2058,12 +2119,16 @@ struct CloseCardView: View {
  dismiss()
  }
  .disabled(closedReason.isEmpty)
+ .accessibilityIdentifier("CloseCardView.closeCardButton")
+ .accessibilityLabel("Close Card")
  
  }
  ToolbarItem(placement: .cancellationAction){
  Button("Cancel") {
  dismiss()
  }
+ .accessibilityIdentifier("CloseCardView.cancelButton")
+ .accessibilityLabel("Cancel")
  }
  }
  .formStyle(.grouped)
@@ -2103,6 +2168,8 @@ struct FormAddView: View {
  paymentProcessor: $paymentProcessor,
  existingBanks: existingBanks,
  paymentProcessors: paymentProcessors)
+ .accessibilityIdentifier("formAddView")
+ .accessibilityLabel("Add Card Form")
  .toolbar {
  ToolbarItem(placement: .confirmationAction) {
  Button("Add Card") {
@@ -2121,6 +2188,8 @@ struct FormAddView: View {
  Log.action.info("Added \(creditCard.name)")
  dismiss()
  }
+ .accessibilityIdentifier("addCardButton")
+ .accessibilityLabel("Add Card")
  .disabled(creditCard.name.isEmpty || bank == nil)
  }
  ToolbarItem(placement: .cancellationAction) {
@@ -2129,6 +2198,8 @@ struct FormAddView: View {
  modelContext.delete(creditCard)
  dismiss()
  }
+ .accessibilityIdentifier("discardButton")
+ .accessibilityLabel("Discard")
  }
  }
  .onAppear {
@@ -2551,14 +2622,7 @@ struct FormView: View {
  ScrollView {
  Form {
  Section("Card Details") {
- 
- 
- 
- 
- 
- 
  HStack {
- 
  VStack {
  HStack {
  Spacer()
@@ -2567,50 +2631,52 @@ struct FormView: View {
  }
  HStack {
  CustomTextField(title: "Card Name", text: $creditCard.name, width: .infinity, prompt: "Sapphire Reserve", borderColor: .accent)
+ .accessibilityLabel("Card Name")
+ .accessibilityIdentifier("cardNameTextField")
  CustomNumberField(title: "Annual Fee", number: $creditCard.annualFee, width: 200, prompt: "$495", borderColor: .accent)
- 
- 
+ .accessibilityLabel("Annual Fee")
+ .accessibilityIdentifier("annualFeeNumberField")
  }
- 
- 
- 
  HStack {
- CustomNumberField(title: "Credit Limit",
+ CustomNumberField(
+ title: "Credit Limit",
  number: $creditCard.creditLimit,
  width: 225,
  prompt: creditCard.isChargeCard ? "Not Applicable to Charge Cards" : "$24,000",
  borderColor: .accent,
  variable: !creditCard.isChargeCard
- 
  )
  .disabled(creditCard.isChargeCard)
+ .accessibilityLabel("Credit Limit")
+ .accessibilityIdentifier("creditLimitNumberField")
  CustomTextField(title: "Last 4-5 Digits", text: $creditCard.lastDigits, width: .infinity, prompt: "**** **** **** 5032", borderColor: .accent)
+ .accessibilityLabel("Last Four or Five Digits")
+ .accessibilityIdentifier("lastDigitsTextField")
  
  HStack {
  CustomPicker(title: "Select Bank", options: existingBanks, selection: $bank, isNewBank: $isNewBank, width: 175, borderColor: .accent)
+ .accessibilityLabel("Select Bank")
+ .accessibilityIdentifier("bankPicker")
  }
- 
  }
  HStack {
  CustomDatePicker(title: "Open Date", selection: $creditCard.openDate, width: 0)
+ .accessibilityLabel("Open Date")
+ .accessibilityIdentifier("openDatePicker")
  CustomToggle(title: "Charge Card", isOn: $creditCard.isChargeCard, width: 100)
+ .accessibilityLabel("Charge Card")
+ .accessibilityIdentifier("chargeCardToggle")
  CustomToggle(title: "Business", isOn: $creditCard.isBusiness, width: 100)
+ .accessibilityLabel("Business")
+ .accessibilityIdentifier("businessToggle")
  
  Spacer()
- 
- 
  }
  .padding(.top, 10)
- 
- 
- 
- 
  }
- 
  }
  .padding(.vertical, 10)
  .padding(.horizontal, 10)
- 
  }
  
  Section("Promotions") {
@@ -2627,8 +2693,9 @@ struct FormView: View {
  Image(systemName: "plus")
  }
  .buttonStyle(.plain)
+ .accessibilityLabel("Add Promotion")
+ .accessibilityIdentifier("addPromotionButton")
  }
- 
  }
  
  Section("Bonuses") {
@@ -2645,13 +2712,12 @@ struct FormView: View {
  Image(systemName: "plus")
  }
  .buttonStyle(.plain)
+ .accessibilityLabel("Add Bonus")
+ .accessibilityIdentifier("addBonusButton")
  }
- 
  }
  
  Section("Card Status") {
- 
- 
  if let close = closed?.reason {
  HStack {
  Text("Closed: \(close)")
@@ -2661,9 +2727,10 @@ struct FormView: View {
  } label: {
  Label("Open Card", systemImage: "archivebox.fill")
  .labelStyle(.titleOnly)
- 
  }
  .buttonStyle(.plain)
+ .accessibilityLabel("Open Card")
+ .accessibilityIdentifier("openCardButton")
  }
  } else {
  HStack {
@@ -2674,17 +2741,13 @@ struct FormView: View {
  } label: {
  Label("Close Card", systemImage: "archivebox.fill")
  .labelStyle(.titleOnly)
- 
  }
  .buttonBorderShape(.roundedRectangle)
- 
+ .accessibilityLabel("Close Card")
+ .accessibilityIdentifier("closeCardButton")
  }
  }
- 
- 
  }
- 
- 
  }
  .formStyle(.grouped)
  }
@@ -2741,6 +2804,8 @@ struct SelectCardImageView: View {
  .scaledToFit()
  .clipShape(RoundedRectangle(cornerRadius: 8))
  .frame(height: h)
+ .accessibilityIdentifier("SelectedCardImage")
+ .accessibilityLabel("Selected card image")
  } else {
  
  Color.black.opacity(0.02)
@@ -2756,11 +2821,15 @@ struct SelectCardImageView: View {
  .frame(maxWidth: .infinity)
  .background(Color.black.opacity(0.3))
  .clipShape(RoundedRectangle(cornerRadius: 8))
+ .accessibilityIdentifier("SelectCardImagePlaceholder")
+ .accessibilityLabel("Select Card Image placeholder")
  }
  )
  }
  }
  }
+ .accessibilityIdentifier("SelectCardImageButton")
+ .accessibilityLabel(cardArt != nil ? "Selected Card Image" : "Select Card Image")
  .shadow(color: .black.opacity(0.1), radius: 5)
  .buttonStyle(BouncyDarkenButtonStyle())
  Spacer()
@@ -2834,6 +2903,7 @@ struct MainContentView: View {
  }
  }
  }
+ @State private var isShowingDeleteAlert: Bool = false
  
  @Query(sort: [SortDescriptor(\Bank.name, order: .forward)]) var existingBanks: [Bank]
  @Query(sort: [SortDescriptor(\PaymentProcessor.name, order: .forward)]) var paymentProcessors: [PaymentProcessor]
@@ -2852,6 +2922,7 @@ struct MainContentView: View {
  }) {
  Label("Toggle Sidebar", systemImage: "sidebar.leading")
  .imageScale(.large)
+ .accessibilityIdentifier("toggleSidebarButton")
  }
  }
  }
@@ -2928,12 +2999,14 @@ struct MainContentView: View {
  Button(action: addCard) {
  Label("Add Card", systemImage: "plus")
  .imageScale(.large)
+ .accessibilityIdentifier("addCardButton")
  }
  .disabled(!navigationPath.isEmpty)
  
  Button(action: toggleEditing) {
  Label("Edit", systemImage: "square.and.pencil")
  .imageScale(.large)
+ .accessibilityIdentifier("editCardButton")
  }
  .disabled(selectedCard == nil)
  
@@ -2941,27 +3014,37 @@ struct MainContentView: View {
  Log.action.info("User clicked trash icon")
  if let selected = selectedCard {
  cardToDelete = selected
+ isShowingDeleteAlert = true
  }
  }) {
  Label("Delete", systemImage: "trash")
  .imageScale(.large)
+ .accessibilityIdentifier("deleteCardButton")
  }
  .disabled(selectedCard == nil)
  }
  }
- .alert(item: $cardToDelete) { card in
- Alert(
- title: Text("Delete Card"),
- message: Text("Are you sure you want to delete \(card.name)?"),
- primaryButton: .destructive(Text("Delete")) {
+ .alert(
+ "Delete Card",
+ isPresented: $isShowingDeleteAlert,
+ actions: {
+ Button("Delete", role: .destructive) {
+ if let card = cardToDelete {
  Log.action.info("User clicked delete")
  deleteCard(card)
- },
- secondaryButton: .cancel(Text("Cancel"), action: {
- Log.action.info("User cancelled deletion")
- })
- )
  }
+ }
+ .accessibilityIdentifier("confirmDeleteButton")
+ 
+ Button("Cancel", role: .cancel) {
+ Log.action.info("User cancelled deletion")
+ }
+ .accessibilityIdentifier("cancelDeleteButton")
+ },
+ message: {
+ Text("Are you sure you want to delete \(cardToDelete?.name ?? "this card")?")
+ }
+ )
  .sheet(isPresented: $isEditing) {
  if let selectedCard = selectedCard {
  FormEditView(
@@ -3033,6 +3116,7 @@ struct SidebarView: View {
  ForEach(sortedCategories(), id: \.self) { category in
  NavigationLink(value: category) {
  Label(category.displayName, systemImage: category.displayImageName)
+ .accessibilityIdentifier("category_\(category.accessibilityIdentifier)")
  }
  }
  }
@@ -3040,6 +3124,7 @@ struct SidebarView: View {
  Section("Dashboard") {
  NavigationLink(value: SideBarCategories.charts) {
  Label(SideBarCategories.charts.displayName, systemImage: SideBarCategories.charts.displayImageName)
+ .accessibilityIdentifier("category_charts")
  }
  }
  }
@@ -3163,5 +3248,169 @@ struct SettingsTabView: View {
  var body: some View {
  Text("Coming Soon...")
  .padding()
+ }
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibraryTests/CreditCardLibraryTests.swift ***************************************/
+
+import XCTest
+final class CreditCardLibraryTests: XCTestCase {
+ override func setUpWithError() throws {
+ 
+ }
+ override func tearDownWithError() throws {
+ 
+ }
+ func testExample() throws {
+ 
+ 
+ 
+ 
+ 
+ }
+ func testPerformanceExample() throws {
+ 
+ measure {
+ 
+ }
+ }
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibraryTests/ModelTests.swift ***************************************/
+import XCTest
+@testable import CreditCardLibrary
+final class ModelTests: XCTestCase {
+ 
+ func testCreditCardInitialization() {
+ let card = CreditCard(
+ name: "Sapphire Preferred",
+ creditLimit: 10000,
+ openDate: .now,
+ isBusiness: false,
+ isChargeCard: false,
+ lastDigits: "1234"
+ )
+ 
+ XCTAssertEqual(card.name, "Sapphire Preferred")
+ XCTAssertEqual(card.creditLimit, 10000)
+ XCTAssertEqual(card.lastDigits, "1234")
+ XCTAssertFalse(card.isBusiness)
+ }
+ 
+ func testDeepCopyPreservesValues() {
+ let card = CreditCard(name: "Platinum", creditLimit: 15000, openDate: .now, isBusiness: true, isChargeCard: false, lastDigits: "4321")
+ let copy = card.deepCopy()
+ 
+ XCTAssertEqual(copy.name, card.name)
+ XCTAssertEqual(copy.creditLimit, card.creditLimit)
+ XCTAssertEqual(copy.lastDigits, card.lastDigits)
+ XCTAssertNil(copy.bank) 
+ }
+ func testCreditCardSizeComputation() {
+ let width = 300.0
+ let expectedHeight = (width / 8.56) * 5.389
+ XCTAssertEqual(CreditCard.getHeight(width: width), expectedHeight, accuracy: 0.01)
+ }
+ func testReturnNewCreditCardDefaults() {
+ let card = CreditCard.returnNewCreditCard()
+ XCTAssertTrue(card.name.isEmpty)
+ XCTAssertTrue(card.lastDigits.isEmpty)
+ XCTAssertNil(card.bank)
+ XCTAssertNil(card.creditLimit)
+ }
+ func testLoadBankCardArtData() {
+ let data = loadBankCardArtData()
+ XCTAssertNotNil(data)
+ XCTAssertFalse(data!.isEmpty)
+ }
+ func testPromotionSampleData() {
+ let promos = Promotion.sampleData
+ XCTAssertFalse(promos.isEmpty)
+ for promo in promos {
+ XCTAssertFalse(promo.details.isEmpty)
+ }
+ }
+ func testBonusSampleData() {
+ let bonuses = Bonus.sampleData
+ XCTAssertFalse(bonuses.isEmpty)
+ for bonus in bonuses {
+ XCTAssertFalse(bonus.details.isEmpty)
+ }
+ }
+ func testHistoryEntryInitialization() {
+ let date = Date()
+ let entryText = "Test history entry"
+ let history = HistoryEntry(date: date, entry: entryText)
+ XCTAssertEqual(history.entry, entryText)
+ XCTAssertEqual(history.date, date)
+ }
+ func testCardArtBankNameFallback() {
+ let art = CardArt(assetID: "xyz", bank: nil)
+ XCTAssertEqual(art.bankName, "No Bank")
+ }
+ func testPaymentProcessorSampleData() {
+ let pps = PaymentProcessor.sampleData
+ XCTAssertGreaterThanOrEqual(pps.count, 4)
+ let names = pps.map { $0.name }
+ XCTAssertTrue(names.contains("Visa"))
+ }
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibraryUITests/CreditCardLibraryUITests.swift ***************************************/
+
+import XCTest
+final class CreditCardLibraryUITests: XCTestCase {
+ override func setUpWithError() throws {
+ 
+ 
+ continueAfterFailure = false
+ 
+ }
+ override func tearDownWithError() throws {
+ 
+ }
+ func testExample() throws {
+ 
+ let app = XCUIApplication()
+ app.launch()
+ 
+ }
+ func testLaunchPerformance() throws {
+ if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
+ 
+ measure(metrics: [XCTApplicationLaunchMetric()]) {
+ XCUIApplication().launch()
+ }
+ }
+ }
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibraryUITests/CreditCardLibraryUITestsLaunchTests.swift ***************************************/
+
+import XCTest
+final class CreditCardLibraryUITestsLaunchTests: XCTestCase {
+ override class var runsForEachTargetApplicationUIConfiguration: Bool {
+ true
+ }
+ override func setUpWithError() throws {
+ continueAfterFailure = false
+ }
+ func testLaunch() throws {
+ let app = XCUIApplication()
+ app.launch()
+ 
+ 
+ let attachment = XCTAttachment(screenshot: app.screenshot())
+ attachment.name = "Launch Screen"
+ attachment.lifetime = .keepAlways
+ add(attachment)
  }
 }

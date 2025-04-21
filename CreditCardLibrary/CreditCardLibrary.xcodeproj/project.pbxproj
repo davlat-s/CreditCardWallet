@@ -27,6 +27,7 @@
 		3176D8EF2C7437E000C57FBB /* Bonus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176D8EE2C7437DF00C57FBB /* Bonus.swift */; };
 		3176D8F22C75AC2B00C57FBB /* Closed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176D8F12C75AC2B00C57FBB /* Closed.swift */; };
 		3176D8F42C75AD1600C57FBB /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176D8F32C75AD1600C57FBB /* Promotion.swift */; };
+		318566E82DB5F2EB00D57EBF /* XCUIApplication+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318566E72DB5F2EB00D57EBF /* XCUIApplication+Helpers.swift */; };
 		3189C6E22D5AE2DB00EDA7A4 /* CardArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C6E12D5AE2DB00EDA7A4 /* CardArt.swift */; };
 		3189C6E62D5AF03600EDA7A4 /* loadBankCardArtData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C6E52D5AF03600EDA7A4 /* loadBankCardArtData.swift */; };
 		3189C6E82D5BD5DE00EDA7A4 /* CardCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C6E72D5BD5DE00EDA7A4 /* CardCellView.swift */; };
@@ -109,6 +110,7 @@
 		3176D8EE2C7437DF00C57FBB /* Bonus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bonus.swift; sourceTree = "<group>"; };
 		3176D8F12C75AC2B00C57FBB /* Closed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Closed.swift; sourceTree = "<group>"; };
 		3176D8F32C75AD1600C57FBB /* Promotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promotion.swift; sourceTree = "<group>"; };
+		318566E72DB5F2EB00D57EBF /* XCUIApplication+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+Helpers.swift"; sourceTree = "<group>"; };
 		3189C6E12D5AE2DB00EDA7A4 /* CardArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardArt.swift; sourceTree = "<group>"; };
 		3189C6E52D5AF03600EDA7A4 /* loadBankCardArtData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadBankCardArtData.swift; sourceTree = "<group>"; };
 		3189C6E72D5BD5DE00EDA7A4 /* CardCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellView.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 			children = (
 				317635B92DB45D3F00598DD3 /* CreditCardLibraryUITests.swift */,
 				317635BB2DB45D3F00598DD3 /* CreditCardLibraryUITestsLaunchTests.swift */,
+				318566E72DB5F2EB00D57EBF /* XCUIApplication+Helpers.swift */,
 			);
 			path = CreditCardLibraryUITests;
 			sourceTree = "<group>";
@@ -518,6 +521,7 @@
 			files = (
 				317635BA2DB45D3F00598DD3 /* CreditCardLibraryUITests.swift in Sources */,
 				317635BC2DB45D3F00598DD3 /* CreditCardLibraryUITestsLaunchTests.swift in Sources */,
+				318566E82DB5F2EB00D57EBF /* XCUIApplication+Helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
