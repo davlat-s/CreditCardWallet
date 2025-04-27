@@ -68,6 +68,9 @@
 		319F558D2C5F2B1500C054D2 /* CreditCardLibraryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319F558C2C5F2B1500C054D2 /* CreditCardLibraryApp.swift */; };
 		319F55912C5F2B1600C054D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 319F55902C5F2B1600C054D2 /* Assets.xcassets */; };
 		319F55942C5F2B1600C054D2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 319F55932C5F2B1600C054D2 /* Preview Assets.xcassets */; };
+		31E75EE02DBD7844003C212B /* CardGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E75EDF2DBD7844003C212B /* CardGrid.swift */; };
+		31E75EE22DBD8BAD003C212B /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E75EE12DBD8BAD003C212B /* Toolbar.swift */; };
+		31E75EE42DBD8F82003C212B /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E75EE32DBD8F82003C212B /* Form.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,6 +156,9 @@
 		319F55902C5F2B1600C054D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		319F55932C5F2B1600C054D2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		319F55952C5F2B1600C054D2 /* CreditCardLibrary.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CreditCardLibrary.entitlements; sourceTree = "<group>"; };
+		31E75EDF2DBD7844003C212B /* CardGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGrid.swift; sourceTree = "<group>"; };
+		31E75EE12DBD8BAD003C212B /* Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbar.swift; sourceTree = "<group>"; };
+		31E75EE32DBD8F82003C212B /* Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +198,7 @@
 		317635B82DB45D3F00598DD3 /* CreditCardLibraryUITests */ = {
 			isa = PBXGroup;
 			children = (
+				31E75EDE2DBD7808003C212B /* Screens */,
 				317635B92DB45D3F00598DD3 /* CreditCardLibraryUITests.swift */,
 				317635BB2DB45D3F00598DD3 /* CreditCardLibraryUITestsLaunchTests.swift */,
 				318566E72DB5F2EB00D57EBF /* XCUIApplication+Helpers.swift */,
@@ -379,6 +386,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		31E75EDE2DBD7808003C212B /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				31E75EDF2DBD7844003C212B /* CardGrid.swift */,
+				31E75EE12DBD8BAD003C212B /* Toolbar.swift */,
+				31E75EE32DBD8F82003C212B /* Form.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -519,9 +536,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31E75EE02DBD7844003C212B /* CardGrid.swift in Sources */,
 				317635BA2DB45D3F00598DD3 /* CreditCardLibraryUITests.swift in Sources */,
+				31E75EE22DBD8BAD003C212B /* Toolbar.swift in Sources */,
 				317635BC2DB45D3F00598DD3 /* CreditCardLibraryUITestsLaunchTests.swift in Sources */,
 				318566E82DB5F2EB00D57EBF /* XCUIApplication+Helpers.swift in Sources */,
+				31E75EE42DBD8F82003C212B /* Form.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -790,11 +810,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_ENTITLEMENTS = CreditCardLibrary/CreditCardLibrary.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"CreditCardLibrary/Preview Content\"";
 				DEVELOPMENT_TEAM = CJQCXZH5MJ;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -809,6 +831,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Davlat.CreditCardLibrary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_SWIFT_SYMBOLS = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -819,6 +843,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_ENTITLEMENTS = CreditCardLibrary/CreditCardLibrary.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -838,6 +863,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Davlat.CreditCardLibrary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_SWIFT_SYMBOLS = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};

@@ -21,8 +21,8 @@ struct GridContentView: View {
             LazyVGrid(columns: columns, spacing: 5) {
                 ForEach(filteredCreditCards, id: \.id) { card in
                     CardCellView(creditCard: card)
-                        .accessibilityIdentifier("CardCell_\(card.name)")
-                        .accessibilityLabel(Text("Credit Card: \(card.name)"))
+                        .accessibilityIdentifier("CardCell_\(card.id.uuidString)")
+                        .accessibilityLabel(Text(card.name))
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
                                 .strokeBorder(selectedCard == card ? Color.accentColor.opacity(0.8) : Color.clear, lineWidth: 3)

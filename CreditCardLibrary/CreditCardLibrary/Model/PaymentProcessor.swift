@@ -3,6 +3,8 @@ import SwiftData
 
 @Model
 final class PaymentProcessor {
+    @Attribute(.unique) var id: UUID
+
     static let visa = PaymentProcessor(name: "Visa", logo: "visaLogo")
     static let mastercard = PaymentProcessor(name: "MasterCard", logo: "mastercardLogo")
     static let amex = PaymentProcessor(name: "Amex", logo: "amexLogo")
@@ -12,7 +14,10 @@ final class PaymentProcessor {
     var logo: String
     var creditCards: [CreditCard] = []
     
-    init(name: String, logo: String) {
+    init(id: UUID = UUID(),
+         name: String,
+         logo: String) {
+        self.id = id
         self.name = name
         self.logo = logo
     }

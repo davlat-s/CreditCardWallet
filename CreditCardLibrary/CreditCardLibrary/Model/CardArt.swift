@@ -3,10 +3,13 @@ import SwiftData
 
 @Model
 final class CardArt {
+    @Attribute(.unique) var id: UUID
+
     var assetID: String
     @Relationship var bank: Bank?
 
-    init(assetID: String, bank: Bank? = nil) {
+    init(id: UUID = UUID(), assetID: String, bank: Bank? = nil) {
+        self.id = id
         self.assetID = assetID
         self.bank = bank
     }

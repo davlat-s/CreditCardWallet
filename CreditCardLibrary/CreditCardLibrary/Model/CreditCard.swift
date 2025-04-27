@@ -5,6 +5,8 @@ import SwiftUI
 
 @Model
 final class CreditCard {
+    @Attribute(.unique) var id: UUID
+
     var name: String
     var creditLimit: Double?
     var isBusiness: Bool
@@ -20,7 +22,8 @@ final class CreditCard {
     var paymentProcessor: PaymentProcessor?
     var cardArt: CardArt?
     
-    init(name: String,
+    init(id: UUID = UUID(),
+         name: String,
          creditLimit: Double? = nil,
          openDate: Date,
          isBusiness: Bool,
@@ -34,6 +37,7 @@ final class CreditCard {
          closed: Closed? = nil,
          paymentProcessor: PaymentProcessor? = nil,
          cardArt: CardArt? = nil) {
+        self.id = id
         self.name = name
         self.creditLimit = creditLimit
         self.openDate = openDate

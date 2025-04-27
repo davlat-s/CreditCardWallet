@@ -1,12 +1,17 @@
 import XCTest
 
 extension XCUIApplication {
+    private enum Identifiers {
+        static let plusButton = "plusButton"
+        static let cardNameTextField = "cardNameTextField"
+    }
+
     var plusButtonToolbar: XCUIElement {
-        self.buttons["plusButton"]
+        buttons[Identifiers.plusButton]
     }
 
     var cardNameTextFieldForm: XCUIElement {
-        self.textFields["cardNameTextField"]
+        textFields[Identifiers.cardNameTextField]
     }
     
     /// Taps the Add Card (+) button, asserting it exists first.

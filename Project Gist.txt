@@ -291,7 +291,8 @@
 │   │   └── ModelTests.swift
 │   └── CreditCardLibraryUITests/
 │       ├── CreditCardLibraryUITests.swift
-│       └── CreditCardLibraryUITestsLaunchTests.swift
+│       ├── CreditCardLibraryUITestsLaunchTests.swift
+│       └── XCUIApplication+Helpers.swift
 └── previews/
 
 
@@ -2999,7 +3000,7 @@ struct MainContentView: View {
  Button(action: addCard) {
  Label("Add Card", systemImage: "plus")
  .imageScale(.large)
- .accessibilityIdentifier("addCardButton")
+ .accessibilityIdentifier("plusButton")
  }
  .disabled(!navigationPath.isEmpty)
  
@@ -3363,39 +3364,27 @@ final class ModelTests: XCTestCase {
 
 
 /** File: /CreditCardLibrary/CreditCardLibraryUITests/CreditCardLibraryUITests.swift ***************************************/
-
 import XCTest
 final class CreditCardLibraryUITests: XCTestCase {
+ var app: XCUIApplication!
  override func setUpWithError() throws {
- 
- 
  continueAfterFailure = false
- 
+ app = XCUIApplication()
+ app.launch()
  }
  override func tearDownWithError() throws {
- 
+ app = nil
  }
- func testExample() throws {
- 
- let app = XCUIApplication()
- app.launch()
- 
- }
- func testLaunchPerformance() throws {
- if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
- 
- measure(metrics: [XCTApplicationLaunchMetric()]) {
- XCUIApplication().launch()
- }
- }
+ func testAddCardHappyPath() throws {
+ app.clickPlusButtonToolbar()
+ app.verifyCardNameTextField()
  }
 }
 
 
 
 /** File: /CreditCardLibrary/CreditCardLibraryUITests/CreditCardLibraryUITestsLaunchTests.swift ***************************************/
-
-import XCTest
+ import XCTest
 final class CreditCardLibraryUITestsLaunchTests: XCTestCase {
  override class var runsForEachTargetApplicationUIConfiguration: Bool {
  true
@@ -3413,4 +3402,31 @@ final class CreditCardLibraryUITestsLaunchTests: XCTestCase {
  attachment.lifetime = .keepAlways
  add(attachment)
  }
+}
+
+
+
+/** File: /CreditCardLibrary/CreditCardLibraryUITests/XCUIApplication+Helpers.swift ***************************************/
+import XCTest
+extension XCUIApplication {
+ var plusButtonToolbar: XCUIElement {
+ self.buttons["plusButton"]
+ }
+ var cardNameTextFieldForm: XCUIElement {
+ self.textFields["cardNameTextField"]
+ }
+ 
+ 
+ func clickPlusButtonToolbar(file: StaticString = #file, line: UInt = #line) {
+ let button = self.plusButtonToolbar.firstMatch
+ XCTAssertTrue(button.exists, "\(button.description) must exist", file: file, line: line)
+ button.tap()
+ }
+ 
+ func verifyCardNameTextField(file: StaticString = #file, line: UInt = #line) {
+ let textField = self.cardNameTextFieldForm
+ XCTAssertTrue(textField.waitForExistence(timeout: 5),
+ "cardNameTextField must exist",
+ file: file,
+ line: line) }
 }

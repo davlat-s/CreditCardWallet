@@ -4,12 +4,20 @@ import SwiftData
 
 @Model
 final class Promotion {
+    @Attribute(.unique) var id: UUID
+
     var details: String
     var startDate: Date?
     var endDate: Date?
     var creditCard: CreditCard?
     
-    init(details: String, startDate: Date? = nil, endDate: Date? = nil, creditCard: CreditCard? = nil) {
+    init(id: UUID = UUID(),
+         details: String,
+         startDate: Date? = nil,
+         endDate: Date? = nil,
+         creditCard: CreditCard? = nil) {
+        self.id = id
+
         self.details = details
         self.startDate = startDate
         self.endDate = endDate
