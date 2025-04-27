@@ -8,8 +8,6 @@ struct CardGrid {
     
     let app: XCUIApplication
 
-
-
     func cardCell(_ uuid: String) -> XCUIElement {
         return app
             .descendants(matching: .any)
@@ -42,5 +40,23 @@ struct CardGrid {
             .firstMatch
         let appeared = element.waitForExistence(timeout: 5)
         XCTAssertTrue(appeared, "⚠️ Expected to find element with label '\(name)'", file: file, line: line)
+    }
+
+    /// Clicks on the first UI element whose label matches the provided name.
+    func singleClickCardName(_ name: String, file: StaticString = #file, line: UInt = #line) {
+        assertCardName(name, file: file, line: line)
+        let element = app.descendants(matching: .any)
+            .matching(NSPredicate(format: "label == %@", name))
+            .firstMatch
+        element.click()
+    }
+
+    /// Double-clicks on the first UI element whose label matches the provided name.
+    func doubleClickCardName(_ name: String, file: StaticString = #file, line: UInt = #line) {
+        assertCardName(name, file: file, line: line)
+        let element = app.descendants(matching: .any)
+            .matching(NSPredicate(format: "label == %@", name))
+            .firstMatch
+        element.doubleClick()
     }
 }

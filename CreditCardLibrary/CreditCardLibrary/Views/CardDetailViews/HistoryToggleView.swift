@@ -14,7 +14,7 @@ struct HistoryToggleView: View {
                 Text(isShowingHistory ? "Hide History" : "Show History")
             })
             .padding()
-            .accessibilityIdentifier("historyToggleButton")
+            .accessibilityIdentifier(String(isShowingHistory ? "hideHistory" : "showHistory"))
             .accessibilityLabel(Text(isShowingHistory ? "Hide History" : "Show History"))
         }
         .frame(height: 35)

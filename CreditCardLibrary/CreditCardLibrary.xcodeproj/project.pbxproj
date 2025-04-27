@@ -21,13 +21,12 @@
 		317635A32DB432EF00598DD3 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317635A22DB432EF00598DD3 /* Logger.swift */; };
 		317635AB2DB4460100598DD3 /* CreditCardLibraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317635AA2DB4460100598DD3 /* CreditCardLibraryTests.swift */; };
 		317635B22DB4463E00598DD3 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317635B12DB4463E00598DD3 /* ModelTests.swift */; };
-		317635BA2DB45D3F00598DD3 /* CreditCardLibraryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317635B92DB45D3F00598DD3 /* CreditCardLibraryUITests.swift */; };
-		317635BC2DB45D3F00598DD3 /* CreditCardLibraryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317635BB2DB45D3F00598DD3 /* CreditCardLibraryUITestsLaunchTests.swift */; };
+		317635BA2DB45D3F00598DD3 /* CreditCardWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317635B92DB45D3F00598DD3 /* CreditCardWalletUITests.swift */; };
+		317635BC2DB45D3F00598DD3 /* CreditCardWalletUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317635BB2DB45D3F00598DD3 /* CreditCardWalletUITestsLaunchTests.swift */; };
 		3176D8EB2C74362800C57FBB /* Bank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176D8EA2C74362800C57FBB /* Bank.swift */; };
 		3176D8EF2C7437E000C57FBB /* Bonus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176D8EE2C7437DF00C57FBB /* Bonus.swift */; };
 		3176D8F22C75AC2B00C57FBB /* Closed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176D8F12C75AC2B00C57FBB /* Closed.swift */; };
 		3176D8F42C75AD1600C57FBB /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3176D8F32C75AD1600C57FBB /* Promotion.swift */; };
-		318566E82DB5F2EB00D57EBF /* XCUIApplication+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318566E72DB5F2EB00D57EBF /* XCUIApplication+Helpers.swift */; };
 		3189C6E22D5AE2DB00EDA7A4 /* CardArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C6E12D5AE2DB00EDA7A4 /* CardArt.swift */; };
 		3189C6E62D5AF03600EDA7A4 /* loadBankCardArtData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C6E52D5AF03600EDA7A4 /* loadBankCardArtData.swift */; };
 		3189C6E82D5BD5DE00EDA7A4 /* CardCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189C6E72D5BD5DE00EDA7A4 /* CardCellView.swift */; };
@@ -71,6 +70,8 @@
 		31E75EE02DBD7844003C212B /* CardGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E75EDF2DBD7844003C212B /* CardGrid.swift */; };
 		31E75EE22DBD8BAD003C212B /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E75EE12DBD8BAD003C212B /* Toolbar.swift */; };
 		31E75EE42DBD8F82003C212B /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E75EE32DBD8F82003C212B /* Form.swift */; };
+		31E75EE62DBDF0EF003C212B /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E75EE52DBDF0EF003C212B /* Sidebar.swift */; };
+		31E75EE82DBE00EA003C212B /* CardDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E75EE72DBE00EA003C212B /* CardDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,13 +108,12 @@
 		317635AA2DB4460100598DD3 /* CreditCardLibraryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardLibraryTests.swift; sourceTree = "<group>"; };
 		317635B12DB4463E00598DD3 /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
 		317635B72DB45D3F00598DD3 /* CreditCardLibraryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CreditCardLibraryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		317635B92DB45D3F00598DD3 /* CreditCardLibraryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardLibraryUITests.swift; sourceTree = "<group>"; };
-		317635BB2DB45D3F00598DD3 /* CreditCardLibraryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardLibraryUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		317635B92DB45D3F00598DD3 /* CreditCardWalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardWalletUITests.swift; sourceTree = "<group>"; };
+		317635BB2DB45D3F00598DD3 /* CreditCardWalletUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardWalletUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3176D8EA2C74362800C57FBB /* Bank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bank.swift; sourceTree = "<group>"; };
 		3176D8EE2C7437DF00C57FBB /* Bonus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bonus.swift; sourceTree = "<group>"; };
 		3176D8F12C75AC2B00C57FBB /* Closed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Closed.swift; sourceTree = "<group>"; };
 		3176D8F32C75AD1600C57FBB /* Promotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promotion.swift; sourceTree = "<group>"; };
-		318566E72DB5F2EB00D57EBF /* XCUIApplication+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+Helpers.swift"; sourceTree = "<group>"; };
 		3189C6E12D5AE2DB00EDA7A4 /* CardArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardArt.swift; sourceTree = "<group>"; };
 		3189C6E52D5AF03600EDA7A4 /* loadBankCardArtData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadBankCardArtData.swift; sourceTree = "<group>"; };
 		3189C6E72D5BD5DE00EDA7A4 /* CardCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellView.swift; sourceTree = "<group>"; };
@@ -159,6 +159,8 @@
 		31E75EDF2DBD7844003C212B /* CardGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGrid.swift; sourceTree = "<group>"; };
 		31E75EE12DBD8BAD003C212B /* Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbar.swift; sourceTree = "<group>"; };
 		31E75EE32DBD8F82003C212B /* Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
+		31E75EE52DBDF0EF003C212B /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
+		31E75EE72DBE00EA003C212B /* CardDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,9 +201,8 @@
 			isa = PBXGroup;
 			children = (
 				31E75EDE2DBD7808003C212B /* Screens */,
-				317635B92DB45D3F00598DD3 /* CreditCardLibraryUITests.swift */,
-				317635BB2DB45D3F00598DD3 /* CreditCardLibraryUITestsLaunchTests.swift */,
-				318566E72DB5F2EB00D57EBF /* XCUIApplication+Helpers.swift */,
+				317635B92DB45D3F00598DD3 /* CreditCardWalletUITests.swift */,
+				317635BB2DB45D3F00598DD3 /* CreditCardWalletUITestsLaunchTests.swift */,
 			);
 			path = CreditCardLibraryUITests;
 			sourceTree = "<group>";
@@ -392,6 +393,8 @@
 				31E75EDF2DBD7844003C212B /* CardGrid.swift */,
 				31E75EE12DBD8BAD003C212B /* Toolbar.swift */,
 				31E75EE32DBD8F82003C212B /* Form.swift */,
+				31E75EE52DBDF0EF003C212B /* Sidebar.swift */,
+				31E75EE72DBE00EA003C212B /* CardDetail.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -536,11 +539,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31E75EE82DBE00EA003C212B /* CardDetail.swift in Sources */,
 				31E75EE02DBD7844003C212B /* CardGrid.swift in Sources */,
-				317635BA2DB45D3F00598DD3 /* CreditCardLibraryUITests.swift in Sources */,
+				317635BA2DB45D3F00598DD3 /* CreditCardWalletUITests.swift in Sources */,
 				31E75EE22DBD8BAD003C212B /* Toolbar.swift in Sources */,
-				317635BC2DB45D3F00598DD3 /* CreditCardLibraryUITestsLaunchTests.swift in Sources */,
-				318566E82DB5F2EB00D57EBF /* XCUIApplication+Helpers.swift in Sources */,
+				317635BC2DB45D3F00598DD3 /* CreditCardWalletUITestsLaunchTests.swift in Sources */,
+				31E75EE62DBDF0EF003C212B /* Sidebar.swift in Sources */,
 				31E75EE42DBD8F82003C212B /* Form.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

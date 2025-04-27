@@ -30,6 +30,12 @@ struct Toolbar {
             .firstMatch
     }
     
+    var backButton: XCUIElement {
+        app.buttons
+            .matching(identifier: "Back")
+            .firstMatch
+    }
+    
     // MARK: - Assertions
     func assertPlusButtonExists(file: StaticString = #file, line: UInt = #line) {
         let btn = plusButton
@@ -47,6 +53,12 @@ struct Toolbar {
         let btn = deleteCardButton
         let appeared = btn.waitForExistence(timeout: 5)
         XCTAssertTrue(appeared, "🗑️ Delete Card button should exist", file: file, line: line)
+    }
+    
+    func assertBackButtonExists(file: StaticString = #file, line: UInt = #line) {
+        let btn = backButton
+        let appeared = btn.waitForExistence(timeout: 5)
+        XCTAssertTrue(appeared, "⬅️ Back button should exist", file: file, line: line)
     }
     
     // MARK: - Actions
@@ -68,6 +80,11 @@ struct Toolbar {
         deleteCardButton.tap()
     }
     
+    func tapBackButton(file: StaticString = #file, line: UInt = #line) {
+        assertBackButtonExists(file: file, line: line)
+        assertBackButtonEnabled(file: file, line: line)
+        backButton.tap()
+    }
 
     // MARK: - Search
     var searchField: XCUIElement {
@@ -95,6 +112,10 @@ struct Toolbar {
         deleteCardButton.isEnabled
     }
     
+    var isBackButtonEnabled: Bool {
+        backButton.isEnabled
+    }
+    
     // MARK: - Enabled Assertions
     func assertPlusButtonEnabled(file: StaticString = #file, line: UInt = #line) {
         XCTAssertTrue(isPlusButtonEnabled, "➕ button should be enabled", file: file, line: line)
@@ -118,6 +139,14 @@ struct Toolbar {
     
     func assertDeleteCardButtonDisabled(file: StaticString = #file, line: UInt = #line) {
         XCTAssertFalse(isDeleteCardButtonEnabled, "🗑️ Delete Card button should be disabled", file: file, line: line)
+    }
+    
+    func assertBackButtonEnabled(file: StaticString = #file, line: UInt = #line) {
+        XCTAssertTrue(isBackButtonEnabled, "⬅️ Back button should be enabled", file: file, line: line)
+    }
+    
+    func assertBackButtonDisabled(file: StaticString = #file, line: UInt = #line) {
+        XCTAssertFalse(isBackButtonEnabled, "⬅️ Back button should be disabled", file: file, line: line)
     }
 
 }
