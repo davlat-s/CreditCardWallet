@@ -4,13 +4,6 @@ final class CreditCardWalletUITests: XCTestCase {
 
     var app: XCUIApplication!
 
-    // MARK: - Shared test data
-    static var baseCardName: String!
-    static var cardName: String!
-    static var creditLimit: String!
-    static var lastDigits: String!
-    static var bankName: String!
-
     override func setUpWithError() throws {
         continueAfterFailure = false
         app = XCUIApplication()
@@ -32,13 +25,6 @@ final class CreditCardWalletUITests: XCTestCase {
         let creditLimit = "5000"
         let lastDigits = "3645"
         let bank = "Chase"
-        
-        // Store values for use in other tests
-        Self.baseCardName = baseCardName
-        Self.cardName = cardName
-        Self.creditLimit = creditLimit
-        Self.lastDigits = lastDigits
-        Self.bankName = bank
         
         // Adding Credit Card
         toolbar.tapPlusButton()
