@@ -1,9 +1,44 @@
 import SwiftUI
 import SwiftData
+import AppKit
+
+// Catches “open file” events (double-clicked .walletpkg)
+class AppDelegate: NSObject, NSApplicationDelegate {
+  func application(_ application: NSApplication, openFile filename: String) -> Bool {
+    print("AppDelegate received openFile: \(filename)")
+    // Post a notification carrying the file URL
+    NotificationCenter.default.post(
+      name: .packageOpened,
+      object: URL(fileURLWithPath: filename)
+    )
+    return true
+  }
+
+  func application(_ application: NSApplication, open urls: [URL]) {
+    for url in urls {
+      print("AppDelegate received URL via open urls: \(url.path)")
+      NotificationCenter.default.post(
+        name: .packageOpened,
+        object: url
+      )
+    }
+  }
+}
+
+extension Notification.Name {
+  // Fired when the user opens a .walletpkg
+  static let packageOpened = Notification.Name("packageOpened")
+}
 
 @main
 @MainActor
 struct CreditCardLibraryApp: App {
+    
+    @NSApplicationDelegateAdaptor(AppDelegate.self)
+    private var appDelegate
+    
+    @StateObject private var documentManager = DocumentManager()
+    @State private var showImportSheet = false
     
     @AppStorage(AppStorageKeys.menuBarShown) var menuBarShown: Bool = true
     
@@ -17,6 +52,17 @@ struct CreditCardLibraryApp: App {
                 .frame(minWidth: 600, idealWidth: 1200, maxWidth: 1400, minHeight: 300, idealHeight: 600, maxHeight: 900)
                 .onAppear {
                     columnVisibility = .all
+                }
+                .environmentObject(documentManager)
+                .sheet(isPresented: $showImportSheet) {
+                    ImportSheetView()
+                        .environmentObject(documentManager)
+                }
+                .onReceive(NotificationCenter.default.publisher(for: .packageOpened)) { notif in
+                    if let url = notif.object as? URL {
+                        documentManager.loadPackage(at: url)
+                        showImportSheet = true
+                    }
                 }
         }
         .defaultPosition(.center)
