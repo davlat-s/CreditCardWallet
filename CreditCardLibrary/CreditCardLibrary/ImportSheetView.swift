@@ -26,9 +26,6 @@ struct ImportSheetView: View {
                                     .appendingPathComponent(card.backgroundFilename75)
                                 if let nsImage = NSImage(contentsOf: imageURL) {
                                     Image(nsImage: nsImage)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width: 75, height: 75)
                                         .clipped()
                                         .cornerRadius(4)
                                 }
