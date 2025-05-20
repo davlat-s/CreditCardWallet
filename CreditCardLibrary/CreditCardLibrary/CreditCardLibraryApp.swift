@@ -29,6 +29,7 @@ struct CreditCardLibraryApp: App {
                 .sheet(isPresented: $showImportSheet) {
                     ImportSheetView()
                         .environmentObject(documentManager)
+                        .frame(width: 700, height: 500, alignment: .center)
                 }
                 .onOpenURL { url in
                     documentManager.loadPackage(at: url)

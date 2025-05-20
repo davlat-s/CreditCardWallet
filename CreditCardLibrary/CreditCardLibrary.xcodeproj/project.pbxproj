@@ -11,6 +11,7 @@
 		310752432DDA9AA2004F725D /* DocumentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310752422DDA9AA2004F725D /* DocumentManager.swift */; };
 		310752452DDA9B9F004F725D /* Manifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310752442DDA9B9F004F725D /* Manifest.swift */; };
 		310752472DDA9C8C004F725D /* ImportSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310752462DDA9C8C004F725D /* ImportSheetView.swift */; };
+		310752492DDC5F30004F725D /* ImportCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310752482DDC5F30004F725D /* ImportCard.swift */; };
 		310E5EE42C699A960062DDFA /* CreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310E5EE32C699A960062DDFA /* CreditCard.swift */; };
 		311676402D173D340098BF92 /* CloseCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3116763F2D173D340098BF92 /* CloseCardView.swift */; };
 		314BD4682C94A5C300E32E74 /* FormAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314BD4672C94A5C300E32E74 /* FormAddView.swift */; };
@@ -100,6 +101,7 @@
 		310752422DDA9AA2004F725D /* DocumentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentManager.swift; sourceTree = "<group>"; };
 		310752442DDA9B9F004F725D /* Manifest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manifest.swift; sourceTree = "<group>"; };
 		310752462DDA9C8C004F725D /* ImportSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportSheetView.swift; sourceTree = "<group>"; };
+		310752482DDC5F30004F725D /* ImportCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportCard.swift; sourceTree = "<group>"; };
 		310E5EE32C699A960062DDFA /* CreditCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCard.swift; sourceTree = "<group>"; };
 		3116763F2D173D340098BF92 /* CloseCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseCardView.swift; sourceTree = "<group>"; };
 		314BD4672C94A5C300E32E74 /* FormAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormAddView.swift; sourceTree = "<group>"; };
@@ -370,6 +372,7 @@
 				319F55922C5F2B1600C054D2 /* Preview Content */,
 				310752422DDA9AA2004F725D /* DocumentManager.swift */,
 				310752442DDA9B9F004F725D /* Manifest.swift */,
+				310752482DDC5F30004F725D /* ImportCard.swift */,
 			);
 			path = CreditCardLibrary;
 			sourceTree = "<group>";
@@ -617,6 +620,7 @@
 				3189C7312D8776FC00EDA7A4 /* SettingsTabView.swift in Sources */,
 				3189C7122D7D02FF00EDA7A4 /* CustomToggle.swift in Sources */,
 				3176D8EB2C74362800C57FBB /* Bank.swift in Sources */,
+				310752492DDC5F30004F725D /* ImportCard.swift in Sources */,
 				319F558D2C5F2B1500C054D2 /* CreditCardLibraryApp.swift in Sources */,
 				3189C7262D853EA300EDA7A4 /* BankTabView.swift in Sources */,
 				310752452DDA9B9F004F725D /* Manifest.swift in Sources */,
